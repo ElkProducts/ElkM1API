@@ -390,6 +390,21 @@ namespace Elk {
 			data.doNotDisturb = message.at(21) == '1';
 			m1cache.audioData[index].set(data);
 		});
+		// Omnistat 2 reply
+		handleMessageTable.emplace("T2", [this](std::string message) {
+			std::vector<char> reply;
+			for (int i = 0; i < 16; i++)
+				reply.push_back(stoi(message.substr(2 + (i * 2)), 0, 16));
+			m1cache.omniStat2Reply.set(reply);
+		});
+		// User code areas
+		handleMessageTable.emplace("UA", [this](std::string message) {
+			UserCodeAccess uca;
+			uca.validAreas = stoi(message.substr(8, 2), 0, 16);
+			uca.codetype = (UserCodeAccess::CodeType)(message.at(18) - '0');
+			uca.usesCelcius = message.at(20) == 'C';
+			m1cache.userCodeAccess.set(uca);
+		});
 	}
 
 	std::vector<char> M1AsciiAPI::cutMessage(std::vector<char>& buffer) {
@@ -427,7 +442,7 @@ namespace Elk {
 		}
 		catch (...) {
 			message.push_back('\0');
-			std::cout << "No handler for message: " << std::string(&message[0]) << "\n";
+			//std::cout << "No handler for message: " << std::string(&message[0]) << "\n";
 		}
 	}
 
@@ -700,7 +715,14 @@ namespace Elk {
 		}
 		throw std::exception("TextDescriptionType not defined.");
 	}
-	std::vector<char> M1AsciiAPI::getOmnistat2Data(std::vector<char> request) { return std::vector<char>(); }
+	std::vector<char> M1AsciiAPI::getOmnistat2Data(std::vector<char> request) { 
+		// TODO: Unable to test yet.
+		AsciiMessage message("t2");
+		for (auto byte : request)
+			message += toAsciiHex(byte, 2);
+		message += "00";
+		return cacheRequest(m1cache.omniStat2Reply, message, true, 0);
+	}
 	M1AsciiAPI::SystemTroubleStatus M1AsciiAPI::getSystemTroubleStatus() {
 		return cacheRequest(m1cache.systemTroubleStatus, (AsciiMessage)"ss00", true, 0);
 	}
@@ -751,8 +773,29 @@ namespace Elk {
 		// If we have a timeout defined, try to use that, and rethrow exception if we wait too long
 		return m1cache.counterValues[counter].awaitNew(0);
 	}
-	M1AsciiAPI::UserCodeAccess M1AsciiAPI::getUserCodeAccess(std::string userCode) { return UserCodeAccess(); }
-	M1AsciiAPI::UserCodeSuccess M1AsciiAPI::requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) { return UserCodeSuccess(); }
+	M1AsciiAPI::UserCodeAccess M1AsciiAPI::getUserCodeAccess(std::string userCode) { 
+		AsciiMessage message("ua");
+		message += userCode;
+		message += "00";
+		return cacheRequest(m1cache.userCodeAccess, message, true, 0);
+	}
+	M1AsciiAPI::UserCodeSuccess M1AsciiAPI::requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) { 
+		if (authCode.length() < 6)
+			authCode.insert(0, 6 - authCode.length(), '0');
+		if (newUserCode.length() < 6)
+			newUserCode.insert(0, 6 - newUserCode.length(), '0');
+		AsciiMessage request("cu");
+		request += toAsciiDec(user + 1, 3);
+		for (char c : authCode) {
+			request += toAsciiDec(c - '0', 2);
+		}
+		for (char c : newUserCode) {
+			request += toAsciiDec(c - '0', 2);
+		}
+		request += toAsciiHex(areaMask, 2);
+		request += "00";
+		return cacheRequest(m1cache.userCodeChanged, request, true, 0); // TODO: Block on concurrent hashmap or something
+	}
 	void M1AsciiAPI::activateTask(int taskNumber) {
 		//TODO: 0 <= tn <= 31
 		AsciiMessage message("tn");

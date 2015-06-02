@@ -81,7 +81,7 @@
     <ClInclude Include="..\ElkM1API\ElkM1API.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ElkM1APITester.cpp" />
+    <ClCompile Include="ElkM1CLI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElkM1API\ElkM1API.vcxproj">

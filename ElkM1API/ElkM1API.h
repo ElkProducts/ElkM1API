@@ -356,7 +356,7 @@ namespace Elk
 
 		struct UserCodeAccess {
 			enum CodeType {
-				CODETYPE_USER,
+				CODETYPE_USER = 1,
 				CODETYPE_MASTER,
 				CODETYPE_INSTALLER,
 				CODETYPE_ELKRP

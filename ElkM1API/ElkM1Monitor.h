@@ -92,8 +92,6 @@ namespace Elk {
 			//std::array<bool,208> getControlOutputs() = 0; TODO: Replace with better packed function.
 			cacheObject<std::array<bool,208>> controlOutputs;
 			cacheObject<uint16_t> customValues[20];
-			//UserCodeSuccess requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) = 0;
-			cacheObject<int> userCodeChanged;
 			cacheObject<uint16_t> counterValues[64]; 
 			//int getLightingStatus(int device) = 0;
 			cacheObject<int> lightingStatus[256];
@@ -141,10 +139,10 @@ namespace Elk {
 			cacheObject<float> zoneVoltage[208];
 			//Just triggered when "OK\r\n" comes in.
 			cacheObject<bool> okMessage;
-			//Create objects as needed for this, and then wait on them. If they exist, return from it.
-			// std::unordered_map<std::string, cacheObject<UserCodeAccess>> userCodeAcesses;
-			// TODO: Implement concurrent unordered_map implementation similar to cacheObject
-
+			//Maybe these should be more data-aware?
+			cacheObject<std::vector<char>> omniStat2Reply;
+			cacheObject<UserCodeSuccess> userCodeChanged;
+			cacheObject<UserCodeAccess> userCodeAccess;
 			// TODO: Implement
 			void invalidate() {}
 		} m1cache;

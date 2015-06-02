@@ -20,7 +20,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ElkM1APITester.cpp">
+    <ClCompile Include="ElkM1CLI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
