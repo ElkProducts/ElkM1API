@@ -38,7 +38,7 @@ namespace Elk {
 	}
 	// Used for cache objects which are volatile.
 	template <typename T>
-	T M1AsciiAPI::cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage request, bool ignoreCache, int timeoutMillis) {
+	T M1AsciiAPI::cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage request, bool ignoreCache = true, int timeoutMillis = 0) {
 		// Check if the cache is new enough and return that if it is
 		if (!ignoreCache && (cacheObj.age() <= 3))
 			return cacheObj.get();
@@ -58,7 +58,7 @@ namespace Elk {
 		// If not, send our request and await the response.
 		connection->Send(request.getTransmittable());
 
-		return cacheObj.awaitNew(0);
+		return cacheObj.awaitNew(1500);
 	}
 #pragma endregion Static Helper Functions
 
@@ -83,7 +83,9 @@ namespace Elk {
 
 		// TODO: Any command which has optional, unrequested reporting, we can leave a callback in the main API
 		//   that lets the program do whatever with it.
+		// PC
 
+		// Counter value read
 		handleMessageTable.emplace("CV", [this](std::string message) {
 			// CVNNDDDDD00
 			int counter = std::stoi(message.substr(2, 2)) - 1;
@@ -111,18 +113,18 @@ namespace Elk {
 		handleMessageTable.emplace("AS", [this](std::string message) {
 			std::array<ArmStatus, 8> newStatus;
 			for (int i = 0; i < 8; i++) {
-				newStatus[i].mode = (ArmMode)(message.at(2 + i)- '0');
+				newStatus[i].mode = (ArmMode)(message.at(2 + i) - '0');
 				newStatus[i].isReady = (ArmUpMode)(message.at(10 + i) - '0');
 				newStatus[i].alarm = (AlarmState)(message.at(18 + i) - '0');
 			}
 			m1cache.armStatus.set(newStatus);
-		}); 
+		});
 		// Zone Voltage
 		handleMessageTable.emplace("ZV", [this](std::string message) {
 			int index = std::stoi(message.substr(2, 3)) - 1;
 			int value = std::stoi(message.substr(5, 3));
 			m1cache.zoneVoltage[index].set(
-				((float)value)/10
+				((float)value) / 10
 				);
 		});
 		// Keypad Areas
@@ -159,7 +161,7 @@ namespace Elk {
 		});
 		// Lighting status
 		handleMessageTable.emplace("DS", [this](std::string message) {
-			int index = stoi(message.substr(2,3)) - 1;
+			int index = stoi(message.substr(2, 3)) - 1;
 			int value = stoi(message.substr(5, 2));
 			m1cache.lightingStatus[index].set(value);
 		});
@@ -207,12 +209,12 @@ namespace Elk {
 			// Keypad temps
 			for (int i = 0; i < 16; i++) {
 				int temp = stoi(message.substr(2 + (3 * i), 3)) - 40;
-				m1cache.keypadTemperatures[i].set((temp != -40)? temp: INT_MIN);
+				m1cache.keypadTemperatures[i].set((temp != -40) ? temp : INT_MIN);
 			}
 			// Zone temps
 			for (int i = 0; i < 16; i++) {
 				int temp = stoi(message.substr(50 + (3 * i), 3)) - 60;
-				m1cache.zoneTemperatures[i].set((temp != -60)? temp: INT_MIN);
+				m1cache.zoneTemperatures[i].set((temp != -60) ? temp : INT_MIN);
 			}
 		});
 		// Individual temperature data
@@ -234,7 +236,7 @@ namespace Elk {
 				m1cache.thermostatTemperatures[index].set(defined ? value : INT_MIN);
 				break;
 			}
-			
+
 		});
 		// System Trouble Status TODO: Trouble status is more detailed than this
 		handleMessageTable.emplace("ST", [this](std::string message) {
@@ -356,6 +358,38 @@ namespace Elk {
 			}
 			std::cout << "Error parsing message: " << message << "\n";
 		});
+		// Keypad function press TODO: Test
+		handleMessageTable.emplace("KF", [this](std::string message) {
+			std::array<ChimeMode, 8> chimeModes;
+			for (int i = 0; i < 8; i++) {
+				chimeModes[i] = (ChimeMode)(message.at(5 + i) - '0');
+			}
+			m1cache.chimeModes.set(chimeModes);
+		});
+		// Returned PLC status
+		handleMessageTable.emplace("PS", [this](std::string message) {
+			std::array<int, 64> lightingLevels;
+			int bank = message.at(2) - '0';
+			for (int i = 0; i < 64; i++) {
+				lightingLevels[i] = message.at(3 + i) - '0';
+			}
+			m1cache.plcStatus[bank].set(lightingLevels);
+		});
+		// AudioZone audio data
+		handleMessageTable.emplace("CA", [this](std::string message) {
+			AudioData data;
+			int index = stoi(message.substr(2, 2)) - 1;
+			data.zoneIsOn = message.at(4) == '1';
+			data.source = stoi(message.substr(5, 2)) - 1;
+			data.volume = stoi(message.substr(7, 3));
+			data.bass = stoi(message.substr(10, 3));
+			data.treble = stoi(message.substr(13, 3));
+			data.loudness = message.at(16) == '1';
+			data.balance = stoi(message.substr(17, 3));
+			data.partyMode = (AudioData::PartyMode)(message.at(20) - '0');
+			data.doNotDisturb = message.at(21) == '1';
+			m1cache.audioData[index].set(data);
+		});
 	}
 
 	std::vector<char> M1AsciiAPI::cutMessage(std::vector<char>& buffer) {
@@ -399,7 +433,6 @@ namespace Elk {
 
 #pragma endregion Protocol implementations
 
-
 #pragma region M1API Implementations
 	// TODO: Make forEach implementations for all device types.
 	void M1AsciiAPI::forEachConfiguredZone(std::function<void(int)> funct) {
@@ -410,16 +443,24 @@ namespace Elk {
 			}
 		}
 	}
-	// TODO: Replace magic numbers in timeout definitions with defines
-	// TODO: Go back over functions, ensure 0-index for appropriate data
 	// TODO: Function to intelligently collect names, with 150ms timeout on missed names that skips to next section
 	void M1AsciiAPI::collectAllNames() {
 		throw std::exception("Not imlemented.");
 	}
-
-	M1AsciiAPI::AudioData M1AsciiAPI::getAudioData(int zone) { return AudioData(); }
-	// TODO: Test this more!
+	// TODO: Replace magic numbers in timeout definitions with defines
+	// TODO: Go back over functions, ensure 0-index for appropriate data
+	// TODO: Add more optional-timeout methods
+	// TODO: Check each command for version requirement.
+	
+	M1AsciiAPI::AudioData M1AsciiAPI::getAudioData(int audioZone) { 
+		// TODO: Can't test without something to test against.
+		AsciiMessage message("ca");
+		message += toAsciiDec(audioZone + 1, 2);
+		message += "00";
+		return cacheRequest(m1cache.audioData[audioZone], message, false, 1500);
+	}
 	bool M1AsciiAPI::setAreaBypass(int area, std::string pinCode, bool bypassed) {
+		// TODO: Test this more!
 		// TODO: 0 <= zone <= 207
 		if (pinCode.size() < 6)
 			pinCode.insert(0, 6 - pinCode.size(), '0');
@@ -444,7 +485,7 @@ namespace Elk {
 	float M1AsciiAPI::getZoneVoltage(int zone) {
 		return getZoneVoltage(zone, false, 0);
 	}
-	float M1AsciiAPI::getZoneVoltage(int zone, bool ignoreCache, int timeoutMillis) { 
+	float M1AsciiAPI::getZoneVoltage(int zone, bool ignoreCache, int timeoutMillis) {
 		//TODO: 0 <= zone <= 207
 		AsciiMessage message("zv");
 		message += toAsciiDec(zone + 1, 3);
@@ -454,11 +495,11 @@ namespace Elk {
 	int M1AsciiAPI::getLightingStatus(int device) {
 		return getLightingStatus(device, false, 0);
 	}
-	int M1AsciiAPI::getLightingStatus(int device, bool ignoreCache = false, int timeoutMillis = 0) { 
+	int M1AsciiAPI::getLightingStatus(int device, bool ignoreCache = false, int timeoutMillis = 0) {
 		// TODO: 0 <= device <= 255
 		AsciiMessage message("ds");
 		message += toAsciiDec(device + 1, 3);
-		message += "00";  
+		message += "00";
 		return cacheRequest<int>(m1cache.lightingStatus[device], message, ignoreCache, timeoutMillis);
 	}
 	int M1AsciiAPI::getTemperature(TemperatureDevice type, int device) {
@@ -478,7 +519,7 @@ namespace Elk {
 			}
 		}(), message, false, 0);
 	}
-	std::array<int,16> M1AsciiAPI::getTemperatures(TemperatureDevice type) {
+	std::array<int, 16> M1AsciiAPI::getTemperatures(TemperatureDevice type) {
 		//TODO: 0 <= device <= 15
 		std::array<int, 16> reply;
 		// There's three different ways to get temperature data. Select the best for the task.
@@ -500,10 +541,15 @@ namespace Elk {
 			}
 			return reply;
 		}
-		
+
 	}
-	M1AsciiAPI::KeypadFkeyStatus M1AsciiAPI::getKeypadFkeyStatus(int keypad) { return KeypadFkeyStatus(); }
-	M1AsciiAPI::LogEntry M1AsciiAPI::getLogData(int index) { 
+	M1AsciiAPI::KeypadFkeyStatus M1AsciiAPI::getKeypadFkeyStatus(int keypad) {
+		AsciiMessage message("kc");
+		message += toAsciiDec(keypad + 1, 2);
+		message += "00";
+		return cacheRequest(m1cache.keypadStatuses[keypad], message, true, 0);
+	}
+	M1AsciiAPI::LogEntry M1AsciiAPI::getLogData(int index) {
 		// TODO: 0 <= index <= 509
 		// TODO: Log entries move? Never rely on cached values then I guess.
 		AsciiMessage request("ld");
@@ -533,7 +579,12 @@ namespace Elk {
 		}
 		return le;
 	}
-	M1AsciiAPI::PLCStatus M1AsciiAPI::getPLCStatus() { return PLCStatus(); }
+	std::array < int, 64> M1AsciiAPI::getPLCStatus(int bank) {
+		AsciiMessage request("ps");
+		request += toAsciiDec(bank, 1);
+		request += "00";
+		return cacheRequest(m1cache.plcStatus[bank], request, true, 0);
+	}
 	M1AsciiAPI::RTCData M1AsciiAPI::getRTCData() { 
 		return cacheRequest(m1cache.rtcData, (AsciiMessage)"rr00", true, 0);
 	}
@@ -557,7 +608,22 @@ namespace Elk {
 	std::array<bool, 208> M1AsciiAPI::getControlOutputs() { 
 		return cacheRequest(m1cache.controlOutputs, (AsciiMessage)"cs00", true, 0);
 	}
-	std::array<M1AsciiAPI::ChimeMode, 8> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { return std::array<ChimeMode, 8>(); }
+	std::array<M1AsciiAPI::ChimeMode, 8> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
+		AsciiMessage message("kf");
+		message += toAsciiDec(keypad + 1, 2);
+		switch (key) {
+		case FKEY_STAR:
+			message += "*";
+			break;
+		case FKEY_CHIME:
+			message += "C";
+			break;
+		default:
+			message += toAsciiDec((int)key, 1);
+		}
+		message += "00";
+		return cacheRequest(m1cache.chimeModes, message, true, 0);
+	}
 	std::array<int, 16> M1AsciiAPI::getKeypadAreas() { 
 		return cacheExistsRequest(m1cache.keypadAreas, (AsciiMessage)"ka00");
 	}
@@ -773,8 +839,8 @@ namespace Elk {
 		message += "00";
 		connection->Send(message.getTransmittable());
 	}
-	// TODO: More testing, input restrictions
 	void M1AsciiAPI::setLogData(int logType, int eventType, int zoneNumber, int area) {
+		// TODO: More testing, input restrictions
 		AsciiMessage request("le");
 		request += toAsciiDec(logType, 3);
 		request += toAsciiDec(eventType, 3);

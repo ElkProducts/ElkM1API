@@ -76,7 +76,7 @@ namespace Elk {
 		ELKM1API void collectAllNames();
 		ELKM1API void forEachConfiguredZone(std::function<void(int)> funct);
 		ELKM1API M1AsciiAPI(M1Connection* conn);
-		ELKM1API AudioData getAudioData(int zone);
+		ELKM1API AudioData getAudioData(int audioZone);
 		ELKM1API bool setAreaBypass(int area, std::string pinCode, bool bypassed);
 		ELKM1API void setLogData(int logType, int eventType, int zoneNumber, int area);
 		ELKM1API bool zoneBypass(int zone, std::string pinCode);
@@ -88,7 +88,7 @@ namespace Elk {
 		ELKM1API std::array<int, 16> getTemperatures(TemperatureDevice type);
 		ELKM1API KeypadFkeyStatus getKeypadFkeyStatus(int keypad);
 		ELKM1API LogEntry getLogData(int index);
-		ELKM1API PLCStatus getPLCStatus();
+		ELKM1API std::array<int, 64> getPLCStatus(int bank);
 		ELKM1API RTCData getRTCData();
 		ELKM1API RTCData setRTCData(RTCData newData);
 		ELKM1API std::array<ArmStatus, 8> getArmStatus();

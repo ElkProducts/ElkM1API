@@ -21,6 +21,7 @@
 
 #include "ElkM1Connection.h"
 
+// TODO: Cleanup, ensure only included at level they are needed
 #include <array>
 #include <condition_variable>
 #include <mutex>
@@ -57,7 +58,6 @@ namespace Elk
 		// EE - handle in monitor
 		// EM - ignore?
 		// IC - handle in monitor
-		// IE - handle in monitor
 		// ir ~ IR - ?
 		// TC - handle in monitor
 		// XK - handle in monitor
@@ -184,9 +184,9 @@ namespace Elk
 			FKEY_4,
 			FKEY_5,
 			FKEY_6,
-			STAR,
-			CHIME,
-			NONE // Get chime state
+			FKEY_STAR,
+			FKEY_CHIME,
+			FKEY_NONE // Get chime state
 		};
 
 		// Clear automatically, clear with star key, or display until the specified timeout.
@@ -248,13 +248,13 @@ namespace Elk
 
 		// Structure describing characteristics of one audio device.
 		struct AudioData {
-			bool zonePower;
+			bool zoneIsOn;
 			bool loudness;
 			bool doNotDisturb;
-			int zone;
+			// Zero-indexed source
 			int source;
 			int volume;
-			int base;
+			int bass;
 			int treble;
 			int balance;
 			enum PartyMode {
@@ -283,12 +283,6 @@ namespace Elk
 			int index;
 			int year;
 			Weekday dayOfWeek;
-		};
-
-		// Lighting control status.
-		struct PLCStatus{
-			int bank;
-			std::array<int, 64> dimLevels;
 		};
 
 		// Zone physical and definition state.
@@ -378,7 +372,7 @@ namespace Elk
 		// (az - AZ) If not 'ZONEDEF_DISABLED' then the area is in alarm.
 		virtual ELKM1API std::array<ZoneDefinition, 208> getZoneAlarms() = 0;
 		// (ca - CA) Retrieve the audio data for a device on zone.
-		virtual ELKM1API AudioData getAudioData(int zone) = 0;
+		virtual ELKM1API AudioData getAudioData(int audioZone) = 0;
 		// (cf, cn) Enable or disable a control output.
 		virtual ELKM1API void enableControlOutput(int output, int seconds) = 0;
 		virtual ELKM1API void disableControlOutput(int output) = 0;
@@ -420,7 +414,7 @@ namespace Elk
 		// (pt)
 		virtual ELKM1API void togglePLCState(char houseCode, int unitCode) = 0;
 		// (ps - PS)
-		virtual ELKM1API PLCStatus getPLCStatus() = 0;
+		virtual ELKM1API std::array<int, 64> getPLCStatus(int bank) = 0;
 		// (rr - RR)
 		virtual ELKM1API RTCData getRTCData() = 0;
 		// (rw)

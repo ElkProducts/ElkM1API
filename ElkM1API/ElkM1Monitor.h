@@ -86,38 +86,25 @@ namespace Elk {
 		// TODO: Keep a log of button press events <KC>
 		class M1Cache {
 		public: 
-			//std::array<ArmStatus, 8> getArmStatus() = 0;
 			cacheObject<std::array<ArmStatus, 8>> armStatus;
-			//std::array<ZoneDefinition, 208> getZoneAlarms() = 0;
 			cacheObject<std::array<ZoneDefinition,208>> zoneAlarms;
-			//AudioData getAudioData(int zone) = 0;
-			cacheObject<AudioData*> audioData[208]; // Only allocate where needed.
+			cacheObject<AudioData> audioData[18];
 			//std::array<bool,208> getControlOutputs() = 0; TODO: Replace with better packed function.
 			cacheObject<std::array<bool,208>> controlOutputs;
-			//uint16_t getCustomValue(int index) = 0;
-			//std::array<uint16_t,20> getCustomValues() = 0;
 			cacheObject<uint16_t> customValues[20];
 			//UserCodeSuccess requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) = 0;
 			cacheObject<int> userCodeChanged;
-			//uint16_t getCounterValue(int counter) = 0;
-			//uint16_t setCounterValue(int counter, uint16_t value) = 0;
 			cacheObject<uint16_t> counterValues[64]; 
 			//int getLightingStatus(int device) = 0;
 			cacheObject<int> lightingStatus[256];
-			//std::array<int, 16> getKeypadAreas() = 0;
 			cacheObject<std::array<int, 16>> keypadAreas;
 			cacheObject<KeypadFkeyStatus> keypadStatuses[16];
 			//std::array<ChimeMode, 8> pressFunctionKey(int keypad, FKEY key) = 0;
-			cacheObject<ChimeMode> chimeModes[8];
-			//LogEntry getLogData(int index) = 0;
-			//bool setLogData(LogEntry entry) = 0;
+			// TODO: This also tracks what button was last pressed, so implement that
+			cacheObject<std::array<ChimeMode,8>> chimeModes;
 			cacheObject<LogEntry> logData[511];
-			//PLCStatus getPLCStatus() = 0;
-			cacheObject<PLCStatus> plcStatus;
-			//RTCData getRTCData() = 0;
-			//RTCData setRTCData(RTCData newData) = 0;
+			cacheObject<std::array<int,64>> plcStatus[4];
 			cacheObject<RTCData> rtcData;
-			//std::string getTextDescription(TextDescriptionType type, int index) = 0;
 			cacheObject<std::string> ZoneNames[208];
 			cacheObject<std::string> AreaNames[8];
 			cacheObject<std::string> UserNames[199];
@@ -138,30 +125,28 @@ namespace Elk {
 			cacheObject<std::string> FKEY6s[16];
 			cacheObject<std::string> AudioZoneNames[18]; // May be XEP exclusive.
 			cacheObject<std::string> AudioSourceNames[12]; // May be XEP exclusive.
-			//SystemTroubleStatus getSystemTroubleStatus() = 0;
 			cacheObject<SystemTroubleStatus> systemTroubleStatus;
 			// Three different commands update this. Why? I have no idea.
 			cacheObject<int> keypadTemperatures[16];
 			cacheObject<int> zoneTemperatures[16];
 			cacheObject<int> thermostatTemperatures[16];
-			//ThermostatData getThermostatData(int index) = 0;
-			//ThermostatData setThermostatData(int index, ThermostatData data) = 0;
 			cacheObject<ThermostatData> thermostatData[16];
-			//std::array<int, 3> getM1VersionNumber() = 0;
 			cacheObject<std::array<int, 3>> M1VersionNumber;
-			//bool zoneBypass(int zone, std::string pinCode) = 0;
 			cacheObject<bool> zonesBypassed[208];
 			cacheObject<bool> areaBypassed;
-			//std::array<ZoneDefinition, 208> getZoneDefinitions() = 0;
 			cacheObject<std::array<ZoneDefinition, 208>> zoneDefinitions;
-			//std::array<int, 208> getZonePartitions() = 0;
 			cacheObject<std::array<int,208>> zonePartitions;
 			//std::array<zoneState, 208> getZoneStates() = 0;
 			cacheObject<std::array<ZoneState,208>> zoneStatus;
-			//float getZoneVoltage(int zone) = 0;
 			cacheObject<float> zoneVoltage[208];
 			//Just triggered when "OK\r\n" comes in.
 			cacheObject<bool> okMessage;
+			//Create objects as needed for this, and then wait on them. If they exist, return from it.
+			// std::unordered_map<std::string, cacheObject<UserCodeAccess>> userCodeAcesses;
+			// TODO: Implement concurrent unordered_map implementation similar to cacheObject
+
+			// TODO: Implement
+			void invalidate() {}
 		} m1cache;
 		// Handle incoming messages, use them to update cache.
 		virtual void handleMessage(std::vector<char> message) = 0;
@@ -176,8 +161,5 @@ namespace Elk {
 		ELKM1API void run();
 		// Instruct the monitoring thread to clean up and exit
 		ELKM1API void stop();
-
-
-
 	};
 }
