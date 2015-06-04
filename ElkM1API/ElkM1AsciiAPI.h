@@ -60,6 +60,7 @@ namespace Elk {
 			}
 		};
 
+		bool versionAtLeast(int major, int minor, int release);
 		ELKM1API std::vector<char> cutMessage(std::vector<char>& buffer);
 		ELKM1API void handleMessage(std::vector<char> message);
 		// Building a hashed function table allows things to be called in O(1) time.
@@ -120,7 +121,7 @@ namespace Elk {
 		ELKM1API void disableControlOutput(int output);
 		ELKM1API void displayLCDText(int area, clearMethod clear, bool beepKeypad, uint16_t displayTime, std::string text);
 		ELKM1API void displayLCDText(int area, clearMethod clear, bool beepKeypad, uint16_t displayTime, std::string lineOne, std::string lineTwo);
-		ELKM1API void enableControlOutput(int output, int seconds);
+		ELKM1API void enableControlOutput(int output, uint16_t seconds);
 		ELKM1API void executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn);
 		ELKM1API void setCustomValue(int index, uint16_t value);
 		ELKM1API void setPLCState(char houseCode, int unitCode, bool state);

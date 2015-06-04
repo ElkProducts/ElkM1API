@@ -269,13 +269,13 @@ namespace Elk {
 			// TODO: Throw exceptions on all blocked calls (and new calls)
 
 			// If the rpConnectionTrigger callback exists, execute it
-			if (rpConnectionTrigger)
-				rpConnectionTrigger(true);
+			if (onRPConnection)
+				onRPConnection(true);
 		});
 		// RP disconnected
 		handleMessageTable.emplace("IE", [this](std::string message) {
-			if (rpConnectionTrigger)
-				rpConnectionTrigger(false);
+			if (onRPConnection)
+				onRPConnection(false);
 		});
 		// Thermostat data // TODO: Test this!
 		handleMessageTable.emplace("TR", [this](std::string message) {
@@ -315,45 +315,45 @@ namespace Elk {
 			// Normally std::isspace would be good practice, but we're using ASCII so there's only the one.
 			desc.erase(std::find_if(desc.rbegin(), desc.rend(), [](char c) { return c != ' '; }).base(), desc.end());
 			switch (tdt) {
-			case TDT_ZoneName:
+			case TEXT_ZoneName:
 				return m1cache.ZoneNames[index].set(desc);
-			case TDT_AreaName:
+			case TEXT_AreaName:
 				return m1cache.AreaNames[index].set(desc);
-			case TDT_UserName:
+			case TEXT_UserName:
 				return m1cache.UserNames[index].set(desc);
-			case TDT_KeypadName:
+			case TEXT_KeypadName:
 				return m1cache.KeypadNames[index].set(desc);
-			case TDT_OutputName:
+			case TEXT_OutputName:
 				return m1cache.OutputNames[index].set(desc);
-			case TDT_TaskName:
+			case TEXT_TaskName:
 				return m1cache.TaskNames[index].set(desc);
-			case TDT_TelephoneName:
+			case TEXT_TelephoneName:
 				return m1cache.TelephoneNames[index].set(desc);
-			case TDT_LightName:
+			case TEXT_LightName:
 				return m1cache.LightNames[index].set(desc);
-			case TDT_AlarmDurationName:
+			case TEXT_AlarmDurationName:
 				return m1cache.AlarmDurationNames[index].set(desc);
-			case TDT_CustomSettings:
+			case TEXT_CustomSettings:
 				return m1cache.CustomSettingNames[index].set(desc);
-			case TDT_CounterName:
+			case TEXT_CounterName:
 				return m1cache.CounterNames[index].set(desc);
-			case TDT_ThermostatName:
+			case TEXT_ThermostatName:
 				return m1cache.ThermostatNames[index].set(desc);
-			case TDT_FKEY1:
+			case TEXT_FKEY1:
 				return m1cache.FKEY1s[index].set(desc);
-			case TDT_FKEY2:
+			case TEXT_FKEY2:
 				return m1cache.FKEY2s[index].set(desc);
-			case TDT_FKEY3:
+			case TEXT_FKEY3:
 				return m1cache.FKEY3s[index].set(desc);
-			case TDT_FKEY4:
+			case TEXT_FKEY4:
 				return m1cache.FKEY4s[index].set(desc);
-			case TDT_FKEY5:
+			case TEXT_FKEY5:
 				return m1cache.FKEY5s[index].set(desc);
-			case TDT_FKEY6:
+			case TEXT_FKEY6:
 				return m1cache.FKEY6s[index].set(desc);
-			case TDT_AudioZoneName:
+			case TEXT_AudioZoneName:
 				return m1cache.AudioZoneNames[index].set(desc);
-			case TDT_AudioSourceName:
+			case TEXT_AudioSourceName:
 				return m1cache.AudioSourceNames[index].set(desc);
 			}
 			std::cout << "Error parsing message: " << message << "\n";
@@ -449,6 +449,11 @@ namespace Elk {
 #pragma endregion Protocol implementations
 
 #pragma region M1API Implementations
+	bool M1AsciiAPI::versionAtLeast(int major, int minor, int release) {
+		int minVersion[] = { major, minor, release };
+		return memcmp(&getM1VersionNumber(), &minVersion, 3) >= 0;
+	}
+
 	// TODO: Make forEach implementations for all device types.
 	void M1AsciiAPI::forEachConfiguredZone(std::function<void(int)> funct) {
 		std::array<ZoneDefinition, 208> zdef = getZoneDefinitions();
@@ -469,14 +474,19 @@ namespace Elk {
 	
 	M1AsciiAPI::AudioData M1AsciiAPI::getAudioData(int audioZone) { 
 		// TODO: Can't test without something to test against.
+		if ( (audioZone < 0) || (audioZone >= 16) ) {
+			throw std::invalid_argument("Argument out of allowed range.");
+		}
 		AsciiMessage message("ca");
 		message += toAsciiDec(audioZone + 1, 2);
 		message += "00";
 		return cacheRequest(m1cache.audioData[audioZone], message, false, 1500);
 	}
 	bool M1AsciiAPI::setAreaBypass(int area, std::string pinCode, bool bypassed) {
+		if ((area < 0) || (area >= 8)) {
+			throw std::invalid_argument("Argument out of allowed range.");
+		}
 		// TODO: Test this more!
-		// TODO: 0 <= zone <= 207
 		if (pinCode.size() < 6)
 			pinCode.insert(0, 6 - pinCode.size(), '0');
 		AsciiMessage message("zb");
@@ -487,7 +497,9 @@ namespace Elk {
 		return cacheRequest(m1cache.areaBypassed, message, true, 0);
 	}
 	bool M1AsciiAPI::zoneBypass(int zone, std::string pinCode) {
-		// TODO: 0 <= zone <= 207
+		if ((zone < 0) || (zone >= 208)) {
+			throw std::invalid_argument("Argument out of allowed range.");
+		}
 		if (pinCode.size() < 6)
 			pinCode.insert(0, 6 - pinCode.size(), '0');
 		AsciiMessage message("zb");
@@ -498,10 +510,18 @@ namespace Elk {
 		return cacheRequest(m1cache.zonesBypassed[zone], message, true, 0);
 	}
 	float M1AsciiAPI::getZoneVoltage(int zone) {
+		if ((zone < 0) || (zone >= 208)) {
+			throw std::invalid_argument("Argument out of allowed range.");
+		}
 		return getZoneVoltage(zone, false, 0);
 	}
 	float M1AsciiAPI::getZoneVoltage(int zone, bool ignoreCache, int timeoutMillis) {
-		//TODO: 0 <= zone <= 207
+		if (!versionAtLeast(4, 2, 8)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
+		if ((zone < 0) || (zone >= 208)) {
+			throw std::invalid_argument("Argument out of allowed range.");
+		}
 		AsciiMessage message("zv");
 		message += toAsciiDec(zone + 1, 3);
 		message += "00";
@@ -511,6 +531,9 @@ namespace Elk {
 		return getLightingStatus(device, false, 0);
 	}
 	int M1AsciiAPI::getLightingStatus(int device, bool ignoreCache = false, int timeoutMillis = 0) {
+		if (!versionAtLeast(4, 3, 9)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		// TODO: 0 <= device <= 255
 		AsciiMessage message("ds");
 		message += toAsciiDec(device + 1, 3);
@@ -518,7 +541,9 @@ namespace Elk {
 		return cacheRequest<int>(m1cache.lightingStatus[device], message, ignoreCache, timeoutMillis);
 	}
 	int M1AsciiAPI::getTemperature(TemperatureDevice type, int device) {
-		//TODO: 0 <= device <= 15
+		if ((device < 0) || (device >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		AsciiMessage message("st");
 		message += toAsciiDec(type, 1);
 		message += toAsciiDec(device + 1, 2);
@@ -535,6 +560,9 @@ namespace Elk {
 		}(), message, false, 0);
 	}
 	std::array<int, 16> M1AsciiAPI::getTemperatures(TemperatureDevice type) {
+		if (!versionAtLeast(4, 3, 4)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		//TODO: 0 <= device <= 15
 		std::array<int, 16> reply;
 		// There's three different ways to get temperature data. Select the best for the task.
@@ -559,14 +587,18 @@ namespace Elk {
 
 	}
 	M1AsciiAPI::KeypadFkeyStatus M1AsciiAPI::getKeypadFkeyStatus(int keypad) {
+		if ((keypad < 0) || (keypad >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		AsciiMessage message("kc");
 		message += toAsciiDec(keypad + 1, 2);
 		message += "00";
 		return cacheRequest(m1cache.keypadStatuses[keypad], message, true, 0);
 	}
 	M1AsciiAPI::LogEntry M1AsciiAPI::getLogData(int index) {
-		// TODO: 0 <= index <= 509
-		// TODO: Log entries move? Never rely on cached values then I guess.
+		if ((index < 0) || (index >= 510))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		AsciiMessage request("ld");
 		request += toAsciiDec(index + 1, 3);
 		request += "00";
@@ -595,15 +627,24 @@ namespace Elk {
 		return le;
 	}
 	std::array < int, 64> M1AsciiAPI::getPLCStatus(int bank) {
+		if ((bank < 0) || (bank >= 4))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		AsciiMessage request("ps");
 		request += toAsciiDec(bank, 1);
 		request += "00";
 		return cacheRequest(m1cache.plcStatus[bank], request, true, 0);
 	}
 	M1AsciiAPI::RTCData M1AsciiAPI::getRTCData() { 
+		if (!versionAtLeast(4, 3, 2)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		return cacheRequest(m1cache.rtcData, (AsciiMessage)"rr00", true, 0);
 	}
 	M1AsciiAPI::RTCData M1AsciiAPI::setRTCData(RTCData newData) { 
+		if (!versionAtLeast(4, 3, 2)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		AsciiMessage message("rw");
 		message += toAsciiDec(newData.seconds, 2);
 		message += toAsciiDec(newData.minutes, 2);
@@ -624,13 +665,25 @@ namespace Elk {
 		return cacheRequest(m1cache.controlOutputs, (AsciiMessage)"cs00", true, 0);
 	}
 	std::array<M1AsciiAPI::ChimeMode, 8> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
+		if (!versionAtLeast(4, 2, 5)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
+		if ((keypad < 0) || (keypad >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		AsciiMessage message("kf");
 		message += toAsciiDec(keypad + 1, 2);
 		switch (key) {
 		case FKEY_STAR:
+			if (!versionAtLeast(4, 2, 6)) {
+				throw std::runtime_error("Star key unsupported by M1 Firmware version < 4.2.6.");
+			}
 			message += "*";
 			break;
 		case FKEY_CHIME:
+			if (!versionAtLeast(4, 3, 2)) {
+				throw std::runtime_error("Chime key unsupported by M1 Firmware version < 4.3.2.");
+			}
 			message += "C";
 			break;
 		default:
@@ -640,12 +693,19 @@ namespace Elk {
 		return cacheRequest(m1cache.chimeModes, message, true, 0);
 	}
 	std::array<int, 16> M1AsciiAPI::getKeypadAreas() { 
+		if (!versionAtLeast(4, 2, 5)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		return cacheExistsRequest(m1cache.keypadAreas, (AsciiMessage)"ka00");
 	}
 	std::array<int, 208> M1AsciiAPI::getZonePartitions() {
 		return cacheExistsRequest(m1cache.zonePartitions, (AsciiMessage)"zp00");
 	}
 	std::array<int, 3> M1AsciiAPI::getM1VersionNumber() { 
+		//if (!versionAtLeast(4, 1, 12)) {
+		//	throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		//}
+		// Obviously we can't check the version number lower than this.
 		return cacheExistsRequest(m1cache.M1VersionNumber, (AsciiMessage)"vn00");
 	}
 	std::array<uint16_t, 20> M1AsciiAPI::getCustomValues() { 
@@ -656,66 +716,114 @@ namespace Elk {
 		return reply;
 	}
 	std::array<M1AsciiAPI::ZoneDefinition, 208> M1AsciiAPI::getZoneAlarms() { 
+		if (!versionAtLeast(4, 3, 9)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		return cacheRequest(m1cache.zoneAlarms, (AsciiMessage)"az00", true, 0);
 	}
 	std::array<M1AsciiAPI::ZoneDefinition, 208> M1AsciiAPI::getZoneDefinitions() { 
+		if (!versionAtLeast(4, 2, 6)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		return cacheExistsRequest(m1cache.zoneDefinitions, (AsciiMessage)"zd00");
 	}
 	std::array<M1AsciiAPI::ZoneState, 208> M1AsciiAPI::getZoneStatuses() { 
 		return cacheRequest(m1cache.zoneStatus, (AsciiMessage)"zs00", true, 0);
 	}
 	std::string M1AsciiAPI::getTextDescription(TextDescriptionType type, int index) { 
-		// TODO: Bounds
 		AsciiMessage message("sd");
 		message += toAsciiDec(type, 2);
 		message += toAsciiDec(index + 1, 3);
 		message += "00";
 		switch (type)
 		{
-		case TDT_ZoneName:
+		case TEXT_ZoneName:
+			if ((index < 0) || (index >= 208))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.ZoneNames[index], message);
-		case TDT_AreaName:
+		case TEXT_AreaName:
+			if ((index < 0) || (index >= 8))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.AreaNames[index], message);
-		case TDT_UserName:
+		case TEXT_UserName:
+			if ((index < 0) || (index >= 199))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.UserNames[index], message);
-		case TDT_KeypadName:
+		case TEXT_KeypadName:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.KeypadNames[index], message);
-		case TDT_OutputName:
+		case TEXT_OutputName:
+			if ((index < 0) || (index >= 64))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.OutputNames[index], message);
-		case TDT_TaskName:
+		case TEXT_TaskName:
+			if ((index < 0) || (index >= 32))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.TaskNames[index], message);
-		case TDT_TelephoneName:
+		case TEXT_TelephoneName:
+			if ((index < 0) || (index >= 8))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.TelephoneNames[index], message);
-		case TDT_LightName:
+		case TEXT_LightName:
+			if ((index < 0) || (index >= 256))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.LightNames[index], message);
-		case TDT_AlarmDurationName:
+		case TEXT_AlarmDurationName:
+			if ((index < 0) || (index >= 12))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.AlarmDurationNames[index], message);
-		case TDT_CustomSettings:
+		case TEXT_CustomSettings:
+			if ((index < 0) || (index >= 20))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.CustomSettingNames[index], message);
-		case TDT_CounterName:
+		case TEXT_CounterName:
+			if ((index < 0) || (index >= 64))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.CounterNames[index], message);
-		case TDT_ThermostatName:
+		case TEXT_ThermostatName:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.ThermostatNames[index], message);
-		case TDT_FKEY1:
+		case TEXT_FKEY1:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.FKEY1s[index], message);
-		case TDT_FKEY2:
+		case TEXT_FKEY2:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.FKEY2s[index], message);
-		case TDT_FKEY3:
+		case TEXT_FKEY3:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.FKEY3s[index], message);
-		case TDT_FKEY4:
+		case TEXT_FKEY4:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.FKEY4s[index], message);
-		case TDT_FKEY5:
+		case TEXT_FKEY5:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.FKEY5s[index], message);
-		case TDT_FKEY6:
+		case TEXT_FKEY6:
+			if ((index < 0) || (index >= 16))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.FKEY6s[index], message);
-		case TDT_AudioZoneName:
+		case TEXT_AudioZoneName:			
+			if ((index < 0) || (index >= 18))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.AudioZoneNames[index], message);
-		case TDT_AudioSourceName:
+		case TEXT_AudioSourceName:
+			if ((index < 0) || (index >= 19))
+				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.AudioSourceNames[index], message);
 		}
 		throw std::exception("TextDescriptionType not defined.");
 	}
 	std::vector<char> M1AsciiAPI::getOmnistat2Data(std::vector<char> request) { 
+		if (!versionAtLeast(5, 1, 9)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		// TODO: Unable to test yet.
 		AsciiMessage message("t2");
 		for (auto byte : request)
@@ -724,17 +832,26 @@ namespace Elk {
 		return cacheRequest(m1cache.omniStat2Reply, message, true, 0);
 	}
 	M1AsciiAPI::SystemTroubleStatus M1AsciiAPI::getSystemTroubleStatus() {
+		if (!versionAtLeast(4, 5, 4)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		return cacheRequest(m1cache.systemTroubleStatus, (AsciiMessage)"ss00", true, 0);
 	}
 	M1AsciiAPI::ThermostatData M1AsciiAPI::getThermostatData(int index) { 
-		// TODO: 0 <= index <= 15
+		if (!versionAtLeast(4, 2, 6)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
+		if ((index < 0) || (index >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage request("tr");
 		request += toAsciiDec(index + 1, 2);
 		request += "00";
 		return cacheRequest(m1cache.thermostatData[index], request, false, 0);
 	}
 	M1AsciiAPI::ThermostatData M1AsciiAPI::setThermostatData(int index, int value, int element) {
-		// TODO: bounds, replace element with enum
+		// TODO: replace element with enum
+		if ((index < 0) || (index >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage request("ts");
 		request += toAsciiDec(index + 1, 2);
 		request += toAsciiDec(value, 2);
@@ -743,10 +860,18 @@ namespace Elk {
 		return cacheRequest(m1cache.thermostatData[index], request, true, 0);
 	}
 	uint16_t M1AsciiAPI::getCounterValue(int counter) { 
+		if (!versionAtLeast(4,1,11)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
+
 		return getCounterValue(counter, false, 0); 
 	}
 	uint16_t M1AsciiAPI::getCounterValue(int counter, bool ignoreCache = false, int timeoutMillis = 0) {
-		//TODO: 0 <= counter <= 63
+		if (!versionAtLeast(4, 1, 11)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
+		if ((counter < 0) || (counter >= 64))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("cv");
 		message += toAsciiDec(counter + 1, 2);
 		message += "00";
@@ -756,14 +881,19 @@ namespace Elk {
 		return getCustomValue(index, false, 0);
 	}
 	uint16_t M1AsciiAPI::getCustomValue(int index, bool ignoreCache = false, int timeoutMillis = 0) {
-		//TODO: 0 <= counter <= 19
+		if ((index < 0) || (index >= 20))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("cr");
 		message += toAsciiDec(index + 1, 2);
 		message += "00";
 		return cacheRequest(m1cache.customValues[index], message, ignoreCache, timeoutMillis);
 	}
 	uint16_t M1AsciiAPI::setCounterValue(int counter, uint16_t value) { 
-		//TODO: 0 <= counter <= 63
+		if (!versionAtLeast(4, 1, 11)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
+		if ((counter < 0) || (counter >= 64))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("cx");
 		message += toAsciiDec(counter + 1, 2);
 		message += toAsciiDec(value, 5);
@@ -774,12 +904,18 @@ namespace Elk {
 		return m1cache.counterValues[counter].awaitNew(0);
 	}
 	M1AsciiAPI::UserCodeAccess M1AsciiAPI::getUserCodeAccess(std::string userCode) { 
+		if (!versionAtLeast(4, 2, 5)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		AsciiMessage message("ua");
 		message += userCode;
 		message += "00";
 		return cacheRequest(m1cache.userCodeAccess, message, true, 0);
 	}
 	M1AsciiAPI::UserCodeSuccess M1AsciiAPI::requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) { 
+		if (!versionAtLeast(4, 3, 9)) {
+			throw std::runtime_error("Call unsupported by M1 Firmware version.");
+		}
 		if (authCode.length() < 6)
 			authCode.insert(0, 6 - authCode.length(), '0');
 		if (newUserCode.length() < 6)
@@ -797,7 +933,8 @@ namespace Elk {
 		return cacheRequest(m1cache.userCodeChanged, request, true, 0); // TODO: Block on concurrent hashmap or something
 	}
 	void M1AsciiAPI::activateTask(int taskNumber) {
-		//TODO: 0 <= tn <= 31
+		if ((taskNumber < 0) || (taskNumber >= 32))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("tn");
 		message += toAsciiDec(taskNumber + 1, 3);
 		message += "00";
@@ -805,8 +942,9 @@ namespace Elk {
 	}
 	void M1AsciiAPI::armDisarm(int area, ArmMode mode, std::string userCode) {
 		// TODO: userCode == ascii, 4 or 6 digits
-		// TODO: 0 <= area <= 7
-		// TODO: 0 <= output < 207
+		if ((area < 0) || (area >= 8))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		// userCode = pad left with 0s if 4 digits
 		if (userCode.length() < 6)
 			userCode.insert(0, 6 - userCode.length(), '0');
@@ -820,10 +958,16 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::displayLCDText(int area, clearMethod clear, bool beepKeypad, uint16_t displayTime, std::string text) {
+		if ((area < 0) || (area >= 8))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		text.resize(32, '^');
 		displayLCDText(area, clear, beepKeypad, displayTime, text.substr(0, 16), text.substr(16, 16));
 	}
 	void M1AsciiAPI::displayLCDText(int area, clearMethod clear, bool beepKeypad, uint16_t displayTime, std::string lineOne, std::string lineTwo) { 
+		if ((area < 0) || (area >= 8))
+			throw std::invalid_argument("Argument out of allowed range.");
+
 		lineOne.resize(16, '^');
 		lineTwo.resize(16, '^');
 
@@ -855,9 +999,9 @@ namespace Elk {
 		message += "00";
 		connection->Send(message.getTransmittable());
 	}
-	void M1AsciiAPI::enableControlOutput(int output, int seconds) {
-		//TODO: 0 <= output <= 207
-		//TODO: 0 <= seconds <= 65535
+	void M1AsciiAPI::enableControlOutput(int output, uint16_t seconds) {
+		if ((output < 0) || (output >= 208))
+			throw std::invalid_argument("Argument out of allowed range.");
 
 		AsciiMessage message("cn");
 		message += toAsciiDec(output + 1, 3);
@@ -866,7 +1010,8 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::disableControlOutput(int output) {
-		//TODO: 0 <= output <= 207
+		if ((output < 0) || (output >= 208))
+			throw std::invalid_argument("Argument out of allowed range.");
 
 		AsciiMessage message("cf");
 		message += toAsciiDec(output + 1, 3);
@@ -874,7 +1019,8 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::setCustomValue(int index, uint16_t value) {
-		//TODO: 0 <= index <= 19
+		if ((index < 0) || (index >= 20))
+			throw std::invalid_argument("Argument out of allowed range.");
 
 		AsciiMessage message("cw");
 		message += toAsciiDec(index + 1, 2);
@@ -893,7 +1039,8 @@ namespace Elk {
 		cacheRequest(m1cache.okMessage, request, true, 0);
 	}
 	void M1AsciiAPI::setPLCState(char houseCode, int unitCode, bool state) { 
-		// TODO: 0 <= unitCode <= 15
+		if ((unitCode < 0) || (unitCode >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message(state ? "pn" : "pf");
 		message.push_back(houseCode);
 		message += toAsciiDec(unitCode + 1, 2);
@@ -916,7 +1063,8 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::toggleControlOutput(int output) {
-		//TODO: 0 <= output <= 207
+		if ((output < 0) || (output >= 208))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("ct");
 		message += toAsciiDec(output + 1, 3);
 		message += "00";

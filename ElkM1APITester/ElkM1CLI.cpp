@@ -26,9 +26,13 @@ int main(int argc, char* argv[])
 	}
 	std::cout << "Connecting...\n";
 	if (connection->Connect(address)) {
-		std::cout << "Connected!\n";
+		std::cout << "\rConnected!\n";
 		m1api = new Elk::M1AsciiAPI(connection);
 		m1api->run();
+		std::cout << "M1 Version: ";
+		for (auto i : m1api->getM1VersionNumber())
+			std::cout << i << ".";
+		std::cout << "\n";
 		while (!sigExit) {
 			std::string command;
 			std::cout << "------------------------------------";
@@ -63,6 +67,8 @@ int main(int argc, char* argv[])
 					});
 				}
 				break;
+			default:
+				std::cout << "Command not recognised.\n";
 			}
 		}
 		m1api->stop();
