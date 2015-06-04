@@ -125,8 +125,8 @@ namespace Elk {
 		ELKM1API void executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn);
 		ELKM1API void setCustomValue(int index, uint16_t value);
 		ELKM1API void setPLCState(char houseCode, int unitCode, bool state);
-		ELKM1API void speakPhrase(int phraseIndex);
-		ELKM1API void speakWord(int wordIndex);
+		ELKM1API void speakPhrase(SirenPhrase phrase);
+		ELKM1API void speakWord(SirenWord word);
 		ELKM1API void toggleControlOutput(int output);
 		ELKM1API void togglePLCState(char houseCode, int unitCode);
 	};

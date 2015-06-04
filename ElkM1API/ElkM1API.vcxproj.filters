@@ -38,5 +38,8 @@
     <ClInclude Include="ElkM1AsciiAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ElkM1SirenWords.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

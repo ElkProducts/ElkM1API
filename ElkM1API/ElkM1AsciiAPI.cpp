@@ -11,7 +11,8 @@
 namespace Elk {
 #pragma region Static Helper Functions
 	std::vector<char> M1AsciiAPI::toAsciiHex(int value, int length) {
-		// TODO: length, value not negative
+		if ((value < 0) || (length < 0))
+			throw std::invalid_argument("Argument out of allowed range.");
 
 		std::vector<char> buff = std::vector<char>(length >= 5 ? length + 1 : 5);
 		buff.resize(sprintf(&buff[0], "%0*.*X", length, length, value));
@@ -20,7 +21,8 @@ namespace Elk {
 		return buff;
 	}
 	std::vector<char> M1AsciiAPI::toAsciiDec(int value, int length) {
-		// TODO: length, value not negative
+		if ((value < 0) || (length < 0))
+			throw std::invalid_argument("Argument out of allowed range.");
 
 		std::vector<char> buff = std::vector<char>(length >= 7 ? length + 1 : 7);
 		buff.resize(sprintf(&buff[0], "%0*.*d", length, length, value));
@@ -66,9 +68,6 @@ namespace Elk {
 
 	// TODO: Split all std::cout calls into a debug message callback.
 
-	// TODO: Optimization: Any operation which has both "get all" and "get one" operations, 
-	//   detect something iterating over it (rapid sequential requests) and fill cache with 'all'
-	//   version of command 
 	M1AsciiAPI::M1AsciiAPI(M1Connection* conn) : M1Monitor(conn) {
 		// Fill up our function table here
 		fillFunctionTable();
@@ -264,7 +263,7 @@ namespace Elk {
 		});
 		// RP connected
 		handleMessageTable.emplace("RP", [this](std::string message) {
-			// TODO: Invalidate cache
+			m1cache.invalidate();
 
 			// TODO: Throw exceptions on all blocked calls (and new calls)
 
@@ -531,10 +530,10 @@ namespace Elk {
 		return getLightingStatus(device, false, 0);
 	}
 	int M1AsciiAPI::getLightingStatus(int device, bool ignoreCache = false, int timeoutMillis = 0) {
-		if (!versionAtLeast(4, 3, 9)) {
+		if (!versionAtLeast(4, 3, 9)) 
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
-		}
-		// TODO: 0 <= device <= 255
+		if ((device < 0) || (device >= 256))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("ds");
 		message += toAsciiDec(device + 1, 3);
 		message += "00";
@@ -560,10 +559,8 @@ namespace Elk {
 		}(), message, false, 0);
 	}
 	std::array<int, 16> M1AsciiAPI::getTemperatures(TemperatureDevice type) {
-		if (!versionAtLeast(4, 3, 4)) {
+		if (!versionAtLeast(4, 3, 4))
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
-		}
-		//TODO: 0 <= device <= 15
 		std::array<int, 16> reply;
 		// There's three different ways to get temperature data. Select the best for the task.
 		switch (type)
@@ -941,7 +938,8 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::armDisarm(int area, ArmMode mode, std::string userCode) {
-		// TODO: userCode == ascii, 4 or 6 digits
+		if ((userCode.size() != 4) && (userCode.size() != 6))
+			throw std::invalid_argument("Argument out of allowed range.");
 		if ((area < 0) || (area >= 8))
 			throw std::invalid_argument("Argument out of allowed range.");
 
@@ -951,6 +949,7 @@ namespace Elk {
 		AsciiMessage message("a");
 
 		// ArmLevel TODO: 7, 8 are only in m1ver > 4.2.8
+		if ((int(mode) >= 7) && 
 		message += toAsciiDec(mode, 1);
 		message += toAsciiDec(area + 1, 1);
 		message += userCode;
@@ -984,11 +983,16 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn) { 
-		// TODO: 'A' <= housecode <= 'P'
-		// TODO: 0 <= unitCode <= 15
-		// TODO: 0 <= functionCode <= 15
-		// TODO: 0 <= extendedCode <= 99
-		// TODO: 0 <= timeOn <= 9999
+		if ((houseCode < 'A') || (houseCode > 'P'))
+			throw std::invalid_argument("Argument out of allowed range.");
+		if ((unitCode < 0) || (unitCode >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
+		if ((functionCode < 0) || (functionCode >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
+		if ((extendedCode < 0) || (extendedCode > 99))
+			throw std::invalid_argument("Argument out of allowed range.");
+		if ((timeOn < 0) || (timeOn > 9999))
+			throw std::invalid_argument("Argument out of allowed range.");
 
 		AsciiMessage message("pc");
 		message.push_back(houseCode);
@@ -1047,18 +1051,15 @@ namespace Elk {
 		message += "00";
 		connection->Send(message.getTransmittable());
 	}
-	void M1AsciiAPI::speakPhrase(int phraseIndex) {
-		//TODO: replace with enum
-
+	void M1AsciiAPI::speakPhrase(SirenPhrase phrase) {
 		AsciiMessage message("sp");
-		message += toAsciiDec(phraseIndex, 3);
+		message += toAsciiDec((int)phrase, 3);
 		message += "00";
 		connection->Send(message.getTransmittable());
 	}
-	void M1AsciiAPI::speakWord(int wordIndex) {
-		//TODO: replace with enum
+	void M1AsciiAPI::speakWord(SirenWord word) {
 		AsciiMessage message("sw");
-		message += toAsciiDec(wordIndex, 3);
+		message += toAsciiDec((int)word, 3);
 		message += "00";
 		connection->Send(message.getTransmittable());
 	}
@@ -1071,7 +1072,8 @@ namespace Elk {
 		connection->Send(message.getTransmittable());
 	}
 	void M1AsciiAPI::togglePLCState(char houseCode, int unitCode) {
-		// TODO: 0 <= unitCode <= 15;
+		if ((unitCode < 0) || (unitCode >= 16))
+			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("pt");
 		message.push_back(houseCode);
 		message += toAsciiDec(unitCode + 1, 2);

@@ -74,6 +74,7 @@
     <ClInclude Include="ElkM1AsciiAPI.h" />
     <ClInclude Include="ElkM1Connection.h" />
     <ClInclude Include="ElkM1Monitor.h" />
+    <ClInclude Include="ElkM1SirenWords.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

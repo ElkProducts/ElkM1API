@@ -20,6 +20,7 @@
 #endif
 
 #include "ElkM1Connection.h"
+#include "ElkM1SirenWords.h"
 
 // TODO: Cleanup, ensure only included at level they are needed
 #include <array>
@@ -31,7 +32,6 @@
 #include <stdint.h>
 #include <ctime>
 
-//TODO: Ensure dynamic objects are deallocated
 namespace Elk
 {
 
@@ -322,7 +322,6 @@ namespace Elk
 			int humidity;
 		};
 
-		// TODO: Replace with bitmask
 		struct SystemTroubleStatus {
 			bool ACFail;
 			bool boxTamper;
@@ -346,7 +345,6 @@ namespace Elk
 		};
 
 		struct KeypadFkeyStatus {
-			// TODO: Replace with bitmask
 			enum FkeyIllumination{
 				FKEY_OFF,
 				FKEY_ON,
@@ -426,8 +424,8 @@ namespace Elk
 		virtual ELKM1API int getTemperature(TemperatureDevice type, int device) = 0;
 		virtual ELKM1API std::array<int, 16> getTemperatures(TemperatureDevice type) = 0;
 		// Speak a word or phrase by index. TODO: Replace with an enum
-		virtual ELKM1API void speakWord(int wordIndex) = 0;
-		virtual ELKM1API void speakPhrase(int phraseIndex) = 0;
+		virtual ELKM1API void speakWord(SirenWord word) = 0;
+		virtual ELKM1API void speakPhrase(SirenPhrase phrase) = 0;
 		// Collect omnistat 2 data, based on request given. Needs omnistat protocol knowledge.
 		virtual ELKM1API std::vector<char> getOmnistat2Data(std::vector<char> request) = 0;
 		// Start a task.
