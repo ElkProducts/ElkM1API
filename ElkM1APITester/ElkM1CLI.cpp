@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 		std::cout << "\n";
 		while (!sigExit) {
 			std::string command;
-			std::cout << "------------------------------------";
+			std::cout << "------------------------------------------\n";
 			std::cout << "Enter a command (or 'h' for help): ";
 			std::cin >> command;
 			switch (command[0]) {

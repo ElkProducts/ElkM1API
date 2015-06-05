@@ -1,5 +1,5 @@
 /*
-	ElkM1Connection.cpp: Provides an implementation of M1 Connection types, eventually including TCP, C1M1 and secure TCP
+	ElkM1TCP.cpp: Provides an implementation of M1 TCP Connection 
 	@author Zach Jaggi
 */
 #include "ElkM1Connection.h"

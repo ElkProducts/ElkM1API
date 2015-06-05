@@ -42,4 +42,9 @@ namespace Elk {
 		ELKM1API void Send(std::vector<char> data);
 		ELKM1API std::vector<char> Recieve();
 	};
+
+	// TODO: Implement secure connection via SSL
+
+	// TODO: Implement secure proxied connection via SSL and C1M1 Proxy
+	
 }

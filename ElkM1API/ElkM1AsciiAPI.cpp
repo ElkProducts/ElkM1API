@@ -263,11 +263,9 @@ namespace Elk {
 		});
 		// RP connected
 		handleMessageTable.emplace("RP", [this](std::string message) {
+			// Invalidate the cache, causing currently blocked calls to throw exceptions
 			m1cache.invalidate();
-
-			// TODO: Throw exceptions on all blocked calls (and new calls)
-
-			// If the rpConnectionTrigger callback exists, execute it
+			// If the onRPConnection callback exists, execute it
 			if (onRPConnection)
 				onRPConnection(true);
 		});
@@ -949,7 +947,10 @@ namespace Elk {
 		AsciiMessage message("a");
 
 		// ArmLevel TODO: 7, 8 are only in m1ver > 4.2.8
-		if ((int(mode) >= 7) && 
+		if ((int(mode) >= 7) && !versionAtLeast(4, 2, 8))
+		{
+			throw std::invalid_argument("Argument unsupported by firmware version.");
+		}
 		message += toAsciiDec(mode, 1);
 		message += toAsciiDec(area + 1, 1);
 		message += userCode;

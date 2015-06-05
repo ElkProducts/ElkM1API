@@ -46,13 +46,19 @@ namespace Elk {
 				std::unique_lock<std::mutex> lock(mutex);
 				if (milliseconds <= 0) {
 					newData.wait(lock);
-					return object;
+					if (isInitialized())
+						return object;
+					else
+						throw std::runtime_error("Cache was invalidated while waiting for call.");
 				}
 				else {
 					if (newData.wait_for(lock,
 						std::chrono::milliseconds(milliseconds)) == std::cv_status::no_timeout)
 					{
-						return object;
+						if (isInitialized())
+							return object;
+						else
+							throw std::runtime_error("Cache was invalidated while waiting for call.");
 					}
 					else {
 						throw std::runtime_error("Timed out waiting for response.");
@@ -65,8 +71,11 @@ namespace Elk {
 				return std::time(nullptr) - updateTime;
 			}
 			void invalidate() {
-				std::unique_lock<std::mutex> lock(mutex);
-				updateTime = std::time(0);
+				{
+					std::unique_lock<std::mutex> lock(mutex);
+					updateTime = std::time(0);
+				}
+				newData.notify_all();
 			}
 			bool isInitialized() {
 				std::unique_lock<std::mutex> lock(mutex);
@@ -83,7 +92,6 @@ namespace Elk {
 		};
 		// Stores the last recieved state of various features of the M1, and a timestamp/mutex.
 		// Objects which can independently be accessed need a const array, others should be a single object.
-		// TODO: Keep a log of button press events <KC>
 		class M1Cache {
 		public: 
 			cacheObject<std::array<ArmStatus, 8>> armStatus;
@@ -143,8 +151,58 @@ namespace Elk {
 			cacheObject<std::vector<char>> omniStat2Reply;
 			cacheObject<UserCodeSuccess> userCodeChanged;
 			cacheObject<UserCodeAccess> userCodeAccess;
-			// TODO: Implement
-			void invalidate() {}
+			void invalidate() {
+				areaBypassed.invalidate();
+				armStatus.invalidate();
+				chimeModes.invalidate();
+				controlOutputs.invalidate();
+				keypadAreas.invalidate();
+				M1VersionNumber.invalidate();
+				okMessage.invalidate();
+				omniStat2Reply.invalidate();
+				rtcData.invalidate();
+				systemTroubleStatus.invalidate();
+				userCodeAccess.invalidate();
+				userCodeChanged.invalidate();
+				zoneAlarms.invalidate();
+				zoneDefinitions.invalidate();
+				zonePartitions.invalidate();
+				zoneStatus.invalidate();
+
+				for (auto& object : AlarmDurationNames) { object.invalidate(); }
+				for (auto& object : AreaNames) { object.invalidate(); }
+				for (auto& object : audioData) { object.invalidate(); }
+				for (auto& object : AudioSourceNames) { object.invalidate(); }
+				for (auto& object : AudioZoneNames) { object.invalidate(); }
+				for (auto& object : CounterNames) { object.invalidate(); }
+				for (auto& object : counterValues) { object.invalidate(); }
+				for (auto& object : CustomSettingNames) { object.invalidate(); }
+				for (auto& object : customValues) { object.invalidate(); }
+				for (auto& object : FKEY1s) { object.invalidate(); }
+				for (auto& object : FKEY2s) { object.invalidate(); }
+				for (auto& object : FKEY3s) { object.invalidate(); }
+				for (auto& object : FKEY4s) { object.invalidate(); }
+				for (auto& object : FKEY5s) { object.invalidate(); }
+				for (auto& object : FKEY6s) { object.invalidate(); }
+				for (auto& object : KeypadNames) { object.invalidate(); }
+				for (auto& object : keypadStatuses) { object.invalidate(); }
+				for (auto& object : keypadTemperatures) { object.invalidate(); }
+				for (auto& object : lightingStatus) { object.invalidate(); }
+				for (auto& object : LightNames) { object.invalidate(); }
+				for (auto& object : logData) { object.invalidate(); }
+				for (auto& object : OutputNames) { object.invalidate(); }
+				for (auto& object : plcStatus) { object.invalidate(); }
+				for (auto& object : TaskNames) { object.invalidate(); }
+				for (auto& object : TelephoneNames) { object.invalidate(); }
+				for (auto& object : thermostatData) { object.invalidate(); }
+				for (auto& object : ThermostatNames) { object.invalidate(); }
+				for (auto& object : thermostatTemperatures) { object.invalidate(); }
+				for (auto& object : UserNames) { object.invalidate(); }
+				for (auto& object : ZoneNames) { object.invalidate(); }
+				for (auto& object : zonesBypassed) { object.invalidate(); }
+				for (auto& object : zoneTemperatures) { object.invalidate(); }
+				for (auto& object : zoneVoltage) { object.invalidate(); }
+			}
 		} m1cache;
 		// Handle incoming messages, use them to update cache.
 		virtual void handleMessage(std::vector<char> message) = 0;
