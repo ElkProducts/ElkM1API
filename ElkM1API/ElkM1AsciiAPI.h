@@ -64,15 +64,15 @@ namespace Elk {
 		ELKM1API std::vector<char> cutMessage(std::vector<char>& buffer);
 		ELKM1API void handleMessage(std::vector<char> message);
 		// Building a hashed function table allows things to be called in O(1) time.
-		std::unordered_map < std::string, std::function<void(std::string)>> handleMessageTable;
-		static std::vector<char> genChecksum(std::vector<char> message);
+		std::unordered_map < std::string, std::function<void(std::string&)>> handleMessageTable;
+		static std::vector<char> genChecksum(const std::vector<char>& message);
 		static std::vector<char> toAsciiHex(int value, int length);
 		static std::vector<char> toAsciiDec(int value, int length);
 		void fillFunctionTable();
 		template <typename T>
-		T cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage request, bool ignoreCache, int timeoutMillis);
+		T cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request, bool ignoreCache, int timeoutMillis);
 		template <typename T>
-		T cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage request);
+		T cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request);
 	public:
 		ELKM1API M1AsciiAPI(M1Connection* conn);
 		ELKM1API std::array<M1API::LogEntry, 511> getLogs();

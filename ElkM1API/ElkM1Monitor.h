@@ -46,7 +46,7 @@ namespace Elk {
 				std::unique_lock<std::mutex> lock(mutex);
 				if (milliseconds <= 0) {
 					newData.wait(lock);
-					if (isInitialized())
+					if (updateTime != 0)
 						return object;
 					else
 						throw std::runtime_error("Cache was invalidated while waiting for call.");
@@ -55,7 +55,7 @@ namespace Elk {
 					if (newData.wait_for(lock,
 						std::chrono::milliseconds(milliseconds)) == std::cv_status::no_timeout)
 					{
-						if (isInitialized())
+						if (updateTime != 0)
 							return object;
 						else
 							throw std::runtime_error("Cache was invalidated while waiting for call.");

@@ -46,5 +46,7 @@ namespace Elk {
 	// TODO: Implement secure connection via SSL
 
 	// TODO: Implement secure proxied connection via SSL and C1M1 Proxy
+
+	// TODO: Implement serial port communication?
 	
 }

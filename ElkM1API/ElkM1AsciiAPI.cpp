@@ -31,7 +31,7 @@ namespace Elk {
 		return buff;
 	}
 	// Message checksum includes length bytes, but length bytes also account for having a checksum.
-	std::vector<char> M1AsciiAPI::genChecksum(std::vector<char> message) {
+	std::vector<char> M1AsciiAPI::genChecksum(const std::vector<char>& message) {
 		int checksum = 0;
 		for (char c : message)
 			checksum += c;
@@ -40,7 +40,7 @@ namespace Elk {
 	}
 	// Used for cache objects which are volatile.
 	template <typename T>
-	T M1AsciiAPI::cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage request, bool ignoreCache = true, int timeoutMillis = 0) {
+	T M1AsciiAPI::cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request, bool ignoreCache = true, int timeoutMillis = 0) {
 		// Check if the cache is new enough and return that if it is
 		if (!ignoreCache && (cacheObj.age() <= 3))
 			return cacheObj.get();
@@ -52,7 +52,7 @@ namespace Elk {
 	}
 	// Used for cache objects which only change once per M1 programming.
 	template <typename T>
-	T M1AsciiAPI::cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage request) {
+	T M1AsciiAPI::cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request) {
 		// Check if the cache has been initialized
 		if (cacheObj.isInitialized())
 			return cacheObj.get();
@@ -85,14 +85,14 @@ namespace Elk {
 		// PC
 
 		// Counter value read
-		handleMessageTable.emplace("CV", [this](std::string message) {
+		handleMessageTable.emplace("CV", [this](std::string& message) {
 			// CVNNDDDDD00
 			int counter = std::stoi(message.substr(2, 2)) - 1;
 			int value = std::stoi(message.substr(4, 5));
 			m1cache.counterValues[counter].set((uint16_t)value);
 		});
 		// Custom value read
-		handleMessageTable.emplace("CR", [this](std::string message) {
+		handleMessageTable.emplace("CR", [this](std::string& message) {
 			// CRNNDDDDD00
 			int index = std::stoi(message.substr(2, 2)) - 1;
 			if (index == -1) {
@@ -109,7 +109,7 @@ namespace Elk {
 			}
 		});
 		// Arming Status Request
-		handleMessageTable.emplace("AS", [this](std::string message) {
+		handleMessageTable.emplace("AS", [this](std::string& message) {
 			std::array<ArmStatus, 8> newStatus;
 			for (int i = 0; i < 8; i++) {
 				newStatus[i].mode = (ArmMode)(message.at(2 + i) - '0');
@@ -119,7 +119,7 @@ namespace Elk {
 			m1cache.armStatus.set(newStatus);
 		});
 		// Zone Voltage
-		handleMessageTable.emplace("ZV", [this](std::string message) {
+		handleMessageTable.emplace("ZV", [this](std::string& message) {
 			int index = std::stoi(message.substr(2, 3)) - 1;
 			int value = std::stoi(message.substr(5, 3));
 			m1cache.zoneVoltage[index].set(
@@ -127,7 +127,7 @@ namespace Elk {
 				);
 		});
 		// Keypad Areas
-		handleMessageTable.emplace("KA", [this](std::string message) {
+		handleMessageTable.emplace("KA", [this](std::string& message) {
 			std::array<int, 16> areas;
 			for (int i = 0; i < 16; i++) {
 				areas[i] = message.at(2 + i) - '0' - 1;
@@ -135,7 +135,7 @@ namespace Elk {
 			m1cache.keypadAreas.set(areas);
 		});
 		// Zone Partitions
-		handleMessageTable.emplace("ZP", [this](std::string message) {
+		handleMessageTable.emplace("ZP", [this](std::string& message) {
 			std::array<int, 208> zones;
 			for (int i = 0; i < 208; i++) {
 				zones[i] = message.at(2 + i) - '0' - 1;
@@ -143,7 +143,7 @@ namespace Elk {
 			m1cache.zonePartitions.set(zones);
 		});
 		// Control Output Status
-		handleMessageTable.emplace("CS", [this](std::string message) {
+		handleMessageTable.emplace("CS", [this](std::string& message) {
 			std::array<bool, 208> zones;
 			for (int i = 0; i < 208; i++) {
 				zones[i] = message.at(2 + i) == '1';
@@ -151,7 +151,7 @@ namespace Elk {
 			m1cache.controlOutputs.set(zones);
 		});
 		// Version number, TODO: Scrape XEP number too
-		handleMessageTable.emplace("VN", [this](std::string message) {
+		handleMessageTable.emplace("VN", [this](std::string& message) {
 			std::array<int, 3> vn;
 			for (int i = 0; i < 3; i++) {
 				vn[i] = stoi(message.substr(2 + (2 * i), 2), 0, 16);
@@ -159,13 +159,13 @@ namespace Elk {
 			m1cache.M1VersionNumber.set(vn);
 		});
 		// Lighting status
-		handleMessageTable.emplace("DS", [this](std::string message) {
+		handleMessageTable.emplace("DS", [this](std::string& message) {
 			int index = stoi(message.substr(2, 3)) - 1;
 			int value = stoi(message.substr(5, 2));
 			m1cache.lightingStatus[index].set(value);
 		});
 		// Alarms by zone
-		handleMessageTable.emplace("AZ", [this](std::string message) {
+		handleMessageTable.emplace("AZ", [this](std::string& message) {
 			std::array<ZoneDefinition, 208> zones;
 			for (int i = 0; i < 208; i++) {
 				zones[i] = (ZoneDefinition)(message.at(2 + i) - '0');
@@ -173,7 +173,7 @@ namespace Elk {
 			m1cache.zoneAlarms.set(zones);
 		});
 		// Definitions by zone
-		handleMessageTable.emplace("ZD", [this](std::string message) {
+		handleMessageTable.emplace("ZD", [this](std::string& message) {
 			std::array<ZoneDefinition, 208> zones;
 			for (int i = 0; i < 208; i++) {
 				zones[i] = (ZoneDefinition)(message.at(2 + i) - '0');
@@ -181,7 +181,7 @@ namespace Elk {
 			m1cache.zoneDefinitions.set(zones);
 		});
 		// Zone Statuses
-		handleMessageTable.emplace("ZS", [this](std::string message) {
+		handleMessageTable.emplace("ZS", [this](std::string& message) {
 			std::array<ZoneState, 208> zones;
 			for (int i = 0; i < 208; i++) {
 				int bitfield = message.at(2 + i) - '0';
@@ -191,7 +191,7 @@ namespace Elk {
 			m1cache.zoneStatus.set(zones);
 		});
 		// Zones Bypassed
-		handleMessageTable.emplace("ZB", [this](std::string message) {
+		handleMessageTable.emplace("ZB", [this](std::string& message) {
 			int index = std::stoi(message.substr(2, 3)) - 1;
 			bool bypassed = message.at(5) == '1';
 			if (index == 998 || index == -1)
@@ -204,7 +204,7 @@ namespace Elk {
 			}
 		});
 		// Temperature data block
-		handleMessageTable.emplace("LW", [this](std::string message) {
+		handleMessageTable.emplace("LW", [this](std::string& message) {
 			// Keypad temps
 			for (int i = 0; i < 16; i++) {
 				int temp = stoi(message.substr(2 + (3 * i), 3)) - 40;
@@ -217,7 +217,7 @@ namespace Elk {
 			}
 		});
 		// Individual temperature data
-		handleMessageTable.emplace("ST", [this](std::string message) {
+		handleMessageTable.emplace("ST", [this](std::string& message) {
 			TemperatureDevice type = (TemperatureDevice)(message.at(2) - '0');
 			int index = std::stoi(message.substr(3, 2)) - 1;
 			int value = std::stoi(message.substr(5, 3));
@@ -238,7 +238,7 @@ namespace Elk {
 
 		});
 		// System Trouble Status TODO: Trouble status is more detailed than this
-		handleMessageTable.emplace("ST", [this](std::string message) {
+		handleMessageTable.emplace("ST", [this](std::string& message) {
 			SystemTroubleStatus sts;
 			sts.ACFail = message.at(2) == '1';
 			sts.boxTamper = message.at(3) == '1';
@@ -262,7 +262,7 @@ namespace Elk {
 			m1cache.systemTroubleStatus.set(sts);
 		});
 		// RP connected
-		handleMessageTable.emplace("RP", [this](std::string message) {
+		handleMessageTable.emplace("RP", [this](std::string& message) {
 			// Invalidate the cache, causing currently blocked calls to throw exceptions
 			m1cache.invalidate();
 			// If the onRPConnection callback exists, execute it
@@ -270,12 +270,12 @@ namespace Elk {
 				onRPConnection(true);
 		});
 		// RP disconnected
-		handleMessageTable.emplace("IE", [this](std::string message) {
+		handleMessageTable.emplace("IE", [this](std::string& message) {
 			if (onRPConnection)
 				onRPConnection(false);
 		});
 		// Thermostat data // TODO: Test this!
-		handleMessageTable.emplace("TR", [this](std::string message) {
+		handleMessageTable.emplace("TR", [this](std::string& message) {
 			ThermostatData td;
 			int index = std::stoi(message.substr(2, 2)) - 1;
 			td.mode = (ThermostatData::ThermostatMode)(message.at(4) - '0');
@@ -289,7 +289,7 @@ namespace Elk {
 			m1cache.thermostatTemperatures[index].set(td.temperature);
 		});
 		// Log data
-		handleMessageTable.emplace("LD", [this](std::string message) {
+		handleMessageTable.emplace("LD", [this](std::string& message) {
 			LogEntry le;
 			int index = std::stoi(message.substr(18, 3)) - 1;
 			if (index == -1) return; // TODO: New log entry callback?
@@ -305,7 +305,7 @@ namespace Elk {
 			m1cache.logData[index].set(le);
 		});
 		// Strings
-		handleMessageTable.emplace("SD", [this](std::string message) {
+		handleMessageTable.emplace("SD", [this](std::string& message) {
 			TextDescriptionType tdt = TextDescriptionType(stoi(message.substr(2, 2)));
 			int index = stoi(message.substr(4, 3)) - 1;
 			std::string desc = message.substr(7, 16);
@@ -356,7 +356,7 @@ namespace Elk {
 			std::cout << "Error parsing message: " << message << "\n";
 		});
 		// Keypad function press TODO: Test
-		handleMessageTable.emplace("KF", [this](std::string message) {
+		handleMessageTable.emplace("KF", [this](std::string& message) {
 			std::array<ChimeMode, 8> chimeModes;
 			for (int i = 0; i < 8; i++) {
 				chimeModes[i] = (ChimeMode)(message.at(5 + i) - '0');
@@ -364,7 +364,7 @@ namespace Elk {
 			m1cache.chimeModes.set(chimeModes);
 		});
 		// Returned PLC status
-		handleMessageTable.emplace("PS", [this](std::string message) {
+		handleMessageTable.emplace("PS", [this](std::string& message) {
 			std::array<int, 64> lightingLevels;
 			int bank = message.at(2) - '0';
 			for (int i = 0; i < 64; i++) {
@@ -373,7 +373,7 @@ namespace Elk {
 			m1cache.plcStatus[bank].set(lightingLevels);
 		});
 		// AudioZone audio data
-		handleMessageTable.emplace("CA", [this](std::string message) {
+		handleMessageTable.emplace("CA", [this](std::string& message) {
 			AudioData data;
 			int index = stoi(message.substr(2, 2)) - 1;
 			data.zoneIsOn = message.at(4) == '1';
@@ -388,14 +388,14 @@ namespace Elk {
 			m1cache.audioData[index].set(data);
 		});
 		// Omnistat 2 reply
-		handleMessageTable.emplace("T2", [this](std::string message) {
+		handleMessageTable.emplace("T2", [this](std::string& message) {
 			std::vector<char> reply;
 			for (int i = 0; i < 16; i++)
 				reply.push_back(stoi(message.substr(2 + (i * 2)), 0, 16));
 			m1cache.omniStat2Reply.set(reply);
 		});
 		// User code areas
-		handleMessageTable.emplace("UA", [this](std::string message) {
+		handleMessageTable.emplace("UA", [this](std::string& message) {
 			UserCodeAccess uca;
 			uca.validAreas = stoi(message.substr(8, 2), 0, 16);
 			uca.codetype = (UserCodeAccess::CodeType)(message.at(18) - '0');
