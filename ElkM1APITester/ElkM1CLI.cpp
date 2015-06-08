@@ -92,18 +92,54 @@ std::map<std::string, std::function<void()>> commands = {
 	//{ "getSystemTroubleStatus", [] {m1api->getSystemTroubleStatus(); } },
 	//{ "getTemperature", [] {m1api->getTemperature(TemperatureDevice type, int device); } },
 	//{ "getTemperatures", [] {m1api->getTemperatures(TemperatureDevice type); } },
-	//{ "getTextDescription", [] {m1api->getTextDescription(TextDescriptionType type, int index); } },
 	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
 	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
 	//{ "getZoneAlarms", [] {m1api->getZoneAlarms(); } },
 	//{ "getZoneDefinitions", [] {m1api->getZoneDefinitions(); } },
-	//{ "getZonePartitions", [] {m1api->getZonePartitions(); } },
-	//{ "getZoneStatuses", [] {m1api->getZoneStatuses(); } },
-	{ "getZoneVoltage", [] {
-		int zone;
-		std::cout << "Select zone: ";
-		std::cin >> zone;
-		m1api->getZoneVoltage(zone); 
+	{ "getZonePartitions", [] {
+		std::array<int, 208> parts = m1api->getZonePartitions();
+		m1api->forEachConfiguredZone([parts](int index) {
+			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
+		});
+	} },
+	{ "getZoneStatuses", [] {
+		int i = 0;
+		for (auto zs : m1api->getZoneStatuses()) {
+			std::cout << "Zone " << ++i << ": ";
+			switch (zs.logicalState) {
+			case Elk::M1API::LZS_BYPASSED:
+				std::cout << "Bypassed, ";
+				break;
+			case Elk::M1API::LZS_NORMAL:
+				std::cout << "Normal, ";
+				break;
+			case Elk::M1API::LZS_TROUBLE:
+				std::cout << "Trouble, ";
+				break;
+			case Elk::M1API::LZS_VIOLATED:
+				std::cout << "Violated, ";
+				break;
+			}
+			switch (zs.physicalState) {
+			case Elk::M1API::PZS_EOL:
+				std::cout << "EOL\n";
+				break;
+			case Elk::M1API::PZS_OPEN:
+				std::cout << "Open\n";
+				break;
+			case Elk::M1API::PZS_SHORT:
+				std::cout << "Short\n";
+				break;
+			case Elk::M1API::PZS_UNCONFIGURED:
+				std::cout << "Unconfigured\n";
+				break;
+			}
+		}
+	} },
+	{ "getZoneVoltages", [] {
+		m1api->forEachConfiguredZone([](int index) {
+			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_ZoneName, index) << "\" voltage: " << m1api->getZoneVoltage(index) << "\n";
+		});
 	} },
 	//{ "pressFunctionKey", [] {m1api->pressFunctionKey(int keypad, FKEY key); } },
 	//{ "requestChangeUserCode", [] {m1api->requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask); } },
@@ -158,6 +194,7 @@ int main(int argc, char* argv[])
 				commands.at(commandIndex)();
 			}
 			catch (std::exception ex) {
+				std::cout << "Command failed with the following error: \n";
 				std::cout << ex.what() << "\n";
 			}
 		}
