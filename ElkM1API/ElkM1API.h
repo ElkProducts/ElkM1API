@@ -48,6 +48,7 @@ namespace Elk
 		std::function<void(bool)> onRPConnection;
 
 		virtual ELKM1API void forEachConfiguredZone(std::function<void(int)> funct) = 0;
+		virtual ELKM1API void forEachConfiguredKeypad(std::function<void(int)> funct) = 0;
 
 		// TODO: These functions aren't sent for by us, but we still recieve them.
 		// There needs to be some form of API call which gives us information from them.

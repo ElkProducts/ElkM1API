@@ -238,7 +238,7 @@ namespace Elk {
 
 		});
 		// System Trouble Status TODO: Trouble status is more detailed than this
-		handleMessageTable.emplace("ST", [this](std::string& message) {
+		handleMessageTable.emplace("SS", [this](std::string& message) {
 			SystemTroubleStatus sts;
 			sts.ACFail = message.at(2) == '1';
 			sts.boxTamper = message.at(3) == '1';
@@ -402,6 +402,20 @@ namespace Elk {
 			uca.usesCelcius = message.at(20) == 'C';
 			m1cache.userCodeAccess.set(uca);
 		});
+		// RTC Data
+		handleMessageTable.emplace("RR", [this](std::string& message) {
+			RTCData rtc;
+			rtc.seconds = stoi(message.substr(2, 2));
+			rtc.minutes = stoi(message.substr(4, 2));
+			rtc.hours = stoi(message.substr(6, 2));
+			rtc.weekday = (Weekday)(message.at(8) - '0');
+			rtc.day = stoi(message.substr(9, 2));
+			rtc.month = stoi(message.substr(11, 2));
+			rtc.year = stoi(message.substr(13, 2)) + 2000;
+			rtc.twelveHourClock = message.at(16) == '1';
+			rtc.dayBeforeMonth = message.at(17) == '1';
+			m1cache.rtcData.set(rtc);
+		});
 	}
 
 	std::vector<char> M1AsciiAPI::cutMessage(std::vector<char>& buffer) {
@@ -460,6 +474,16 @@ namespace Elk {
 			}
 		}
 	}
+
+	void M1AsciiAPI::forEachConfiguredKeypad(std::function<void(int)> funct) {
+		std::array<int, 16> kpa = getKeypadAreas();
+		for (int i = 0; i < 16; i++) {
+			if (kpa[i] != -1) {
+				funct(i);
+			}
+		}
+	}
+
 	// TODO: Function to intelligently collect names, with 150ms timeout on missed names that skips to next section
 	void M1AsciiAPI::collectAllNames() {
 		throw std::exception("Not imlemented.");
@@ -646,7 +670,7 @@ namespace Elk {
 		message += toAsciiDec(newData.hours, 2);
 		message += toAsciiDec(newData.weekday, 1);
 		message += toAsciiDec(newData.day, 2);
-		message += toAsciiDec(newData.year, 2);
+		message += toAsciiDec(newData.year % 100, 2);
 		message += "00";
 		return cacheRequest(m1cache.rtcData, message, true, 0);
 	}
