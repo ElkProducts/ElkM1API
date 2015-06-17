@@ -44,12 +44,6 @@ namespace Elk
 	class M1API
 	{
 	public:
-		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
-		std::function<void(bool)> onRPConnection;
-
-		virtual ELKM1API void forEachConfiguredZone(std::function<void(int)> funct) = 0;
-		virtual ELKM1API void forEachConfiguredKeypad(std::function<void(int)> funct) = 0;
-
 		// TODO: These functions aren't sent for by us, but we still recieve them.
 		// There needs to be some form of API call which gives us information from them.
 		// AP - ignore?
@@ -364,6 +358,13 @@ namespace Elk
 			bool usesCelcius;
 			uint8_t validAreas;
 		};
+
+		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
+		std::function<void(bool)> onRPConnection;
+
+		virtual ELKM1API void forEachConfiguredZone(std::function<void(int)> funct) = 0;
+		virtual ELKM1API void forEachConfiguredKeypad(std::function<void(int)> funct) = 0;
+		virtual ELKM1API void forEachConfiguredTempDevice(std::function<void(TemperatureDevice, int)>) = 0;
 
 		// Arm or disarm a partition using the specified user code.
 		virtual ELKM1API void armDisarm(int partition, ArmMode mode, std::string userCode) = 0;

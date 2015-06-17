@@ -484,6 +484,17 @@ namespace Elk {
 		}
 	}
 
+	void M1AsciiAPI::forEachConfiguredTempDevice(std::function<void(Elk::M1API::TemperatureDevice, int)> function) {
+		for (int type = Elk::M1API::TEMPDEVICE_ZONE; type < Elk::M1API::TEMPDEVICE_THERMOSTAT; type++){
+			auto& temp = getTemperatures(Elk::M1API::TemperatureDevice(type));
+			for (int i = 0; i < 16; i++) {
+				if (temp[i] != INT_MIN) {
+					function((Elk::M1API::TemperatureDevice)type, i);
+				}
+			}
+		}
+	}
+
 	// TODO: Function to intelligently collect names, with 150ms timeout on missed names that skips to next section
 	void M1AsciiAPI::collectAllNames() {
 		throw std::exception("Not imlemented.");

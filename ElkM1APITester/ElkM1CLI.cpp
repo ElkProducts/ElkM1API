@@ -46,7 +46,61 @@ std::map<std::string, std::function<void()>> commands = {
 		m1api->enableControlOutput(output, seconds); 
 	} },
 	//{ "executePLCCommand", [] {m1api->executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn); } },
-	//{ "getArmStatus", [] {m1api->getArmStatus(); } },
+	{ "getArmStatus", [] {
+		int i = 0;
+		for (auto& stat : m1api->getArmStatus()) {
+			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_AreaName, i) << "\": ";
+			switch (stat.mode)
+			{
+			case Elk::M1API::ARM_DISARMED:
+				std::cout << "Disarmed, ";
+				break;
+			case Elk::M1API::ARM_AWAY:
+				std::cout << "Armed Away, ";
+				break;
+			case Elk::M1API::ARM_STAY:
+				std::cout << "Armed Stay, ";
+				break;
+			case Elk::M1API::ARM_STAYINSTANT:
+				std::cout << "Armed Stay (instant), ";
+				break;
+			case Elk::M1API::ARM_NIGHT:
+				std::cout << "Armed Night, ";
+				break;
+			case Elk::M1API::ARM_NIGHTINSTANT:
+				std::cout << "Armed Night (instant), ";
+				break;
+			case Elk::M1API::ARM_VACATION:
+				std::cout << "Armed Vacation, ";
+				break;
+			}
+
+			switch (stat.isReady) {
+			case Elk::M1API::ARMUPMODE_NOTREADY:
+				std::cout << "Not ready to arm ";
+				break;
+			case Elk::M1API::ARMUPMODE_READY:
+				std::cout << "Ready to arm ";
+				break;
+			case Elk::M1API::ARMUPMODE_READYFORCE:
+				std::cout << "Ready to arm (force) ";
+				break;
+			case Elk::M1API::ARMUPMODE_ARMEDEXITTIMER:
+				std::cout << "Armed (exit timer) ";
+				break;
+			case Elk::M1API::ARMUPMODE_ARMED:
+				std::cout << "Armed ";
+				break;
+			case Elk::M1API::ARMUPMODE_ARMEDFORCE:
+				std::cout << "Armed (force) ";
+				break;
+			case Elk::M1API::ARMUPMODE_ARMEDBYPASS:
+				std::cout << "Armed (bypass) ";
+				break;
+			}
+			std::cout << "\n";
+		}
+	} },
 	//{ "getAudioData", [] {m1api->getAudioData(int audioZone); } },
 	{ "getControlOutputs", [] {
 		for (auto out : m1api->getControlOutputs()) {
@@ -77,9 +131,9 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << val << "\n";
 	} },
 	{ "getKeypadAreas", [] {
-		for (auto keypad : m1api->getKeypadAreas())
-			std::cout << keypad << " ";
-		std::cout << "\n";
+		std::array<int, 16> kpa = m1api->getKeypadAreas();
+		for (int i = 0; i < 16; i++)
+			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_KeypadName, i) << "\": " << kpa[i] << "\n";
 	} },
 	//{ "getKeypadFkeyStatus", [] {m1api->getKeypadFkeyStatus(int keypad); } },
 	//{ "getLightingStatus", [] {m1api->getLightingStatus(int device); } },
@@ -117,7 +171,31 @@ std::map<std::string, std::function<void()>> commands = {
 	} },
 	//{ "getSystemTroubleStatus", [] {m1api->getSystemTroubleStatus(); } },
 	//{ "getTemperature", [] {m1api->getTemperature(TemperatureDevice type, int device); } },
-	//{ "getTemperatures", [] {m1api->getTemperatures(TemperatureDevice type); } },
+	{ "getTemperatures", [] {
+		m1api->forEachConfiguredTempDevice([](Elk::M1API::TemperatureDevice dev, int index) {
+			switch (dev) {
+			case Elk::M1API::TEMPDEVICE_THERMOSTAT:
+				try {
+					std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_ThermostatName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
+				}
+				catch (...) {
+					std::cout << "Thermostat " << index << ": " << m1api->getTemperature(dev, index) << "\n";
+				}
+				break;
+			case Elk::M1API::TEMPDEVICE_KEYPAD:
+				try {
+					std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_KeypadName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
+				}
+				catch (...) {
+					std::cout << "Keypad " << index << ": " << m1api->getTemperature(dev, index) << "\n";
+				}
+				break;
+			case Elk::M1API::TEMPDEVICE_ZONE:
+				std::cout << "Temp Zone " << index << ": " << m1api->getTemperature(dev, index) << "\n";
+				break;
+			}
+		});
+	} },
 	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
 	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
 	{ "getZoneAlarms", [] {
@@ -370,6 +448,13 @@ int main(int argc, char* argv[])
 	if (connection->Connect(address)) {
 		std::cout << "Connected!\n";
 		m1api = new Elk::M1AsciiAPI(connection);
+
+		// Give it callbacks
+		m1api->onRPConnection = [] (bool connected){
+			std::cout << "-- Warning, RP " << (connected ? "connected" : "disconnected") << ". --\n";
+		};
+
+		// Execute
 		m1api->run();
 		std::cout << "M1 Version: ";
 		for (auto i : m1api->getM1VersionNumber())
