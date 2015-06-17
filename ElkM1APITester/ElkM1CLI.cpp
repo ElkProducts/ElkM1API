@@ -48,7 +48,7 @@ std::map<std::string, std::function<void()>> commands = {
 	//{ "executePLCCommand", [] {m1api->executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn); } },
 	{ "getArmStatus", [] {
 		int i = 0;
-		for (auto& stat : m1api->getArmStatus()) {
+		for (const auto& stat : m1api->getArmStatus()) {
 			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_AreaName, i) << "\": ";
 			switch (stat.mode)
 			{
@@ -103,7 +103,7 @@ std::map<std::string, std::function<void()>> commands = {
 	} },
 	//{ "getAudioData", [] {m1api->getAudioData(int audioZone); } },
 	{ "getControlOutputs", [] {
-		for (auto out : m1api->getControlOutputs()) {
+		for (const auto& out : m1api->getControlOutputs()) {
 			std::cout << " ";
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 5; j++) {
@@ -127,7 +127,7 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << m1api->getCustomValue(index) << "\n";
 	} },
 	{ "getCustomValues", [] {
-		for (auto val : m1api->getCustomValues())
+		for (const auto& val : m1api->getCustomValues())
 			std::cout << val << "\n";
 	} },
 	{ "getKeypadAreas", [] {
@@ -139,7 +139,6 @@ std::map<std::string, std::function<void()>> commands = {
 	//{ "getLightingStatus", [] {m1api->getLightingStatus(int device); } },
 	//{ "getLogData", [] {m1api->getLogData(int index); } },
 	//{ "getLogs", [] {m1api->getLogs(); } },
-	//{ "getM1VersionNumber", [] {m1api->getM1VersionNumber(); } },
 	//{ "getOmnistat2Data", [] {m1api->getOmnistat2Data(std::vector<char> request); } },
 	//{ "getPLCStatus", [] {m1api->getPLCStatus(int bank); } },
 	{ "getRTCData", [] {
@@ -372,7 +371,7 @@ std::map<std::string, std::function<void()>> commands = {
 	} },
 	{ "getZoneStatuses", [] {
 		int i = 0;
-		for (auto zs : m1api->getZoneStatuses()) {
+		for (const auto& zs : m1api->getZoneStatuses()) {
 			std::cout << "Zone " << ++i << ": ";
 			switch (zs.logicalState) {
 			case Elk::M1API::LZS_BYPASSED:
@@ -426,7 +425,7 @@ std::map<std::string, std::function<void()>> commands = {
 	{ "quit", [] {sigExit = true; } },
 	{ "help", [] {
 		std::cout << "Available commands: \n";
-		for (auto cmd : commands)
+		for (const auto& cmd : commands)
 			std::cout << "\t" << cmd.first << "\n";
 		std::cout << "Note that all arguments are 0-indexed.\n";
 	} }
