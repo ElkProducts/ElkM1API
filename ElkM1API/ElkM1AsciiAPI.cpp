@@ -68,7 +68,7 @@ namespace Elk {
 
 	// TODO: Split all std::cout calls into a debug message callback.
 
-	M1AsciiAPI::M1AsciiAPI(M1Connection* conn) : M1Monitor(conn) {
+	M1AsciiAPI::M1AsciiAPI(std::shared_ptr<M1Connection> conn) : M1Monitor(conn) {
 		// Fill up our function table here
 		fillFunctionTable();
 	}
@@ -419,7 +419,7 @@ namespace Elk {
 	}
 
 	std::vector<char> M1AsciiAPI::cutMessage(std::vector<char>& buffer) {
-		for (int i = 0; i < buffer.size(); i++) {
+		for (unsigned int i = 0; i < buffer.size(); i++) {
 			if (buffer.at(i) == '\n')
 			{
 				// Get message

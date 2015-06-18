@@ -12,11 +12,11 @@
 #else
 #define ELKM1API __declspec(dllimport)
 #endif
-
 #include <WinSock2.h>
-
-#elif __linux__
+#elif defined(__linux__) || defined(__CYGWIN__)
 #define ELKM1API  
+#include <sys/socket.h>
+#define SOCKET int
 #endif
 
 #include "ElkM1Connection.h"

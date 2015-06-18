@@ -4,13 +4,14 @@
 #include <iostream>
 #include <thread>
 #include <stdio.h>
+#include <memory>
 #include <map>
 #include "ElkM1API.h"
 #include "ElkM1AsciiAPI.h"
 
 bool sigExit = false;
-Elk::M1Connection *connection;
-Elk::M1AsciiAPI *m1api;
+std::shared_ptr<Elk::M1Connection> connection;
+std::unique_ptr<Elk::M1AsciiAPI> m1api;
 // Map of command names to functions.
 // Key can be changed to be more 'cli' like, this is just what my regex spat out.
 std::map<std::string, std::function<void()>> commands = {
@@ -20,7 +21,54 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cin >> task;
 		m1api->activateTask(task); 
 	} },
-	//{ "armDisarm", [] {m1api->armDisarm(int partition, ArmMode mode, std::string userCode); } },
+	{ "armDisarm", [] {
+		int partition;
+		Elk::M1API::ArmMode mode;
+		char m;
+		std::string userCode;
+		std::cout << "Select partition: ";
+		std::cin >> partition;
+		std::cout << "Select mode (dasingv+-): ";
+		std::cin >> m;
+		switch (m) {
+		case 'd':
+			mode = Elk::M1API::ARM_DISARMED;
+			break;
+		case 'a':
+			mode = Elk::M1API::ARM_AWAY;
+			break;
+		case 's':
+			mode = Elk::M1API::ARM_STAY;
+			break;
+		case 'i':
+			mode = Elk::M1API::ARM_STAYINSTANT;
+			break;
+		case 'n':
+			mode = Elk::M1API::ARM_NIGHT;
+			break;
+		case 'g':
+			mode = Elk::M1API::ARM_NIGHTINSTANT;
+			break;
+		case 'v':
+			mode = Elk::M1API::ARM_VACATION;
+			break;
+		case '+':
+			mode = Elk::M1API::ARM_AWAYNEXT;
+			break;
+		case '-':
+			mode = Elk::M1API::ARM_STAYNEXT;
+			break;
+		default:
+			throw std::invalid_argument("Not a valid area mode.");
+		}
+		
+		std::cout << "Please enter user code: ";
+		std::cin >> userCode;
+
+		m1api->armDisarm(partition, mode, userCode); 
+		std::cout << "\n";
+		commands.at("getArmStatus")();
+	} },
 	{ "disableControlOutput", [] {
 		int output;
 		std::cout << "Select output: ";
@@ -434,7 +482,7 @@ std::map<std::string, std::function<void()>> commands = {
 
 int main(int argc, char* argv[])
 {
-	connection = new Elk::ElkTCP();
+	connection = (std::shared_ptr<Elk::M1Connection>) new Elk::ElkTCP();
 	std::string address;
 	if (argc < 2) {
 		std::cout << "Please enter an address: ";
@@ -446,7 +494,7 @@ int main(int argc, char* argv[])
 	std::cout << "Connecting...\n";
 	if (connection->Connect(address)) {
 		std::cout << "Connected!\n";
-		m1api = new Elk::M1AsciiAPI(connection);
+		m1api = (std::unique_ptr<Elk::M1AsciiAPI>) new Elk::M1AsciiAPI(connection);
 
 		// Give it callbacks
 		m1api->onRPConnection = [] (bool connected){

@@ -7,7 +7,7 @@
 
 namespace Elk
 {
-	M1Monitor::M1Monitor(M1Connection* conn) {
+	M1Monitor::M1Monitor(std::shared_ptr<M1Connection> conn) {
 		if (conn == nullptr)
 		{
 			throw std::invalid_argument("Connection must exist!");
@@ -55,10 +55,4 @@ namespace Elk
 			}
 		}
 	}
-
-	M1Monitor::~M1Monitor() {
-		delete connection;
-	}
-
-
 }

@@ -75,7 +75,7 @@ namespace Elk {
 		T cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request);
 	public:
 		std::function<void(bool)> onRPConnection;
-		ELKM1API M1AsciiAPI(M1Connection* conn);
+		ELKM1API M1AsciiAPI(std::shared_ptr<M1Connection> conn);
 		ELKM1API std::array<M1API::LogEntry, 511> getLogs();
 		ELKM1API void collectAllNames();
 		ELKM1API void forEachConfiguredZone(std::function<void(int)> funct);
