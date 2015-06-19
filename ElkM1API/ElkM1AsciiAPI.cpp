@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <limits.h>
+#include <numeric>
 
 namespace Elk {
 #pragma region Static Helper Functions
@@ -32,11 +33,7 @@ namespace Elk {
 	}
 	// Message checksum includes length bytes, but length bytes also account for having a checksum.
 	std::vector<char> M1AsciiAPI::genChecksum(const std::vector<char>& message) {
-		int checksum = 0;
-		for (char c : message)
-			checksum += c;
-		checksum = (checksum ^ 0xff) + 1;
-		return toAsciiHex(checksum, 2);
+		return toAsciiHex((std::accumulate(message.begin(), message.end(), 0) ^ 0xff) + 1, 2);
 	}
 	// Used for cache objects which are volatile.
 	template <typename T>
@@ -68,15 +65,10 @@ namespace Elk {
 
 	// TODO: Split all std::cout calls into a debug message callback.
 
-	M1AsciiAPI::M1AsciiAPI(std::shared_ptr<M1Connection> conn) : M1Monitor(conn) {
-		// Fill up our function table here
-		fillFunctionTable();
-	}
-
 	// All incoming message handlers defined here. This uses an O(1) function table to handle new data, that is to say
 	//   no matter how many commands are added, it will always take the same amount of time to find a command and handle
 	//   the data. Message does not include length/checksum/crlf.
-	void M1AsciiAPI::fillFunctionTable() {
+	M1AsciiAPI::M1AsciiAPI(std::shared_ptr<M1Connection> conn) : M1Monitor(conn) {
 		// Ignored:
 		// XK
 
@@ -500,9 +492,6 @@ namespace Elk {
 		throw std::exception("Not imlemented.");
 	}
 	// TODO: Replace magic numbers in timeout definitions with defines
-	// TODO: Go back over functions, ensure 0-index for appropriate data
-	// TODO: Add more optional-timeout methods
-	// TODO: Check each command for version requirement.
 	
 	M1AsciiAPI::AudioData M1AsciiAPI::getAudioData(int audioZone) { 
 		// TODO: Can't test without something to test against.
