@@ -44,17 +44,18 @@ namespace Elk {
 				TODO: Check checksum and length portions.
 			*/
 			static AsciiMessage fromTransmission(std::vector<char> other) {
-				std::string message;
+				std::vector<char> message;
 				message.insert(message.begin(), other.begin() + 2, other.end() - 4);
-				return AsciiMessage(message.c_str());
+				message.push_back('\0');
+				return AsciiMessage(message);
 			}
 			std::vector<char> getTransmittable() {
-				std::vector<char> nMessage(message.begin(), message.end());
-				std::vector<char> lbytes = toAsciiHex(message.size() + 2, 2);
-				nMessage.insert(nMessage.begin(), lbytes.begin(), lbytes.end());
-				for (char c : genChecksum(nMessage))
+				std::vector<char> nMessage(toAsciiHex(message.size() + 2, 2));
+				for (auto & c : message)
 					nMessage.push_back(c);
-				for (char c : {'\r', '\n'})
+				for (auto & c : genChecksum(nMessage))
+					nMessage.push_back(c);
+				for (auto & c : {'\r', '\n'})
 					nMessage.push_back(c);
 				return nMessage;
 			}

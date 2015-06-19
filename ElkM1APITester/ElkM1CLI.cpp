@@ -151,16 +151,11 @@ std::map<std::string, std::function<void()>> commands = {
 	} },
 	//{ "getAudioData", [] {m1api->getAudioData(int audioZone); } },
 	{ "getControlOutputs", [] {
+		int i = 0, j = 0;
 		for (const auto& out : m1api->getControlOutputs()) {
-			std::cout << " ";
-			for (int i = 0; i < 5; i++) {
-				for (int j = 0; j < 5; j++) {
-					std::cout << out;
-				}
-				std::cout << " ";
-			}
-			std::cout << "\n";
+			std::cout << out << (!(++i % 5) ? " " : "") << (!(++j % 25) ? "\n" : "");
 		}
+		std::cout << "\n";
 	} },
 	{ "getCounterValue", [] {
 		int counter;
