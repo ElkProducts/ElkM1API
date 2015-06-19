@@ -411,16 +411,16 @@ namespace Elk {
 	}
 
 	std::vector<char> M1AsciiAPI::cutMessage(std::vector<char>& buffer) {
-		for (unsigned int i = 0; i < buffer.size(); i++) {
-			if (buffer.at(i) == '\n')
-			{
-				// Get message
-				std::vector<char> newMessage = std::vector<char>(buffer.begin(), buffer.begin() + i + 1);
-				buffer.erase(buffer.begin(), buffer.begin() + i + 1);
-				return newMessage;
-			}
-		}
-		return std::vector<char>(); // Return empty vector otherwise.
+		auto newlineItr = std::find(buffer.begin(), buffer.end(), '\n');
+
+		// If not found, return our blank buffer immediately
+		if (newlineItr == buffer.end())
+			return std::vector<char>();
+		
+		// Move (efficiently) the buffer contents into the result, and erase it from the buffer in one operation
+		std::vector<char> result(buffer.begin(), newlineItr + 1);
+		buffer.erase(buffer.begin(), newlineItr + 1);
+		return result;
 	}
 
 	void M1AsciiAPI::handleMessage(std::vector<char> message) {
