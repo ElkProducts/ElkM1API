@@ -17,7 +17,7 @@ namespace Elk {
 	Private versions of the functions (left abstract) and a couple protocol-specific functions (also left abstract)
 	are implemented in deriving classes (which implement protocols) and deal with actually sending information.
 	*/
-	class M1Monitor : protected M1API{
+	class M1Monitor : public M1API {
 	private:
 		std::vector<char> buffer;
 		bool sigStop = false;
@@ -97,7 +97,7 @@ namespace Elk {
 		class M1Cache {
 		public: 
 			cacheObject<std::vector<ArmStatus>> armStatus;
-			cacheObject<std::vector<ZoneDefinition>> zoneAlarms;
+			cacheObject<std::vector<SZoneDefinition>> zoneAlarms;
 			cacheObject<AudioData> audioData[18];
 			//std::vector<bool> getControlOutputs() = 0; TODO: Replace with better packed function.
 			cacheObject<std::vector<bool>> controlOutputs;
@@ -109,7 +109,7 @@ namespace Elk {
 			cacheObject<KeypadFkeyStatus> keypadStatuses[16];
 			//std::vector<ChimeMode> pressFunctionKey(int keypad, FKEY key) = 0;
 			// TODO: This also tracks what button was last pressed, so implement that
-			cacheObject<std::vector<ChimeMode>> chimeModes;
+			cacheObject<std::vector<SChimeMode>> chimeModes;
 			cacheObject<LogEntry> logData[511];
 			cacheObject<std::vector<int>> plcStatus[4];
 			cacheObject<RTCData> rtcData;
@@ -142,7 +142,7 @@ namespace Elk {
 			cacheObject<std::vector<int>> M1VersionNumber;
 			cacheObject<bool> zonesBypassed[208];
 			cacheObject<bool> areaBypassed;
-			cacheObject<std::vector<ZoneDefinition>> zoneDefinitions;
+			cacheObject<std::vector<SZoneDefinition>> zoneDefinitions;
 			cacheObject<std::vector<int>> zonePartitions;
 			//std::vector<zoneState> getZoneStates() = 0;
 			cacheObject<std::vector<ZoneState>> zoneStatus;

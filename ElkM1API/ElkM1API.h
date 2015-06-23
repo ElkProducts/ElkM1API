@@ -99,7 +99,7 @@ namespace Elk
 		};
 
 		// Describes the function of zones. Warning: Different between AZ and ZD, must reject invalid ones.
-		enum ZoneDefinition{
+		enum ZoneDefinition {
 			ZONEDEF_DISABLED = 0,
 			ZONEDEF_BURGLAR_ENTRY_1 = 1,
 			ZONEDEF_BURGLAR_ENTRY_2 = 2,
@@ -139,6 +139,11 @@ namespace Elk
 			ZONEDEF_INTERCOM_KEY
 		};
 
+		// Workaround for SWIG vector wrapping
+		struct SZoneDefinition {
+			ZoneDefinition zd;
+		};
+
 		// Reply whether or not the user code change was successful.
 		enum UserCodeSuccess
 		{
@@ -174,6 +179,10 @@ namespace Elk
 			CHIMEMODE_CHIMEONLY,
 			CHIMEMODE_VOICEONLY,
 			CHIMEMODE_BOTH
+		};
+
+		struct SChimeMode {
+			ChimeMode cm;
 		};
 
 		enum FKEY {
@@ -368,7 +377,7 @@ namespace Elk
 		// Retrieve arm status for all partitions.
 		virtual ELKM1API std::vector<ArmStatus> getArmStatus() = 0;
 		// Get zone alarms. If not 'ZONEDEF_DISABLED' then the area is in alarm.
-		virtual ELKM1API std::vector<ZoneDefinition> getZoneAlarms() = 0;
+		virtual ELKM1API std::vector<Elk::M1API::SZoneDefinition> getZoneAlarms() = 0;
 		// Retrieve the audio data for a device in audioZone 0-15
 		virtual ELKM1API AudioData getAudioData(int audioZone) = 0;
 		// Enable or disable a control output.
@@ -398,7 +407,7 @@ namespace Elk
 		// Get status of keys on keypads
 		virtual ELKM1API KeypadFkeyStatus getKeypadFkeyStatus(int keypad) = 0;
 		// Press a function key.
-		virtual ELKM1API std::vector<ChimeMode> pressFunctionKey(int keypad, FKEY key) = 0;
+		virtual ELKM1API std::vector<Elk::M1API::SChimeMode> pressFunctionKey(int keypad, FKEY key) = 0;
 		// Collect log data. Note: getLogs() can take up to a minute.
 		virtual ELKM1API LogEntry getLogData(int index) = 0;
 		virtual ELKM1API std::vector<M1API::LogEntry> getLogs() = 0;
@@ -441,7 +450,7 @@ namespace Elk
 		virtual ELKM1API bool zoneBypass(int zone, std::string pinCode) = 0;
 		virtual ELKM1API bool setAreaBypass(int area, std::string pinCode, bool bypassed) = 0;
 		// Get the zone definitions.
-		virtual ELKM1API std::vector<ZoneDefinition> getZoneDefinitions() = 0;
+		virtual ELKM1API std::vector<Elk::M1API::SZoneDefinition> getZoneDefinitions() = 0;
 		// Get the zone areas, 0-7. 
 		virtual ELKM1API std::vector<int> getZonePartitions() = 0;
 		// Get the zone statuses.

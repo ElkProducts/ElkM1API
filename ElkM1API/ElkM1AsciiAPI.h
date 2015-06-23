@@ -100,13 +100,13 @@ namespace Elk {
 		ELKM1API std::vector<Elk::M1API::ArmStatus> getArmStatus();
 		ELKM1API std::vector<Elk::M1API::ArmStatus> getArmStatus(bool ignoreCache, int timeoutMillis);
 		ELKM1API std::vector<bool> getControlOutputs();
-		ELKM1API std::vector<Elk::M1API::ChimeMode> pressFunctionKey(int keypad, Elk::M1API::FKEY key);
+		ELKM1API std::vector<Elk::M1API::SChimeMode> pressFunctionKey(int keypad, Elk::M1API::FKEY key);
 		ELKM1API std::vector<int> getKeypadAreas();
 		ELKM1API std::vector<int> getZonePartitions();
 		ELKM1API std::vector<int> getM1VersionNumber();
 		ELKM1API std::vector<uint16_t> getCustomValues();
-		ELKM1API std::vector<Elk::M1API::ZoneDefinition> getZoneAlarms();
-		ELKM1API std::vector<Elk::M1API::ZoneDefinition> getZoneDefinitions();
+		ELKM1API std::vector<Elk::M1API::SZoneDefinition> getZoneAlarms();
+		ELKM1API std::vector<Elk::M1API::SZoneDefinition> getZoneDefinitions();
 		ELKM1API std::vector<Elk::M1API::ZoneState> getZoneStatuses();
 		ELKM1API std::string getTextDescription(Elk::M1API::TextDescriptionType type, int index);
 		ELKM1API std::vector<char> getOmnistat2Data(std::vector<char> request);

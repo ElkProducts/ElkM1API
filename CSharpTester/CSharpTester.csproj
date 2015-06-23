@@ -66,6 +66,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ElkM1API\csharp\ArmStatusVector.cs">
+      <Link>csharp\ArmStatusVector.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\BoolVector.cs">
+      <Link>csharp\BoolVector.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\CharVector.cs">
+      <Link>csharp\CharVector.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\ChimeModeVector.cs">
+      <Link>csharp\ChimeModeVector.cs</Link>
+    </Compile>
     <Compile Include="..\ElkM1API\csharp\ElkM1API.cs">
       <Link>csharp\ElkM1API.cs</Link>
     </Compile>
@@ -74,6 +86,12 @@
     </Compile>
     <Compile Include="..\ElkM1API\csharp\ElkTCP.cs">
       <Link>csharp\ElkTCP.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\IntVector.cs">
+      <Link>csharp\IntVector.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\LogEntryVector.cs">
+      <Link>csharp\LogEntryVector.cs</Link>
     </Compile>
     <Compile Include="..\ElkM1API\csharp\M1API.cs">
       <Link>csharp\M1API.cs</Link>
@@ -96,48 +114,6 @@
     <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_Elk__M1API__KeypadFkeyStatus__FkeyIllumination.cs">
       <Link>csharp\SWIGTYPE_p_Elk__M1API__KeypadFkeyStatus__FkeyIllumination.cs</Link>
     </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_Elk__SirenPhrase.cs">
-      <Link>csharp\SWIGTYPE_p_Elk__SirenPhrase.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_Elk__SirenWord.cs">
-      <Link>csharp\SWIGTYPE_p_Elk__SirenWord.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_bool_208_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_bool_208_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ArmStatus_8_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ArmStatus_8_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ChimeMode_8_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ChimeMode_8_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__LogEntry_511_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__LogEntry_511_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ZoneDefinition_208_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ZoneDefinition_208_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ZoneState_208_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_Elk__M1API__ZoneState_208_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_int_16_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_int_16_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_int_208_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_int_208_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_int_3_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_int_3_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_int_64_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_int_64_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_uint16_t_20_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_uint16_t_20_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__arrayT_unsigned_short_20_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__arrayT_unsigned_short_20_t.cs</Link>
-    </Compile>
     <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__functionT_void_fboolF_t.cs">
       <Link>csharp\SWIGTYPE_p_std__functionT_void_fboolF_t.cs</Link>
     </Compile>
@@ -147,20 +123,14 @@
     <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__functionT_void_fintF_t.cs">
       <Link>csharp\SWIGTYPE_p_std__functionT_void_fintF_t.cs</Link>
     </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__shared_ptrT_Elk__M1Connection_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__shared_ptrT_Elk__M1Connection_t.cs</Link>
+    <Compile Include="..\ElkM1API\csharp\UShortVector.cs">
+      <Link>csharp\UShortVector.cs</Link>
     </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__string.cs">
-      <Link>csharp\SWIGTYPE_p_std__string.cs</Link>
+    <Compile Include="..\ElkM1API\csharp\ZoneDefinitionVector.cs">
+      <Link>csharp\ZoneDefinitionVector.cs</Link>
     </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__vectorT_char_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__vectorT_char_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_uint16_t.cs">
-      <Link>csharp\SWIGTYPE_p_uint16_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_uint8_t.cs">
-      <Link>csharp\SWIGTYPE_p_uint8_t.cs</Link>
+    <Compile Include="..\ElkM1API\csharp\ZoneStateVector.cs">
+      <Link>csharp\ZoneStateVector.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -172,17 +172,17 @@ namespace Elk {
 		});
 		// Alarms by zone
 		handleMessageTable.emplace("AZ", [this](std::string message) {
-			std::vector<ZoneDefinition> zones(208);
+			std::vector<SZoneDefinition> zones(208);
 			for (int i = 0; i < 208; i++) {
-				zones[i] = (ZoneDefinition)(message.at(2 + i) - '0');
+				zones[i].zd = (ZoneDefinition)(message.at(2 + i) - '0');
 			}
 			m1cache.zoneAlarms.set(zones);
 		});
 		// Definitions by zone
 		handleMessageTable.emplace("ZD", [this](std::string message) {
-			std::vector<ZoneDefinition> zones(208);
+			std::vector<SZoneDefinition> zones(208);
 			for (int i = 0; i < 208; i++) {
-				zones[i] = (ZoneDefinition)(message.at(2 + i) - '0');
+				zones[i].zd = (ZoneDefinition)(message.at(2 + i) - '0');
 			}
 			m1cache.zoneDefinitions.set(zones);
 		});
@@ -363,9 +363,9 @@ namespace Elk {
 		});
 		// Keypad function press TODO: Test
 		handleMessageTable.emplace("KF", [this](std::string message) {
-			std::vector<ChimeMode> chimeModes(8);
+			std::vector<SChimeMode> chimeModes(8);
 			for (int i = 0; i < 8; i++) {
-				chimeModes[i] = (ChimeMode)(message.at(5 + i) - '0');
+				chimeModes[i].cm = (ChimeMode)(message.at(5 + i) - '0');
 			}
 			m1cache.chimeModes.set(chimeModes);
 		});
@@ -474,9 +474,9 @@ namespace Elk {
 
 	// TODO: Make forEach implementations for all device types.
 	void M1AsciiAPI::forEachConfiguredZone(std::function<void(int)> funct) {
-		std::vector<ZoneDefinition> zdef = getZoneDefinitions();
+		std::vector<SZoneDefinition> zdef = getZoneDefinitions();
 		for (int i = 0; i < zdef.size(); i++) {
-			if (zdef[i] != ZONEDEF_DISABLED) {
+			if (zdef[i].zd != ZONEDEF_DISABLED) {
 				funct(i);
 			}
 		}
@@ -694,7 +694,7 @@ namespace Elk {
 	std::vector<bool> M1AsciiAPI::getControlOutputs() { 
 		return cacheRequest(m1cache.controlOutputs, (AsciiMessage)"cs00", true, 0);
 	}
-	std::vector<M1AsciiAPI::ChimeMode> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
+	std::vector<M1AsciiAPI::SChimeMode> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
 		if (!versionAtLeast(4, 2, 5)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -745,13 +745,13 @@ namespace Elk {
 		}
 		return reply;
 	}
-	std::vector<M1AsciiAPI::ZoneDefinition> M1AsciiAPI::getZoneAlarms() { 
+	std::vector<M1AsciiAPI::SZoneDefinition> M1AsciiAPI::getZoneAlarms() { 
 		if (!versionAtLeast(4, 3, 9)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
 		return cacheRequest(m1cache.zoneAlarms, (AsciiMessage)"az00", true, 0);
 	}
-	std::vector<M1AsciiAPI::ZoneDefinition> M1AsciiAPI::getZoneDefinitions() { 
+	std::vector<M1AsciiAPI::SZoneDefinition> M1AsciiAPI::getZoneDefinitions() { 
 		if (!versionAtLeast(4, 2, 6)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}

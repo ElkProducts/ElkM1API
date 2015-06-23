@@ -300,6 +300,925 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_ElkM1API(SWIG_CSharpStrin
 
 #include <stdint.h>		// Use the C99 official header
 
+SWIGINTERN std::vector< bool > *new_std_vector_Sl_bool_Sg___SWIG_2(int capacity){
+        std::vector< bool >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< bool >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN bool std_vector_Sl_bool_Sg__getitemcopy(std::vector< bool > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN bool std_vector_Sl_bool_Sg__getitem(std::vector< bool > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__setitem(std::vector< bool > *self,int index,bool const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__AddRange(std::vector< bool > *self,std::vector< bool > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< bool > *std_vector_Sl_bool_Sg__GetRange(std::vector< bool > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< bool >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__Insert(std::vector< bool > *self,int index,bool const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__InsertRange(std::vector< bool > *self,int index,std::vector< bool > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__RemoveAt(std::vector< bool > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__RemoveRange(std::vector< bool > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< bool > *std_vector_Sl_bool_Sg__Repeat(bool const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< bool >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__Reverse__SWIG_0(std::vector< bool > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__Reverse__SWIG_1(std::vector< bool > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_bool_Sg__SetRange(std::vector< bool > *self,int index,std::vector< bool > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN bool std_vector_Sl_bool_Sg__Contains(std::vector< bool > *self,bool const &value){
+        return std::find(self->begin(), self->end(), value) != self->end();
+      }
+SWIGINTERN int std_vector_Sl_bool_Sg__IndexOf(std::vector< bool > *self,bool const &value){
+        int index = -1;
+        std::vector< bool >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end())
+          index = (int)(it - self->begin());
+        return index;
+      }
+SWIGINTERN int std_vector_Sl_bool_Sg__LastIndexOf(std::vector< bool > *self,bool const &value){
+        int index = -1;
+        std::vector< bool >::reverse_iterator rit = std::find(self->rbegin(), self->rend(), value);
+        if (rit != self->rend())
+          index = (int)(self->rend() - 1 - rit);
+        return index;
+      }
+SWIGINTERN bool std_vector_Sl_bool_Sg__Remove(std::vector< bool > *self,bool const &value){
+        std::vector< bool >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end()) {
+          self->erase(it);
+	  return true;
+        }
+        return false;
+      }
+SWIGINTERN std::vector< char > *new_std_vector_Sl_char_Sg___SWIG_2(int capacity){
+        std::vector< char >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< char >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN char std_vector_Sl_char_Sg__getitemcopy(std::vector< char > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN char const &std_vector_Sl_char_Sg__getitem(std::vector< char > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__setitem(std::vector< char > *self,int index,char const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__AddRange(std::vector< char > *self,std::vector< char > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< char > *std_vector_Sl_char_Sg__GetRange(std::vector< char > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< char >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__Insert(std::vector< char > *self,int index,char const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__InsertRange(std::vector< char > *self,int index,std::vector< char > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__RemoveAt(std::vector< char > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__RemoveRange(std::vector< char > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< char > *std_vector_Sl_char_Sg__Repeat(char const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< char >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__Reverse__SWIG_0(std::vector< char > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__Reverse__SWIG_1(std::vector< char > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_char_Sg__SetRange(std::vector< char > *self,int index,std::vector< char > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN bool std_vector_Sl_char_Sg__Contains(std::vector< char > *self,char const &value){
+        return std::find(self->begin(), self->end(), value) != self->end();
+      }
+SWIGINTERN int std_vector_Sl_char_Sg__IndexOf(std::vector< char > *self,char const &value){
+        int index = -1;
+        std::vector< char >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end())
+          index = (int)(it - self->begin());
+        return index;
+      }
+SWIGINTERN int std_vector_Sl_char_Sg__LastIndexOf(std::vector< char > *self,char const &value){
+        int index = -1;
+        std::vector< char >::reverse_iterator rit = std::find(self->rbegin(), self->rend(), value);
+        if (rit != self->rend())
+          index = (int)(self->rend() - 1 - rit);
+        return index;
+      }
+SWIGINTERN bool std_vector_Sl_char_Sg__Remove(std::vector< char > *self,char const &value){
+        std::vector< char >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end()) {
+          self->erase(it);
+	  return true;
+        }
+        return false;
+      }
+SWIGINTERN std::vector< int > *new_std_vector_Sl_int_Sg___SWIG_2(int capacity){
+        std::vector< int >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< int >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN int std_vector_Sl_int_Sg__getitemcopy(std::vector< int > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN int const &std_vector_Sl_int_Sg__getitem(std::vector< int > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__setitem(std::vector< int > *self,int index,int const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__AddRange(std::vector< int > *self,std::vector< int > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< int > *std_vector_Sl_int_Sg__GetRange(std::vector< int > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< int >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__Insert(std::vector< int > *self,int index,int const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__InsertRange(std::vector< int > *self,int index,std::vector< int > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__RemoveAt(std::vector< int > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__RemoveRange(std::vector< int > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< int > *std_vector_Sl_int_Sg__Repeat(int const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< int >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__Reverse__SWIG_0(std::vector< int > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__Reverse__SWIG_1(std::vector< int > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_int_Sg__SetRange(std::vector< int > *self,int index,std::vector< int > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN bool std_vector_Sl_int_Sg__Contains(std::vector< int > *self,int const &value){
+        return std::find(self->begin(), self->end(), value) != self->end();
+      }
+SWIGINTERN int std_vector_Sl_int_Sg__IndexOf(std::vector< int > *self,int const &value){
+        int index = -1;
+        std::vector< int >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end())
+          index = (int)(it - self->begin());
+        return index;
+      }
+SWIGINTERN int std_vector_Sl_int_Sg__LastIndexOf(std::vector< int > *self,int const &value){
+        int index = -1;
+        std::vector< int >::reverse_iterator rit = std::find(self->rbegin(), self->rend(), value);
+        if (rit != self->rend())
+          index = (int)(self->rend() - 1 - rit);
+        return index;
+      }
+SWIGINTERN bool std_vector_Sl_int_Sg__Remove(std::vector< int > *self,int const &value){
+        std::vector< int >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end()) {
+          self->erase(it);
+	  return true;
+        }
+        return false;
+      }
+SWIGINTERN std::vector< uint16_t > *new_std_vector_Sl_uint16_t_Sg___SWIG_2(int capacity){
+        std::vector< unsigned short >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< unsigned short >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN unsigned short std_vector_Sl_uint16_t_Sg__getitemcopy(std::vector< uint16_t > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN unsigned short const &std_vector_Sl_uint16_t_Sg__getitem(std::vector< uint16_t > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__setitem(std::vector< uint16_t > *self,int index,unsigned short const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__AddRange(std::vector< uint16_t > *self,std::vector< unsigned short > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< unsigned short > *std_vector_Sl_uint16_t_Sg__GetRange(std::vector< uint16_t > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< unsigned short >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__Insert(std::vector< uint16_t > *self,int index,unsigned short const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__InsertRange(std::vector< uint16_t > *self,int index,std::vector< unsigned short > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__RemoveAt(std::vector< uint16_t > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__RemoveRange(std::vector< uint16_t > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< unsigned short > *std_vector_Sl_uint16_t_Sg__Repeat(unsigned short const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< unsigned short >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__Reverse__SWIG_0(std::vector< uint16_t > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__Reverse__SWIG_1(std::vector< uint16_t > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_uint16_t_Sg__SetRange(std::vector< uint16_t > *self,int index,std::vector< unsigned short > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN bool std_vector_Sl_uint16_t_Sg__Contains(std::vector< uint16_t > *self,unsigned short const &value){
+        return std::find(self->begin(), self->end(), value) != self->end();
+      }
+SWIGINTERN int std_vector_Sl_uint16_t_Sg__IndexOf(std::vector< uint16_t > *self,unsigned short const &value){
+        int index = -1;
+        std::vector< unsigned short >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end())
+          index = (int)(it - self->begin());
+        return index;
+      }
+SWIGINTERN int std_vector_Sl_uint16_t_Sg__LastIndexOf(std::vector< uint16_t > *self,unsigned short const &value){
+        int index = -1;
+        std::vector< unsigned short >::reverse_iterator rit = std::find(self->rbegin(), self->rend(), value);
+        if (rit != self->rend())
+          index = (int)(self->rend() - 1 - rit);
+        return index;
+      }
+SWIGINTERN bool std_vector_Sl_uint16_t_Sg__Remove(std::vector< uint16_t > *self,unsigned short const &value){
+        std::vector< unsigned short >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end()) {
+          self->erase(it);
+	  return true;
+        }
+        return false;
+      }
+SWIGINTERN std::vector< Elk::M1API::LogEntry > *new_std_vector_Sl_Elk_M1API_LogEntry_Sg___SWIG_2(int capacity){
+        std::vector< Elk::M1API::LogEntry >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< Elk::M1API::LogEntry >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN Elk::M1API::LogEntry std_vector_Sl_Elk_M1API_LogEntry_Sg__getitemcopy(std::vector< Elk::M1API::LogEntry > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN Elk::M1API::LogEntry const &std_vector_Sl_Elk_M1API_LogEntry_Sg__getitem(std::vector< Elk::M1API::LogEntry > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__setitem(std::vector< Elk::M1API::LogEntry > *self,int index,Elk::M1API::LogEntry const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__AddRange(std::vector< Elk::M1API::LogEntry > *self,std::vector< Elk::M1API::LogEntry > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< Elk::M1API::LogEntry > *std_vector_Sl_Elk_M1API_LogEntry_Sg__GetRange(std::vector< Elk::M1API::LogEntry > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< Elk::M1API::LogEntry >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Insert(std::vector< Elk::M1API::LogEntry > *self,int index,Elk::M1API::LogEntry const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__InsertRange(std::vector< Elk::M1API::LogEntry > *self,int index,std::vector< Elk::M1API::LogEntry > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveAt(std::vector< Elk::M1API::LogEntry > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveRange(std::vector< Elk::M1API::LogEntry > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< Elk::M1API::LogEntry > *std_vector_Sl_Elk_M1API_LogEntry_Sg__Repeat(Elk::M1API::LogEntry const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< Elk::M1API::LogEntry >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::LogEntry > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::LogEntry > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__SetRange(std::vector< Elk::M1API::LogEntry > *self,int index,std::vector< Elk::M1API::LogEntry > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN std::vector< Elk::M1API::ArmStatus > *new_std_vector_Sl_Elk_M1API_ArmStatus_Sg___SWIG_2(int capacity){
+        std::vector< Elk::M1API::ArmStatus >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< Elk::M1API::ArmStatus >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN Elk::M1API::ArmStatus std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitemcopy(std::vector< Elk::M1API::ArmStatus > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN Elk::M1API::ArmStatus const &std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitem(std::vector< Elk::M1API::ArmStatus > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__setitem(std::vector< Elk::M1API::ArmStatus > *self,int index,Elk::M1API::ArmStatus const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__AddRange(std::vector< Elk::M1API::ArmStatus > *self,std::vector< Elk::M1API::ArmStatus > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< Elk::M1API::ArmStatus > *std_vector_Sl_Elk_M1API_ArmStatus_Sg__GetRange(std::vector< Elk::M1API::ArmStatus > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< Elk::M1API::ArmStatus >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Insert(std::vector< Elk::M1API::ArmStatus > *self,int index,Elk::M1API::ArmStatus const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__InsertRange(std::vector< Elk::M1API::ArmStatus > *self,int index,std::vector< Elk::M1API::ArmStatus > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveAt(std::vector< Elk::M1API::ArmStatus > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveRange(std::vector< Elk::M1API::ArmStatus > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< Elk::M1API::ArmStatus > *std_vector_Sl_Elk_M1API_ArmStatus_Sg__Repeat(Elk::M1API::ArmStatus const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< Elk::M1API::ArmStatus >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::ArmStatus > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::ArmStatus > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__SetRange(std::vector< Elk::M1API::ArmStatus > *self,int index,std::vector< Elk::M1API::ArmStatus > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN std::vector< Elk::M1API::ZoneState > *new_std_vector_Sl_Elk_M1API_ZoneState_Sg___SWIG_2(int capacity){
+        std::vector< Elk::M1API::ZoneState >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< Elk::M1API::ZoneState >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN Elk::M1API::ZoneState std_vector_Sl_Elk_M1API_ZoneState_Sg__getitemcopy(std::vector< Elk::M1API::ZoneState > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN Elk::M1API::ZoneState const &std_vector_Sl_Elk_M1API_ZoneState_Sg__getitem(std::vector< Elk::M1API::ZoneState > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__setitem(std::vector< Elk::M1API::ZoneState > *self,int index,Elk::M1API::ZoneState const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__AddRange(std::vector< Elk::M1API::ZoneState > *self,std::vector< Elk::M1API::ZoneState > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< Elk::M1API::ZoneState > *std_vector_Sl_Elk_M1API_ZoneState_Sg__GetRange(std::vector< Elk::M1API::ZoneState > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< Elk::M1API::ZoneState >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Insert(std::vector< Elk::M1API::ZoneState > *self,int index,Elk::M1API::ZoneState const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__InsertRange(std::vector< Elk::M1API::ZoneState > *self,int index,std::vector< Elk::M1API::ZoneState > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveAt(std::vector< Elk::M1API::ZoneState > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveRange(std::vector< Elk::M1API::ZoneState > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< Elk::M1API::ZoneState > *std_vector_Sl_Elk_M1API_ZoneState_Sg__Repeat(Elk::M1API::ZoneState const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< Elk::M1API::ZoneState >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::ZoneState > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::ZoneState > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__SetRange(std::vector< Elk::M1API::ZoneState > *self,int index,std::vector< Elk::M1API::ZoneState > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN std::vector< Elk::M1API::SChimeMode > *new_std_vector_Sl_Elk_M1API_SChimeMode_Sg___SWIG_2(int capacity){
+        std::vector< Elk::M1API::SChimeMode >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< Elk::M1API::SChimeMode >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN Elk::M1API::SChimeMode std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitemcopy(std::vector< Elk::M1API::SChimeMode > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN Elk::M1API::SChimeMode const &std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitem(std::vector< Elk::M1API::SChimeMode > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__setitem(std::vector< Elk::M1API::SChimeMode > *self,int index,Elk::M1API::SChimeMode const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__AddRange(std::vector< Elk::M1API::SChimeMode > *self,std::vector< Elk::M1API::SChimeMode > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< Elk::M1API::SChimeMode > *std_vector_Sl_Elk_M1API_SChimeMode_Sg__GetRange(std::vector< Elk::M1API::SChimeMode > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< Elk::M1API::SChimeMode >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Insert(std::vector< Elk::M1API::SChimeMode > *self,int index,Elk::M1API::SChimeMode const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__InsertRange(std::vector< Elk::M1API::SChimeMode > *self,int index,std::vector< Elk::M1API::SChimeMode > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveAt(std::vector< Elk::M1API::SChimeMode > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveRange(std::vector< Elk::M1API::SChimeMode > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< Elk::M1API::SChimeMode > *std_vector_Sl_Elk_M1API_SChimeMode_Sg__Repeat(Elk::M1API::SChimeMode const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< Elk::M1API::SChimeMode >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::SChimeMode > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::SChimeMode > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__SetRange(std::vector< Elk::M1API::SChimeMode > *self,int index,std::vector< Elk::M1API::SChimeMode > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN std::vector< Elk::M1API::SZoneDefinition > *new_std_vector_Sl_Elk_M1API_SZoneDefinition_Sg___SWIG_2(int capacity){
+        std::vector< Elk::M1API::SZoneDefinition >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< Elk::M1API::SZoneDefinition >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN Elk::M1API::SZoneDefinition std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitemcopy(std::vector< Elk::M1API::SZoneDefinition > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN Elk::M1API::SZoneDefinition const &std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitem(std::vector< Elk::M1API::SZoneDefinition > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__setitem(std::vector< Elk::M1API::SZoneDefinition > *self,int index,Elk::M1API::SZoneDefinition const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__AddRange(std::vector< Elk::M1API::SZoneDefinition > *self,std::vector< Elk::M1API::SZoneDefinition > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< Elk::M1API::SZoneDefinition > *std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__GetRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< Elk::M1API::SZoneDefinition >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Insert(std::vector< Elk::M1API::SZoneDefinition > *self,int index,Elk::M1API::SZoneDefinition const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__InsertRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,std::vector< Elk::M1API::SZoneDefinition > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveAt(std::vector< Elk::M1API::SZoneDefinition > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< Elk::M1API::SZoneDefinition > *std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Repeat(Elk::M1API::SZoneDefinition const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< Elk::M1API::SZoneDefinition >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::SZoneDefinition > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::SZoneDefinition > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__SetRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,std::vector< Elk::M1API::SZoneDefinition > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
 
 struct SWIG_null_deleter {
   void operator() (void const *) const {
@@ -314,6 +1233,3730 @@ struct SWIG_null_deleter {
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_Clear(void * jarg1) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_Add(void * jarg1, unsigned int jarg2) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  bool temp2 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  temp2 = jarg2 ? true : false; 
+  arg2 = &temp2; 
+  (arg1)->push_back((bool const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_BoolVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  result = ((std::vector< bool > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_BoolVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  result = ((std::vector< bool > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type arg2 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (std::vector< bool >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolVector__SWIG_0() {
+  void * jresult ;
+  std::vector< bool > *result = 0 ;
+  
+  result = (std::vector< bool > *)new std::vector< bool >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< bool > *arg1 = 0 ;
+  std::vector< bool > *result = 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< bool > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< bool > *)new std::vector< bool >((std::vector< bool > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< bool > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< bool > *)new_std_vector_Sl_bool_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_BoolVector_getitemcopy(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  bool result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (bool)std_vector_Sl_bool_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_BoolVector_getitem(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  bool result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (bool)std_vector_Sl_bool_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_setitem(void * jarg1, int jarg2, unsigned int jarg3) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  bool *arg3 = 0 ;
+  bool temp3 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = jarg3 ? true : false; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_bool_Sg__setitem(arg1,arg2,(bool const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool > *arg2 = 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (std::vector< bool > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< bool > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_bool_Sg__AddRange(arg1,(std::vector< bool > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_BoolVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< bool > *result = 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< bool > *)std_vector_Sl_bool_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_Insert(void * jarg1, int jarg2, unsigned int jarg3) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  bool *arg3 = 0 ;
+  bool temp3 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = jarg3 ? true : false; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_bool_Sg__Insert(arg1,arg2,(bool const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  std::vector< bool > *arg3 = 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< bool > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< bool > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_bool_Sg__InsertRange(arg1,arg2,(std::vector< bool > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_bool_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_bool_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_BoolVector_Repeat(unsigned int jarg1, int jarg2) {
+  void * jresult ;
+  bool *arg1 = 0 ;
+  int arg2 ;
+  bool temp1 ;
+  std::vector< bool > *result = 0 ;
+  
+  temp1 = jarg1 ? true : false; 
+  arg1 = &temp1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< bool > *)std_vector_Sl_bool_Sg__Repeat((bool const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  std_vector_Sl_bool_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_bool_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  int arg2 ;
+  std::vector< bool > *arg3 = 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< bool > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< bool > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_bool_Sg__SetRange(arg1,arg2,(std::vector< bool > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_BoolVector_Contains(void * jarg1, unsigned int jarg2) {
+  unsigned int jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  bool temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  temp2 = jarg2 ? true : false; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_bool_Sg__Contains(arg1,(bool const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_BoolVector_IndexOf(void * jarg1, unsigned int jarg2) {
+  int jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  bool temp2 ;
+  int result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  temp2 = jarg2 ? true : false; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_bool_Sg__IndexOf(arg1,(bool const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_BoolVector_LastIndexOf(void * jarg1, unsigned int jarg2) {
+  int jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  bool temp2 ;
+  int result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  temp2 = jarg2 ? true : false; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_bool_Sg__LastIndexOf(arg1,(bool const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_BoolVector_Remove(void * jarg1, unsigned int jarg2) {
+  unsigned int jresult ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  bool temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  temp2 = jarg2 ? true : false; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_bool_Sg__Remove(arg1,(bool const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolVector(void * jarg1) {
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  
+  arg1 = (std::vector< bool > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_Clear(void * jarg1) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_Add(void * jarg1, char jarg2) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  char *arg2 = 0 ;
+  char temp2 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  temp2 = (char)jarg2; 
+  arg2 = &temp2; 
+  (arg1)->push_back((char const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_CharVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  std::vector< char >::size_type result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  result = ((std::vector< char > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_CharVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  std::vector< char >::size_type result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  result = ((std::vector< char > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  std::vector< char >::size_type arg2 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (std::vector< char >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CharVector__SWIG_0() {
+  void * jresult ;
+  std::vector< char > *result = 0 ;
+  
+  result = (std::vector< char > *)new std::vector< char >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CharVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< char > *arg1 = 0 ;
+  std::vector< char > *result = 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< char > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< char > *)new std::vector< char >((std::vector< char > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_CharVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< char > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< char > *)new_std_vector_Sl_char_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT char SWIGSTDCALL CSharp_CharVector_getitemcopy(void * jarg1, int jarg2) {
+  char jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  char result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (char)std_vector_Sl_char_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT char SWIGSTDCALL CSharp_CharVector_getitem(void * jarg1, int jarg2) {
+  char jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (char *) &std_vector_Sl_char_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = *result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_setitem(void * jarg1, int jarg2, char jarg3) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  char *arg3 = 0 ;
+  char temp3 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (char)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_char_Sg__setitem(arg1,arg2,(char const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  std::vector< char > *arg2 = 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (std::vector< char > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< char > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_char_Sg__AddRange(arg1,(std::vector< char > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_CharVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< char > *result = 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< char > *)std_vector_Sl_char_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_Insert(void * jarg1, int jarg2, char jarg3) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  char *arg3 = 0 ;
+  char temp3 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (char)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_char_Sg__Insert(arg1,arg2,(char const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  std::vector< char > *arg3 = 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< char > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< char > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_char_Sg__InsertRange(arg1,arg2,(std::vector< char > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_char_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_char_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_CharVector_Repeat(char jarg1, int jarg2) {
+  void * jresult ;
+  char *arg1 = 0 ;
+  int arg2 ;
+  char temp1 ;
+  std::vector< char > *result = 0 ;
+  
+  temp1 = (char)jarg1; 
+  arg1 = &temp1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< char > *)std_vector_Sl_char_Sg__Repeat((char const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  std_vector_Sl_char_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_char_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_CharVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  int arg2 ;
+  std::vector< char > *arg3 = 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< char > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< char > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_char_Sg__SetRange(arg1,arg2,(std::vector< char > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_CharVector_Contains(void * jarg1, char jarg2) {
+  unsigned int jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  char *arg2 = 0 ;
+  char temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  temp2 = (char)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_char_Sg__Contains(arg1,(char const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_CharVector_IndexOf(void * jarg1, char jarg2) {
+  int jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  char *arg2 = 0 ;
+  char temp2 ;
+  int result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  temp2 = (char)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_char_Sg__IndexOf(arg1,(char const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_CharVector_LastIndexOf(void * jarg1, char jarg2) {
+  int jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  char *arg2 = 0 ;
+  char temp2 ;
+  int result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  temp2 = (char)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_char_Sg__LastIndexOf(arg1,(char const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_CharVector_Remove(void * jarg1, char jarg2) {
+  unsigned int jresult ;
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  char *arg2 = 0 ;
+  char temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  temp2 = (char)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_char_Sg__Remove(arg1,(char const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_CharVector(void * jarg1) {
+  std::vector< char > *arg1 = (std::vector< char > *) 0 ;
+  
+  arg1 = (std::vector< char > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_Clear(void * jarg1) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_Add(void * jarg1, int jarg2) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int *arg2 = 0 ;
+  int temp2 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  temp2 = (int)jarg2; 
+  arg2 = &temp2; 
+  (arg1)->push_back((int const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_IntVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int >::size_type result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  result = ((std::vector< int > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_IntVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int >::size_type result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  result = ((std::vector< int > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int >::size_type arg2 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (std::vector< int >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntVector__SWIG_0() {
+  void * jresult ;
+  std::vector< int > *result = 0 ;
+  
+  result = (std::vector< int > *)new std::vector< int >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< int > *arg1 = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< int > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< int > *)new std::vector< int >((std::vector< int > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< int > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< int > *)new_std_vector_Sl_int_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntVector_getitemcopy(void * jarg1, int jarg2) {
+  int jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (int)std_vector_Sl_int_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntVector_getitem(void * jarg1, int jarg2) {
+  int jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int *result = 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (int *) &std_vector_Sl_int_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = *result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_setitem(void * jarg1, int jarg2, int jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int *arg3 = 0 ;
+  int temp3 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (int)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_int_Sg__setitem(arg1,arg2,(int const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  std::vector< int > *arg2 = 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (std::vector< int > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< int > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_int_Sg__AddRange(arg1,(std::vector< int > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< int > *result = 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< int > *)std_vector_Sl_int_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_Insert(void * jarg1, int jarg2, int jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int *arg3 = 0 ;
+  int temp3 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (int)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_int_Sg__Insert(arg1,arg2,(int const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  std::vector< int > *arg3 = 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< int > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< int > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_int_Sg__InsertRange(arg1,arg2,(std::vector< int > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_int_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_int_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntVector_Repeat(int jarg1, int jarg2) {
+  void * jresult ;
+  int *arg1 = 0 ;
+  int arg2 ;
+  int temp1 ;
+  std::vector< int > *result = 0 ;
+  
+  temp1 = (int)jarg1; 
+  arg1 = &temp1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< int > *)std_vector_Sl_int_Sg__Repeat((int const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  std_vector_Sl_int_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_int_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int arg2 ;
+  std::vector< int > *arg3 = 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< int > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< int > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_int_Sg__SetRange(arg1,arg2,(std::vector< int > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_IntVector_Contains(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int *arg2 = 0 ;
+  int temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  temp2 = (int)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_int_Sg__Contains(arg1,(int const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntVector_IndexOf(void * jarg1, int jarg2) {
+  int jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int *arg2 = 0 ;
+  int temp2 ;
+  int result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  temp2 = (int)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_int_Sg__IndexOf(arg1,(int const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntVector_LastIndexOf(void * jarg1, int jarg2) {
+  int jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int *arg2 = 0 ;
+  int temp2 ;
+  int result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  temp2 = (int)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_int_Sg__LastIndexOf(arg1,(int const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_IntVector_Remove(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  int *arg2 = 0 ;
+  int temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  temp2 = (int)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_int_Sg__Remove(arg1,(int const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntVector(void * jarg1) {
+  std::vector< int > *arg1 = (std::vector< int > *) 0 ;
+  
+  arg1 = (std::vector< int > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_Clear(void * jarg1) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_Add(void * jarg1, unsigned short jarg2) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  unsigned short *arg2 = 0 ;
+  unsigned short temp2 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  temp2 = (unsigned short)jarg2; 
+  arg2 = &temp2; 
+  (arg1)->push_back((unsigned short const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_UShortVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  std::vector< unsigned short >::size_type result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  result = ((std::vector< uint16_t > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_UShortVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  std::vector< unsigned short >::size_type result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  result = ((std::vector< uint16_t > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  std::vector< unsigned short >::size_type arg2 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (std::vector< unsigned short >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_UShortVector__SWIG_0() {
+  void * jresult ;
+  std::vector< uint16_t > *result = 0 ;
+  
+  result = (std::vector< uint16_t > *)new std::vector< uint16_t >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_UShortVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< uint16_t > *arg1 = 0 ;
+  std::vector< uint16_t > *result = 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< uint16_t > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< uint16_t > *)new std::vector< uint16_t >((std::vector< uint16_t > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_UShortVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< uint16_t > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< uint16_t > *)new_std_vector_Sl_uint16_t_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_UShortVector_getitemcopy(void * jarg1, int jarg2) {
+  unsigned short jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  unsigned short result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (unsigned short)std_vector_Sl_uint16_t_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_UShortVector_getitem(void * jarg1, int jarg2) {
+  unsigned short jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  unsigned short *result = 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (unsigned short *) &std_vector_Sl_uint16_t_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = *result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_setitem(void * jarg1, int jarg2, unsigned short jarg3) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  unsigned short *arg3 = 0 ;
+  unsigned short temp3 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (unsigned short)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_uint16_t_Sg__setitem(arg1,arg2,(unsigned short const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  std::vector< unsigned short > *arg2 = 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (std::vector< unsigned short > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< unsigned short > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_uint16_t_Sg__AddRange(arg1,(std::vector< unsigned short > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_UShortVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< unsigned short > *result = 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< unsigned short > *)std_vector_Sl_uint16_t_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_Insert(void * jarg1, int jarg2, unsigned short jarg3) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  unsigned short *arg3 = 0 ;
+  unsigned short temp3 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (unsigned short)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_uint16_t_Sg__Insert(arg1,arg2,(unsigned short const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  std::vector< unsigned short > *arg3 = 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< unsigned short > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< unsigned short > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_uint16_t_Sg__InsertRange(arg1,arg2,(std::vector< unsigned short > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_uint16_t_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_uint16_t_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_UShortVector_Repeat(unsigned short jarg1, int jarg2) {
+  void * jresult ;
+  unsigned short *arg1 = 0 ;
+  int arg2 ;
+  unsigned short temp1 ;
+  std::vector< unsigned short > *result = 0 ;
+  
+  temp1 = (unsigned short)jarg1; 
+  arg1 = &temp1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< unsigned short > *)std_vector_Sl_uint16_t_Sg__Repeat((unsigned short const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  std_vector_Sl_uint16_t_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_uint16_t_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UShortVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  int arg2 ;
+  std::vector< unsigned short > *arg3 = 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< unsigned short > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< unsigned short > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_uint16_t_Sg__SetRange(arg1,arg2,(std::vector< unsigned short > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_UShortVector_Contains(void * jarg1, unsigned short jarg2) {
+  unsigned int jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  unsigned short *arg2 = 0 ;
+  unsigned short temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  temp2 = (unsigned short)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_uint16_t_Sg__Contains(arg1,(unsigned short const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_UShortVector_IndexOf(void * jarg1, unsigned short jarg2) {
+  int jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  unsigned short *arg2 = 0 ;
+  unsigned short temp2 ;
+  int result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  temp2 = (unsigned short)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_uint16_t_Sg__IndexOf(arg1,(unsigned short const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_UShortVector_LastIndexOf(void * jarg1, unsigned short jarg2) {
+  int jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  unsigned short *arg2 = 0 ;
+  unsigned short temp2 ;
+  int result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  temp2 = (unsigned short)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_uint16_t_Sg__LastIndexOf(arg1,(unsigned short const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_UShortVector_Remove(void * jarg1, unsigned short jarg2) {
+  unsigned int jresult ;
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  unsigned short *arg2 = 0 ;
+  unsigned short temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  temp2 = (unsigned short)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_uint16_t_Sg__Remove(arg1,(unsigned short const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_UShortVector(void * jarg1) {
+  std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
+  
+  arg1 = (std::vector< uint16_t > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Clear(void * jarg1) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Add(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  Elk::M1API::LogEntry *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (Elk::M1API::LogEntry *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((Elk::M1API::LogEntry const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_LogEntryVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::M1API::LogEntry >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  result = ((std::vector< Elk::M1API::LogEntry > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_LogEntryVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::M1API::LogEntry >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  result = ((std::vector< Elk::M1API::LogEntry > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::M1API::LogEntry >::size_type arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::LogEntry >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_0() {
+  void * jresult ;
+  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  
+  result = (std::vector< Elk::M1API::LogEntry > *)new std::vector< Elk::M1API::LogEntry >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< Elk::M1API::LogEntry > *arg1 = 0 ;
+  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< Elk::M1API::LogEntry > *)new std::vector< Elk::M1API::LogEntry >((std::vector< Elk::M1API::LogEntry > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< Elk::M1API::LogEntry > *)new_std_vector_Sl_Elk_M1API_LogEntry_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  Elk::M1API::LogEntry result;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_Elk_M1API_LogEntry_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new Elk::M1API::LogEntry((const Elk::M1API::LogEntry &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  Elk::M1API::LogEntry *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (Elk::M1API::LogEntry *) &std_vector_Sl_Elk_M1API_LogEntry_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  Elk::M1API::LogEntry *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::LogEntry *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__setitem(arg1,arg2,(Elk::M1API::LogEntry const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::M1API::LogEntry > *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::LogEntry > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_Elk_M1API_LogEntry_Sg__AddRange(arg1,(std::vector< Elk::M1API::LogEntry > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< Elk::M1API::LogEntry > *)std_vector_Sl_Elk_M1API_LogEntry_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  Elk::M1API::LogEntry *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::LogEntry *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__Insert(arg1,arg2,(Elk::M1API::LogEntry const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::LogEntry > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::LogEntry > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::LogEntry > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API::LogEntry *arg1 = 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  
+  arg1 = (Elk::M1API::LogEntry *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< Elk::M1API::LogEntry > *)std_vector_Sl_Elk_M1API_LogEntry_Sg__Repeat((Elk::M1API::LogEntry const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::LogEntry > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::LogEntry > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_LogEntry_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::LogEntry > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogEntryVector(void * jarg1) {
+  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Clear(void * jarg1) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Add(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  Elk::M1API::ArmStatus *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (Elk::M1API::ArmStatus *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((Elk::M1API::ArmStatus const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ArmStatusVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::M1API::ArmStatus >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  result = ((std::vector< Elk::M1API::ArmStatus > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ArmStatusVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::M1API::ArmStatus >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  result = ((std::vector< Elk::M1API::ArmStatus > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::M1API::ArmStatus >::size_type arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::ArmStatus >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_0() {
+  void * jresult ;
+  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  
+  result = (std::vector< Elk::M1API::ArmStatus > *)new std::vector< Elk::M1API::ArmStatus >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< Elk::M1API::ArmStatus > *arg1 = 0 ;
+  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< Elk::M1API::ArmStatus > *)new std::vector< Elk::M1API::ArmStatus >((std::vector< Elk::M1API::ArmStatus > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< Elk::M1API::ArmStatus > *)new_std_vector_Sl_Elk_M1API_ArmStatus_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ArmStatus result;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new Elk::M1API::ArmStatus((const Elk::M1API::ArmStatus &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ArmStatus *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (Elk::M1API::ArmStatus *) &std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ArmStatus *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::ArmStatus *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__setitem(arg1,arg2,(Elk::M1API::ArmStatus const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::M1API::ArmStatus > *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::ArmStatus > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_Elk_M1API_ArmStatus_Sg__AddRange(arg1,(std::vector< Elk::M1API::ArmStatus > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< Elk::M1API::ArmStatus > *)std_vector_Sl_Elk_M1API_ArmStatus_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ArmStatus *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::ArmStatus *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__Insert(arg1,arg2,(Elk::M1API::ArmStatus const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::ArmStatus > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::ArmStatus > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::ArmStatus > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API::ArmStatus *arg1 = 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  
+  arg1 = (Elk::M1API::ArmStatus *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< Elk::M1API::ArmStatus > *)std_vector_Sl_Elk_M1API_ArmStatus_Sg__Repeat((Elk::M1API::ArmStatus const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::ArmStatus > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::ArmStatus > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ArmStatus_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::ArmStatus > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ArmStatusVector(void * jarg1) {
+  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Clear(void * jarg1) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Add(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  Elk::M1API::ZoneState *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (Elk::M1API::ZoneState *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((Elk::M1API::ZoneState const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneStateVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::M1API::ZoneState >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  result = ((std::vector< Elk::M1API::ZoneState > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneStateVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::M1API::ZoneState >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  result = ((std::vector< Elk::M1API::ZoneState > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::M1API::ZoneState >::size_type arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::ZoneState >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_0() {
+  void * jresult ;
+  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  
+  result = (std::vector< Elk::M1API::ZoneState > *)new std::vector< Elk::M1API::ZoneState >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< Elk::M1API::ZoneState > *arg1 = 0 ;
+  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< Elk::M1API::ZoneState > *)new std::vector< Elk::M1API::ZoneState >((std::vector< Elk::M1API::ZoneState > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< Elk::M1API::ZoneState > *)new_std_vector_Sl_Elk_M1API_ZoneState_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ZoneState result;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_Elk_M1API_ZoneState_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new Elk::M1API::ZoneState((const Elk::M1API::ZoneState &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ZoneState *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (Elk::M1API::ZoneState *) &std_vector_Sl_Elk_M1API_ZoneState_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ZoneState *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::ZoneState *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__setitem(arg1,arg2,(Elk::M1API::ZoneState const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::M1API::ZoneState > *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::ZoneState > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_Elk_M1API_ZoneState_Sg__AddRange(arg1,(std::vector< Elk::M1API::ZoneState > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< Elk::M1API::ZoneState > *)std_vector_Sl_Elk_M1API_ZoneState_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  Elk::M1API::ZoneState *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::ZoneState *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__Insert(arg1,arg2,(Elk::M1API::ZoneState const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::ZoneState > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::ZoneState > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::ZoneState > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API::ZoneState *arg1 = 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  
+  arg1 = (Elk::M1API::ZoneState *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< Elk::M1API::ZoneState > *)std_vector_Sl_Elk_M1API_ZoneState_Sg__Repeat((Elk::M1API::ZoneState const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::ZoneState > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::ZoneState > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_ZoneState_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::ZoneState > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneStateVector(void * jarg1) {
+  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Clear(void * jarg1) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Add(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  Elk::M1API::SChimeMode *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (Elk::M1API::SChimeMode *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((Elk::M1API::SChimeMode const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ChimeModeVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::M1API::SChimeMode >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  result = ((std::vector< Elk::M1API::SChimeMode > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ChimeModeVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::M1API::SChimeMode >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  result = ((std::vector< Elk::M1API::SChimeMode > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::M1API::SChimeMode >::size_type arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::SChimeMode >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_0() {
+  void * jresult ;
+  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  
+  result = (std::vector< Elk::M1API::SChimeMode > *)new std::vector< Elk::M1API::SChimeMode >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< Elk::M1API::SChimeMode > *arg1 = 0 ;
+  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< Elk::M1API::SChimeMode > *)new std::vector< Elk::M1API::SChimeMode >((std::vector< Elk::M1API::SChimeMode > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< Elk::M1API::SChimeMode > *)new_std_vector_Sl_Elk_M1API_SChimeMode_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SChimeMode result;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new Elk::M1API::SChimeMode((const Elk::M1API::SChimeMode &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SChimeMode *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (Elk::M1API::SChimeMode *) &std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SChimeMode *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::SChimeMode *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__setitem(arg1,arg2,(Elk::M1API::SChimeMode const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::M1API::SChimeMode > *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::SChimeMode > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_Elk_M1API_SChimeMode_Sg__AddRange(arg1,(std::vector< Elk::M1API::SChimeMode > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< Elk::M1API::SChimeMode > *)std_vector_Sl_Elk_M1API_SChimeMode_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SChimeMode *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::SChimeMode *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__Insert(arg1,arg2,(Elk::M1API::SChimeMode const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::SChimeMode > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::SChimeMode > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::SChimeMode > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API::SChimeMode *arg1 = 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  
+  arg1 = (Elk::M1API::SChimeMode *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< Elk::M1API::SChimeMode > *)std_vector_Sl_Elk_M1API_SChimeMode_Sg__Repeat((Elk::M1API::SChimeMode const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::SChimeMode > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::SChimeMode > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SChimeMode_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::SChimeMode > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ChimeModeVector(void * jarg1) {
+  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Clear(void * jarg1) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Add(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  Elk::M1API::SZoneDefinition *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (Elk::M1API::SZoneDefinition *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((Elk::M1API::SZoneDefinition const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneDefinitionVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::M1API::SZoneDefinition >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  result = ((std::vector< Elk::M1API::SZoneDefinition > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneDefinitionVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::M1API::SZoneDefinition >::size_type result;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  result = ((std::vector< Elk::M1API::SZoneDefinition > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::M1API::SZoneDefinition >::size_type arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::SZoneDefinition >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_0() {
+  void * jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  
+  result = (std::vector< Elk::M1API::SZoneDefinition > *)new std::vector< Elk::M1API::SZoneDefinition >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = 0 ;
+  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< Elk::M1API::SZoneDefinition > *)new std::vector< Elk::M1API::SZoneDefinition >((std::vector< Elk::M1API::SZoneDefinition > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< Elk::M1API::SZoneDefinition > *)new_std_vector_Sl_Elk_M1API_SZoneDefinition_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SZoneDefinition result;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new Elk::M1API::SZoneDefinition((const Elk::M1API::SZoneDefinition &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SZoneDefinition *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (Elk::M1API::SZoneDefinition *) &std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SZoneDefinition *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::SZoneDefinition *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__setitem(arg1,arg2,(Elk::M1API::SZoneDefinition const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg2 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__AddRange(arg1,(std::vector< Elk::M1API::SZoneDefinition > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< Elk::M1API::SZoneDefinition > *)std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  Elk::M1API::SZoneDefinition *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::M1API::SZoneDefinition *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Insert(arg1,arg2,(Elk::M1API::SZoneDefinition const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::SZoneDefinition > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API::SZoneDefinition *arg1 = 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  
+  arg1 = (Elk::M1API::SZoneDefinition *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< Elk::M1API::SZoneDefinition > *)std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Repeat((Elk::M1API::SZoneDefinition const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  int arg2 ;
+  std::vector< Elk::M1API::SZoneDefinition > *arg3 = 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::SZoneDefinition > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneDefinitionVector(void * jarg1) {
+  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  
+  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SZoneDefinition_zd_set(void * jarg1, int jarg2) {
+  Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
+  Elk::M1API::ZoneDefinition arg2 ;
+  
+  arg1 = (Elk::M1API::SZoneDefinition *)jarg1; 
+  arg2 = (Elk::M1API::ZoneDefinition)jarg2; 
+  if (arg1) (arg1)->zd = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_M1API_SZoneDefinition_zd_get(void * jarg1) {
+  int jresult ;
+  Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
+  Elk::M1API::ZoneDefinition result;
+  
+  arg1 = (Elk::M1API::SZoneDefinition *)jarg1; 
+  result = (Elk::M1API::ZoneDefinition) ((arg1)->zd);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_SZoneDefinition() {
+  void * jresult ;
+  Elk::M1API::SZoneDefinition *result = 0 ;
+  
+  result = (Elk::M1API::SZoneDefinition *)new Elk::M1API::SZoneDefinition();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_SZoneDefinition(void * jarg1) {
+  Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
+  
+  arg1 = (Elk::M1API::SZoneDefinition *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SChimeMode_cm_set(void * jarg1, int jarg2) {
+  Elk::M1API::SChimeMode *arg1 = (Elk::M1API::SChimeMode *) 0 ;
+  Elk::M1API::ChimeMode arg2 ;
+  
+  arg1 = (Elk::M1API::SChimeMode *)jarg1; 
+  arg2 = (Elk::M1API::ChimeMode)jarg2; 
+  if (arg1) (arg1)->cm = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_M1API_SChimeMode_cm_get(void * jarg1) {
+  int jresult ;
+  Elk::M1API::SChimeMode *arg1 = (Elk::M1API::SChimeMode *) 0 ;
+  Elk::M1API::ChimeMode result;
+  
+  arg1 = (Elk::M1API::SChimeMode *)jarg1; 
+  result = (Elk::M1API::ChimeMode) ((arg1)->cm);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_SChimeMode() {
+  void * jresult ;
+  Elk::M1API::SChimeMode *result = 0 ;
+  
+  result = (Elk::M1API::SChimeMode *)new Elk::M1API::SChimeMode();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_SChimeMode(void * jarg1) {
+  Elk::M1API::SChimeMode *arg1 = (Elk::M1API::SChimeMode *) 0 ;
+  
+  arg1 = (Elk::M1API::SChimeMode *)jarg1; 
+  delete arg1;
+}
+
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ArmStatus_mode_set(void * jarg1, int jarg2) {
   Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
@@ -1986,7 +6629,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_armDisarm(void * jarg1, int jarg2, int 
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getArmStatus(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  SwigValueWrapper< std::vector< Elk::M1API::ArmStatus > > result;
+  std::vector< Elk::M1API::ArmStatus > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getArmStatus();
@@ -1998,11 +6641,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getArmStatus(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneAlarms(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  SwigValueWrapper< std::vector< enum Elk::M1API::ZoneDefinition > > result;
+  std::vector< Elk::M1API::SZoneDefinition > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getZoneAlarms();
-  jresult = new std::vector< Elk::M1API::ZoneDefinition >((const std::vector< Elk::M1API::ZoneDefinition > &)result); 
+  jresult = new std::vector< Elk::M1API::SZoneDefinition >((const std::vector< Elk::M1API::SZoneDefinition > &)result); 
   return jresult;
 }
 
@@ -2256,13 +6899,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_pressFunctionKey(void * jarg1, int ja
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
   Elk::M1API::FKEY arg3 ;
-  SwigValueWrapper< std::vector< enum Elk::M1API::ChimeMode > > result;
+  std::vector< Elk::M1API::SChimeMode > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (Elk::M1API::FKEY)jarg3; 
   result = (arg1)->pressFunctionKey(arg2,arg3);
-  jresult = new std::vector< Elk::M1API::ChimeMode >((const std::vector< Elk::M1API::ChimeMode > &)result); 
+  jresult = new std::vector< Elk::M1API::SChimeMode >((const std::vector< Elk::M1API::SChimeMode > &)result); 
   return jresult;
 }
 
@@ -2284,7 +6927,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getLogData(void * jarg1, int jarg2) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getLogs(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  SwigValueWrapper< std::vector< Elk::M1API::LogEntry > > result;
+  std::vector< Elk::M1API::LogEntry > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getLogs();
@@ -2614,11 +7257,11 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_setAreaBypass(void * jarg1, int
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneDefinitions(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  SwigValueWrapper< std::vector< enum Elk::M1API::ZoneDefinition > > result;
+  std::vector< Elk::M1API::SZoneDefinition > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getZoneDefinitions();
-  jresult = new std::vector< Elk::M1API::ZoneDefinition >((const std::vector< Elk::M1API::ZoneDefinition > &)result); 
+  jresult = new std::vector< Elk::M1API::SZoneDefinition >((const std::vector< Elk::M1API::SZoneDefinition > &)result); 
   return jresult;
 }
 
@@ -2638,7 +7281,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZonePartitions(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneStatuses(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  SwigValueWrapper< std::vector< Elk::M1API::ZoneState > > result;
+  std::vector< Elk::M1API::ZoneState > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getZoneStatuses();
@@ -2808,7 +7451,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_M1AsciiAPI_getLightingStatus__SWIG_1(void * ja
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1AsciiAPI_getArmStatus__SWIG_0(void * jarg1) {
   void * jresult ;
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
-  SwigValueWrapper< std::vector< Elk::M1API::ArmStatus > > result;
+  std::vector< Elk::M1API::ArmStatus > result;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
   result = (arg1)->getArmStatus();
@@ -2822,7 +7465,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1AsciiAPI_getArmStatus__SWIG_1(void * jarg
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
   bool arg2 ;
   int arg3 ;
-  SwigValueWrapper< std::vector< Elk::M1API::ArmStatus > > result;
+  std::vector< Elk::M1API::ArmStatus > result;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
   arg2 = jarg2 ? true : false; 
@@ -3098,6 +7741,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ElkTCP(void * jarg1) {
   (void)arg1; delete smartarg1;
 }
 
+
+SWIGEXPORT Elk::M1API * SWIGSTDCALL CSharp_M1Monitor_SWIGUpcast(Elk::M1Monitor *jarg1) {
+    return (Elk::M1API *)jarg1;
+}
 
 SWIGEXPORT Elk::M1Monitor * SWIGSTDCALL CSharp_M1AsciiAPI_SWIGUpcast(Elk::M1AsciiAPI *jarg1) {
     return (Elk::M1Monitor *)jarg1;
