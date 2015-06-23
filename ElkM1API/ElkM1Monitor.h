@@ -7,6 +7,7 @@
 #pragma once
 #include "ElkM1API.h"
 #include <memory>
+#include <array>
 
 namespace Elk {
 	/*
@@ -95,22 +96,22 @@ namespace Elk {
 		// Objects which can independently be accessed need a const array, others should be a single object.
 		class M1Cache {
 		public: 
-			cacheObject<std::array<ArmStatus, 8>> armStatus;
-			cacheObject<std::array<ZoneDefinition,208>> zoneAlarms;
+			cacheObject<std::vector<ArmStatus>> armStatus;
+			cacheObject<std::vector<ZoneDefinition>> zoneAlarms;
 			cacheObject<AudioData> audioData[18];
-			//std::array<bool,208> getControlOutputs() = 0; TODO: Replace with better packed function.
-			cacheObject<std::array<bool,208>> controlOutputs;
+			//std::vector<bool> getControlOutputs() = 0; TODO: Replace with better packed function.
+			cacheObject<std::vector<bool>> controlOutputs;
 			cacheObject<uint16_t> customValues[20];
 			cacheObject<uint16_t> counterValues[64]; 
 			//int getLightingStatus(int device) = 0;
 			cacheObject<int> lightingStatus[256];
-			cacheObject<std::array<int, 16>> keypadAreas;
+			cacheObject<std::vector<int>> keypadAreas;
 			cacheObject<KeypadFkeyStatus> keypadStatuses[16];
-			//std::array<ChimeMode, 8> pressFunctionKey(int keypad, FKEY key) = 0;
+			//std::vector<ChimeMode> pressFunctionKey(int keypad, FKEY key) = 0;
 			// TODO: This also tracks what button was last pressed, so implement that
-			cacheObject<std::array<ChimeMode,8>> chimeModes;
+			cacheObject<std::vector<ChimeMode>> chimeModes;
 			cacheObject<LogEntry> logData[511];
-			cacheObject<std::array<int,64>> plcStatus[4];
+			cacheObject<std::vector<int>> plcStatus[4];
 			cacheObject<RTCData> rtcData;
 			cacheObject<std::string> ZoneNames[208];
 			cacheObject<std::string> AreaNames[8];
@@ -138,13 +139,13 @@ namespace Elk {
 			cacheObject<int> zoneTemperatures[16];
 			cacheObject<int> thermostatTemperatures[16];
 			cacheObject<ThermostatData> thermostatData[16];
-			cacheObject<std::array<int, 3>> M1VersionNumber;
+			cacheObject<std::vector<int>> M1VersionNumber;
 			cacheObject<bool> zonesBypassed[208];
 			cacheObject<bool> areaBypassed;
-			cacheObject<std::array<ZoneDefinition, 208>> zoneDefinitions;
-			cacheObject<std::array<int,208>> zonePartitions;
-			//std::array<zoneState, 208> getZoneStates() = 0;
-			cacheObject<std::array<ZoneState,208>> zoneStatus;
+			cacheObject<std::vector<ZoneDefinition>> zoneDefinitions;
+			cacheObject<std::vector<int>> zonePartitions;
+			//std::vector<zoneState> getZoneStates() = 0;
+			cacheObject<std::vector<ZoneState>> zoneStatus;
 			cacheObject<float> zoneVoltage[208];
 			//Just triggered when "OK\r\n" comes in.
 			cacheObject<bool> okMessage;

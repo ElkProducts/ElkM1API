@@ -2,6 +2,7 @@
 	ElkM1SirenWords.h: Enumerates the words and phrases that the siren output can produce.
 	@author Zach Jaggi
 */
+#pragma once
 
 namespace Elk {
 	enum SirenWord {

@@ -47,7 +47,7 @@ namespace Elk
 			}
 			buffer.insert(buffer.end(), newData.begin(), newData.end());
 			// TODO: Replace below with 'cutmessage' function
-			boolean noNewMessages = false;
+			bool noNewMessages = false;
 			while (buffer.size() > 0 && !noNewMessages) {
 				std::vector<char> newMessage = cutMessage(buffer);
 				noNewMessages = (newMessage.size() == 0);

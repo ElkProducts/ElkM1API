@@ -7,11 +7,14 @@
 #pragma once
 #ifdef _WIN32
 
-#ifdef ELKM1API_EXPORTS
+#ifndef ELKM1API
+#if defined(ELKM1API_EXPORTS)
 #define ELKM1API __declspec(dllexport)
 #else
 #define ELKM1API __declspec(dllimport)
 #endif
+#endif
+
 #include <WinSock2.h>
 #elif defined(__linux__) || defined(__CYGWIN__)
 #define ELKM1API  
@@ -23,7 +26,6 @@
 #include "ElkM1SirenWords.h"
 
 // TODO: Cleanup, ensure only included at level they are needed
-#include <array>
 #include <condition_variable>
 #include <mutex>
 #include <string>
@@ -31,6 +33,7 @@
 #include <queue>
 #include <stdint.h>
 #include <ctime>
+#include <vector>
 
 namespace Elk
 {
@@ -260,12 +263,6 @@ namespace Elk
 			} partyMode;
 		};
 
-		// C/F depends on internal settings.
-		struct TemperatureData {
-			std::array<int, 16> keypadTemps;
-			std::array<int, 16> zoneSensorTemps;
-		};
-
 		// TODO: Use a proper time format structure
 		struct LogEntry{
 			int event;
@@ -369,9 +366,9 @@ namespace Elk
 		// Arm or disarm a partition using the specified user code.
 		virtual ELKM1API void armDisarm(int partition, ArmMode mode, std::string userCode) = 0;
 		// Retrieve arm status for all partitions.
-		virtual ELKM1API std::array<ArmStatus, 8> getArmStatus() = 0;
+		virtual ELKM1API std::vector<ArmStatus> getArmStatus() = 0;
 		// Get zone alarms. If not 'ZONEDEF_DISABLED' then the area is in alarm.
-		virtual ELKM1API std::array<ZoneDefinition, 208> getZoneAlarms() = 0;
+		virtual ELKM1API std::vector<ZoneDefinition> getZoneAlarms() = 0;
 		// Retrieve the audio data for a device in audioZone 0-15
 		virtual ELKM1API AudioData getAudioData(int audioZone) = 0;
 		// Enable or disable a control output.
@@ -379,12 +376,12 @@ namespace Elk
 		virtual ELKM1API void disableControlOutput(int output) = 0;
 		virtual ELKM1API void toggleControlOutput(int output) = 0;
 		// Retrieve the state of all control outputs.
-		virtual ELKM1API std::array<bool, 208> getControlOutputs() = 0;
+		virtual ELKM1API std::vector<bool> getControlOutputs() = 0;
 		// TODO: Needs format specifier. 
 		// Note: If using even TWO custom values, it's much faster to use the second command and iterate.
 		// Retrieve/set custom values by index, or retrieve all.
 		virtual ELKM1API uint16_t getCustomValue(int index) = 0;
-		virtual ELKM1API std::array<uint16_t, 20> getCustomValues() = 0;
+		virtual ELKM1API std::vector<uint16_t> getCustomValues() = 0;
 		virtual ELKM1API void setCustomValue(int index, uint16_t value) = 0;
 		// Try to change the user code.
 		virtual ELKM1API UserCodeSuccess requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) = 0;
@@ -397,14 +394,14 @@ namespace Elk
 		// Get device lighting status, dev 0-255. 
 		virtual ELKM1API int getLightingStatus(int device) = 0;
 		// Get area each keypad is assigned to. -1 if undefined.
-		virtual ELKM1API std::array<int, 16> getKeypadAreas() = 0;
+		virtual ELKM1API std::vector<int> getKeypadAreas() = 0;
 		// Get status of keys on keypads
 		virtual ELKM1API KeypadFkeyStatus getKeypadFkeyStatus(int keypad) = 0;
 		// Press a function key.
-		virtual ELKM1API std::array<ChimeMode, 8> pressFunctionKey(int keypad, FKEY key) = 0;
+		virtual ELKM1API std::vector<ChimeMode> pressFunctionKey(int keypad, FKEY key) = 0;
 		// Collect log data. Note: getLogs() can take up to a minute.
 		virtual ELKM1API LogEntry getLogData(int index) = 0;
-		virtual ELKM1API std::array<M1API::LogEntry, 511> getLogs() = 0;
+		virtual ELKM1API std::vector<M1API::LogEntry> getLogs() = 0;
 		// Set log data. TODO: Replace logType and eventType with enums
 		virtual ELKM1API void setLogData(int logType, int eventType, int zoneNumber, int area) = 0;
 		// Execute lighting control commands.
@@ -413,7 +410,7 @@ namespace Elk
 		virtual ELKM1API void setPLCState(char houseCode, int unitCode, bool state) = 0;
 		virtual ELKM1API void togglePLCState(char houseCode, int unitCode) = 0;
 		// Get the status of lights. 0, 1 = on or off, 2-99 = dim setting.
-		virtual ELKM1API std::array<int, 64> getPLCStatus(int bank) = 0;
+		virtual ELKM1API std::vector<int> getPLCStatus(int bank) = 0;
 		// Get the current realtime clock data.
 		virtual ELKM1API RTCData getRTCData() = 0;
 		// Set the realtime clock data.
@@ -424,10 +421,10 @@ namespace Elk
 		virtual ELKM1API SystemTroubleStatus getSystemTroubleStatus() = 0;
 		// Get varying forms of temperature.
 		virtual ELKM1API int getTemperature(TemperatureDevice type, int device) = 0;
-		virtual ELKM1API std::array<int, 16> getTemperatures(TemperatureDevice type) = 0;
+		virtual ELKM1API std::vector<int> getTemperatures(TemperatureDevice type) = 0;
 		// Speak a word or phrase by index. TODO: Replace with an enum
-		virtual ELKM1API void speakWord(SirenWord word) = 0;
-		virtual ELKM1API void speakPhrase(SirenPhrase phrase) = 0;
+		virtual ELKM1API void speakWord(Elk::SirenWord word) = 0;
+		virtual ELKM1API void speakPhrase(Elk::SirenPhrase phrase) = 0;
 		// Collect omnistat 2 data, based on request given. Needs omnistat protocol knowledge.
 		virtual ELKM1API std::vector<char> getOmnistat2Data(std::vector<char> request) = 0;
 		// Start a task.
@@ -439,16 +436,16 @@ namespace Elk
 		// Get what areas a certain usercode can access.
 		virtual ELKM1API UserCodeAccess getUserCodeAccess(std::string userCode) = 0;
 		// Get the version number of the M1.
-		virtual ELKM1API std::array<int, 3> getM1VersionNumber() = 0;
+		virtual ELKM1API std::vector<int> getM1VersionNumber() = 0;
 		// Bypass a zone, or unbypass all zones in an area.
 		virtual ELKM1API bool zoneBypass(int zone, std::string pinCode) = 0;
 		virtual ELKM1API bool setAreaBypass(int area, std::string pinCode, bool bypassed) = 0;
 		// Get the zone definitions.
-		virtual ELKM1API std::array<ZoneDefinition, 208> getZoneDefinitions() = 0;
+		virtual ELKM1API std::vector<ZoneDefinition> getZoneDefinitions() = 0;
 		// Get the zone areas, 0-7. 
-		virtual ELKM1API std::array<int, 208> getZonePartitions() = 0;
+		virtual ELKM1API std::vector<int> getZonePartitions() = 0;
 		// Get the zone statuses.
-		virtual ELKM1API std::array<ZoneState, 208> getZoneStatuses() = 0;
+		virtual ELKM1API std::vector<ZoneState> getZoneStatuses() = 0;
 		// Get the voltage of defined zones.
 		virtual ELKM1API float getZoneVoltage(int zone) = 0;
 

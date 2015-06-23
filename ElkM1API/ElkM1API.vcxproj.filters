@@ -24,6 +24,9 @@
     <ClCompile Include="ElkM1TCP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="swig_wrap_csharp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ElkM1API.h">
@@ -41,5 +44,10 @@
     <ClInclude Include="ElkM1SirenWords.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="swig.i">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

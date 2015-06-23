@@ -14,11 +14,12 @@
 
 #include <WinSock2.h>
 
-#elif __linux__
+#elif defined(__linux__) || defined(__CYGWIN__)
 #define ELKM1API  
 #endif
 
 #include <vector>
+#include <string>
 
 
 namespace Elk {

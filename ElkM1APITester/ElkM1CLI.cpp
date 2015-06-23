@@ -174,7 +174,7 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << val << "\n";
 	} },
 	{ "getKeypadAreas", [] {
-		std::array<int, 16> kpa = m1api->getKeypadAreas();
+		auto& kpa = m1api->getKeypadAreas();
 		for (int i = 0; i < 16; i++)
 			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_KeypadName, i) << "\": " << kpa[i] << "\n";
 	} },
@@ -241,7 +241,7 @@ std::map<std::string, std::function<void()>> commands = {
 	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
 	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
 	{ "getZoneAlarms", [] {
-		std::array<Elk::M1API::ZoneDefinition, 208> zdfs = m1api->getZoneAlarms();
+		auto& zdfs = m1api->getZoneAlarms();
 		m1api->forEachConfiguredZone([&zdfs](int index) {
 			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_ZoneName, index) << "\": ";
 			switch (zdfs[index]) {
@@ -324,7 +324,7 @@ std::map<std::string, std::function<void()>> commands = {
 		});
 	} },
 	{ "getZoneDefinitions", [] {
-		std::array<Elk::M1API::ZoneDefinition, 208> zdfs = m1api->getZoneDefinitions(); 
+		auto& zdfs = m1api->getZoneDefinitions(); 
 		m1api->forEachConfiguredZone([&zdfs](int index) {
 			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_ZoneName, index) << "\": ";
 			switch (zdfs[index]) {
@@ -407,7 +407,7 @@ std::map<std::string, std::function<void()>> commands = {
 		});
 	} },
 	{ "getZonePartitions", [] {
-		std::array<int, 208> parts = m1api->getZonePartitions();
+		auto& parts = m1api->getZonePartitions();
 		m1api->forEachConfiguredZone([parts](int index) {
 			std::cout << "\"" << m1api->getTextDescription(Elk::M1API::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
 		});
@@ -499,8 +499,13 @@ int main(int argc, char* argv[])
 		// Execute
 		m1api->run();
 		std::cout << "M1 Version: ";
-		for (auto i : m1api->getM1VersionNumber())
-			std::cout << i << ".";
+		try {
+			for (auto i : m1api->getM1VersionNumber())
+				std::cout << i << ".";
+		}
+		catch (...) {
+			std::cout << "Error retrieving version number.";
+		}
 		std::cout << "\n";
 		while (!sigExit) {
 			std::string commandIndex;

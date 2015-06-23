@@ -7,6 +7,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElkM1API", "ElkM1API\ElkM1A
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElkM1APITester", "ElkM1APITester\ElkM1APITester.vcxproj", "{C7FB55F0-8E6B-4C05-97A0-C13DD0EFCEB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTester", "CSharpTester\CSharpTester.csproj", "{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7EC94494-C89E-4B9F-A21F-9FF2025A2AF5} = {7EC94494-C89E-4B9F-A21F-9FF2025A2AF5}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +42,16 @@ Global
 		{C7FB55F0-8E6B-4C05-97A0-C13DD0EFCEB0}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{C7FB55F0-8E6B-4C05-97A0-C13DD0EFCEB0}.Release|Win32.ActiveCfg = Release|Win32
 		{C7FB55F0-8E6B-4C05-97A0-C13DD0EFCEB0}.Release|Win32.Build.0 = Release|Win32
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
