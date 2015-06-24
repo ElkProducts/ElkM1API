@@ -4,6 +4,7 @@
 */
 %module(directors=1) ElkM1API
 %{
+#include "ElkM1Definition.h"
 #include "SwigCallbacks.h"
 #include "ElkM1API.h"
 #include "ElkM1Monitor.h"
@@ -24,6 +25,11 @@
 // This allows the C++ code to run calls that wind all the way up into the target platform code.
 %feature ("director") BoolCallback;
 %feature ("director") IntCallback;
+%feature ("director") TempDeviceCallback;
+
+// This allows us to make the M1Connection calls against a derived target-language class, so we can 
+// implement the connection on the target platform (such as SSL encrypted on Android)
+%feature ("director") M1Connection;
 
 // Set up things passed by vector
 %template(BoolVector) std::vector<bool>;
@@ -31,15 +37,15 @@
 %template(IntVector) std::vector<int>;
 %template(UShortVector) std::vector<uint16_t>;
 
-%template(LogEntryVector) std::vector<Elk::M1API::LogEntry>;
-%template(ArmStatusVector) std::vector<Elk::M1API::ArmStatus>;
-%template(ZoneStateVector) std::vector<Elk::M1API::ZoneState>;
+%template(LogEntryVector) std::vector<Elk::LogEntry>;
+%template(ArmStatusVector) std::vector<Elk::ArmStatus>;
+%template(ZoneStateVector) std::vector<Elk::ZoneState>;
 
 // Vector of enums needs special handling, use a single-element struct instead
-%template(ChimeModeVector) std::vector<Elk::M1API::SChimeMode>;
-%template(ZoneDefinitionVector) std::vector<Elk::M1API::SZoneDefinition>;
+%template(ChimeModeVector) std::vector<Elk::SChimeMode>;
+%template(ZoneDefinitionVector) std::vector<Elk::SZoneDefinition>;
 
-
+%include "ElkM1Definition.h"
 %include "SwigCallbacks.h"
 %include "ElkM1API.h"
 %include "ElkM1Monitor.h"

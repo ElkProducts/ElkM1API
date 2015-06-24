@@ -4,22 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Net.Sockets;
 
 namespace CSharpTester
 {
-    class TestCallback : IntCallback
+    class CSharpConnection : M1Connection
     {
-        M1API api;
+        TcpClient tcp;
 
-        public TestCallback(M1API aapi)
-            : base()
+        public override bool Connect(string location)
         {
-            api = aapi;
+            tcp = new TcpClient(location, 2101);
+            return tcp.Connected;
         }
 
-        public override void run(int arg1)
+        public override void Disconnect()
         {
-            Console.WriteLine(api.getTextDescription(M1API.TextDescriptionType.TEXT_ZoneName, arg1));
+            tcp.Close();
+        }
+
+        public override CharVector Recieve()
+        {
+            byte[] recv = new byte[256];
+            int recieved = tcp.GetStream().Read(recv, 0, recv.Length);
+            CharVector cv = new CharVector(recieved);
+            for (int i = 0; i < recieved; i++)
+            {
+                cv.Add((char)recv[i]);
+            }
+            return cv;
+        }
+
+        public override void Send(CharVector data)
+        {
+            byte[] send = new byte[data.Count];
+            for (int i = 0; i < data.Count; i++)
+                send[i] = (byte)data[i];
+            tcp.GetStream().Write(send, 0, data.Count);
         }
     }
 
@@ -27,14 +48,16 @@ namespace CSharpTester
     {
         static void Main(string[] args)
         {
-            M1Connection conn = new ElkTCP();
+            M1Connection conn = new CSharpConnection();
             conn.Connect("192.168.101.104");
             M1AsciiAPI m1api = new M1AsciiAPI(conn);
-            TestCallback funct = new TestCallback(m1api);
             m1api.run();
 
-            m1api.forEachConfiguredZone(funct);
-        
+            foreach (ushort u in m1api.getCustomValues())
+            {
+                Console.WriteLine(u);
+            }
+
             Thread.Sleep(30000);
             m1api.stop();
         }

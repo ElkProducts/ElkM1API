@@ -327,6 +327,7 @@ namespace Swig {
 }
 
 
+#include "ElkM1Definition.h"
 #include "SwigCallbacks.h"
 #include "ElkM1API.h"
 #include "ElkM1Monitor.h"
@@ -812,65 +813,65 @@ SWIGINTERN bool std_vector_Sl_uint16_t_Sg__Remove(std::vector< uint16_t > *self,
         }
         return false;
       }
-SWIGINTERN std::vector< Elk::M1API::LogEntry > *new_std_vector_Sl_Elk_M1API_LogEntry_Sg___SWIG_2(int capacity){
-        std::vector< Elk::M1API::LogEntry >* pv = 0;
+SWIGINTERN std::vector< Elk::LogEntry > *new_std_vector_Sl_Elk_LogEntry_Sg___SWIG_2(int capacity){
+        std::vector< Elk::LogEntry >* pv = 0;
         if (capacity >= 0) {
-          pv = new std::vector< Elk::M1API::LogEntry >();
+          pv = new std::vector< Elk::LogEntry >();
           pv->reserve(capacity);
        } else {
           throw std::out_of_range("capacity");
        }
        return pv;
       }
-SWIGINTERN Elk::M1API::LogEntry std_vector_Sl_Elk_M1API_LogEntry_Sg__getitemcopy(std::vector< Elk::M1API::LogEntry > *self,int index){
+SWIGINTERN Elk::LogEntry std_vector_Sl_Elk_LogEntry_Sg__getitemcopy(std::vector< Elk::LogEntry > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN Elk::M1API::LogEntry const &std_vector_Sl_Elk_M1API_LogEntry_Sg__getitem(std::vector< Elk::M1API::LogEntry > *self,int index){
+SWIGINTERN Elk::LogEntry const &std_vector_Sl_Elk_LogEntry_Sg__getitem(std::vector< Elk::LogEntry > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__setitem(std::vector< Elk::M1API::LogEntry > *self,int index,Elk::M1API::LogEntry const &val){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__setitem(std::vector< Elk::LogEntry > *self,int index,Elk::LogEntry const &val){
         if (index>=0 && index<(int)self->size())
           (*self)[index] = val;
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__AddRange(std::vector< Elk::M1API::LogEntry > *self,std::vector< Elk::M1API::LogEntry > const &values){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__AddRange(std::vector< Elk::LogEntry > *self,std::vector< Elk::LogEntry > const &values){
         self->insert(self->end(), values.begin(), values.end());
       }
-SWIGINTERN std::vector< Elk::M1API::LogEntry > *std_vector_Sl_Elk_M1API_LogEntry_Sg__GetRange(std::vector< Elk::M1API::LogEntry > *self,int index,int count){
+SWIGINTERN std::vector< Elk::LogEntry > *std_vector_Sl_Elk_LogEntry_Sg__GetRange(std::vector< Elk::LogEntry > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
           throw std::out_of_range("count");
         if (index >= (int)self->size()+1 || index+count > (int)self->size())
           throw std::invalid_argument("invalid range");
-        return new std::vector< Elk::M1API::LogEntry >(self->begin()+index, self->begin()+index+count);
+        return new std::vector< Elk::LogEntry >(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Insert(std::vector< Elk::M1API::LogEntry > *self,int index,Elk::M1API::LogEntry const &x){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__Insert(std::vector< Elk::LogEntry > *self,int index,Elk::LogEntry const &x){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, x);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__InsertRange(std::vector< Elk::M1API::LogEntry > *self,int index,std::vector< Elk::M1API::LogEntry > const &values){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__InsertRange(std::vector< Elk::LogEntry > *self,int index,std::vector< Elk::LogEntry > const &values){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, values.begin(), values.end());
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveAt(std::vector< Elk::M1API::LogEntry > *self,int index){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__RemoveAt(std::vector< Elk::LogEntry > *self,int index){
         if (index>=0 && index<(int)self->size())
           self->erase(self->begin() + index);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveRange(std::vector< Elk::M1API::LogEntry > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__RemoveRange(std::vector< Elk::LogEntry > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -879,15 +880,15 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveRange(std::vector< El
           throw std::invalid_argument("invalid range");
         self->erase(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN std::vector< Elk::M1API::LogEntry > *std_vector_Sl_Elk_M1API_LogEntry_Sg__Repeat(Elk::M1API::LogEntry const &value,int count){
+SWIGINTERN std::vector< Elk::LogEntry > *std_vector_Sl_Elk_LogEntry_Sg__Repeat(Elk::LogEntry const &value,int count){
         if (count < 0)
           throw std::out_of_range("count");
-        return new std::vector< Elk::M1API::LogEntry >(count, value);
+        return new std::vector< Elk::LogEntry >(count, value);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::LogEntry > *self){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__Reverse__SWIG_0(std::vector< Elk::LogEntry > *self){
         std::reverse(self->begin(), self->end());
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::LogEntry > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__Reverse__SWIG_1(std::vector< Elk::LogEntry > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -896,72 +897,72 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_1(std::vector
           throw std::invalid_argument("invalid range");
         std::reverse(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_LogEntry_Sg__SetRange(std::vector< Elk::M1API::LogEntry > *self,int index,std::vector< Elk::M1API::LogEntry > const &values){
+SWIGINTERN void std_vector_Sl_Elk_LogEntry_Sg__SetRange(std::vector< Elk::LogEntry > *self,int index,std::vector< Elk::LogEntry > const &values){
         if (index < 0)
           throw std::out_of_range("index");
         if (index+values.size() > self->size())
           throw std::out_of_range("index");
         std::copy(values.begin(), values.end(), self->begin()+index);
       }
-SWIGINTERN std::vector< Elk::M1API::ArmStatus > *new_std_vector_Sl_Elk_M1API_ArmStatus_Sg___SWIG_2(int capacity){
-        std::vector< Elk::M1API::ArmStatus >* pv = 0;
+SWIGINTERN std::vector< Elk::ArmStatus > *new_std_vector_Sl_Elk_ArmStatus_Sg___SWIG_2(int capacity){
+        std::vector< Elk::ArmStatus >* pv = 0;
         if (capacity >= 0) {
-          pv = new std::vector< Elk::M1API::ArmStatus >();
+          pv = new std::vector< Elk::ArmStatus >();
           pv->reserve(capacity);
        } else {
           throw std::out_of_range("capacity");
        }
        return pv;
       }
-SWIGINTERN Elk::M1API::ArmStatus std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitemcopy(std::vector< Elk::M1API::ArmStatus > *self,int index){
+SWIGINTERN Elk::ArmStatus std_vector_Sl_Elk_ArmStatus_Sg__getitemcopy(std::vector< Elk::ArmStatus > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN Elk::M1API::ArmStatus const &std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitem(std::vector< Elk::M1API::ArmStatus > *self,int index){
+SWIGINTERN Elk::ArmStatus const &std_vector_Sl_Elk_ArmStatus_Sg__getitem(std::vector< Elk::ArmStatus > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__setitem(std::vector< Elk::M1API::ArmStatus > *self,int index,Elk::M1API::ArmStatus const &val){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__setitem(std::vector< Elk::ArmStatus > *self,int index,Elk::ArmStatus const &val){
         if (index>=0 && index<(int)self->size())
           (*self)[index] = val;
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__AddRange(std::vector< Elk::M1API::ArmStatus > *self,std::vector< Elk::M1API::ArmStatus > const &values){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__AddRange(std::vector< Elk::ArmStatus > *self,std::vector< Elk::ArmStatus > const &values){
         self->insert(self->end(), values.begin(), values.end());
       }
-SWIGINTERN std::vector< Elk::M1API::ArmStatus > *std_vector_Sl_Elk_M1API_ArmStatus_Sg__GetRange(std::vector< Elk::M1API::ArmStatus > *self,int index,int count){
+SWIGINTERN std::vector< Elk::ArmStatus > *std_vector_Sl_Elk_ArmStatus_Sg__GetRange(std::vector< Elk::ArmStatus > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
           throw std::out_of_range("count");
         if (index >= (int)self->size()+1 || index+count > (int)self->size())
           throw std::invalid_argument("invalid range");
-        return new std::vector< Elk::M1API::ArmStatus >(self->begin()+index, self->begin()+index+count);
+        return new std::vector< Elk::ArmStatus >(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Insert(std::vector< Elk::M1API::ArmStatus > *self,int index,Elk::M1API::ArmStatus const &x){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__Insert(std::vector< Elk::ArmStatus > *self,int index,Elk::ArmStatus const &x){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, x);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__InsertRange(std::vector< Elk::M1API::ArmStatus > *self,int index,std::vector< Elk::M1API::ArmStatus > const &values){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__InsertRange(std::vector< Elk::ArmStatus > *self,int index,std::vector< Elk::ArmStatus > const &values){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, values.begin(), values.end());
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveAt(std::vector< Elk::M1API::ArmStatus > *self,int index){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__RemoveAt(std::vector< Elk::ArmStatus > *self,int index){
         if (index>=0 && index<(int)self->size())
           self->erase(self->begin() + index);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveRange(std::vector< Elk::M1API::ArmStatus > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__RemoveRange(std::vector< Elk::ArmStatus > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -970,15 +971,15 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveRange(std::vector< E
           throw std::invalid_argument("invalid range");
         self->erase(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN std::vector< Elk::M1API::ArmStatus > *std_vector_Sl_Elk_M1API_ArmStatus_Sg__Repeat(Elk::M1API::ArmStatus const &value,int count){
+SWIGINTERN std::vector< Elk::ArmStatus > *std_vector_Sl_Elk_ArmStatus_Sg__Repeat(Elk::ArmStatus const &value,int count){
         if (count < 0)
           throw std::out_of_range("count");
-        return new std::vector< Elk::M1API::ArmStatus >(count, value);
+        return new std::vector< Elk::ArmStatus >(count, value);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::ArmStatus > *self){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__Reverse__SWIG_0(std::vector< Elk::ArmStatus > *self){
         std::reverse(self->begin(), self->end());
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::ArmStatus > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__Reverse__SWIG_1(std::vector< Elk::ArmStatus > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -987,72 +988,72 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_1(std::vecto
           throw std::invalid_argument("invalid range");
         std::reverse(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ArmStatus_Sg__SetRange(std::vector< Elk::M1API::ArmStatus > *self,int index,std::vector< Elk::M1API::ArmStatus > const &values){
+SWIGINTERN void std_vector_Sl_Elk_ArmStatus_Sg__SetRange(std::vector< Elk::ArmStatus > *self,int index,std::vector< Elk::ArmStatus > const &values){
         if (index < 0)
           throw std::out_of_range("index");
         if (index+values.size() > self->size())
           throw std::out_of_range("index");
         std::copy(values.begin(), values.end(), self->begin()+index);
       }
-SWIGINTERN std::vector< Elk::M1API::ZoneState > *new_std_vector_Sl_Elk_M1API_ZoneState_Sg___SWIG_2(int capacity){
-        std::vector< Elk::M1API::ZoneState >* pv = 0;
+SWIGINTERN std::vector< Elk::ZoneState > *new_std_vector_Sl_Elk_ZoneState_Sg___SWIG_2(int capacity){
+        std::vector< Elk::ZoneState >* pv = 0;
         if (capacity >= 0) {
-          pv = new std::vector< Elk::M1API::ZoneState >();
+          pv = new std::vector< Elk::ZoneState >();
           pv->reserve(capacity);
        } else {
           throw std::out_of_range("capacity");
        }
        return pv;
       }
-SWIGINTERN Elk::M1API::ZoneState std_vector_Sl_Elk_M1API_ZoneState_Sg__getitemcopy(std::vector< Elk::M1API::ZoneState > *self,int index){
+SWIGINTERN Elk::ZoneState std_vector_Sl_Elk_ZoneState_Sg__getitemcopy(std::vector< Elk::ZoneState > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN Elk::M1API::ZoneState const &std_vector_Sl_Elk_M1API_ZoneState_Sg__getitem(std::vector< Elk::M1API::ZoneState > *self,int index){
+SWIGINTERN Elk::ZoneState const &std_vector_Sl_Elk_ZoneState_Sg__getitem(std::vector< Elk::ZoneState > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__setitem(std::vector< Elk::M1API::ZoneState > *self,int index,Elk::M1API::ZoneState const &val){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__setitem(std::vector< Elk::ZoneState > *self,int index,Elk::ZoneState const &val){
         if (index>=0 && index<(int)self->size())
           (*self)[index] = val;
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__AddRange(std::vector< Elk::M1API::ZoneState > *self,std::vector< Elk::M1API::ZoneState > const &values){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__AddRange(std::vector< Elk::ZoneState > *self,std::vector< Elk::ZoneState > const &values){
         self->insert(self->end(), values.begin(), values.end());
       }
-SWIGINTERN std::vector< Elk::M1API::ZoneState > *std_vector_Sl_Elk_M1API_ZoneState_Sg__GetRange(std::vector< Elk::M1API::ZoneState > *self,int index,int count){
+SWIGINTERN std::vector< Elk::ZoneState > *std_vector_Sl_Elk_ZoneState_Sg__GetRange(std::vector< Elk::ZoneState > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
           throw std::out_of_range("count");
         if (index >= (int)self->size()+1 || index+count > (int)self->size())
           throw std::invalid_argument("invalid range");
-        return new std::vector< Elk::M1API::ZoneState >(self->begin()+index, self->begin()+index+count);
+        return new std::vector< Elk::ZoneState >(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Insert(std::vector< Elk::M1API::ZoneState > *self,int index,Elk::M1API::ZoneState const &x){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__Insert(std::vector< Elk::ZoneState > *self,int index,Elk::ZoneState const &x){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, x);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__InsertRange(std::vector< Elk::M1API::ZoneState > *self,int index,std::vector< Elk::M1API::ZoneState > const &values){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__InsertRange(std::vector< Elk::ZoneState > *self,int index,std::vector< Elk::ZoneState > const &values){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, values.begin(), values.end());
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveAt(std::vector< Elk::M1API::ZoneState > *self,int index){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__RemoveAt(std::vector< Elk::ZoneState > *self,int index){
         if (index>=0 && index<(int)self->size())
           self->erase(self->begin() + index);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveRange(std::vector< Elk::M1API::ZoneState > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__RemoveRange(std::vector< Elk::ZoneState > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -1061,15 +1062,15 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveRange(std::vector< E
           throw std::invalid_argument("invalid range");
         self->erase(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN std::vector< Elk::M1API::ZoneState > *std_vector_Sl_Elk_M1API_ZoneState_Sg__Repeat(Elk::M1API::ZoneState const &value,int count){
+SWIGINTERN std::vector< Elk::ZoneState > *std_vector_Sl_Elk_ZoneState_Sg__Repeat(Elk::ZoneState const &value,int count){
         if (count < 0)
           throw std::out_of_range("count");
-        return new std::vector< Elk::M1API::ZoneState >(count, value);
+        return new std::vector< Elk::ZoneState >(count, value);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::ZoneState > *self){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__Reverse__SWIG_0(std::vector< Elk::ZoneState > *self){
         std::reverse(self->begin(), self->end());
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::ZoneState > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__Reverse__SWIG_1(std::vector< Elk::ZoneState > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -1078,72 +1079,72 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_1(std::vecto
           throw std::invalid_argument("invalid range");
         std::reverse(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_ZoneState_Sg__SetRange(std::vector< Elk::M1API::ZoneState > *self,int index,std::vector< Elk::M1API::ZoneState > const &values){
+SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__SetRange(std::vector< Elk::ZoneState > *self,int index,std::vector< Elk::ZoneState > const &values){
         if (index < 0)
           throw std::out_of_range("index");
         if (index+values.size() > self->size())
           throw std::out_of_range("index");
         std::copy(values.begin(), values.end(), self->begin()+index);
       }
-SWIGINTERN std::vector< Elk::M1API::SChimeMode > *new_std_vector_Sl_Elk_M1API_SChimeMode_Sg___SWIG_2(int capacity){
-        std::vector< Elk::M1API::SChimeMode >* pv = 0;
+SWIGINTERN std::vector< Elk::SChimeMode > *new_std_vector_Sl_Elk_SChimeMode_Sg___SWIG_2(int capacity){
+        std::vector< Elk::SChimeMode >* pv = 0;
         if (capacity >= 0) {
-          pv = new std::vector< Elk::M1API::SChimeMode >();
+          pv = new std::vector< Elk::SChimeMode >();
           pv->reserve(capacity);
        } else {
           throw std::out_of_range("capacity");
        }
        return pv;
       }
-SWIGINTERN Elk::M1API::SChimeMode std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitemcopy(std::vector< Elk::M1API::SChimeMode > *self,int index){
+SWIGINTERN Elk::SChimeMode std_vector_Sl_Elk_SChimeMode_Sg__getitemcopy(std::vector< Elk::SChimeMode > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN Elk::M1API::SChimeMode const &std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitem(std::vector< Elk::M1API::SChimeMode > *self,int index){
+SWIGINTERN Elk::SChimeMode const &std_vector_Sl_Elk_SChimeMode_Sg__getitem(std::vector< Elk::SChimeMode > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__setitem(std::vector< Elk::M1API::SChimeMode > *self,int index,Elk::M1API::SChimeMode const &val){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__setitem(std::vector< Elk::SChimeMode > *self,int index,Elk::SChimeMode const &val){
         if (index>=0 && index<(int)self->size())
           (*self)[index] = val;
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__AddRange(std::vector< Elk::M1API::SChimeMode > *self,std::vector< Elk::M1API::SChimeMode > const &values){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__AddRange(std::vector< Elk::SChimeMode > *self,std::vector< Elk::SChimeMode > const &values){
         self->insert(self->end(), values.begin(), values.end());
       }
-SWIGINTERN std::vector< Elk::M1API::SChimeMode > *std_vector_Sl_Elk_M1API_SChimeMode_Sg__GetRange(std::vector< Elk::M1API::SChimeMode > *self,int index,int count){
+SWIGINTERN std::vector< Elk::SChimeMode > *std_vector_Sl_Elk_SChimeMode_Sg__GetRange(std::vector< Elk::SChimeMode > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
           throw std::out_of_range("count");
         if (index >= (int)self->size()+1 || index+count > (int)self->size())
           throw std::invalid_argument("invalid range");
-        return new std::vector< Elk::M1API::SChimeMode >(self->begin()+index, self->begin()+index+count);
+        return new std::vector< Elk::SChimeMode >(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Insert(std::vector< Elk::M1API::SChimeMode > *self,int index,Elk::M1API::SChimeMode const &x){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__Insert(std::vector< Elk::SChimeMode > *self,int index,Elk::SChimeMode const &x){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, x);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__InsertRange(std::vector< Elk::M1API::SChimeMode > *self,int index,std::vector< Elk::M1API::SChimeMode > const &values){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__InsertRange(std::vector< Elk::SChimeMode > *self,int index,std::vector< Elk::SChimeMode > const &values){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, values.begin(), values.end());
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveAt(std::vector< Elk::M1API::SChimeMode > *self,int index){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__RemoveAt(std::vector< Elk::SChimeMode > *self,int index){
         if (index>=0 && index<(int)self->size())
           self->erase(self->begin() + index);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveRange(std::vector< Elk::M1API::SChimeMode > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__RemoveRange(std::vector< Elk::SChimeMode > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -1152,15 +1153,15 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveRange(std::vector< 
           throw std::invalid_argument("invalid range");
         self->erase(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN std::vector< Elk::M1API::SChimeMode > *std_vector_Sl_Elk_M1API_SChimeMode_Sg__Repeat(Elk::M1API::SChimeMode const &value,int count){
+SWIGINTERN std::vector< Elk::SChimeMode > *std_vector_Sl_Elk_SChimeMode_Sg__Repeat(Elk::SChimeMode const &value,int count){
         if (count < 0)
           throw std::out_of_range("count");
-        return new std::vector< Elk::M1API::SChimeMode >(count, value);
+        return new std::vector< Elk::SChimeMode >(count, value);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::SChimeMode > *self){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__Reverse__SWIG_0(std::vector< Elk::SChimeMode > *self){
         std::reverse(self->begin(), self->end());
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::SChimeMode > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__Reverse__SWIG_1(std::vector< Elk::SChimeMode > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -1169,72 +1170,72 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_1(std::vect
           throw std::invalid_argument("invalid range");
         std::reverse(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SChimeMode_Sg__SetRange(std::vector< Elk::M1API::SChimeMode > *self,int index,std::vector< Elk::M1API::SChimeMode > const &values){
+SWIGINTERN void std_vector_Sl_Elk_SChimeMode_Sg__SetRange(std::vector< Elk::SChimeMode > *self,int index,std::vector< Elk::SChimeMode > const &values){
         if (index < 0)
           throw std::out_of_range("index");
         if (index+values.size() > self->size())
           throw std::out_of_range("index");
         std::copy(values.begin(), values.end(), self->begin()+index);
       }
-SWIGINTERN std::vector< Elk::M1API::SZoneDefinition > *new_std_vector_Sl_Elk_M1API_SZoneDefinition_Sg___SWIG_2(int capacity){
-        std::vector< Elk::M1API::SZoneDefinition >* pv = 0;
+SWIGINTERN std::vector< Elk::SZoneDefinition > *new_std_vector_Sl_Elk_SZoneDefinition_Sg___SWIG_2(int capacity){
+        std::vector< Elk::SZoneDefinition >* pv = 0;
         if (capacity >= 0) {
-          pv = new std::vector< Elk::M1API::SZoneDefinition >();
+          pv = new std::vector< Elk::SZoneDefinition >();
           pv->reserve(capacity);
        } else {
           throw std::out_of_range("capacity");
        }
        return pv;
       }
-SWIGINTERN Elk::M1API::SZoneDefinition std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitemcopy(std::vector< Elk::M1API::SZoneDefinition > *self,int index){
+SWIGINTERN Elk::SZoneDefinition std_vector_Sl_Elk_SZoneDefinition_Sg__getitemcopy(std::vector< Elk::SZoneDefinition > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN Elk::M1API::SZoneDefinition const &std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitem(std::vector< Elk::M1API::SZoneDefinition > *self,int index){
+SWIGINTERN Elk::SZoneDefinition const &std_vector_Sl_Elk_SZoneDefinition_Sg__getitem(std::vector< Elk::SZoneDefinition > *self,int index){
         if (index>=0 && index<(int)self->size())
           return (*self)[index];
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__setitem(std::vector< Elk::M1API::SZoneDefinition > *self,int index,Elk::M1API::SZoneDefinition const &val){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__setitem(std::vector< Elk::SZoneDefinition > *self,int index,Elk::SZoneDefinition const &val){
         if (index>=0 && index<(int)self->size())
           (*self)[index] = val;
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__AddRange(std::vector< Elk::M1API::SZoneDefinition > *self,std::vector< Elk::M1API::SZoneDefinition > const &values){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__AddRange(std::vector< Elk::SZoneDefinition > *self,std::vector< Elk::SZoneDefinition > const &values){
         self->insert(self->end(), values.begin(), values.end());
       }
-SWIGINTERN std::vector< Elk::M1API::SZoneDefinition > *std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__GetRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,int count){
+SWIGINTERN std::vector< Elk::SZoneDefinition > *std_vector_Sl_Elk_SZoneDefinition_Sg__GetRange(std::vector< Elk::SZoneDefinition > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
           throw std::out_of_range("count");
         if (index >= (int)self->size()+1 || index+count > (int)self->size())
           throw std::invalid_argument("invalid range");
-        return new std::vector< Elk::M1API::SZoneDefinition >(self->begin()+index, self->begin()+index+count);
+        return new std::vector< Elk::SZoneDefinition >(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Insert(std::vector< Elk::M1API::SZoneDefinition > *self,int index,Elk::M1API::SZoneDefinition const &x){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__Insert(std::vector< Elk::SZoneDefinition > *self,int index,Elk::SZoneDefinition const &x){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, x);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__InsertRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,std::vector< Elk::M1API::SZoneDefinition > const &values){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__InsertRange(std::vector< Elk::SZoneDefinition > *self,int index,std::vector< Elk::SZoneDefinition > const &values){
         if (index>=0 && index<(int)self->size()+1)
           self->insert(self->begin()+index, values.begin(), values.end());
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveAt(std::vector< Elk::M1API::SZoneDefinition > *self,int index){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__RemoveAt(std::vector< Elk::SZoneDefinition > *self,int index){
         if (index>=0 && index<(int)self->size())
           self->erase(self->begin() + index);
         else
           throw std::out_of_range("index");
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__RemoveRange(std::vector< Elk::SZoneDefinition > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -1243,15 +1244,15 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveRange(std::vec
           throw std::invalid_argument("invalid range");
         self->erase(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN std::vector< Elk::M1API::SZoneDefinition > *std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Repeat(Elk::M1API::SZoneDefinition const &value,int count){
+SWIGINTERN std::vector< Elk::SZoneDefinition > *std_vector_Sl_Elk_SZoneDefinition_Sg__Repeat(Elk::SZoneDefinition const &value,int count){
         if (count < 0)
           throw std::out_of_range("count");
-        return new std::vector< Elk::M1API::SZoneDefinition >(count, value);
+        return new std::vector< Elk::SZoneDefinition >(count, value);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_0(std::vector< Elk::M1API::SZoneDefinition > *self){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__Reverse__SWIG_0(std::vector< Elk::SZoneDefinition > *self){
         std::reverse(self->begin(), self->end());
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_1(std::vector< Elk::M1API::SZoneDefinition > *self,int index,int count){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__Reverse__SWIG_1(std::vector< Elk::SZoneDefinition > *self,int index,int count){
         if (index < 0)
           throw std::out_of_range("index");
         if (count < 0)
@@ -1260,7 +1261,7 @@ SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_1(std:
           throw std::invalid_argument("invalid range");
         std::reverse(self->begin()+index, self->begin()+index+count);
       }
-SWIGINTERN void std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__SetRange(std::vector< Elk::M1API::SZoneDefinition > *self,int index,std::vector< Elk::M1API::SZoneDefinition > const &values){
+SWIGINTERN void std_vector_Sl_Elk_SZoneDefinition_Sg__SetRange(std::vector< Elk::SZoneDefinition > *self,int index,std::vector< Elk::SZoneDefinition > const &values){
         if (index < 0)
           throw std::out_of_range("index");
         if (index+values.size() > self->size())
@@ -1329,6 +1330,100 @@ void SwigDirector_IntCallback::swig_connect_director(SWIG_Callback0_t callbackru
 
 void SwigDirector_IntCallback::swig_init_callbacks() {
   swig_callbackrun = 0;
+}
+
+SwigDirector_TempDeviceCallback::SwigDirector_TempDeviceCallback() : TempDeviceCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_TempDeviceCallback::run(Elk::TemperatureDevice arg1, int arg2) {
+  int jarg1  ;
+  int jarg2  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("TempDeviceCallback::run");
+  } else {
+    jarg1 = (int)arg1;
+    jarg2 = arg2;
+    swig_callbackrun(jarg1, jarg2);
+  }
+}
+
+void SwigDirector_TempDeviceCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_TempDeviceCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_M1Connection::SwigDirector_M1Connection() : Elk::M1Connection(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+bool SwigDirector_M1Connection::Connect(std::string location) {
+  bool c_result = SwigValueInit< bool >() ;
+  unsigned int jresult = 0 ;
+  char * jlocation  ;
+  
+  if (!swig_callbackConnect) {
+    throw Swig::DirectorPureVirtualException("Elk::M1Connection::Connect");
+  } else {
+    jlocation = SWIG_csharp_string_callback((&location)->c_str()); 
+    jresult = (unsigned int) swig_callbackConnect(jlocation);
+    c_result = jresult ? true : false; 
+  }
+  return c_result;
+}
+
+void SwigDirector_M1Connection::Disconnect() {
+  if (!swig_callbackDisconnect) {
+    throw Swig::DirectorPureVirtualException("Elk::M1Connection::Disconnect");
+  } else {
+    swig_callbackDisconnect();
+  }
+}
+
+void SwigDirector_M1Connection::Send(std::vector< char > data) {
+  void * jdata  ;
+  
+  if (!swig_callbackSend) {
+    throw Swig::DirectorPureVirtualException("Elk::M1Connection::Send");
+  } else {
+    jdata = (void *)&data; 
+    swig_callbackSend(jdata);
+  }
+}
+
+std::vector< char > SwigDirector_M1Connection::Recieve() {
+  std::vector< char > c_result ;
+  void * jresult = 0 ;
+  
+  if (!swig_callbackRecieve) {
+    throw Swig::DirectorPureVirtualException("Elk::M1Connection::Recieve");
+  } else {
+    jresult = (void *) swig_callbackRecieve();
+    if (!jresult) {
+      SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Unexpected null return for type std::vector< char >", 0);
+      return c_result;
+    }
+    c_result = *(std::vector< char > *)jresult; 
+  }
+  return c_result;
+}
+
+void SwigDirector_M1Connection::swig_connect_director(SWIG_Callback0_t callbackConnect, SWIG_Callback1_t callbackDisconnect, SWIG_Callback2_t callbackSend, SWIG_Callback3_t callbackRecieve) {
+  swig_callbackConnect = callbackConnect;
+  swig_callbackDisconnect = callbackDisconnect;
+  swig_callbackSend = callbackSend;
+  swig_callbackRecieve = callbackRecieve;
+}
+
+void SwigDirector_M1Connection::swig_init_callbacks() {
+  swig_callbackConnect = 0;
+  swig_callbackDisconnect = 0;
+  swig_callbackSend = 0;
+  swig_callbackRecieve = 0;
 }
 
 
@@ -3081,34 +3176,34 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_UShortVector(void * jarg1) {
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Clear(void * jarg1) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Add(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
-  Elk::M1API::LogEntry *arg2 = 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
+  Elk::LogEntry *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
-  arg2 = (Elk::M1API::LogEntry *)jarg2;
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
+  arg2 = (Elk::LogEntry *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::LogEntry const & type is null", 0);
     return ;
   } 
-  (arg1)->push_back((Elk::M1API::LogEntry const &)*arg2);
+  (arg1)->push_back((Elk::LogEntry const &)*arg2);
 }
 
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_LogEntryVector_size(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
-  std::vector< Elk::M1API::LogEntry >::size_type result;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
-  result = ((std::vector< Elk::M1API::LogEntry > const *)arg1)->size();
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
+  result = ((std::vector< Elk::LogEntry > const *)arg1)->size();
   jresult = (unsigned long)result; 
   return jresult;
 }
@@ -3116,31 +3211,31 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_LogEntryVector_size(void * jarg1) {
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_LogEntryVector_capacity(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
-  std::vector< Elk::M1API::LogEntry >::size_type result;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
-  result = ((std::vector< Elk::M1API::LogEntry > const *)arg1)->capacity();
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
+  result = ((std::vector< Elk::LogEntry > const *)arg1)->capacity();
   jresult = (unsigned long)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_reserve(void * jarg1, unsigned long jarg2) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
-  std::vector< Elk::M1API::LogEntry >::size_type arg2 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry >::size_type arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::LogEntry >::size_type)jarg2; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
+  arg2 = (std::vector< Elk::LogEntry >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_0() {
   void * jresult ;
-  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  std::vector< Elk::LogEntry > *result = 0 ;
   
-  result = (std::vector< Elk::M1API::LogEntry > *)new std::vector< Elk::M1API::LogEntry >();
+  result = (std::vector< Elk::LogEntry > *)new std::vector< Elk::LogEntry >();
   jresult = (void *)result; 
   return jresult;
 }
@@ -3148,15 +3243,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_0() {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_1(void * jarg1) {
   void * jresult ;
-  std::vector< Elk::M1API::LogEntry > *arg1 = 0 ;
-  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  std::vector< Elk::LogEntry > *arg1 = 0 ;
+  std::vector< Elk::LogEntry > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1;
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::LogEntry > const & type is null", 0);
     return 0;
   } 
-  result = (std::vector< Elk::M1API::LogEntry > *)new std::vector< Elk::M1API::LogEntry >((std::vector< Elk::M1API::LogEntry > const &)*arg1);
+  result = (std::vector< Elk::LogEntry > *)new std::vector< Elk::LogEntry >((std::vector< Elk::LogEntry > const &)*arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -3165,11 +3260,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_1(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
-  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  std::vector< Elk::LogEntry > *result = 0 ;
   
   arg1 = (int)jarg1; 
   try {
-    result = (std::vector< Elk::M1API::LogEntry > *)new_std_vector_Sl_Elk_M1API_LogEntry_Sg___SWIG_2(arg1);
+    result = (std::vector< Elk::LogEntry > *)new_std_vector_Sl_Elk_LogEntry_Sg___SWIG_2(arg1);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3183,35 +3278,35 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryVector__SWIG_2(int jarg1) {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_getitemcopy(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
-  Elk::M1API::LogEntry result;
+  Elk::LogEntry result;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = std_vector_Sl_Elk_M1API_LogEntry_Sg__getitemcopy(arg1,arg2);
+    result = std_vector_Sl_Elk_LogEntry_Sg__getitemcopy(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
     return 0;
   }
   
-  jresult = new Elk::M1API::LogEntry((const Elk::M1API::LogEntry &)result); 
+  jresult = new Elk::LogEntry((const Elk::LogEntry &)result); 
   return jresult;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_getitem(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
-  Elk::M1API::LogEntry *result = 0 ;
+  Elk::LogEntry *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (Elk::M1API::LogEntry *) &std_vector_Sl_Elk_M1API_LogEntry_Sg__getitem(arg1,arg2);
+    result = (Elk::LogEntry *) &std_vector_Sl_Elk_LogEntry_Sg__getitem(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3224,19 +3319,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_getitem(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_setitem(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
-  Elk::M1API::LogEntry *arg3 = 0 ;
+  Elk::LogEntry *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::LogEntry *)jarg3;
+  arg3 = (Elk::LogEntry *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::LogEntry const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__setitem(arg1,arg2,(Elk::M1API::LogEntry const &)*arg3);
+    std_vector_Sl_Elk_LogEntry_Sg__setitem(arg1,arg2,(Elk::LogEntry const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3247,31 +3342,31 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_setitem(void * jarg1, int jarg
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_AddRange(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
-  std::vector< Elk::M1API::LogEntry > *arg2 = 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::LogEntry > *)jarg2;
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
+  arg2 = (std::vector< Elk::LogEntry > *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::LogEntry > const & type is null", 0);
     return ;
   } 
-  std_vector_Sl_Elk_M1API_LogEntry_Sg__AddRange(arg1,(std::vector< Elk::M1API::LogEntry > const &)*arg2);
+  std_vector_Sl_Elk_LogEntry_Sg__AddRange(arg1,(std::vector< Elk::LogEntry > const &)*arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
   int arg3 ;
-  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  std::vector< Elk::LogEntry > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    result = (std::vector< Elk::M1API::LogEntry > *)std_vector_Sl_Elk_M1API_LogEntry_Sg__GetRange(arg1,arg2,arg3);
+    result = (std::vector< Elk::LogEntry > *)std_vector_Sl_Elk_LogEntry_Sg__GetRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3288,19 +3383,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_GetRange(void * jarg1, int j
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Insert(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
-  Elk::M1API::LogEntry *arg3 = 0 ;
+  Elk::LogEntry *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::LogEntry *)jarg3;
+  arg3 = (Elk::LogEntry *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::LogEntry const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__Insert(arg1,arg2,(Elk::M1API::LogEntry const &)*arg3);
+    std_vector_Sl_Elk_LogEntry_Sg__Insert(arg1,arg2,(Elk::LogEntry const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3311,19 +3406,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Insert(void * jarg1, int jarg2
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::LogEntry > *arg3 = 0 ;
+  std::vector< Elk::LogEntry > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::LogEntry > *)jarg3;
+  arg3 = (std::vector< Elk::LogEntry > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::LogEntry > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::LogEntry > const &)*arg3);
+    std_vector_Sl_Elk_LogEntry_Sg__InsertRange(arg1,arg2,(std::vector< Elk::LogEntry > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3334,13 +3429,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_InsertRange(void * jarg1, int 
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_RemoveAt(void * jarg1, int jarg2) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveAt(arg1,arg2);
+    std_vector_Sl_Elk_LogEntry_Sg__RemoveAt(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3351,15 +3446,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_RemoveAt(void * jarg1, int jar
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__RemoveRange(arg1,arg2,arg3);
+    std_vector_Sl_Elk_LogEntry_Sg__RemoveRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3375,18 +3470,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_RemoveRange(void * jarg1, int 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_Repeat(void * jarg1, int jarg2) {
   void * jresult ;
-  Elk::M1API::LogEntry *arg1 = 0 ;
+  Elk::LogEntry *arg1 = 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::LogEntry > *result = 0 ;
+  std::vector< Elk::LogEntry > *result = 0 ;
   
-  arg1 = (Elk::M1API::LogEntry *)jarg1;
+  arg1 = (Elk::LogEntry *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::LogEntry const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::LogEntry const & type is null", 0);
     return 0;
   } 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< Elk::M1API::LogEntry > *)std_vector_Sl_Elk_M1API_LogEntry_Sg__Repeat((Elk::M1API::LogEntry const &)*arg1,arg2);
+    result = (std::vector< Elk::LogEntry > *)std_vector_Sl_Elk_LogEntry_Sg__Repeat((Elk::LogEntry const &)*arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3399,23 +3494,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_LogEntryVector_Repeat(void * jarg1, int jar
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Reverse__SWIG_0(void * jarg1) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
-  std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_0(arg1);
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
+  std_vector_Sl_Elk_LogEntry_Sg__Reverse__SWIG_0(arg1);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+    std_vector_Sl_Elk_LogEntry_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3430,19 +3525,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_Reverse__SWIG_1(void * jarg1, 
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::LogEntry > *arg3 = 0 ;
+  std::vector< Elk::LogEntry > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::LogEntry > *)jarg3;
+  arg3 = (std::vector< Elk::LogEntry > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::LogEntry > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::LogEntry > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_LogEntry_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::LogEntry > const &)*arg3);
+    std_vector_Sl_Elk_LogEntry_Sg__SetRange(arg1,arg2,(std::vector< Elk::LogEntry > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3453,42 +3548,42 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryVector_SetRange(void * jarg1, int jar
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogEntryVector(void * jarg1) {
-  std::vector< Elk::M1API::LogEntry > *arg1 = (std::vector< Elk::M1API::LogEntry > *) 0 ;
+  std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::LogEntry > *)jarg1; 
+  arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Clear(void * jarg1) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Add(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
-  Elk::M1API::ArmStatus *arg2 = 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
+  Elk::ArmStatus *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
-  arg2 = (Elk::M1API::ArmStatus *)jarg2;
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
+  arg2 = (Elk::ArmStatus *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ArmStatus const & type is null", 0);
     return ;
   } 
-  (arg1)->push_back((Elk::M1API::ArmStatus const &)*arg2);
+  (arg1)->push_back((Elk::ArmStatus const &)*arg2);
 }
 
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ArmStatusVector_size(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
-  std::vector< Elk::M1API::ArmStatus >::size_type result;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
-  result = ((std::vector< Elk::M1API::ArmStatus > const *)arg1)->size();
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
+  result = ((std::vector< Elk::ArmStatus > const *)arg1)->size();
   jresult = (unsigned long)result; 
   return jresult;
 }
@@ -3496,31 +3591,31 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ArmStatusVector_size(void * jarg1) {
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ArmStatusVector_capacity(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
-  std::vector< Elk::M1API::ArmStatus >::size_type result;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
-  result = ((std::vector< Elk::M1API::ArmStatus > const *)arg1)->capacity();
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
+  result = ((std::vector< Elk::ArmStatus > const *)arg1)->capacity();
   jresult = (unsigned long)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_reserve(void * jarg1, unsigned long jarg2) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
-  std::vector< Elk::M1API::ArmStatus >::size_type arg2 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus >::size_type arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::ArmStatus >::size_type)jarg2; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
+  arg2 = (std::vector< Elk::ArmStatus >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_0() {
   void * jresult ;
-  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  std::vector< Elk::ArmStatus > *result = 0 ;
   
-  result = (std::vector< Elk::M1API::ArmStatus > *)new std::vector< Elk::M1API::ArmStatus >();
+  result = (std::vector< Elk::ArmStatus > *)new std::vector< Elk::ArmStatus >();
   jresult = (void *)result; 
   return jresult;
 }
@@ -3528,15 +3623,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_0() {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_1(void * jarg1) {
   void * jresult ;
-  std::vector< Elk::M1API::ArmStatus > *arg1 = 0 ;
-  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = 0 ;
+  std::vector< Elk::ArmStatus > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1;
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ArmStatus > const & type is null", 0);
     return 0;
   } 
-  result = (std::vector< Elk::M1API::ArmStatus > *)new std::vector< Elk::M1API::ArmStatus >((std::vector< Elk::M1API::ArmStatus > const &)*arg1);
+  result = (std::vector< Elk::ArmStatus > *)new std::vector< Elk::ArmStatus >((std::vector< Elk::ArmStatus > const &)*arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -3545,11 +3640,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_1(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
-  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  std::vector< Elk::ArmStatus > *result = 0 ;
   
   arg1 = (int)jarg1; 
   try {
-    result = (std::vector< Elk::M1API::ArmStatus > *)new_std_vector_Sl_Elk_M1API_ArmStatus_Sg___SWIG_2(arg1);
+    result = (std::vector< Elk::ArmStatus > *)new_std_vector_Sl_Elk_ArmStatus_Sg___SWIG_2(arg1);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3563,35 +3658,35 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVector__SWIG_2(int jarg1) {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_getitemcopy(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
-  Elk::M1API::ArmStatus result;
+  Elk::ArmStatus result;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitemcopy(arg1,arg2);
+    result = std_vector_Sl_Elk_ArmStatus_Sg__getitemcopy(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
     return 0;
   }
   
-  jresult = new Elk::M1API::ArmStatus((const Elk::M1API::ArmStatus &)result); 
+  jresult = new Elk::ArmStatus((const Elk::ArmStatus &)result); 
   return jresult;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_getitem(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
-  Elk::M1API::ArmStatus *result = 0 ;
+  Elk::ArmStatus *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (Elk::M1API::ArmStatus *) &std_vector_Sl_Elk_M1API_ArmStatus_Sg__getitem(arg1,arg2);
+    result = (Elk::ArmStatus *) &std_vector_Sl_Elk_ArmStatus_Sg__getitem(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3604,19 +3699,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_getitem(void * jarg1, int j
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_setitem(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
-  Elk::M1API::ArmStatus *arg3 = 0 ;
+  Elk::ArmStatus *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::ArmStatus *)jarg3;
+  arg3 = (Elk::ArmStatus *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ArmStatus const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__setitem(arg1,arg2,(Elk::M1API::ArmStatus const &)*arg3);
+    std_vector_Sl_Elk_ArmStatus_Sg__setitem(arg1,arg2,(Elk::ArmStatus const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3627,31 +3722,31 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_setitem(void * jarg1, int jar
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_AddRange(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
-  std::vector< Elk::M1API::ArmStatus > *arg2 = 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::ArmStatus > *)jarg2;
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
+  arg2 = (std::vector< Elk::ArmStatus > *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ArmStatus > const & type is null", 0);
     return ;
   } 
-  std_vector_Sl_Elk_M1API_ArmStatus_Sg__AddRange(arg1,(std::vector< Elk::M1API::ArmStatus > const &)*arg2);
+  std_vector_Sl_Elk_ArmStatus_Sg__AddRange(arg1,(std::vector< Elk::ArmStatus > const &)*arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
   int arg3 ;
-  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  std::vector< Elk::ArmStatus > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    result = (std::vector< Elk::M1API::ArmStatus > *)std_vector_Sl_Elk_M1API_ArmStatus_Sg__GetRange(arg1,arg2,arg3);
+    result = (std::vector< Elk::ArmStatus > *)std_vector_Sl_Elk_ArmStatus_Sg__GetRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3668,19 +3763,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_GetRange(void * jarg1, int 
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Insert(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
-  Elk::M1API::ArmStatus *arg3 = 0 ;
+  Elk::ArmStatus *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::ArmStatus *)jarg3;
+  arg3 = (Elk::ArmStatus *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ArmStatus const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__Insert(arg1,arg2,(Elk::M1API::ArmStatus const &)*arg3);
+    std_vector_Sl_Elk_ArmStatus_Sg__Insert(arg1,arg2,(Elk::ArmStatus const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3691,19 +3786,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Insert(void * jarg1, int jarg
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::ArmStatus > *arg3 = 0 ;
+  std::vector< Elk::ArmStatus > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::ArmStatus > *)jarg3;
+  arg3 = (std::vector< Elk::ArmStatus > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ArmStatus > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::ArmStatus > const &)*arg3);
+    std_vector_Sl_Elk_ArmStatus_Sg__InsertRange(arg1,arg2,(std::vector< Elk::ArmStatus > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3714,13 +3809,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_InsertRange(void * jarg1, int
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_RemoveAt(void * jarg1, int jarg2) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveAt(arg1,arg2);
+    std_vector_Sl_Elk_ArmStatus_Sg__RemoveAt(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3731,15 +3826,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_RemoveAt(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__RemoveRange(arg1,arg2,arg3);
+    std_vector_Sl_Elk_ArmStatus_Sg__RemoveRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3755,18 +3850,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_RemoveRange(void * jarg1, int
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_Repeat(void * jarg1, int jarg2) {
   void * jresult ;
-  Elk::M1API::ArmStatus *arg1 = 0 ;
+  Elk::ArmStatus *arg1 = 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::ArmStatus > *result = 0 ;
+  std::vector< Elk::ArmStatus > *result = 0 ;
   
-  arg1 = (Elk::M1API::ArmStatus *)jarg1;
+  arg1 = (Elk::ArmStatus *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ArmStatus const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ArmStatus const & type is null", 0);
     return 0;
   } 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< Elk::M1API::ArmStatus > *)std_vector_Sl_Elk_M1API_ArmStatus_Sg__Repeat((Elk::M1API::ArmStatus const &)*arg1,arg2);
+    result = (std::vector< Elk::ArmStatus > *)std_vector_Sl_Elk_ArmStatus_Sg__Repeat((Elk::ArmStatus const &)*arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3779,23 +3874,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ArmStatusVector_Repeat(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Reverse__SWIG_0(void * jarg1) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
-  std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_0(arg1);
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
+  std_vector_Sl_Elk_ArmStatus_Sg__Reverse__SWIG_0(arg1);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+    std_vector_Sl_Elk_ArmStatus_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3810,19 +3905,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_Reverse__SWIG_1(void * jarg1,
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::ArmStatus > *arg3 = 0 ;
+  std::vector< Elk::ArmStatus > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::ArmStatus > *)jarg3;
+  arg3 = (std::vector< Elk::ArmStatus > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ArmStatus > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ArmStatus > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ArmStatus_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::ArmStatus > const &)*arg3);
+    std_vector_Sl_Elk_ArmStatus_Sg__SetRange(arg1,arg2,(std::vector< Elk::ArmStatus > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3833,42 +3928,42 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVector_SetRange(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ArmStatusVector(void * jarg1) {
-  std::vector< Elk::M1API::ArmStatus > *arg1 = (std::vector< Elk::M1API::ArmStatus > *) 0 ;
+  std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ArmStatus > *)jarg1; 
+  arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Clear(void * jarg1) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Add(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
-  Elk::M1API::ZoneState *arg2 = 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
+  Elk::ZoneState *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
-  arg2 = (Elk::M1API::ZoneState *)jarg2;
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
+  arg2 = (Elk::ZoneState *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ZoneState const & type is null", 0);
     return ;
   } 
-  (arg1)->push_back((Elk::M1API::ZoneState const &)*arg2);
+  (arg1)->push_back((Elk::ZoneState const &)*arg2);
 }
 
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneStateVector_size(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
-  std::vector< Elk::M1API::ZoneState >::size_type result;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
-  result = ((std::vector< Elk::M1API::ZoneState > const *)arg1)->size();
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
+  result = ((std::vector< Elk::ZoneState > const *)arg1)->size();
   jresult = (unsigned long)result; 
   return jresult;
 }
@@ -3876,31 +3971,31 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneStateVector_size(void * jarg1) {
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneStateVector_capacity(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
-  std::vector< Elk::M1API::ZoneState >::size_type result;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
-  result = ((std::vector< Elk::M1API::ZoneState > const *)arg1)->capacity();
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
+  result = ((std::vector< Elk::ZoneState > const *)arg1)->capacity();
   jresult = (unsigned long)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_reserve(void * jarg1, unsigned long jarg2) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
-  std::vector< Elk::M1API::ZoneState >::size_type arg2 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState >::size_type arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::ZoneState >::size_type)jarg2; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
+  arg2 = (std::vector< Elk::ZoneState >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_0() {
   void * jresult ;
-  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  std::vector< Elk::ZoneState > *result = 0 ;
   
-  result = (std::vector< Elk::M1API::ZoneState > *)new std::vector< Elk::M1API::ZoneState >();
+  result = (std::vector< Elk::ZoneState > *)new std::vector< Elk::ZoneState >();
   jresult = (void *)result; 
   return jresult;
 }
@@ -3908,15 +4003,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_0() {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_1(void * jarg1) {
   void * jresult ;
-  std::vector< Elk::M1API::ZoneState > *arg1 = 0 ;
-  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  std::vector< Elk::ZoneState > *arg1 = 0 ;
+  std::vector< Elk::ZoneState > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1;
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ZoneState > const & type is null", 0);
     return 0;
   } 
-  result = (std::vector< Elk::M1API::ZoneState > *)new std::vector< Elk::M1API::ZoneState >((std::vector< Elk::M1API::ZoneState > const &)*arg1);
+  result = (std::vector< Elk::ZoneState > *)new std::vector< Elk::ZoneState >((std::vector< Elk::ZoneState > const &)*arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -3925,11 +4020,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_1(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
-  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  std::vector< Elk::ZoneState > *result = 0 ;
   
   arg1 = (int)jarg1; 
   try {
-    result = (std::vector< Elk::M1API::ZoneState > *)new_std_vector_Sl_Elk_M1API_ZoneState_Sg___SWIG_2(arg1);
+    result = (std::vector< Elk::ZoneState > *)new_std_vector_Sl_Elk_ZoneState_Sg___SWIG_2(arg1);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3943,35 +4038,35 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateVector__SWIG_2(int jarg1) {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_getitemcopy(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
-  Elk::M1API::ZoneState result;
+  Elk::ZoneState result;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = std_vector_Sl_Elk_M1API_ZoneState_Sg__getitemcopy(arg1,arg2);
+    result = std_vector_Sl_Elk_ZoneState_Sg__getitemcopy(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
     return 0;
   }
   
-  jresult = new Elk::M1API::ZoneState((const Elk::M1API::ZoneState &)result); 
+  jresult = new Elk::ZoneState((const Elk::ZoneState &)result); 
   return jresult;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_getitem(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
-  Elk::M1API::ZoneState *result = 0 ;
+  Elk::ZoneState *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (Elk::M1API::ZoneState *) &std_vector_Sl_Elk_M1API_ZoneState_Sg__getitem(arg1,arg2);
+    result = (Elk::ZoneState *) &std_vector_Sl_Elk_ZoneState_Sg__getitem(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -3984,19 +4079,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_getitem(void * jarg1, int j
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_setitem(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
-  Elk::M1API::ZoneState *arg3 = 0 ;
+  Elk::ZoneState *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::ZoneState *)jarg3;
+  arg3 = (Elk::ZoneState *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ZoneState const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__setitem(arg1,arg2,(Elk::M1API::ZoneState const &)*arg3);
+    std_vector_Sl_Elk_ZoneState_Sg__setitem(arg1,arg2,(Elk::ZoneState const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4007,31 +4102,31 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_setitem(void * jarg1, int jar
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_AddRange(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
-  std::vector< Elk::M1API::ZoneState > *arg2 = 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::ZoneState > *)jarg2;
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
+  arg2 = (std::vector< Elk::ZoneState > *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ZoneState > const & type is null", 0);
     return ;
   } 
-  std_vector_Sl_Elk_M1API_ZoneState_Sg__AddRange(arg1,(std::vector< Elk::M1API::ZoneState > const &)*arg2);
+  std_vector_Sl_Elk_ZoneState_Sg__AddRange(arg1,(std::vector< Elk::ZoneState > const &)*arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
   int arg3 ;
-  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  std::vector< Elk::ZoneState > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    result = (std::vector< Elk::M1API::ZoneState > *)std_vector_Sl_Elk_M1API_ZoneState_Sg__GetRange(arg1,arg2,arg3);
+    result = (std::vector< Elk::ZoneState > *)std_vector_Sl_Elk_ZoneState_Sg__GetRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4048,19 +4143,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_GetRange(void * jarg1, int 
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Insert(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
-  Elk::M1API::ZoneState *arg3 = 0 ;
+  Elk::ZoneState *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::ZoneState *)jarg3;
+  arg3 = (Elk::ZoneState *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ZoneState const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__Insert(arg1,arg2,(Elk::M1API::ZoneState const &)*arg3);
+    std_vector_Sl_Elk_ZoneState_Sg__Insert(arg1,arg2,(Elk::ZoneState const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4071,19 +4166,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Insert(void * jarg1, int jarg
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::ZoneState > *arg3 = 0 ;
+  std::vector< Elk::ZoneState > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::ZoneState > *)jarg3;
+  arg3 = (std::vector< Elk::ZoneState > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ZoneState > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::ZoneState > const &)*arg3);
+    std_vector_Sl_Elk_ZoneState_Sg__InsertRange(arg1,arg2,(std::vector< Elk::ZoneState > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4094,13 +4189,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_InsertRange(void * jarg1, int
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_RemoveAt(void * jarg1, int jarg2) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveAt(arg1,arg2);
+    std_vector_Sl_Elk_ZoneState_Sg__RemoveAt(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4111,15 +4206,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_RemoveAt(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__RemoveRange(arg1,arg2,arg3);
+    std_vector_Sl_Elk_ZoneState_Sg__RemoveRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4135,18 +4230,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_RemoveRange(void * jarg1, int
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_Repeat(void * jarg1, int jarg2) {
   void * jresult ;
-  Elk::M1API::ZoneState *arg1 = 0 ;
+  Elk::ZoneState *arg1 = 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::ZoneState > *result = 0 ;
+  std::vector< Elk::ZoneState > *result = 0 ;
   
-  arg1 = (Elk::M1API::ZoneState *)jarg1;
+  arg1 = (Elk::ZoneState *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::ZoneState const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::ZoneState const & type is null", 0);
     return 0;
   } 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< Elk::M1API::ZoneState > *)std_vector_Sl_Elk_M1API_ZoneState_Sg__Repeat((Elk::M1API::ZoneState const &)*arg1,arg2);
+    result = (std::vector< Elk::ZoneState > *)std_vector_Sl_Elk_ZoneState_Sg__Repeat((Elk::ZoneState const &)*arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4159,23 +4254,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneStateVector_Repeat(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Reverse__SWIG_0(void * jarg1) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
-  std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_0(arg1);
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
+  std_vector_Sl_Elk_ZoneState_Sg__Reverse__SWIG_0(arg1);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+    std_vector_Sl_Elk_ZoneState_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4190,19 +4285,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_Reverse__SWIG_1(void * jarg1,
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::ZoneState > *arg3 = 0 ;
+  std::vector< Elk::ZoneState > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::ZoneState > *)jarg3;
+  arg3 = (std::vector< Elk::ZoneState > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::ZoneState > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::ZoneState > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_ZoneState_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::ZoneState > const &)*arg3);
+    std_vector_Sl_Elk_ZoneState_Sg__SetRange(arg1,arg2,(std::vector< Elk::ZoneState > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4213,42 +4308,42 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateVector_SetRange(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneStateVector(void * jarg1) {
-  std::vector< Elk::M1API::ZoneState > *arg1 = (std::vector< Elk::M1API::ZoneState > *) 0 ;
+  std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::ZoneState > *)jarg1; 
+  arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Clear(void * jarg1) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Add(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
-  Elk::M1API::SChimeMode *arg2 = 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
+  Elk::SChimeMode *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
-  arg2 = (Elk::M1API::SChimeMode *)jarg2;
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
+  arg2 = (Elk::SChimeMode *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SChimeMode const & type is null", 0);
     return ;
   } 
-  (arg1)->push_back((Elk::M1API::SChimeMode const &)*arg2);
+  (arg1)->push_back((Elk::SChimeMode const &)*arg2);
 }
 
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ChimeModeVector_size(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
-  std::vector< Elk::M1API::SChimeMode >::size_type result;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
-  result = ((std::vector< Elk::M1API::SChimeMode > const *)arg1)->size();
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
+  result = ((std::vector< Elk::SChimeMode > const *)arg1)->size();
   jresult = (unsigned long)result; 
   return jresult;
 }
@@ -4256,31 +4351,31 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ChimeModeVector_size(void * jarg1) {
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ChimeModeVector_capacity(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
-  std::vector< Elk::M1API::SChimeMode >::size_type result;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
-  result = ((std::vector< Elk::M1API::SChimeMode > const *)arg1)->capacity();
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
+  result = ((std::vector< Elk::SChimeMode > const *)arg1)->capacity();
   jresult = (unsigned long)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_reserve(void * jarg1, unsigned long jarg2) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
-  std::vector< Elk::M1API::SChimeMode >::size_type arg2 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode >::size_type arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::SChimeMode >::size_type)jarg2; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
+  arg2 = (std::vector< Elk::SChimeMode >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_0() {
   void * jresult ;
-  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  std::vector< Elk::SChimeMode > *result = 0 ;
   
-  result = (std::vector< Elk::M1API::SChimeMode > *)new std::vector< Elk::M1API::SChimeMode >();
+  result = (std::vector< Elk::SChimeMode > *)new std::vector< Elk::SChimeMode >();
   jresult = (void *)result; 
   return jresult;
 }
@@ -4288,15 +4383,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_0() {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_1(void * jarg1) {
   void * jresult ;
-  std::vector< Elk::M1API::SChimeMode > *arg1 = 0 ;
-  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = 0 ;
+  std::vector< Elk::SChimeMode > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1;
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SChimeMode > const & type is null", 0);
     return 0;
   } 
-  result = (std::vector< Elk::M1API::SChimeMode > *)new std::vector< Elk::M1API::SChimeMode >((std::vector< Elk::M1API::SChimeMode > const &)*arg1);
+  result = (std::vector< Elk::SChimeMode > *)new std::vector< Elk::SChimeMode >((std::vector< Elk::SChimeMode > const &)*arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -4305,11 +4400,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_1(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
-  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  std::vector< Elk::SChimeMode > *result = 0 ;
   
   arg1 = (int)jarg1; 
   try {
-    result = (std::vector< Elk::M1API::SChimeMode > *)new_std_vector_Sl_Elk_M1API_SChimeMode_Sg___SWIG_2(arg1);
+    result = (std::vector< Elk::SChimeMode > *)new_std_vector_Sl_Elk_SChimeMode_Sg___SWIG_2(arg1);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4323,35 +4418,35 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ChimeModeVector__SWIG_2(int jarg1) {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_getitemcopy(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
-  Elk::M1API::SChimeMode result;
+  Elk::SChimeMode result;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitemcopy(arg1,arg2);
+    result = std_vector_Sl_Elk_SChimeMode_Sg__getitemcopy(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
     return 0;
   }
   
-  jresult = new Elk::M1API::SChimeMode((const Elk::M1API::SChimeMode &)result); 
+  jresult = new Elk::SChimeMode((const Elk::SChimeMode &)result); 
   return jresult;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_getitem(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
-  Elk::M1API::SChimeMode *result = 0 ;
+  Elk::SChimeMode *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (Elk::M1API::SChimeMode *) &std_vector_Sl_Elk_M1API_SChimeMode_Sg__getitem(arg1,arg2);
+    result = (Elk::SChimeMode *) &std_vector_Sl_Elk_SChimeMode_Sg__getitem(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4364,19 +4459,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_getitem(void * jarg1, int j
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_setitem(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
-  Elk::M1API::SChimeMode *arg3 = 0 ;
+  Elk::SChimeMode *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::SChimeMode *)jarg3;
+  arg3 = (Elk::SChimeMode *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SChimeMode const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__setitem(arg1,arg2,(Elk::M1API::SChimeMode const &)*arg3);
+    std_vector_Sl_Elk_SChimeMode_Sg__setitem(arg1,arg2,(Elk::SChimeMode const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4387,31 +4482,31 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_setitem(void * jarg1, int jar
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_AddRange(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
-  std::vector< Elk::M1API::SChimeMode > *arg2 = 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::SChimeMode > *)jarg2;
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
+  arg2 = (std::vector< Elk::SChimeMode > *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SChimeMode > const & type is null", 0);
     return ;
   } 
-  std_vector_Sl_Elk_M1API_SChimeMode_Sg__AddRange(arg1,(std::vector< Elk::M1API::SChimeMode > const &)*arg2);
+  std_vector_Sl_Elk_SChimeMode_Sg__AddRange(arg1,(std::vector< Elk::SChimeMode > const &)*arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
   int arg3 ;
-  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  std::vector< Elk::SChimeMode > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    result = (std::vector< Elk::M1API::SChimeMode > *)std_vector_Sl_Elk_M1API_SChimeMode_Sg__GetRange(arg1,arg2,arg3);
+    result = (std::vector< Elk::SChimeMode > *)std_vector_Sl_Elk_SChimeMode_Sg__GetRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4428,19 +4523,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_GetRange(void * jarg1, int 
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Insert(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
-  Elk::M1API::SChimeMode *arg3 = 0 ;
+  Elk::SChimeMode *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::SChimeMode *)jarg3;
+  arg3 = (Elk::SChimeMode *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SChimeMode const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__Insert(arg1,arg2,(Elk::M1API::SChimeMode const &)*arg3);
+    std_vector_Sl_Elk_SChimeMode_Sg__Insert(arg1,arg2,(Elk::SChimeMode const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4451,19 +4546,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Insert(void * jarg1, int jarg
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::SChimeMode > *arg3 = 0 ;
+  std::vector< Elk::SChimeMode > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::SChimeMode > *)jarg3;
+  arg3 = (std::vector< Elk::SChimeMode > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SChimeMode > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::SChimeMode > const &)*arg3);
+    std_vector_Sl_Elk_SChimeMode_Sg__InsertRange(arg1,arg2,(std::vector< Elk::SChimeMode > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4474,13 +4569,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_InsertRange(void * jarg1, int
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_RemoveAt(void * jarg1, int jarg2) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveAt(arg1,arg2);
+    std_vector_Sl_Elk_SChimeMode_Sg__RemoveAt(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4491,15 +4586,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_RemoveAt(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__RemoveRange(arg1,arg2,arg3);
+    std_vector_Sl_Elk_SChimeMode_Sg__RemoveRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4515,18 +4610,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_RemoveRange(void * jarg1, int
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_Repeat(void * jarg1, int jarg2) {
   void * jresult ;
-  Elk::M1API::SChimeMode *arg1 = 0 ;
+  Elk::SChimeMode *arg1 = 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::SChimeMode > *result = 0 ;
+  std::vector< Elk::SChimeMode > *result = 0 ;
   
-  arg1 = (Elk::M1API::SChimeMode *)jarg1;
+  arg1 = (Elk::SChimeMode *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SChimeMode const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SChimeMode const & type is null", 0);
     return 0;
   } 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< Elk::M1API::SChimeMode > *)std_vector_Sl_Elk_M1API_SChimeMode_Sg__Repeat((Elk::M1API::SChimeMode const &)*arg1,arg2);
+    result = (std::vector< Elk::SChimeMode > *)std_vector_Sl_Elk_SChimeMode_Sg__Repeat((Elk::SChimeMode const &)*arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4539,23 +4634,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ChimeModeVector_Repeat(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Reverse__SWIG_0(void * jarg1) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
-  std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_0(arg1);
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
+  std_vector_Sl_Elk_SChimeMode_Sg__Reverse__SWIG_0(arg1);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+    std_vector_Sl_Elk_SChimeMode_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4570,19 +4665,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Reverse__SWIG_1(void * jarg1,
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::SChimeMode > *arg3 = 0 ;
+  std::vector< Elk::SChimeMode > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::SChimeMode > *)jarg3;
+  arg3 = (std::vector< Elk::SChimeMode > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SChimeMode > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SChimeMode > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SChimeMode_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::SChimeMode > const &)*arg3);
+    std_vector_Sl_Elk_SChimeMode_Sg__SetRange(arg1,arg2,(std::vector< Elk::SChimeMode > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4593,42 +4688,42 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_SetRange(void * jarg1, int ja
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ChimeModeVector(void * jarg1) {
-  std::vector< Elk::M1API::SChimeMode > *arg1 = (std::vector< Elk::M1API::SChimeMode > *) 0 ;
+  std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SChimeMode > *)jarg1; 
+  arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
   delete arg1;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Clear(void * jarg1) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Add(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
-  Elk::M1API::SZoneDefinition *arg2 = 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
+  Elk::SZoneDefinition *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
-  arg2 = (Elk::M1API::SZoneDefinition *)jarg2;
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  arg2 = (Elk::SZoneDefinition *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SZoneDefinition const & type is null", 0);
     return ;
   } 
-  (arg1)->push_back((Elk::M1API::SZoneDefinition const &)*arg2);
+  (arg1)->push_back((Elk::SZoneDefinition const &)*arg2);
 }
 
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneDefinitionVector_size(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
-  std::vector< Elk::M1API::SZoneDefinition >::size_type result;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
-  result = ((std::vector< Elk::M1API::SZoneDefinition > const *)arg1)->size();
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  result = ((std::vector< Elk::SZoneDefinition > const *)arg1)->size();
   jresult = (unsigned long)result; 
   return jresult;
 }
@@ -4636,31 +4731,31 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneDefinitionVector_size(void * jar
 
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_ZoneDefinitionVector_capacity(void * jarg1) {
   unsigned long jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
-  std::vector< Elk::M1API::SZoneDefinition >::size_type result;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition >::size_type result;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
-  result = ((std::vector< Elk::M1API::SZoneDefinition > const *)arg1)->capacity();
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  result = ((std::vector< Elk::SZoneDefinition > const *)arg1)->capacity();
   jresult = (unsigned long)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_reserve(void * jarg1, unsigned long jarg2) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
-  std::vector< Elk::M1API::SZoneDefinition >::size_type arg2 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition >::size_type arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::SZoneDefinition >::size_type)jarg2; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  arg2 = (std::vector< Elk::SZoneDefinition >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_0() {
   void * jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  std::vector< Elk::SZoneDefinition > *result = 0 ;
   
-  result = (std::vector< Elk::M1API::SZoneDefinition > *)new std::vector< Elk::M1API::SZoneDefinition >();
+  result = (std::vector< Elk::SZoneDefinition > *)new std::vector< Elk::SZoneDefinition >();
   jresult = (void *)result; 
   return jresult;
 }
@@ -4668,15 +4763,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_0() {
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_1(void * jarg1) {
   void * jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = 0 ;
-  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = 0 ;
+  std::vector< Elk::SZoneDefinition > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1;
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SZoneDefinition > const & type is null", 0);
     return 0;
   } 
-  result = (std::vector< Elk::M1API::SZoneDefinition > *)new std::vector< Elk::M1API::SZoneDefinition >((std::vector< Elk::M1API::SZoneDefinition > const &)*arg1);
+  result = (std::vector< Elk::SZoneDefinition > *)new std::vector< Elk::SZoneDefinition >((std::vector< Elk::SZoneDefinition > const &)*arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -4685,11 +4780,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_1(void * jar
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
-  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  std::vector< Elk::SZoneDefinition > *result = 0 ;
   
   arg1 = (int)jarg1; 
   try {
-    result = (std::vector< Elk::M1API::SZoneDefinition > *)new_std_vector_Sl_Elk_M1API_SZoneDefinition_Sg___SWIG_2(arg1);
+    result = (std::vector< Elk::SZoneDefinition > *)new_std_vector_Sl_Elk_SZoneDefinition_Sg___SWIG_2(arg1);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4703,35 +4798,35 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneDefinitionVector__SWIG_2(int jarg1)
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_getitemcopy(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
-  Elk::M1API::SZoneDefinition result;
+  Elk::SZoneDefinition result;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitemcopy(arg1,arg2);
+    result = std_vector_Sl_Elk_SZoneDefinition_Sg__getitemcopy(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
     return 0;
   }
   
-  jresult = new Elk::M1API::SZoneDefinition((const Elk::M1API::SZoneDefinition &)result); 
+  jresult = new Elk::SZoneDefinition((const Elk::SZoneDefinition &)result); 
   return jresult;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_getitem(void * jarg1, int jarg2) {
   void * jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
-  Elk::M1API::SZoneDefinition *result = 0 ;
+  Elk::SZoneDefinition *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (Elk::M1API::SZoneDefinition *) &std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__getitem(arg1,arg2);
+    result = (Elk::SZoneDefinition *) &std_vector_Sl_Elk_SZoneDefinition_Sg__getitem(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4744,19 +4839,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_getitem(void * jarg1, 
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_setitem(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
-  Elk::M1API::SZoneDefinition *arg3 = 0 ;
+  Elk::SZoneDefinition *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::SZoneDefinition *)jarg3;
+  arg3 = (Elk::SZoneDefinition *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SZoneDefinition const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__setitem(arg1,arg2,(Elk::M1API::SZoneDefinition const &)*arg3);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__setitem(arg1,arg2,(Elk::SZoneDefinition const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4767,31 +4862,31 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_setitem(void * jarg1, in
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_AddRange(void * jarg1, void * jarg2) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg2 = 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg2 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
-  arg2 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg2;
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  arg2 = (std::vector< Elk::SZoneDefinition > *)jarg2;
   if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SZoneDefinition > const & type is null", 0);
     return ;
   } 
-  std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__AddRange(arg1,(std::vector< Elk::M1API::SZoneDefinition > const &)*arg2);
+  std_vector_Sl_Elk_SZoneDefinition_Sg__AddRange(arg1,(std::vector< Elk::SZoneDefinition > const &)*arg2);
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
   int arg3 ;
-  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  std::vector< Elk::SZoneDefinition > *result = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    result = (std::vector< Elk::M1API::SZoneDefinition > *)std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__GetRange(arg1,arg2,arg3);
+    result = (std::vector< Elk::SZoneDefinition > *)std_vector_Sl_Elk_SZoneDefinition_Sg__GetRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4808,19 +4903,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_GetRange(void * jarg1,
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Insert(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
-  Elk::M1API::SZoneDefinition *arg3 = 0 ;
+  Elk::SZoneDefinition *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::SZoneDefinition *)jarg3;
+  arg3 = (Elk::SZoneDefinition *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SZoneDefinition const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Insert(arg1,arg2,(Elk::M1API::SZoneDefinition const &)*arg3);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__Insert(arg1,arg2,(Elk::SZoneDefinition const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4831,19 +4926,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Insert(void * jarg1, int
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg3 = 0 ;
+  std::vector< Elk::SZoneDefinition > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg3;
+  arg3 = (std::vector< Elk::SZoneDefinition > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SZoneDefinition > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__InsertRange(arg1,arg2,(std::vector< Elk::M1API::SZoneDefinition > const &)*arg3);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__InsertRange(arg1,arg2,(std::vector< Elk::SZoneDefinition > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4854,13 +4949,13 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_InsertRange(void * jarg1
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_RemoveAt(void * jarg1, int jarg2) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveAt(arg1,arg2);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__RemoveAt(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4871,15 +4966,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_RemoveAt(void * jarg1, i
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__RemoveRange(arg1,arg2,arg3);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__RemoveRange(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4895,18 +4990,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_RemoveRange(void * jarg1
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_Repeat(void * jarg1, int jarg2) {
   void * jresult ;
-  Elk::M1API::SZoneDefinition *arg1 = 0 ;
+  Elk::SZoneDefinition *arg1 = 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::SZoneDefinition > *result = 0 ;
+  std::vector< Elk::SZoneDefinition > *result = 0 ;
   
-  arg1 = (Elk::M1API::SZoneDefinition *)jarg1;
+  arg1 = (Elk::SZoneDefinition *)jarg1;
   if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::M1API::SZoneDefinition const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Elk::SZoneDefinition const & type is null", 0);
     return 0;
   } 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< Elk::M1API::SZoneDefinition > *)std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Repeat((Elk::M1API::SZoneDefinition const &)*arg1,arg2);
+    result = (std::vector< Elk::SZoneDefinition > *)std_vector_Sl_Elk_SZoneDefinition_Sg__Repeat((Elk::SZoneDefinition const &)*arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4919,23 +5014,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_ZoneDefinitionVector_Repeat(void * jarg1, i
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Reverse__SWIG_0(void * jarg1) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
-  std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_0(arg1);
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  std_vector_Sl_Elk_SZoneDefinition_Sg__Reverse__SWIG_0(arg1);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
   int arg3 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4950,19 +5045,19 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_Reverse__SWIG_1(void * j
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   int arg2 ;
-  std::vector< Elk::M1API::SZoneDefinition > *arg3 = 0 ;
+  std::vector< Elk::SZoneDefinition > *arg3 = 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg3;
+  arg3 = (std::vector< Elk::SZoneDefinition > *)jarg3;
   if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::M1API::SZoneDefinition > const & type is null", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< Elk::SZoneDefinition > const & type is null", 0);
     return ;
   } 
   try {
-    std_vector_Sl_Elk_M1API_SZoneDefinition_Sg__SetRange(arg1,arg2,(std::vector< Elk::M1API::SZoneDefinition > const &)*arg3);
+    std_vector_Sl_Elk_SZoneDefinition_Sg__SetRange(arg1,arg2,(std::vector< Elk::SZoneDefinition > const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
@@ -4973,9 +5068,1663 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneDefinitionVector_SetRange(void * jarg1, i
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneDefinitionVector(void * jarg1) {
-  std::vector< Elk::M1API::SZoneDefinition > *arg1 = (std::vector< Elk::M1API::SZoneDefinition > *) 0 ;
+  std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   
-  arg1 = (std::vector< Elk::M1API::SZoneDefinition > *)jarg1; 
+  arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SZoneDefinition_zd_set(void * jarg1, int jarg2) {
+  Elk::SZoneDefinition *arg1 = (Elk::SZoneDefinition *) 0 ;
+  Elk::ZoneDefinition arg2 ;
+  
+  arg1 = (Elk::SZoneDefinition *)jarg1; 
+  arg2 = (Elk::ZoneDefinition)jarg2; 
+  if (arg1) (arg1)->zd = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SZoneDefinition_zd_get(void * jarg1) {
+  int jresult ;
+  Elk::SZoneDefinition *arg1 = (Elk::SZoneDefinition *) 0 ;
+  Elk::ZoneDefinition result;
+  
+  arg1 = (Elk::SZoneDefinition *)jarg1; 
+  result = (Elk::ZoneDefinition) ((arg1)->zd);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_SZoneDefinition() {
+  void * jresult ;
+  Elk::SZoneDefinition *result = 0 ;
+  
+  result = (Elk::SZoneDefinition *)new Elk::SZoneDefinition();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_SZoneDefinition(void * jarg1) {
+  Elk::SZoneDefinition *arg1 = (Elk::SZoneDefinition *) 0 ;
+  
+  arg1 = (Elk::SZoneDefinition *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SChimeMode_cm_set(void * jarg1, int jarg2) {
+  Elk::SChimeMode *arg1 = (Elk::SChimeMode *) 0 ;
+  Elk::ChimeMode arg2 ;
+  
+  arg1 = (Elk::SChimeMode *)jarg1; 
+  arg2 = (Elk::ChimeMode)jarg2; 
+  if (arg1) (arg1)->cm = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SChimeMode_cm_get(void * jarg1) {
+  int jresult ;
+  Elk::SChimeMode *arg1 = (Elk::SChimeMode *) 0 ;
+  Elk::ChimeMode result;
+  
+  arg1 = (Elk::SChimeMode *)jarg1; 
+  result = (Elk::ChimeMode) ((arg1)->cm);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_SChimeMode() {
+  void * jresult ;
+  Elk::SChimeMode *result = 0 ;
+  
+  result = (Elk::SChimeMode *)new Elk::SChimeMode();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_SChimeMode(void * jarg1) {
+  Elk::SChimeMode *arg1 = (Elk::SChimeMode *) 0 ;
+  
+  arg1 = (Elk::SChimeMode *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatus_mode_set(void * jarg1, int jarg2) {
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  Elk::ArmMode arg2 ;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  arg2 = (Elk::ArmMode)jarg2; 
+  if (arg1) (arg1)->mode = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ArmStatus_mode_get(void * jarg1) {
+  int jresult ;
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  Elk::ArmMode result;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  result = (Elk::ArmMode) ((arg1)->mode);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatus_isReady_set(void * jarg1, int jarg2) {
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  Elk::ArmUpMode arg2 ;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  arg2 = (Elk::ArmUpMode)jarg2; 
+  if (arg1) (arg1)->isReady = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ArmStatus_isReady_get(void * jarg1) {
+  int jresult ;
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  Elk::ArmUpMode result;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  result = (Elk::ArmUpMode) ((arg1)->isReady);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatus_alarm_set(void * jarg1, int jarg2) {
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  Elk::AlarmState arg2 ;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  arg2 = (Elk::AlarmState)jarg2; 
+  if (arg1) (arg1)->alarm = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ArmStatus_alarm_get(void * jarg1) {
+  int jresult ;
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  Elk::AlarmState result;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  result = (Elk::AlarmState) ((arg1)->alarm);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatus() {
+  void * jresult ;
+  Elk::ArmStatus *result = 0 ;
+  
+  result = (Elk::ArmStatus *)new Elk::ArmStatus();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ArmStatus(void * jarg1) {
+  Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
+  
+  arg1 = (Elk::ArmStatus *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_zoneIsOn_set(void * jarg1, unsigned int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->zoneIsOn = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_AudioData_zoneIsOn_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (bool) ((arg1)->zoneIsOn);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_loudness_set(void * jarg1, unsigned int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->loudness = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_AudioData_loudness_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (bool) ((arg1)->loudness);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_doNotDisturb_set(void * jarg1, unsigned int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->doNotDisturb = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_AudioData_doNotDisturb_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (bool) ((arg1)->doNotDisturb);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_source_set(void * jarg1, int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->source = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AudioData_source_get(void * jarg1) {
+  int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (int) ((arg1)->source);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_volume_set(void * jarg1, int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->volume = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AudioData_volume_get(void * jarg1) {
+  int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (int) ((arg1)->volume);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_bass_set(void * jarg1, int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->bass = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AudioData_bass_get(void * jarg1) {
+  int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (int) ((arg1)->bass);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_treble_set(void * jarg1, int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->treble = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AudioData_treble_get(void * jarg1) {
+  int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (int) ((arg1)->treble);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_balance_set(void * jarg1, int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->balance = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AudioData_balance_get(void * jarg1) {
+  int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (int) ((arg1)->balance);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_AudioData_partyMode_set(void * jarg1, int jarg2) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  enum Elk::AudioData::PartyMode arg2 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  arg2 = (enum Elk::AudioData::PartyMode)jarg2; 
+  if (arg1) (arg1)->partyMode = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_AudioData_partyMode_get(void * jarg1) {
+  int jresult ;
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  enum Elk::AudioData::PartyMode result;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  result = (enum Elk::AudioData::PartyMode) ((arg1)->partyMode);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_AudioData() {
+  void * jresult ;
+  Elk::AudioData *result = 0 ;
+  
+  result = (Elk::AudioData *)new Elk::AudioData();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_AudioData(void * jarg1) {
+  Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
+  
+  arg1 = (Elk::AudioData *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry__event_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->event = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry__event_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->event);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_eventSubjectNumber_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->eventSubjectNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_eventSubjectNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->eventSubjectNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_area_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->area = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_area_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->area);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_hour_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->hour = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_hour_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->hour);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_minute_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->minute = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_minute_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->minute);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_month_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->month = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_month_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->month);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_day_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->day = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_day_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->day);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_index_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->index = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_index_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->index);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_year_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->year = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_year_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  int result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (int) ((arg1)->year);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntry_dayOfWeek_set(void * jarg1, int jarg2) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  Elk::Weekday arg2 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  arg2 = (Elk::Weekday)jarg2; 
+  if (arg1) (arg1)->dayOfWeek = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_LogEntry_dayOfWeek_get(void * jarg1) {
+  int jresult ;
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  Elk::Weekday result;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  result = (Elk::Weekday) ((arg1)->dayOfWeek);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntry() {
+  void * jresult ;
+  Elk::LogEntry *result = 0 ;
+  
+  result = (Elk::LogEntry *)new Elk::LogEntry();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogEntry(void * jarg1) {
+  Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
+  
+  arg1 = (Elk::LogEntry *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneState_physicalState_set(void * jarg1, int jarg2) {
+  Elk::ZoneState *arg1 = (Elk::ZoneState *) 0 ;
+  Elk::PhysicalZoneState arg2 ;
+  
+  arg1 = (Elk::ZoneState *)jarg1; 
+  arg2 = (Elk::PhysicalZoneState)jarg2; 
+  if (arg1) (arg1)->physicalState = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ZoneState_physicalState_get(void * jarg1) {
+  int jresult ;
+  Elk::ZoneState *arg1 = (Elk::ZoneState *) 0 ;
+  Elk::PhysicalZoneState result;
+  
+  arg1 = (Elk::ZoneState *)jarg1; 
+  result = (Elk::PhysicalZoneState) ((arg1)->physicalState);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneState_logicalState_set(void * jarg1, int jarg2) {
+  Elk::ZoneState *arg1 = (Elk::ZoneState *) 0 ;
+  Elk::LogicalZoneState arg2 ;
+  
+  arg1 = (Elk::ZoneState *)jarg1; 
+  arg2 = (Elk::LogicalZoneState)jarg2; 
+  if (arg1) (arg1)->logicalState = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ZoneState_logicalState_get(void * jarg1) {
+  int jresult ;
+  Elk::ZoneState *arg1 = (Elk::ZoneState *) 0 ;
+  Elk::LogicalZoneState result;
+  
+  arg1 = (Elk::ZoneState *)jarg1; 
+  result = (Elk::LogicalZoneState) ((arg1)->logicalState);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneState() {
+  void * jresult ;
+  Elk::ZoneState *result = 0 ;
+  
+  result = (Elk::ZoneState *)new Elk::ZoneState();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneState(void * jarg1) {
+  Elk::ZoneState *arg1 = (Elk::ZoneState *) 0 ;
+  
+  arg1 = (Elk::ZoneState *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_seconds_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->seconds = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_seconds_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (int) ((arg1)->seconds);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_minutes_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->minutes = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_minutes_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (int) ((arg1)->minutes);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_hours_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->hours = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_hours_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (int) ((arg1)->hours);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_weekday_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  Elk::Weekday arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (Elk::Weekday)jarg2; 
+  if (arg1) (arg1)->weekday = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_weekday_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  Elk::Weekday result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (Elk::Weekday) ((arg1)->weekday);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_day_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->day = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_day_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (int) ((arg1)->day);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_month_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->month = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_month_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (int) ((arg1)->month);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_year_set(void * jarg1, int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->year = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_RTCData_year_get(void * jarg1) {
+  int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (int) ((arg1)->year);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_twelveHourClock_set(void * jarg1, unsigned int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->twelveHourClock = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RTCData_twelveHourClock_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (bool) ((arg1)->twelveHourClock);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_RTCData_dayBeforeMonth_set(void * jarg1, unsigned int jarg2) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->dayBeforeMonth = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_RTCData_dayBeforeMonth_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  result = (bool) ((arg1)->dayBeforeMonth);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_RTCData() {
+  void * jresult ;
+  Elk::RTCData *result = 0 ;
+  
+  result = (Elk::RTCData *)new Elk::RTCData();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_RTCData(void * jarg1) {
+  Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
+  
+  arg1 = (Elk::RTCData *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_mode_set(void * jarg1, int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  enum Elk::ThermostatData::ThermostatMode arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = (enum Elk::ThermostatData::ThermostatMode)jarg2; 
+  if (arg1) (arg1)->mode = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ThermostatData_mode_get(void * jarg1) {
+  int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  enum Elk::ThermostatData::ThermostatMode result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (enum Elk::ThermostatData::ThermostatMode) ((arg1)->mode);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_holdCurrentTemperature_set(void * jarg1, unsigned int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->holdCurrentTemperature = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ThermostatData_holdCurrentTemperature_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (bool) ((arg1)->holdCurrentTemperature);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_fanOn_set(void * jarg1, unsigned int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->fanOn = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ThermostatData_fanOn_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (bool) ((arg1)->fanOn);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_temperature_set(void * jarg1, int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->temperature = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ThermostatData_temperature_get(void * jarg1) {
+  int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (int) ((arg1)->temperature);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_heatSetPoint_set(void * jarg1, int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->heatSetPoint = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ThermostatData_heatSetPoint_get(void * jarg1) {
+  int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (int) ((arg1)->heatSetPoint);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_coolSetPoint_set(void * jarg1, int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->coolSetPoint = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ThermostatData_coolSetPoint_get(void * jarg1) {
+  int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (int) ((arg1)->coolSetPoint);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ThermostatData_humidity_set(void * jarg1, int jarg2) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->humidity = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ThermostatData_humidity_get(void * jarg1) {
+  int jresult ;
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  result = (int) ((arg1)->humidity);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ThermostatData() {
+  void * jresult ;
+  Elk::ThermostatData *result = 0 ;
+  
+  result = (Elk::ThermostatData *)new Elk::ThermostatData();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ThermostatData(void * jarg1) {
+  Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
+  
+  arg1 = (Elk::ThermostatData *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_ACFail_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->ACFail = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_ACFail_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->ACFail);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_boxTamper_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->boxTamper = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_boxTamper_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->boxTamper);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_communicationError_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->communicationError = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_communicationError_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->communicationError);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_EEPROMError_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->EEPROMError = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_EEPROMError_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->EEPROMError);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_lowBattery_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->lowBattery = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_lowBattery_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->lowBattery);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_overCurrent_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->overCurrent = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_overCurrent_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->overCurrent);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_telephoneFault_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->telephoneFault = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_telephoneFault_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->telephoneFault);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_output2_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->output2 = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_output2_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->output2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_missingKeypad_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->missingKeypad = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_missingKeypad_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->missingKeypad);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_zoneExpander_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->zoneExpander = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_zoneExpander_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->zoneExpander);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_outputExpander_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->outputExpander = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_outputExpander_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->outputExpander);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_RPRemoteAccess_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->RPRemoteAccess = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_RPRemoteAccess_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->RPRemoteAccess);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_commonAreaNotArmed_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->commonAreaNotArmed = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_commonAreaNotArmed_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->commonAreaNotArmed);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_flashMemoryError_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->flashMemoryError = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_flashMemoryError_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->flashMemoryError);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_securityAlert_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->securityAlert = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_securityAlert_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->securityAlert);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_serialPortExpander_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->serialPortExpander = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_serialPortExpander_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->serialPortExpander);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_lostTransmitter_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->lostTransmitter = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_lostTransmitter_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->lostTransmitter);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_GESmokeCleanMe_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->GESmokeCleanMe = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_GESmokeCleanMe_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->GESmokeCleanMe);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_ethernet_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->ethernet = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_ethernet_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->ethernet);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_SystemTroubleStatus() {
+  void * jresult ;
+  Elk::SystemTroubleStatus *result = 0 ;
+  
+  result = (Elk::SystemTroubleStatus *)new Elk::SystemTroubleStatus();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_SystemTroubleStatus(void * jarg1) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatus_illumination_set(void * jarg1, void * jarg2) {
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  enum Elk::KeypadFkeyStatus::FkeyIllumination *arg2 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  arg2 = (enum Elk::KeypadFkeyStatus::FkeyIllumination *)jarg2; 
+  {
+    size_t ii;
+    enum Elk::KeypadFkeyStatus::FkeyIllumination *b = (enum Elk::KeypadFkeyStatus::FkeyIllumination *) arg1->illumination;
+    for (ii = 0; ii < (size_t)6; ii++) b[ii] = *((enum Elk::KeypadFkeyStatus::FkeyIllumination *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_KeypadFkeyStatus_illumination_get(void * jarg1) {
+  void * jresult ;
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  enum Elk::KeypadFkeyStatus::FkeyIllumination *result = 0 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  result = (enum Elk::KeypadFkeyStatus::FkeyIllumination *)(enum Elk::KeypadFkeyStatus::FkeyIllumination *) ((arg1)->illumination);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatus_codeRequiredForBypass_set(void * jarg1, unsigned int jarg2) {
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->codeRequiredForBypass = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_KeypadFkeyStatus_codeRequiredForBypass_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  result = (bool) ((arg1)->codeRequiredForBypass);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_KeypadFkeyStatus() {
+  void * jresult ;
+  Elk::KeypadFkeyStatus *result = 0 ;
+  
+  result = (Elk::KeypadFkeyStatus *)new Elk::KeypadFkeyStatus();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_KeypadFkeyStatus(void * jarg1) {
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeAccess_codetype_set(void * jarg1, int jarg2) {
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  enum Elk::UserCodeAccess::CodeType arg2 ;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
+  arg2 = (enum Elk::UserCodeAccess::CodeType)jarg2; 
+  if (arg1) (arg1)->codetype = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_UserCodeAccess_codetype_get(void * jarg1) {
+  int jresult ;
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  enum Elk::UserCodeAccess::CodeType result;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
+  result = (enum Elk::UserCodeAccess::CodeType) ((arg1)->codetype);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeAccess_usesCelcius_set(void * jarg1, unsigned int jarg2) {
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->usesCelcius = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_UserCodeAccess_usesCelcius_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
+  result = (bool) ((arg1)->usesCelcius);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeAccess_validAreas_set(void * jarg1, unsigned char jarg2) {
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  uint8_t arg2 ;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
+  arg2 = (uint8_t)jarg2; 
+  if (arg1) (arg1)->validAreas = arg2;
+}
+
+
+SWIGEXPORT unsigned char SWIGSTDCALL CSharp_UserCodeAccess_validAreas_get(void * jarg1) {
+  unsigned char jresult ;
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  uint8_t result;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
+  result = (uint8_t) ((arg1)->validAreas);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_UserCodeAccess() {
+  void * jresult ;
+  Elk::UserCodeAccess *result = 0 ;
+  
+  result = (Elk::UserCodeAccess *)new Elk::UserCodeAccess();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_UserCodeAccess(void * jarg1) {
+  Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
+  
+  arg1 = (Elk::UserCodeAccess *)jarg1; 
   delete arg1;
 }
 
@@ -5064,1657 +6813,42 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_director_connect(void *objarg, Sw
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SZoneDefinition_zd_set(void * jarg1, int jarg2) {
-  Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
-  Elk::M1API::ZoneDefinition arg2 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDeviceCallback_run(void * jarg1, int jarg2, int jarg3) {
+  TempDeviceCallback *arg1 = (TempDeviceCallback *) 0 ;
+  Elk::TemperatureDevice arg2 ;
+  int arg3 ;
   
-  arg1 = (Elk::M1API::SZoneDefinition *)jarg1; 
-  arg2 = (Elk::M1API::ZoneDefinition)jarg2; 
-  if (arg1) (arg1)->zd = arg2;
+  arg1 = (TempDeviceCallback *)jarg1; 
+  arg2 = (Elk::TemperatureDevice)jarg2; 
+  arg3 = (int)jarg3; 
+  (arg1)->run(arg2,arg3);
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_SZoneDefinition_zd_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
-  Elk::M1API::ZoneDefinition result;
-  
-  arg1 = (Elk::M1API::SZoneDefinition *)jarg1; 
-  result = (Elk::M1API::ZoneDefinition) ((arg1)->zd);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_SZoneDefinition() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDeviceCallback() {
   void * jresult ;
-  Elk::M1API::SZoneDefinition *result = 0 ;
+  TempDeviceCallback *result = 0 ;
   
-  result = (Elk::M1API::SZoneDefinition *)new Elk::M1API::SZoneDefinition();
+  result = (TempDeviceCallback *)new SwigDirector_TempDeviceCallback();
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_SZoneDefinition(void * jarg1) {
-  Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_TempDeviceCallback(void * jarg1) {
+  TempDeviceCallback *arg1 = (TempDeviceCallback *) 0 ;
   
-  arg1 = (Elk::M1API::SZoneDefinition *)jarg1; 
+  arg1 = (TempDeviceCallback *)jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SChimeMode_cm_set(void * jarg1, int jarg2) {
-  Elk::M1API::SChimeMode *arg1 = (Elk::M1API::SChimeMode *) 0 ;
-  Elk::M1API::ChimeMode arg2 ;
-  
-  arg1 = (Elk::M1API::SChimeMode *)jarg1; 
-  arg2 = (Elk::M1API::ChimeMode)jarg2; 
-  if (arg1) (arg1)->cm = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_SChimeMode_cm_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::SChimeMode *arg1 = (Elk::M1API::SChimeMode *) 0 ;
-  Elk::M1API::ChimeMode result;
-  
-  arg1 = (Elk::M1API::SChimeMode *)jarg1; 
-  result = (Elk::M1API::ChimeMode) ((arg1)->cm);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_SChimeMode() {
-  void * jresult ;
-  Elk::M1API::SChimeMode *result = 0 ;
-  
-  result = (Elk::M1API::SChimeMode *)new Elk::M1API::SChimeMode();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_SChimeMode(void * jarg1) {
-  Elk::M1API::SChimeMode *arg1 = (Elk::M1API::SChimeMode *) 0 ;
-  
-  arg1 = (Elk::M1API::SChimeMode *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ArmStatus_mode_set(void * jarg1, int jarg2) {
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  Elk::M1API::ArmMode arg2 ;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  arg2 = (Elk::M1API::ArmMode)jarg2; 
-  if (arg1) (arg1)->mode = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ArmStatus_mode_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  Elk::M1API::ArmMode result;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  result = (Elk::M1API::ArmMode) ((arg1)->mode);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ArmStatus_isReady_set(void * jarg1, int jarg2) {
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  Elk::M1API::ArmUpMode arg2 ;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  arg2 = (Elk::M1API::ArmUpMode)jarg2; 
-  if (arg1) (arg1)->isReady = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ArmStatus_isReady_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  Elk::M1API::ArmUpMode result;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  result = (Elk::M1API::ArmUpMode) ((arg1)->isReady);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ArmStatus_alarm_set(void * jarg1, int jarg2) {
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  Elk::M1API::AlarmState arg2 ;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  arg2 = (Elk::M1API::AlarmState)jarg2; 
-  if (arg1) (arg1)->alarm = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ArmStatus_alarm_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  Elk::M1API::AlarmState result;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  result = (Elk::M1API::AlarmState) ((arg1)->alarm);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_ArmStatus() {
-  void * jresult ;
-  Elk::M1API::ArmStatus *result = 0 ;
-  
-  result = (Elk::M1API::ArmStatus *)new Elk::M1API::ArmStatus();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_ArmStatus(void * jarg1) {
-  Elk::M1API::ArmStatus *arg1 = (Elk::M1API::ArmStatus *) 0 ;
-  
-  arg1 = (Elk::M1API::ArmStatus *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_zoneIsOn_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->zoneIsOn = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_AudioData_zoneIsOn_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (bool) ((arg1)->zoneIsOn);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_loudness_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->loudness = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_AudioData_loudness_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (bool) ((arg1)->loudness);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_doNotDisturb_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->doNotDisturb = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_AudioData_doNotDisturb_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (bool) ((arg1)->doNotDisturb);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_source_set(void * jarg1, int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->source = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_AudioData_source_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (int) ((arg1)->source);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_volume_set(void * jarg1, int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->volume = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_AudioData_volume_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (int) ((arg1)->volume);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_bass_set(void * jarg1, int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->bass = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_AudioData_bass_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (int) ((arg1)->bass);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_treble_set(void * jarg1, int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->treble = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_AudioData_treble_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (int) ((arg1)->treble);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_balance_set(void * jarg1, int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->balance = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_AudioData_balance_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (int) ((arg1)->balance);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_AudioData_partyMode_set(void * jarg1, int jarg2) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  enum Elk::M1API::AudioData::PartyMode arg2 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  arg2 = (enum Elk::M1API::AudioData::PartyMode)jarg2; 
-  if (arg1) (arg1)->partyMode = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_AudioData_partyMode_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  enum Elk::M1API::AudioData::PartyMode result;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  result = (enum Elk::M1API::AudioData::PartyMode) ((arg1)->partyMode);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_AudioData() {
-  void * jresult ;
-  Elk::M1API::AudioData *result = 0 ;
-  
-  result = (Elk::M1API::AudioData *)new Elk::M1API::AudioData();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_AudioData(void * jarg1) {
-  Elk::M1API::AudioData *arg1 = (Elk::M1API::AudioData *) 0 ;
-  
-  arg1 = (Elk::M1API::AudioData *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry__event_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->event = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry__event_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->event);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_eventSubjectNumber_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->eventSubjectNumber = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_eventSubjectNumber_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->eventSubjectNumber);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_area_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->area = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_area_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->area);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_hour_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->hour = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_hour_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->hour);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_minute_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->minute = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_minute_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->minute);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_month_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->month = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_month_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->month);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_day_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->day = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_day_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->day);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_index_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->index = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_index_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->index);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_year_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->year = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_year_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (int) ((arg1)->year);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_LogEntry_dayOfWeek_set(void * jarg1, int jarg2) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  Elk::M1API::Weekday arg2 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  arg2 = (Elk::M1API::Weekday)jarg2; 
-  if (arg1) (arg1)->dayOfWeek = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_LogEntry_dayOfWeek_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  Elk::M1API::Weekday result;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  result = (Elk::M1API::Weekday) ((arg1)->dayOfWeek);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_LogEntry() {
-  void * jresult ;
-  Elk::M1API::LogEntry *result = 0 ;
-  
-  result = (Elk::M1API::LogEntry *)new Elk::M1API::LogEntry();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_LogEntry(void * jarg1) {
-  Elk::M1API::LogEntry *arg1 = (Elk::M1API::LogEntry *) 0 ;
-  
-  arg1 = (Elk::M1API::LogEntry *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ZoneState_physicalState_set(void * jarg1, int jarg2) {
-  Elk::M1API::ZoneState *arg1 = (Elk::M1API::ZoneState *) 0 ;
-  Elk::M1API::PhysicalZoneState arg2 ;
-  
-  arg1 = (Elk::M1API::ZoneState *)jarg1; 
-  arg2 = (Elk::M1API::PhysicalZoneState)jarg2; 
-  if (arg1) (arg1)->physicalState = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ZoneState_physicalState_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ZoneState *arg1 = (Elk::M1API::ZoneState *) 0 ;
-  Elk::M1API::PhysicalZoneState result;
-  
-  arg1 = (Elk::M1API::ZoneState *)jarg1; 
-  result = (Elk::M1API::PhysicalZoneState) ((arg1)->physicalState);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ZoneState_logicalState_set(void * jarg1, int jarg2) {
-  Elk::M1API::ZoneState *arg1 = (Elk::M1API::ZoneState *) 0 ;
-  Elk::M1API::LogicalZoneState arg2 ;
-  
-  arg1 = (Elk::M1API::ZoneState *)jarg1; 
-  arg2 = (Elk::M1API::LogicalZoneState)jarg2; 
-  if (arg1) (arg1)->logicalState = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ZoneState_logicalState_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ZoneState *arg1 = (Elk::M1API::ZoneState *) 0 ;
-  Elk::M1API::LogicalZoneState result;
-  
-  arg1 = (Elk::M1API::ZoneState *)jarg1; 
-  result = (Elk::M1API::LogicalZoneState) ((arg1)->logicalState);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_ZoneState() {
-  void * jresult ;
-  Elk::M1API::ZoneState *result = 0 ;
-  
-  result = (Elk::M1API::ZoneState *)new Elk::M1API::ZoneState();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_ZoneState(void * jarg1) {
-  Elk::M1API::ZoneState *arg1 = (Elk::M1API::ZoneState *) 0 ;
-  
-  arg1 = (Elk::M1API::ZoneState *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_seconds_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->seconds = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_seconds_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (int) ((arg1)->seconds);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_minutes_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->minutes = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_minutes_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (int) ((arg1)->minutes);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_hours_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->hours = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_hours_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (int) ((arg1)->hours);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_weekday_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  Elk::M1API::Weekday arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (Elk::M1API::Weekday)jarg2; 
-  if (arg1) (arg1)->weekday = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_weekday_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  Elk::M1API::Weekday result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (Elk::M1API::Weekday) ((arg1)->weekday);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_day_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->day = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_day_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (int) ((arg1)->day);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_month_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->month = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_month_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (int) ((arg1)->month);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_year_set(void * jarg1, int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->year = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_RTCData_year_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (int) ((arg1)->year);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_twelveHourClock_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->twelveHourClock = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_RTCData_twelveHourClock_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (bool) ((arg1)->twelveHourClock);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_RTCData_dayBeforeMonth_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->dayBeforeMonth = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_RTCData_dayBeforeMonth_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  result = (bool) ((arg1)->dayBeforeMonth);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_RTCData() {
-  void * jresult ;
-  Elk::M1API::RTCData *result = 0 ;
-  
-  result = (Elk::M1API::RTCData *)new Elk::M1API::RTCData();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_RTCData(void * jarg1) {
-  Elk::M1API::RTCData *arg1 = (Elk::M1API::RTCData *) 0 ;
-  
-  arg1 = (Elk::M1API::RTCData *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_mode_set(void * jarg1, int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  enum Elk::M1API::ThermostatData::ThermostatMode arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = (enum Elk::M1API::ThermostatData::ThermostatMode)jarg2; 
-  if (arg1) (arg1)->mode = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ThermostatData_mode_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  enum Elk::M1API::ThermostatData::ThermostatMode result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (enum Elk::M1API::ThermostatData::ThermostatMode) ((arg1)->mode);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_holdCurrentTemperature_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->holdCurrentTemperature = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_ThermostatData_holdCurrentTemperature_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (bool) ((arg1)->holdCurrentTemperature);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_fanOn_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->fanOn = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_ThermostatData_fanOn_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (bool) ((arg1)->fanOn);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_temperature_set(void * jarg1, int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->temperature = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ThermostatData_temperature_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (int) ((arg1)->temperature);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_heatSetPoint_set(void * jarg1, int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->heatSetPoint = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ThermostatData_heatSetPoint_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (int) ((arg1)->heatSetPoint);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_coolSetPoint_set(void * jarg1, int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->coolSetPoint = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ThermostatData_coolSetPoint_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (int) ((arg1)->coolSetPoint);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_ThermostatData_humidity_set(void * jarg1, int jarg2) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->humidity = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_ThermostatData_humidity_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  int result;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  result = (int) ((arg1)->humidity);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_ThermostatData() {
-  void * jresult ;
-  Elk::M1API::ThermostatData *result = 0 ;
-  
-  result = (Elk::M1API::ThermostatData *)new Elk::M1API::ThermostatData();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_ThermostatData(void * jarg1) {
-  Elk::M1API::ThermostatData *arg1 = (Elk::M1API::ThermostatData *) 0 ;
-  
-  arg1 = (Elk::M1API::ThermostatData *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_ACFail_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->ACFail = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_ACFail_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->ACFail);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_boxTamper_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->boxTamper = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_boxTamper_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->boxTamper);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_communicationError_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->communicationError = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_communicationError_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->communicationError);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_EEPROMError_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->EEPROMError = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_EEPROMError_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->EEPROMError);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_lowBattery_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->lowBattery = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_lowBattery_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->lowBattery);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_overCurrent_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->overCurrent = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_overCurrent_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->overCurrent);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_telephoneFault_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->telephoneFault = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_telephoneFault_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->telephoneFault);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_output2_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->output2 = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_output2_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->output2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_missingKeypad_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->missingKeypad = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_missingKeypad_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->missingKeypad);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_zoneExpander_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->zoneExpander = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_zoneExpander_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->zoneExpander);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_outputExpander_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->outputExpander = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_outputExpander_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->outputExpander);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_RPRemoteAccess_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->RPRemoteAccess = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_RPRemoteAccess_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->RPRemoteAccess);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_commonAreaNotArmed_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->commonAreaNotArmed = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_commonAreaNotArmed_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->commonAreaNotArmed);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_flashMemoryError_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->flashMemoryError = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_flashMemoryError_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->flashMemoryError);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_securityAlert_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->securityAlert = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_securityAlert_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->securityAlert);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_serialPortExpander_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->serialPortExpander = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_serialPortExpander_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->serialPortExpander);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_lostTransmitter_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->lostTransmitter = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_lostTransmitter_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->lostTransmitter);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_GESmokeCleanMe_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->GESmokeCleanMe = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_GESmokeCleanMe_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->GESmokeCleanMe);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_ethernet_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->ethernet = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_SystemTroubleStatus_ethernet_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->ethernet);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_SystemTroubleStatus() {
-  void * jresult ;
-  Elk::M1API::SystemTroubleStatus *result = 0 ;
-  
-  result = (Elk::M1API::SystemTroubleStatus *)new Elk::M1API::SystemTroubleStatus();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_SystemTroubleStatus(void * jarg1) {
-  Elk::M1API::SystemTroubleStatus *arg1 = (Elk::M1API::SystemTroubleStatus *) 0 ;
-  
-  arg1 = (Elk::M1API::SystemTroubleStatus *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_KeypadFkeyStatus_illumination_set(void * jarg1, void * jarg2) {
-  Elk::M1API::KeypadFkeyStatus *arg1 = (Elk::M1API::KeypadFkeyStatus *) 0 ;
-  enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *arg2 ;
-  
-  arg1 = (Elk::M1API::KeypadFkeyStatus *)jarg1; 
-  arg2 = (enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *)jarg2; 
-  {
-    size_t ii;
-    enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *b = (enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *) arg1->illumination;
-    for (ii = 0; ii < (size_t)6; ii++) b[ii] = *((enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *) arg2 + ii);
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDeviceCallback_director_connect(void *objarg, SwigDirector_TempDeviceCallback::SWIG_Callback0_t callback0) {
+  TempDeviceCallback *obj = (TempDeviceCallback *)objarg;
+  SwigDirector_TempDeviceCallback *director = dynamic_cast<SwigDirector_TempDeviceCallback *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0);
   }
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_KeypadFkeyStatus_illumination_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1API::KeypadFkeyStatus *arg1 = (Elk::M1API::KeypadFkeyStatus *) 0 ;
-  enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *result = 0 ;
-  
-  arg1 = (Elk::M1API::KeypadFkeyStatus *)jarg1; 
-  result = (enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *)(enum Elk::M1API::KeypadFkeyStatus::FkeyIllumination *) ((arg1)->illumination);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_KeypadFkeyStatus_codeRequiredForBypass_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::KeypadFkeyStatus *arg1 = (Elk::M1API::KeypadFkeyStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::KeypadFkeyStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->codeRequiredForBypass = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_KeypadFkeyStatus_codeRequiredForBypass_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::KeypadFkeyStatus *arg1 = (Elk::M1API::KeypadFkeyStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::KeypadFkeyStatus *)jarg1; 
-  result = (bool) ((arg1)->codeRequiredForBypass);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_KeypadFkeyStatus() {
-  void * jresult ;
-  Elk::M1API::KeypadFkeyStatus *result = 0 ;
-  
-  result = (Elk::M1API::KeypadFkeyStatus *)new Elk::M1API::KeypadFkeyStatus();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_KeypadFkeyStatus(void * jarg1) {
-  Elk::M1API::KeypadFkeyStatus *arg1 = (Elk::M1API::KeypadFkeyStatus *) 0 ;
-  
-  arg1 = (Elk::M1API::KeypadFkeyStatus *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_UserCodeAccess_codetype_set(void * jarg1, int jarg2) {
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  enum Elk::M1API::UserCodeAccess::CodeType arg2 ;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  arg2 = (enum Elk::M1API::UserCodeAccess::CodeType)jarg2; 
-  if (arg1) (arg1)->codetype = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_UserCodeAccess_codetype_get(void * jarg1) {
-  int jresult ;
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  enum Elk::M1API::UserCodeAccess::CodeType result;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  result = (enum Elk::M1API::UserCodeAccess::CodeType) ((arg1)->codetype);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_UserCodeAccess_usesCelcius_set(void * jarg1, unsigned int jarg2) {
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->usesCelcius = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_UserCodeAccess_usesCelcius_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  result = (bool) ((arg1)->usesCelcius);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_UserCodeAccess_validAreas_set(void * jarg1, unsigned char jarg2) {
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  uint8_t arg2 ;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  arg2 = (uint8_t)jarg2; 
-  if (arg1) (arg1)->validAreas = arg2;
-}
-
-
-SWIGEXPORT unsigned char SWIGSTDCALL CSharp_M1API_UserCodeAccess_validAreas_get(void * jarg1) {
-  unsigned char jresult ;
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  uint8_t result;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  result = (uint8_t) ((arg1)->validAreas);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1API_UserCodeAccess() {
-  void * jresult ;
-  Elk::M1API::UserCodeAccess *result = 0 ;
-  
-  result = (Elk::M1API::UserCodeAccess *)new Elk::M1API::UserCodeAccess();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_UserCodeAccess(void * jarg1) {
-  Elk::M1API::UserCodeAccess *arg1 = (Elk::M1API::UserCodeAccess *) 0 ;
-  
-  arg1 = (Elk::M1API::UserCodeAccess *)jarg1; 
-  delete arg1;
 }
 
 
@@ -6763,16 +6897,10 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredKeypad(void * jarg1, v
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredTempDevice(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::function< void (Elk::M1API::TemperatureDevice,int) > arg2 ;
-  std::function< void (Elk::M1API::TemperatureDevice,int) > *argp2 ;
+  TempDeviceCallback *arg2 = (TempDeviceCallback *) 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (std::function< void (Elk::M1API::TemperatureDevice,int) > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::function< void (Elk::M1API::TemperatureDevice,int) >", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (TempDeviceCallback *)jarg2; 
   (arg1)->forEachConfiguredTempDevice(arg2);
 }
 
@@ -6780,12 +6908,12 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredTempDevice(void * jarg
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_armDisarm(void * jarg1, int jarg2, int jarg3, char * jarg4) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::ArmMode arg3 ;
+  Elk::ArmMode arg3 ;
   std::string arg4 ;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::ArmMode)jarg3; 
+  arg3 = (Elk::ArmMode)jarg3; 
   if (!jarg4) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
     return ;
@@ -6798,11 +6926,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_armDisarm(void * jarg1, int jarg2, int 
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getArmStatus(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::M1API::ArmStatus > result;
+  std::vector< Elk::ArmStatus > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getArmStatus();
-  jresult = new std::vector< Elk::M1API::ArmStatus >((const std::vector< Elk::M1API::ArmStatus > &)result); 
+  jresult = new std::vector< Elk::ArmStatus >((const std::vector< Elk::ArmStatus > &)result); 
   return jresult;
 }
 
@@ -6810,11 +6938,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getArmStatus(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneAlarms(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::M1API::SZoneDefinition > result;
+  std::vector< Elk::SZoneDefinition > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getZoneAlarms();
-  jresult = new std::vector< Elk::M1API::SZoneDefinition >((const std::vector< Elk::M1API::SZoneDefinition > &)result); 
+  jresult = new std::vector< Elk::SZoneDefinition >((const std::vector< Elk::SZoneDefinition > &)result); 
   return jresult;
 }
 
@@ -6823,12 +6951,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getAudioData(void * jarg1, int jarg2)
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::AudioData result;
+  Elk::AudioData result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   result = (arg1)->getAudioData(arg2);
-  jresult = new Elk::M1API::AudioData((const Elk::M1API::AudioData &)result); 
+  jresult = new Elk::AudioData((const Elk::AudioData &)result); 
   return jresult;
 }
 
@@ -6922,7 +7050,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_M1API_requestChangeUserCode(void * jarg1, int 
   std::string arg3 ;
   std::string arg4 ;
   uint8_t arg5 ;
-  Elk::M1API::UserCodeSuccess result;
+  Elk::UserCodeSuccess result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
@@ -6937,7 +7065,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_M1API_requestChangeUserCode(void * jarg1, int 
   }
   (&arg4)->assign(jarg4); 
   arg5 = (uint8_t)jarg5; 
-  result = (Elk::M1API::UserCodeSuccess)(arg1)->requestChangeUserCode(arg2,arg3,arg4,arg5);
+  result = (Elk::UserCodeSuccess)(arg1)->requestChangeUserCode(arg2,arg3,arg4,arg5);
   jresult = (int)result; 
   return jresult;
 }
@@ -6976,14 +7104,14 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_setCounterValue(void * jarg1,
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_displayLCDText__SWIG_0(void * jarg1, int jarg2, int jarg3, unsigned int jarg4, unsigned short jarg5, char * jarg6) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::clearMethod arg3 ;
+  Elk::clearMethod arg3 ;
   bool arg4 ;
   uint16_t arg5 ;
   std::string arg6 ;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::clearMethod)jarg3; 
+  arg3 = (Elk::clearMethod)jarg3; 
   arg4 = jarg4 ? true : false; 
   arg5 = (uint16_t)jarg5; 
   if (!jarg6) {
@@ -6998,7 +7126,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_displayLCDText__SWIG_0(void * jarg1, in
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_displayLCDText__SWIG_1(void * jarg1, int jarg2, int jarg3, unsigned int jarg4, unsigned short jarg5, char * jarg6, char * jarg7) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::clearMethod arg3 ;
+  Elk::clearMethod arg3 ;
   bool arg4 ;
   uint16_t arg5 ;
   std::string arg6 ;
@@ -7006,7 +7134,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_displayLCDText__SWIG_1(void * jarg1, in
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::clearMethod)jarg3; 
+  arg3 = (Elk::clearMethod)jarg3; 
   arg4 = jarg4 ? true : false; 
   arg5 = (uint16_t)jarg5; 
   if (!jarg6) {
@@ -7053,12 +7181,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getKeypadFkeyStatus(void * jarg1, int
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::KeypadFkeyStatus result;
+  Elk::KeypadFkeyStatus result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   result = (arg1)->getKeypadFkeyStatus(arg2);
-  jresult = new Elk::M1API::KeypadFkeyStatus((const Elk::M1API::KeypadFkeyStatus &)result); 
+  jresult = new Elk::KeypadFkeyStatus((const Elk::KeypadFkeyStatus &)result); 
   return jresult;
 }
 
@@ -7067,14 +7195,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_pressFunctionKey(void * jarg1, int ja
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::FKEY arg3 ;
-  std::vector< Elk::M1API::SChimeMode > result;
+  Elk::FKEY arg3 ;
+  std::vector< Elk::SChimeMode > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::FKEY)jarg3; 
+  arg3 = (Elk::FKEY)jarg3; 
   result = (arg1)->pressFunctionKey(arg2,arg3);
-  jresult = new std::vector< Elk::M1API::SChimeMode >((const std::vector< Elk::M1API::SChimeMode > &)result); 
+  jresult = new std::vector< Elk::SChimeMode >((const std::vector< Elk::SChimeMode > &)result); 
   return jresult;
 }
 
@@ -7083,12 +7211,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getLogData(void * jarg1, int jarg2) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::LogEntry result;
+  Elk::LogEntry result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   result = (arg1)->getLogData(arg2);
-  jresult = new Elk::M1API::LogEntry((const Elk::M1API::LogEntry &)result); 
+  jresult = new Elk::LogEntry((const Elk::LogEntry &)result); 
   return jresult;
 }
 
@@ -7096,11 +7224,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getLogData(void * jarg1, int jarg2) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getLogs(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::M1API::LogEntry > result;
+  std::vector< Elk::LogEntry > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getLogs();
-  jresult = new std::vector< Elk::M1API::LogEntry >((const std::vector< Elk::M1API::LogEntry > &)result); 
+  jresult = new std::vector< Elk::LogEntry >((const std::vector< Elk::LogEntry > &)result); 
   return jresult;
 }
 
@@ -7182,11 +7310,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getPLCStatus(void * jarg1, int jarg2)
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getRTCData(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::M1API::RTCData result;
+  Elk::RTCData result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getRTCData();
-  jresult = new Elk::M1API::RTCData((const Elk::M1API::RTCData &)result); 
+  jresult = new Elk::RTCData((const Elk::RTCData &)result); 
   return jresult;
 }
 
@@ -7194,19 +7322,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getRTCData(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setRTCData(void * jarg1, void * jarg2) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::M1API::RTCData arg2 ;
-  Elk::M1API::RTCData *argp2 ;
-  Elk::M1API::RTCData result;
+  Elk::RTCData arg2 ;
+  Elk::RTCData *argp2 ;
+  Elk::RTCData result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (Elk::M1API::RTCData *)jarg2; 
+  argp2 = (Elk::RTCData *)jarg2; 
   if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::M1API::RTCData", 0);
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::RTCData", 0);
     return 0;
   }
   arg2 = *argp2; 
   result = (arg1)->setRTCData(arg2);
-  jresult = new Elk::M1API::RTCData((const Elk::M1API::RTCData &)result); 
+  jresult = new Elk::RTCData((const Elk::RTCData &)result); 
   return jresult;
 }
 
@@ -7214,12 +7342,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setRTCData(void * jarg1, void * jarg2
 SWIGEXPORT char * SWIGSTDCALL CSharp_M1API_getTextDescription(void * jarg1, int jarg2, int jarg3) {
   char * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::M1API::TextDescriptionType arg2 ;
+  Elk::TextDescriptionType arg2 ;
   int arg3 ;
   std::string result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (Elk::M1API::TextDescriptionType)jarg2; 
+  arg2 = (Elk::TextDescriptionType)jarg2; 
   arg3 = (int)jarg3; 
   result = (arg1)->getTextDescription(arg2,arg3);
   jresult = SWIG_csharp_string_callback((&result)->c_str()); 
@@ -7230,11 +7358,11 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_M1API_getTextDescription(void * jarg1, int 
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getSystemTroubleStatus(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::M1API::SystemTroubleStatus result;
+  Elk::SystemTroubleStatus result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getSystemTroubleStatus();
-  jresult = new Elk::M1API::SystemTroubleStatus((const Elk::M1API::SystemTroubleStatus &)result); 
+  jresult = new Elk::SystemTroubleStatus((const Elk::SystemTroubleStatus &)result); 
   return jresult;
 }
 
@@ -7242,12 +7370,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getSystemTroubleStatus(void * jarg1) 
 SWIGEXPORT int SWIGSTDCALL CSharp_M1API_getTemperature(void * jarg1, int jarg2, int jarg3) {
   int jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::M1API::TemperatureDevice arg2 ;
+  Elk::TemperatureDevice arg2 ;
   int arg3 ;
   int result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (Elk::M1API::TemperatureDevice)jarg2; 
+  arg2 = (Elk::TemperatureDevice)jarg2; 
   arg3 = (int)jarg3; 
   result = (int)(arg1)->getTemperature(arg2,arg3);
   jresult = result; 
@@ -7258,11 +7386,11 @@ SWIGEXPORT int SWIGSTDCALL CSharp_M1API_getTemperature(void * jarg1, int jarg2, 
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getTemperatures(void * jarg1, int jarg2) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::M1API::TemperatureDevice arg2 ;
+  Elk::TemperatureDevice arg2 ;
   std::vector< int > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (Elk::M1API::TemperatureDevice)jarg2; 
+  arg2 = (Elk::TemperatureDevice)jarg2; 
   result = (arg1)->getTemperatures(arg2);
   jresult = new std::vector< int >((const std::vector< int > &)result); 
   return jresult;
@@ -7323,12 +7451,12 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getThermostatData(void * jarg1, int j
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::M1API::ThermostatData result;
+  Elk::ThermostatData result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   result = (arg1)->getThermostatData(arg2);
-  jresult = new Elk::M1API::ThermostatData((const Elk::M1API::ThermostatData &)result); 
+  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
   return jresult;
 }
 
@@ -7339,14 +7467,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setThermostatData(void * jarg1, int j
   int arg2 ;
   int arg3 ;
   int arg4 ;
-  Elk::M1API::ThermostatData result;
+  Elk::ThermostatData result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
   arg4 = (int)jarg4; 
   result = (arg1)->setThermostatData(arg2,arg3,arg4);
-  jresult = new Elk::M1API::ThermostatData((const Elk::M1API::ThermostatData &)result); 
+  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
   return jresult;
 }
 
@@ -7355,7 +7483,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getUserCodeAccess(void * jarg1, char 
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::string arg2 ;
-  Elk::M1API::UserCodeAccess result;
+  Elk::UserCodeAccess result;
   
   arg1 = (Elk::M1API *)jarg1; 
   if (!jarg2) {
@@ -7364,7 +7492,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getUserCodeAccess(void * jarg1, char 
   }
   (&arg2)->assign(jarg2); 
   result = (arg1)->getUserCodeAccess(arg2);
-  jresult = new Elk::M1API::UserCodeAccess((const Elk::M1API::UserCodeAccess &)result); 
+  jresult = new Elk::UserCodeAccess((const Elk::UserCodeAccess &)result); 
   return jresult;
 }
 
@@ -7426,11 +7554,11 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_setAreaBypass(void * jarg1, int
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneDefinitions(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::M1API::SZoneDefinition > result;
+  std::vector< Elk::SZoneDefinition > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getZoneDefinitions();
-  jresult = new std::vector< Elk::M1API::SZoneDefinition >((const std::vector< Elk::M1API::SZoneDefinition > &)result); 
+  jresult = new std::vector< Elk::SZoneDefinition >((const std::vector< Elk::SZoneDefinition > &)result); 
   return jresult;
 }
 
@@ -7450,11 +7578,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZonePartitions(void * jarg1) {
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneStatuses(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::M1API::ZoneState > result;
+  std::vector< Elk::ZoneState > result;
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getZoneStatuses();
-  jresult = new std::vector< Elk::M1API::ZoneState >((const std::vector< Elk::M1API::ZoneState > &)result); 
+  jresult = new std::vector< Elk::ZoneState >((const std::vector< Elk::ZoneState > &)result); 
   return jresult;
 }
 
@@ -7592,11 +7720,11 @@ SWIGEXPORT int SWIGSTDCALL CSharp_M1AsciiAPI_getLightingStatus__SWIG_1(void * ja
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1AsciiAPI_getArmStatus__SWIG_0(void * jarg1) {
   void * jresult ;
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
-  std::vector< Elk::M1API::ArmStatus > result;
+  std::vector< Elk::ArmStatus > result;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
   result = (arg1)->getArmStatus();
-  jresult = new std::vector< Elk::M1API::ArmStatus >((const std::vector< Elk::M1API::ArmStatus > &)result); 
+  jresult = new std::vector< Elk::ArmStatus >((const std::vector< Elk::ArmStatus > &)result); 
   return jresult;
 }
 
@@ -7606,13 +7734,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1AsciiAPI_getArmStatus__SWIG_1(void * jarg
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
   bool arg2 ;
   int arg3 ;
-  std::vector< Elk::M1API::ArmStatus > result;
+  std::vector< Elk::ArmStatus > result;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
   arg2 = jarg2 ? true : false; 
   arg3 = (int)jarg3; 
   result = (arg1)->getArmStatus(arg2,arg3);
-  jresult = new std::vector< Elk::M1API::ArmStatus >((const std::vector< Elk::M1API::ArmStatus > &)result); 
+  jresult = new std::vector< Elk::ArmStatus >((const std::vector< Elk::ArmStatus > &)result); 
   return jresult;
 }
 
@@ -7684,14 +7812,14 @@ SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1AsciiAPI_getCustomValue__SWIG_1(v
 SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_displayLCDText__SWIG_0(void * jarg1, int jarg2, int jarg3, unsigned int jarg4, unsigned short jarg5, char * jarg6) {
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
   int arg2 ;
-  Elk::M1API::clearMethod arg3 ;
+  Elk::clearMethod arg3 ;
   bool arg4 ;
   uint16_t arg5 ;
   std::string arg6 ;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::clearMethod)jarg3; 
+  arg3 = (Elk::clearMethod)jarg3; 
   arg4 = jarg4 ? true : false; 
   arg5 = (uint16_t)jarg5; 
   if (!jarg6) {
@@ -7706,7 +7834,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_displayLCDText__SWIG_0(void * jarg
 SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_displayLCDText__SWIG_1(void * jarg1, int jarg2, int jarg3, unsigned int jarg4, unsigned short jarg5, char * jarg6, char * jarg7) {
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
   int arg2 ;
-  Elk::M1API::clearMethod arg3 ;
+  Elk::clearMethod arg3 ;
   bool arg4 ;
   uint16_t arg5 ;
   std::string arg6 ;
@@ -7714,7 +7842,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_displayLCDText__SWIG_1(void * jarg
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::M1API::clearMethod)jarg3; 
+  arg3 = (Elk::clearMethod)jarg3; 
   arg4 = jarg4 ? true : false; 
   arg5 = (uint16_t)jarg5; 
   if (!jarg6) {
@@ -7805,6 +7933,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1Connection_Recieve(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1Connection() {
+  void * jresult ;
+  Elk::M1Connection *result = 0 ;
+  
+  result = (Elk::M1Connection *)new SwigDirector_M1Connection();
+  
+  jresult = result ? new std::shared_ptr<  Elk::M1Connection >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Connection(void * jarg1) {
   Elk::M1Connection *arg1 = (Elk::M1Connection *) 0 ;
   std::shared_ptr< Elk::M1Connection > *smartarg1 = 0 ;
@@ -7813,6 +7953,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Connection(void * jarg1) {
   smartarg1 = (std::shared_ptr<  Elk::M1Connection > *)jarg1;
   arg1 = (Elk::M1Connection *)(smartarg1 ? smartarg1->get() : 0); 
   (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1Connection_director_connect(void *objarg, SwigDirector_M1Connection::SWIG_Callback0_t callback0, SwigDirector_M1Connection::SWIG_Callback1_t callback1, SwigDirector_M1Connection::SWIG_Callback2_t callback2, SwigDirector_M1Connection::SWIG_Callback3_t callback3) {
+  std::shared_ptr< Elk::M1Connection > *obj = (std::shared_ptr< Elk::M1Connection > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_M1Connection *director = dynamic_cast<SwigDirector_M1Connection *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0, callback1, callback2, callback3);
+  }
 }
 
 

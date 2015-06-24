@@ -136,6 +136,7 @@ C:/Data/swigwin/swig -O -Wall -DELKM1API -Fmicrosoft -c++ -csharp -o swig_wrap_c
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ElkM1API.h" />
+    <ClInclude Include="ElkM1Definition.h" />
     <ClInclude Include="ElkM1AsciiAPI.h" />
     <ClInclude Include="ElkM1Connection.h" />
     <ClInclude Include="ElkM1Monitor.h" />

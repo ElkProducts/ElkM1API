@@ -491,12 +491,12 @@ namespace Elk {
 		}
 	}
 
-	void M1AsciiAPI::forEachConfiguredTempDevice(std::function<void(Elk::M1API::TemperatureDevice, int)> function) {
-		for (int type = Elk::M1API::TEMPDEVICE_ZONE; type < Elk::M1API::TEMPDEVICE_THERMOSTAT; type++){
-			const auto& temp = getTemperatures(Elk::M1API::TemperatureDevice(type));
+	void M1AsciiAPI::forEachConfiguredTempDevice(TempDeviceCallback* function) {
+		for (int type = Elk::TEMPDEVICE_ZONE; type < Elk::TEMPDEVICE_THERMOSTAT; type++){
+			const auto& temp = getTemperatures(Elk::TemperatureDevice(type));
 			for (int i = 0; i < temp.size(); i++) {
 				if (temp[i] != INT_MIN) {
-					function((Elk::M1API::TemperatureDevice)type, i);
+					function->run((Elk::TemperatureDevice)type, i);
 				}
 			}
 		}
@@ -508,7 +508,7 @@ namespace Elk {
 	}
 	// TODO: Replace magic numbers in timeout definitions with defines
 	
-	M1AsciiAPI::AudioData M1AsciiAPI::getAudioData(int audioZone) { 
+	AudioData M1AsciiAPI::getAudioData(int audioZone) { 
 		// TODO: Can't test without something to test against.
 		if ( (audioZone < 0) || (audioZone >= 16) ) {
 			throw std::invalid_argument("Argument out of allowed range.");
@@ -620,7 +620,7 @@ namespace Elk {
 		}
 
 	}
-	M1AsciiAPI::KeypadFkeyStatus M1AsciiAPI::getKeypadFkeyStatus(int keypad) {
+	KeypadFkeyStatus M1AsciiAPI::getKeypadFkeyStatus(int keypad) {
 		if ((keypad < 0) || (keypad >= 16))
 			throw std::invalid_argument("Argument out of allowed range.");
 
@@ -629,7 +629,7 @@ namespace Elk {
 		message += "00";
 		return cacheRequest(m1cache.keypadStatuses[keypad], message, true, 0);
 	}
-	M1AsciiAPI::LogEntry M1AsciiAPI::getLogData(int index) {
+	LogEntry M1AsciiAPI::getLogData(int index) {
 		if ((index < 0) || (index >= 510))
 			throw std::invalid_argument("Argument out of allowed range.");
 
@@ -638,7 +638,7 @@ namespace Elk {
 		request += "00";
 		return cacheRequest(m1cache.logData[index], request, true, 0);
 	}
-	std::vector<M1API::LogEntry> M1AsciiAPI::getLogs() {
+	std::vector<LogEntry> M1AsciiAPI::getLogs() {
 		// Get log entries. If we find a duplicate, the log has been written to, so insert a new one at the beginning.
 		std::vector<LogEntry> logs;
 		int duplicates = 0;
@@ -665,13 +665,13 @@ namespace Elk {
 		request += "00";
 		return cacheRequest(m1cache.plcStatus[bank], request, true, 0);
 	}
-	M1AsciiAPI::RTCData M1AsciiAPI::getRTCData() { 
+	RTCData M1AsciiAPI::getRTCData() { 
 		if (!versionAtLeast(4, 3, 2)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
 		return cacheRequest(m1cache.rtcData, (AsciiMessage)"rr00", true, 0);
 	}
-	M1AsciiAPI::RTCData M1AsciiAPI::setRTCData(RTCData newData) { 
+	RTCData M1AsciiAPI::setRTCData(RTCData newData) { 
 		if (!versionAtLeast(4, 3, 2)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -685,16 +685,16 @@ namespace Elk {
 		message += "00";
 		return cacheRequest(m1cache.rtcData, message, true, 0);
 	}
-	std::vector<M1AsciiAPI::ArmStatus> M1AsciiAPI::getArmStatus() {
+	std::vector<ArmStatus> M1AsciiAPI::getArmStatus() {
 		return getArmStatus(false, 0);
 	}
-	std::vector<M1AsciiAPI::ArmStatus> M1AsciiAPI::getArmStatus(bool ignoreCache =  false, int timeoutMillis = 0) { 
+	std::vector<ArmStatus> M1AsciiAPI::getArmStatus(bool ignoreCache =  false, int timeoutMillis = 0) { 
 		return cacheRequest(m1cache.armStatus, (AsciiMessage)"as00", ignoreCache, timeoutMillis);
 	}
 	std::vector<bool> M1AsciiAPI::getControlOutputs() { 
 		return cacheRequest(m1cache.controlOutputs, (AsciiMessage)"cs00", true, 0);
 	}
-	std::vector<M1AsciiAPI::SChimeMode> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
+	std::vector<SChimeMode> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
 		if (!versionAtLeast(4, 2, 5)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -745,19 +745,19 @@ namespace Elk {
 		}
 		return reply;
 	}
-	std::vector<M1AsciiAPI::SZoneDefinition> M1AsciiAPI::getZoneAlarms() { 
+	std::vector<SZoneDefinition> M1AsciiAPI::getZoneAlarms() { 
 		if (!versionAtLeast(4, 3, 9)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
 		return cacheRequest(m1cache.zoneAlarms, (AsciiMessage)"az00", true, 0);
 	}
-	std::vector<M1AsciiAPI::SZoneDefinition> M1AsciiAPI::getZoneDefinitions() { 
+	std::vector<SZoneDefinition> M1AsciiAPI::getZoneDefinitions() { 
 		if (!versionAtLeast(4, 2, 6)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
 		return cacheExistsRequest(m1cache.zoneDefinitions, (AsciiMessage)"zd00");
 	}
-	std::vector<M1AsciiAPI::ZoneState> M1AsciiAPI::getZoneStatuses() { 
+	std::vector<ZoneState> M1AsciiAPI::getZoneStatuses() { 
 		return cacheRequest(m1cache.zoneStatus, (AsciiMessage)"zs00", true, 0);
 	}
 	std::string M1AsciiAPI::getTextDescription(TextDescriptionType type, int index) { 
@@ -861,13 +861,13 @@ namespace Elk {
 		message += "00";
 		return cacheRequest(m1cache.omniStat2Reply, message, true, 0);
 	}
-	M1AsciiAPI::SystemTroubleStatus M1AsciiAPI::getSystemTroubleStatus() {
+	SystemTroubleStatus M1AsciiAPI::getSystemTroubleStatus() {
 		if (!versionAtLeast(4, 5, 4)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
 		return cacheRequest(m1cache.systemTroubleStatus, (AsciiMessage)"ss00", true, 0);
 	}
-	M1AsciiAPI::ThermostatData M1AsciiAPI::getThermostatData(int index) { 
+	ThermostatData M1AsciiAPI::getThermostatData(int index) { 
 		if (!versionAtLeast(4, 2, 6)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -878,7 +878,7 @@ namespace Elk {
 		request += "00";
 		return cacheRequest(m1cache.thermostatData[index], request, false, 0);
 	}
-	M1AsciiAPI::ThermostatData M1AsciiAPI::setThermostatData(int index, int value, int element) {
+	ThermostatData M1AsciiAPI::setThermostatData(int index, int value, int element) {
 		// TODO: replace element with enum
 		if ((index < 0) || (index >= 16))
 			throw std::invalid_argument("Argument out of allowed range.");
@@ -933,7 +933,7 @@ namespace Elk {
 		// If we have a timeout defined, try to use that, and rethrow exception if we wait too long
 		return m1cache.counterValues[counter].awaitNew(0);
 	}
-	M1AsciiAPI::UserCodeAccess M1AsciiAPI::getUserCodeAccess(std::string userCode) { 
+	UserCodeAccess M1AsciiAPI::getUserCodeAccess(std::string userCode) { 
 		if (!versionAtLeast(4, 2, 5)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -942,7 +942,7 @@ namespace Elk {
 		message += "00";
 		return cacheRequest(m1cache.userCodeAccess, message, true, 0);
 	}
-	M1AsciiAPI::UserCodeSuccess M1AsciiAPI::requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) { 
+	UserCodeSuccess M1AsciiAPI::requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask) { 
 		if (!versionAtLeast(4, 3, 9)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
