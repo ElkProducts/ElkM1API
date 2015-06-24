@@ -75,12 +75,11 @@ namespace Elk {
 		template <typename T>
 		T cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request);
 	public:
-		std::function<void(bool)> onRPConnection;
 		ELKM1API M1AsciiAPI(std::shared_ptr<Elk::M1Connection> conn);
 		ELKM1API std::vector<Elk::M1API::LogEntry> getLogs();
 		ELKM1API void collectAllNames();
-		ELKM1API void forEachConfiguredZone(std::function<void(int)> funct);
-		ELKM1API void forEachConfiguredKeypad(std::function<void(int)> funct);
+		ELKM1API void forEachConfiguredZone(IntCallback* funct);
+		ELKM1API void forEachConfiguredKeypad(IntCallback* funct);
 		ELKM1API void forEachConfiguredTempDevice(std::function<void(Elk::M1API::TemperatureDevice, int)>);
 		ELKM1API Elk::M1API::AudioData getAudioData(int audioZone);
 		ELKM1API bool setAreaBypass(int area, std::string pinCode, bool bypassed);

@@ -2,8 +2,9 @@
 *  Description: Interface file for automatically generating SWIG modules.
 *  More info: http://www.swig.org/tutorial.html
 */
-%module ElkM1API
+%module(directors=1) ElkM1API
 %{
+#include "SwigCallbacks.h"
 #include "ElkM1API.h"
 #include "ElkM1Monitor.h"
 #include "ElkM1AsciiAPI.h"
@@ -16,14 +17,20 @@
 %include "stdint.i"
 
 // Set up things to have shared pointer passes
-%shared_ptr(Elk::M1Connection)
 %shared_ptr(Elk::ElkTCP)
+%shared_ptr(Elk::M1Connection)
+%shared_ptr(BoolCallback)
+
+// This allows the C++ code to run calls that wind all the way up into the target platform code.
+%feature ("director") BoolCallback;
+%feature ("director") IntCallback;
 
 // Set up things passed by vector
 %template(BoolVector) std::vector<bool>;
 %template(CharVector) std::vector<char>;
 %template(IntVector) std::vector<int>;
 %template(UShortVector) std::vector<uint16_t>;
+
 %template(LogEntryVector) std::vector<Elk::M1API::LogEntry>;
 %template(ArmStatusVector) std::vector<Elk::M1API::ArmStatus>;
 %template(ZoneStateVector) std::vector<Elk::M1API::ZoneState>;
@@ -33,6 +40,7 @@
 %template(ZoneDefinitionVector) std::vector<Elk::M1API::SZoneDefinition>;
 
 
+%include "SwigCallbacks.h"
 %include "ElkM1API.h"
 %include "ElkM1Monitor.h"
 %include "ElkM1AsciiAPI.h"

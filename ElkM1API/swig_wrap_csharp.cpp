@@ -9,6 +9,7 @@
  * ----------------------------------------------------------------------------- */
 
 #define SWIGCSHARP
+#define SWIG_DIRECTORS
 
 
 #ifdef __cplusplus
@@ -279,7 +280,54 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_ElkM1API(SWIG_CSharpStrin
 
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } else
 
+/* -----------------------------------------------------------------------------
+ * director.swg
+ *
+ * This file contains support for director classes so that C# proxy
+ * methods can be called from C++.
+ * ----------------------------------------------------------------------------- */
 
+#if defined(DEBUG_DIRECTOR_OWNED)
+#include <iostream>
+#endif
+#include <string>
+#include <exception>
+
+namespace Swig {
+  /* Director base class - not currently used in C# directors */
+  class Director {
+  };
+
+  /* Base class for director exceptions */
+  class DirectorException : public std::exception {
+  protected:
+    std::string swig_msg;
+
+  public:
+    DirectorException(const char *msg) : swig_msg(msg) {
+    }
+
+    DirectorException(const std::string &msg) : swig_msg(msg) {
+    }
+
+    virtual ~DirectorException() throw() {
+    }
+
+    const char *what() const throw() {
+      return swig_msg.c_str();
+    }
+  };
+
+  /* Pure virtual method exception */
+  class DirectorPureVirtualException : public DirectorException {
+  public:
+    DirectorPureVirtualException(const char *msg) : DirectorException(std::string("Attempt to invoke pure virtual method ") + msg) {
+    }
+  };
+}
+
+
+#include "SwigCallbacks.h"
 #include "ElkM1API.h"
 #include "ElkM1Monitor.h"
 #include "ElkM1AsciiAPI.h"
@@ -1228,6 +1276,60 @@ struct SWIG_null_deleter {
 #define SWIG_NO_NULL_DELETER_1
 #define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
 #define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
+
+
+
+/* ---------------------------------------------------
+ * C++ director class methods
+ * --------------------------------------------------- */
+
+#include "swig_wrap_csharp.h"
+
+SwigDirector_BoolCallback::SwigDirector_BoolCallback() : BoolCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_BoolCallback::run(bool arg1) {
+  unsigned int jarg1  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("BoolCallback::run");
+  } else {
+    jarg1 = arg1;
+    swig_callbackrun(jarg1);
+  }
+}
+
+void SwigDirector_BoolCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_BoolCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_IntCallback::SwigDirector_IntCallback() : IntCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_IntCallback::run(int arg1) {
+  int jarg1  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("IntCallback::run");
+  } else {
+    jarg1 = arg1;
+    swig_callbackrun(jarg1);
+  }
+}
+
+void SwigDirector_IntCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_IntCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
 
 
 #ifdef __cplusplus
@@ -4878,6 +4980,90 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneDefinitionVector(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolCallback_run(void * jarg1, unsigned int jarg2) {
+  BoolCallback *arg1 = (BoolCallback *) 0 ;
+  bool arg2 ;
+  std::shared_ptr< BoolCallback > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  BoolCallback > *)jarg1;
+  arg1 = (BoolCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolCallback() {
+  void * jresult ;
+  BoolCallback *result = 0 ;
+  
+  result = (BoolCallback *)new SwigDirector_BoolCallback();
+  
+  jresult = result ? new std::shared_ptr<  BoolCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolCallback(void * jarg1) {
+  BoolCallback *arg1 = (BoolCallback *) 0 ;
+  std::shared_ptr< BoolCallback > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  BoolCallback > *)jarg1;
+  arg1 = (BoolCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolCallback_director_connect(void *objarg, SwigDirector_BoolCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< BoolCallback > *obj = (std::shared_ptr< BoolCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_BoolCallback *director = dynamic_cast<SwigDirector_BoolCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_run(void * jarg1, int jarg2) {
+  IntCallback *arg1 = (IntCallback *) 0 ;
+  int arg2 ;
+  
+  arg1 = (IntCallback *)jarg1; 
+  arg2 = (int)jarg2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntCallback() {
+  void * jresult ;
+  IntCallback *result = 0 ;
+  
+  result = (IntCallback *)new SwigDirector_IntCallback();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntCallback(void * jarg1) {
+  IntCallback *arg1 = (IntCallback *) 0 ;
+  
+  arg1 = (IntCallback *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_director_connect(void *objarg, SwigDirector_IntCallback::SWIG_Callback0_t callback0) {
+  IntCallback *obj = (IntCallback *)objarg;
+  SwigDirector_IntCallback *director = dynamic_cast<SwigDirector_IntCallback *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_SZoneDefinition_zd_set(void * jarg1, int jarg2) {
   Elk::M1API::SZoneDefinition *arg1 = (Elk::M1API::SZoneDefinition *) 0 ;
   Elk::M1API::ZoneDefinition arg2 ;
@@ -6534,60 +6720,43 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API_UserCodeAccess(void * jarg1) {
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onRPConnection_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::function< void (bool) > arg2 ;
-  std::function< void (bool) > *argp2 ;
+  std::shared_ptr< BoolCallback > *arg2 = 0 ;
+  std::shared_ptr< BoolCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (std::function< void (bool) > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::function< void (bool) >", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  if (arg1) (arg1)->onRPConnection = arg2;
+  arg2 = jarg2 ? (std::shared_ptr< BoolCallback > *)jarg2 : &tempnull2; 
+  if (arg1) (arg1)->onRPConnection = *arg2;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onRPConnection_get(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::function< void (bool) > result;
+  std::shared_ptr< BoolCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result =  ((arg1)->onRPConnection);
-  jresult = new std::function< void (bool) >((const std::function< void (bool) > &)result); 
+  result = (std::shared_ptr< BoolCallback > *) & ((arg1)->onRPConnection);
+  jresult = *result ? new std::shared_ptr< BoolCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredZone(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::function< void (int) > arg2 ;
-  std::function< void (int) > *argp2 ;
+  IntCallback *arg2 = (IntCallback *) 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (std::function< void (int) > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::function< void (int) >", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (IntCallback *)jarg2; 
   (arg1)->forEachConfiguredZone(arg2);
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredKeypad(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::function< void (int) > arg2 ;
-  std::function< void (int) > *argp2 ;
+  IntCallback *arg2 = (IntCallback *) 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (std::function< void (int) > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::function< void (int) >", 0);
-    return ;
-  }
-  arg2 = *argp2; 
+  arg2 = (IntCallback *)jarg2; 
   (arg1)->forEachConfiguredKeypad(arg2);
 }
 
@@ -7333,34 +7502,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Monitor(void * jarg1) {
   
   arg1 = (Elk::M1Monitor *)jarg1; 
   delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_onRPConnection_set(void * jarg1, void * jarg2) {
-  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
-  std::function< void (bool) > arg2 ;
-  std::function< void (bool) > *argp2 ;
-  
-  arg1 = (Elk::M1AsciiAPI *)jarg1; 
-  argp2 = (std::function< void (bool) > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::function< void (bool) >", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  if (arg1) (arg1)->onRPConnection = arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1AsciiAPI_onRPConnection_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
-  std::function< void (bool) > result;
-  
-  arg1 = (Elk::M1AsciiAPI *)jarg1; 
-  result =  ((arg1)->onRPConnection);
-  jresult = new std::function< void (bool) >((const std::function< void (bool) > &)result); 
-  return jresult;
 }
 
 

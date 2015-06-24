@@ -82,7 +82,7 @@ namespace Elk {
 	// All incoming message handlers defined here. This uses an O(1) function table to handle new data, that is to say
 	//   no matter how many commands are added, it will always take the same amount of time to find a command and handle
 	//   the data. Message does not include length/checksum/crlf.
-	M1AsciiAPI::M1AsciiAPI(std::shared_ptr<M1Connection> conn) : M1Monitor(conn) {
+	M1AsciiAPI::M1AsciiAPI(std::shared_ptr<Elk::M1Connection> conn) : M1Monitor(conn) {
 		// Ignored:
 		// XK
 
@@ -273,12 +273,12 @@ namespace Elk {
 			m1cache.invalidate();
 			// If the onRPConnection callback exists, execute it
 			if (onRPConnection)
-				onRPConnection(true);
+				onRPConnection->run(true);
 		});
 		// RP disconnected
 		handleMessageTable.emplace("IE", [this](std::string message) {
 			if (onRPConnection)
-				onRPConnection(false);
+				onRPConnection->run(false);
 		});
 		// Thermostat data // TODO: Test this!
 		handleMessageTable.emplace("TR", [this](std::string message) {
@@ -473,20 +473,20 @@ namespace Elk {
 	}
 
 	// TODO: Make forEach implementations for all device types.
-	void M1AsciiAPI::forEachConfiguredZone(std::function<void(int)> funct) {
+	void M1AsciiAPI::forEachConfiguredZone(IntCallback* funct) {
 		std::vector<SZoneDefinition> zdef = getZoneDefinitions();
 		for (int i = 0; i < zdef.size(); i++) {
 			if (zdef[i].zd != ZONEDEF_DISABLED) {
-				funct(i);
+				funct->run(i);
 			}
 		}
 	}
 
-	void M1AsciiAPI::forEachConfiguredKeypad(std::function<void(int)> funct) {
+	void M1AsciiAPI::forEachConfiguredKeypad(IntCallback* funct) {
 		std::vector<int> kpa = getKeypadAreas();
 		for (int i = 0; i < kpa.size(); i++) {
 			if (kpa[i] != -1) {
-				funct(i);
+				funct->run(i);
 			}
 		}
 	}

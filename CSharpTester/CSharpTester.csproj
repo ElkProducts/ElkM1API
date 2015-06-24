@@ -69,6 +69,9 @@
     <Compile Include="..\ElkM1API\csharp\ArmStatusVector.cs">
       <Link>csharp\ArmStatusVector.cs</Link>
     </Compile>
+    <Compile Include="..\ElkM1API\csharp\BoolCallback.cs">
+      <Link>csharp\BoolCallback.cs</Link>
+    </Compile>
     <Compile Include="..\ElkM1API\csharp\BoolVector.cs">
       <Link>csharp\BoolVector.cs</Link>
     </Compile>
@@ -86,6 +89,9 @@
     </Compile>
     <Compile Include="..\ElkM1API\csharp\ElkTCP.cs">
       <Link>csharp\ElkTCP.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\IntCallback.cs">
+      <Link>csharp\IntCallback.cs</Link>
     </Compile>
     <Compile Include="..\ElkM1API\csharp\IntVector.cs">
       <Link>csharp\IntVector.cs</Link>
@@ -114,14 +120,8 @@
     <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_Elk__M1API__KeypadFkeyStatus__FkeyIllumination.cs">
       <Link>csharp\SWIGTYPE_p_Elk__M1API__KeypadFkeyStatus__FkeyIllumination.cs</Link>
     </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__functionT_void_fboolF_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__functionT_void_fboolF_t.cs</Link>
-    </Compile>
     <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__functionT_void_fElk__M1API__TemperatureDevice_intF_t.cs">
       <Link>csharp\SWIGTYPE_p_std__functionT_void_fElk__M1API__TemperatureDevice_intF_t.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_std__functionT_void_fintF_t.cs">
-      <Link>csharp\SWIGTYPE_p_std__functionT_void_fintF_t.cs</Link>
     </Compile>
     <Compile Include="..\ElkM1API\csharp\UShortVector.cs">
       <Link>csharp\UShortVector.cs</Link>

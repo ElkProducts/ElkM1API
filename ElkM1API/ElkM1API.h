@@ -24,6 +24,7 @@
 
 #include "ElkM1Connection.h"
 #include "ElkM1SirenWords.h"
+#include "SwigCallbacks.h"
 
 // TODO: Cleanup, ensure only included at level they are needed
 #include <condition_variable>
@@ -34,6 +35,7 @@
 #include <stdint.h>
 #include <ctime>
 #include <vector>
+#include <memory>
 
 namespace Elk
 {
@@ -366,10 +368,10 @@ namespace Elk
 		};
 
 		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
-		std::function<void(bool)> onRPConnection;
+		std::shared_ptr<BoolCallback> onRPConnection;
 
-		virtual ELKM1API void forEachConfiguredZone(std::function<void(int)> funct) = 0;
-		virtual ELKM1API void forEachConfiguredKeypad(std::function<void(int)> funct) = 0;
+		virtual ELKM1API void forEachConfiguredZone(IntCallback* funct) = 0;
+		virtual ELKM1API void forEachConfiguredKeypad(IntCallback* funct) = 0;
 		virtual ELKM1API void forEachConfiguredTempDevice(std::function<void(TemperatureDevice, int)>) = 0;
 
 		// Arm or disarm a partition using the specified user code.

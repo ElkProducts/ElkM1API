@@ -44,6 +44,9 @@
     <ClInclude Include="ElkM1SirenWords.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SwigCallbacks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="swig.i">

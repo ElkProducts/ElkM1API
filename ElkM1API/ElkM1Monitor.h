@@ -210,10 +210,10 @@ namespace Elk {
 		virtual void handleMessage(std::vector<char> message) = 0;
 		// Cut a message from our buffer and delete it. If no messages, return empty vector.
 		virtual std::vector<char> cutMessage(std::vector<char>& buffer) = 0;
-		std::shared_ptr<M1Connection> connection;
+		std::shared_ptr<Elk::M1Connection> connection;
 	public:
 		// Construct a new Monitor instance. To be viable, the ElkM1Connection must be established before beginning with run().
-		ELKM1API M1Monitor(std::shared_ptr<M1Connection> conn);
+		ELKM1API M1Monitor(std::shared_ptr<Elk::M1Connection> conn);
 		// Spawn a thread and begin monitoring.
 		ELKM1API void run();
 		// Instruct the monitoring thread to clean up and exit
