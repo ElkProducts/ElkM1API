@@ -21,9 +21,6 @@
     <ClCompile Include="ElkM1AsciiAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ElkM1TCP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="swig_wrap_csharp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ElkM1Definition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ElkM1TCP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ElkC1M1Tunnel.h">

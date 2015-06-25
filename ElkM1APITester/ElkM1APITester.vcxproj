@@ -110,9 +110,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\ElkM1API\ElkM1API.h" />
+    <ClInclude Include="ElkM1TCP.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ElkM1CLI.cpp" />
+    <ClCompile Include="ElkM1TCP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElkM1API\ElkM1API.vcxproj">

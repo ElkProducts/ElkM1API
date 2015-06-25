@@ -17,6 +17,7 @@
 %include "std_vector.i"
 %include "std_shared_ptr.i"
 %include "stdint.i"
+%include "exception.i"
 
 // Set up things to have shared pointer passes
 %shared_ptr(Elk::ElkTCP)
@@ -55,3 +56,12 @@
 %include "ElkM1Connection.h"
 %include "ElkM1SirenWords.h"
 %include "ElkC1M1Tunnel.h"
+
+// Using this, STL exceptions bubble up to end-user code
+%exception {
+  try {
+    $action
+  } catch (const std::exception& e) {
+    SWIG_exception(SWIG_RuntimeError, e.what());
+  }
+}

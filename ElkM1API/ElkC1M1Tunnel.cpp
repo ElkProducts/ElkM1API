@@ -55,7 +55,7 @@ namespace Elk {
 			C1M1Authenticate(username, password, sernum);
 			// Get isValid
 			authPacket = jsonUglyParse(tunnel->Recieve());
-			if ((authPacket.find("isValid") != authPacket.end()) && (authPacket["isValid"] != "0")) {
+			if ((authPacket.find("IsValid") != authPacket.end()) && (authPacket["IsValid"] != "0")) {
 				// Get ActualConnMask
 				authPacket = jsonUglyParse(tunnel->Recieve());
 				if (authPacket.find("ActualConnMask") != authPacket.end()) {

@@ -280,6 +280,23 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_ElkM1API(SWIG_CSharpStrin
 
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } else
 
+/*  Errors in SWIG */
+#define  SWIG_UnknownError    	   -1
+#define  SWIG_IOError        	   -2
+#define  SWIG_RuntimeError   	   -3
+#define  SWIG_IndexError     	   -4
+#define  SWIG_TypeError      	   -5
+#define  SWIG_DivisionByZero 	   -6
+#define  SWIG_OverflowError  	   -7
+#define  SWIG_SyntaxError    	   -8
+#define  SWIG_ValueError     	   -9
+#define  SWIG_SystemError    	   -10
+#define  SWIG_AttributeError 	   -11
+#define  SWIG_MemoryError    	   -12
+#define  SWIG_NullReferenceError   -13
+
+
+
 /* -----------------------------------------------------------------------------
  * director.swg
  *
@@ -349,6 +366,45 @@ namespace Swig {
 
 
 #include <stdint.h>		// Use the C99 official header
+
+
+SWIGINTERN void SWIG_CSharpException(int code, const char *msg) {
+  if (code == SWIG_ValueError) {
+    SWIG_CSharpExceptionArgumentCodes exception_code = SWIG_CSharpArgumentOutOfRangeException;
+    SWIG_CSharpSetPendingExceptionArgument(exception_code, msg, 0);
+  } else {
+    SWIG_CSharpExceptionCodes exception_code = SWIG_CSharpApplicationException;
+    switch(code) {
+    case SWIG_MemoryError:
+      exception_code = SWIG_CSharpOutOfMemoryException;
+      break;
+    case SWIG_IndexError:
+      exception_code = SWIG_CSharpIndexOutOfRangeException;
+      break;
+    case SWIG_DivisionByZero:
+      exception_code = SWIG_CSharpDivideByZeroException;
+      break;
+    case SWIG_IOError:
+      exception_code = SWIG_CSharpIOException;
+      break;
+    case SWIG_OverflowError:
+      exception_code = SWIG_CSharpOverflowException;
+      break;
+    case SWIG_RuntimeError:
+    case SWIG_TypeError:
+    case SWIG_SyntaxError:
+    case SWIG_SystemError:
+    case SWIG_UnknownError:
+    default:
+      exception_code = SWIG_CSharpApplicationException;
+      break;
+    }
+    SWIG_CSharpSetPendingException(exception_code, msg);
+  }
+}
+
+
+#include <stdexcept>
 
 SWIGINTERN std::vector< bool > *new_std_vector_Sl_bool_Sg___SWIG_2(int capacity){
         std::vector< bool >* pv = 0;
@@ -1939,7 +1995,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolVector(void * jarg1) {
   std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   
   arg1 = (std::vector< bool > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -2375,7 +2439,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_CharVector(void * jarg1) {
   std::vector< char > *arg1 = (std::vector< char > *) 0 ;
   
   arg1 = (std::vector< char > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -2811,7 +2883,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntVector(void * jarg1) {
   std::vector< int > *arg1 = (std::vector< int > *) 0 ;
   
   arg1 = (std::vector< int > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -3247,7 +3327,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_UShortVector(void * jarg1) {
   std::vector< uint16_t > *arg1 = (std::vector< uint16_t > *) 0 ;
   
   arg1 = (std::vector< uint16_t > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -3627,7 +3715,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogEntryVector(void * jarg1) {
   std::vector< Elk::LogEntry > *arg1 = (std::vector< Elk::LogEntry > *) 0 ;
   
   arg1 = (std::vector< Elk::LogEntry > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -4007,7 +4103,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ArmStatusVector(void * jarg1) {
   std::vector< Elk::ArmStatus > *arg1 = (std::vector< Elk::ArmStatus > *) 0 ;
   
   arg1 = (std::vector< Elk::ArmStatus > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -4387,7 +4491,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneStateVector(void * jarg1) {
   std::vector< Elk::ZoneState > *arg1 = (std::vector< Elk::ZoneState > *) 0 ;
   
   arg1 = (std::vector< Elk::ZoneState > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -4767,7 +4879,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ChimeModeVector(void * jarg1) {
   std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   
   arg1 = (std::vector< Elk::SChimeMode > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5147,7 +5267,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneDefinitionVector(void * jarg1) {
   std::vector< Elk::SZoneDefinition > *arg1 = (std::vector< Elk::SZoneDefinition > *) 0 ;
   
   arg1 = (std::vector< Elk::SZoneDefinition > *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5177,7 +5305,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_SZoneDefinition() {
   void * jresult ;
   Elk::SZoneDefinition *result = 0 ;
   
-  result = (Elk::SZoneDefinition *)new Elk::SZoneDefinition();
+  {
+    try {
+      result = (Elk::SZoneDefinition *)new Elk::SZoneDefinition();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -5187,7 +5323,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_SZoneDefinition(void * jarg1) {
   Elk::SZoneDefinition *arg1 = (Elk::SZoneDefinition *) 0 ;
   
   arg1 = (Elk::SZoneDefinition *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5217,7 +5361,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_SChimeMode() {
   void * jresult ;
   Elk::SChimeMode *result = 0 ;
   
-  result = (Elk::SChimeMode *)new Elk::SChimeMode();
+  {
+    try {
+      result = (Elk::SChimeMode *)new Elk::SChimeMode();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -5227,7 +5379,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_SChimeMode(void * jarg1) {
   Elk::SChimeMode *arg1 = (Elk::SChimeMode *) 0 ;
   
   arg1 = (Elk::SChimeMode *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5301,7 +5461,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatus() {
   void * jresult ;
   Elk::ArmStatus *result = 0 ;
   
-  result = (Elk::ArmStatus *)new Elk::ArmStatus();
+  {
+    try {
+      result = (Elk::ArmStatus *)new Elk::ArmStatus();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -5311,7 +5479,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ArmStatus(void * jarg1) {
   Elk::ArmStatus *arg1 = (Elk::ArmStatus *) 0 ;
   
   arg1 = (Elk::ArmStatus *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5517,7 +5693,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_AudioData() {
   void * jresult ;
   Elk::AudioData *result = 0 ;
   
-  result = (Elk::AudioData *)new Elk::AudioData();
+  {
+    try {
+      result = (Elk::AudioData *)new Elk::AudioData();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -5527,7 +5711,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_AudioData(void * jarg1) {
   Elk::AudioData *arg1 = (Elk::AudioData *) 0 ;
   
   arg1 = (Elk::AudioData *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5755,7 +5947,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntry() {
   void * jresult ;
   Elk::LogEntry *result = 0 ;
   
-  result = (Elk::LogEntry *)new Elk::LogEntry();
+  {
+    try {
+      result = (Elk::LogEntry *)new Elk::LogEntry();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -5765,7 +5965,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogEntry(void * jarg1) {
   Elk::LogEntry *arg1 = (Elk::LogEntry *) 0 ;
   
   arg1 = (Elk::LogEntry *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -5817,7 +6025,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneState() {
   void * jresult ;
   Elk::ZoneState *result = 0 ;
   
-  result = (Elk::ZoneState *)new Elk::ZoneState();
+  {
+    try {
+      result = (Elk::ZoneState *)new Elk::ZoneState();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -5827,7 +6043,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneState(void * jarg1) {
   Elk::ZoneState *arg1 = (Elk::ZoneState *) 0 ;
   
   arg1 = (Elk::ZoneState *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6033,7 +6257,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_RTCData() {
   void * jresult ;
   Elk::RTCData *result = 0 ;
   
-  result = (Elk::RTCData *)new Elk::RTCData();
+  {
+    try {
+      result = (Elk::RTCData *)new Elk::RTCData();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6043,7 +6275,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_RTCData(void * jarg1) {
   Elk::RTCData *arg1 = (Elk::RTCData *) 0 ;
   
   arg1 = (Elk::RTCData *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6205,7 +6445,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_ThermostatData() {
   void * jresult ;
   Elk::ThermostatData *result = 0 ;
   
-  result = (Elk::ThermostatData *)new Elk::ThermostatData();
+  {
+    try {
+      result = (Elk::ThermostatData *)new Elk::ThermostatData();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6215,7 +6463,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ThermostatData(void * jarg1) {
   Elk::ThermostatData *arg1 = (Elk::ThermostatData *) 0 ;
   
   arg1 = (Elk::ThermostatData *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6641,7 +6897,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_SystemTroubleStatus() {
   void * jresult ;
   Elk::SystemTroubleStatus *result = 0 ;
   
-  result = (Elk::SystemTroubleStatus *)new Elk::SystemTroubleStatus();
+  {
+    try {
+      result = (Elk::SystemTroubleStatus *)new Elk::SystemTroubleStatus();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6651,7 +6915,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_SystemTroubleStatus(void * jarg1) {
   Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
   
   arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6707,7 +6979,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_KeypadFkeyStatus() {
   void * jresult ;
   Elk::KeypadFkeyStatus *result = 0 ;
   
-  result = (Elk::KeypadFkeyStatus *)new Elk::KeypadFkeyStatus();
+  {
+    try {
+      result = (Elk::KeypadFkeyStatus *)new Elk::KeypadFkeyStatus();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6717,7 +6997,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_KeypadFkeyStatus(void * jarg1) {
   Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
   
   arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6791,7 +7079,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_UserCodeAccess() {
   void * jresult ;
   Elk::UserCodeAccess *result = 0 ;
   
-  result = (Elk::UserCodeAccess *)new Elk::UserCodeAccess();
+  {
+    try {
+      result = (Elk::UserCodeAccess *)new Elk::UserCodeAccess();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6801,7 +7097,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_UserCodeAccess(void * jarg1) {
   Elk::UserCodeAccess *arg1 = (Elk::UserCodeAccess *) 0 ;
   
   arg1 = (Elk::UserCodeAccess *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6822,7 +7126,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolCallback() {
   void * jresult ;
   BoolCallback *result = 0 ;
   
-  result = (BoolCallback *)new SwigDirector_BoolCallback();
+  {
+    try {
+      result = (BoolCallback *)new SwigDirector_BoolCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   
   jresult = result ? new std::shared_ptr<  BoolCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
   
@@ -6837,7 +7149,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolCallback(void * jarg1) {
   
   smartarg1 = (std::shared_ptr<  BoolCallback > *)jarg1;
   arg1 = (BoolCallback *)(smartarg1 ? smartarg1->get() : 0); 
-  (void)arg1; delete smartarg1;
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6866,7 +7186,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntCallback() {
   void * jresult ;
   IntCallback *result = 0 ;
   
-  result = (IntCallback *)new SwigDirector_IntCallback();
+  {
+    try {
+      result = (IntCallback *)new SwigDirector_IntCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6876,7 +7204,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntCallback(void * jarg1) {
   IntCallback *arg1 = (IntCallback *) 0 ;
   
   arg1 = (IntCallback *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -6905,7 +7241,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDeviceCallback() {
   void * jresult ;
   TempDeviceCallback *result = 0 ;
   
-  result = (TempDeviceCallback *)new SwigDirector_TempDeviceCallback();
+  {
+    try {
+      result = (TempDeviceCallback *)new SwigDirector_TempDeviceCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   jresult = (void *)result; 
   return jresult;
 }
@@ -6915,7 +7259,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_TempDeviceCallback(void * jarg1) {
   TempDeviceCallback *arg1 = (TempDeviceCallback *) 0 ;
   
   arg1 = (TempDeviceCallback *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -7681,7 +8033,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API(void * jarg1) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -7705,7 +8065,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Monitor(void * jarg1) {
   Elk::M1Monitor *arg1 = (Elk::M1Monitor *) 0 ;
   
   arg1 = (Elk::M1Monitor *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -7939,7 +8307,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1AsciiAPI(void * jarg1) {
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -8015,7 +8391,15 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1Connection() {
   void * jresult ;
   Elk::M1Connection *result = 0 ;
   
-  result = (Elk::M1Connection *)new SwigDirector_M1Connection();
+  {
+    try {
+      result = (Elk::M1Connection *)new SwigDirector_M1Connection();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
   
   jresult = result ? new std::shared_ptr<  Elk::M1Connection >(result SWIG_NO_NULL_DELETER_1) : 0;
   
@@ -8030,7 +8414,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Connection(void * jarg1) {
   
   smartarg1 = (std::shared_ptr<  Elk::M1Connection > *)jarg1;
   arg1 = (Elk::M1Connection *)(smartarg1 ? smartarg1->get() : 0); 
-  (void)arg1; delete smartarg1;
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 
@@ -8206,7 +8598,15 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_C1M1Tunnel(void * jarg1) {
   Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
   
   arg1 = (Elk::C1M1Tunnel *)jarg1; 
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
 }
 
 

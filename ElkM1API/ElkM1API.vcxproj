@@ -130,7 +130,6 @@ C:/Data/swigwin/swig -O -Wall -DELKM1API -Fmicrosoft -c++ -csharp -o swig_wrap_c
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ElkM1AsciiAPI.cpp" />
-    <ClCompile Include="ElkM1TCP.cpp" />
     <ClCompile Include="ElkM1Monitor.cpp" />
     <ClCompile Include="ElkC1M1Tunnel.cpp" />
     <ClCompile Include="swig_wrap_csharp.cpp" />
@@ -143,7 +142,6 @@ C:/Data/swigwin/swig -O -Wall -DELKM1API -Fmicrosoft -c++ -csharp -o swig_wrap_c
     <ClInclude Include="ElkM1Connection.h" />
     <ClInclude Include="ElkM1Monitor.h" />
     <ClInclude Include="ElkM1SirenWords.h" />
-    <ClInclude Include="ElkM1TCP.h" />
     <ClInclude Include="SwigCallbacks.h" />
   </ItemGroup>
   <ItemGroup>
