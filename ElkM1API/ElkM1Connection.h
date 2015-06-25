@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 
 namespace Elk {
@@ -27,27 +28,9 @@ namespace Elk {
 	class M1Connection
 	{
 	public:
-		virtual ELKM1API bool Connect(std::string location) = 0;
+		virtual ELKM1API bool Connect(std::string location, int port) = 0;
 		virtual ELKM1API void Disconnect() = 0;
 		virtual ELKM1API void Send(std::vector<char> data) = 0;
 		virtual ELKM1API std::vector<char> Recieve() = 0; // Recieve data into the buffer. Should block on this call.
 	};
-
-	class ElkTCP : public M1Connection {
-	private:
-		SOCKET sock;
-	public:
-		ELKM1API bool Connect(std::string location);
-		ELKM1API bool Connect(std::string address, int port);
-		ELKM1API void Disconnect();
-		ELKM1API void Send(std::vector<char> data);
-		ELKM1API std::vector<char> Recieve();
-	};
-
-	// TODO: Implement secure connection via SSL
-
-	// TODO: Implement secure proxied connection via SSL and C1M1 Proxy
-
-	// TODO: Implement serial port communication?
-	
 }

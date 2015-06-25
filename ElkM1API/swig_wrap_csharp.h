@@ -57,12 +57,35 @@ class SwigDirector_M1Connection : public Elk::M1Connection, public Swig::Directo
 
 public:
     SwigDirector_M1Connection();
-    virtual bool Connect(std::string location);
+    virtual bool Connect(std::string location, int port);
     virtual void Disconnect();
     virtual void Send(std::vector< char > data);
     virtual std::vector< char > Recieve();
 
-    typedef unsigned int (SWIGSTDCALL* SWIG_Callback0_t)(char *);
+    typedef unsigned int (SWIGSTDCALL* SWIG_Callback0_t)(char *, int);
+    typedef void (SWIGSTDCALL* SWIG_Callback1_t)();
+    typedef void (SWIGSTDCALL* SWIG_Callback2_t)(void *);
+    typedef void * (SWIGSTDCALL* SWIG_Callback3_t)();
+    void swig_connect_director(SWIG_Callback0_t callbackConnect, SWIG_Callback1_t callbackDisconnect, SWIG_Callback2_t callbackSend, SWIG_Callback3_t callbackRecieve);
+
+private:
+    SWIG_Callback0_t swig_callbackConnect;
+    SWIG_Callback1_t swig_callbackDisconnect;
+    SWIG_Callback2_t swig_callbackSend;
+    SWIG_Callback3_t swig_callbackRecieve;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_C1M1Tunnel : public Elk::C1M1Tunnel, public Swig::Director {
+
+public:
+    SwigDirector_C1M1Tunnel(Elk::M1Connection *underlying);
+    virtual bool Connect(std::string location, int port);
+    virtual void Disconnect();
+    virtual void Send(std::vector< char > data);
+    virtual std::vector< char > Recieve();
+
+    typedef unsigned int (SWIGSTDCALL* SWIG_Callback0_t)(char *, int);
     typedef void (SWIGSTDCALL* SWIG_Callback1_t)();
     typedef void (SWIGSTDCALL* SWIG_Callback2_t)(void *);
     typedef void * (SWIGSTDCALL* SWIG_Callback3_t)();

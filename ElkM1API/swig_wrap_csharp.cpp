@@ -334,6 +334,7 @@ namespace Swig {
 #include "ElkM1AsciiAPI.h"
 #include "ElkM1Connection.h"
 #include "ElkM1SirenWords.h"
+#include "ElkC1M1Tunnel.h"
 
 
 #include <string>
@@ -1361,16 +1362,18 @@ SwigDirector_M1Connection::SwigDirector_M1Connection() : Elk::M1Connection(), Sw
   swig_init_callbacks();
 }
 
-bool SwigDirector_M1Connection::Connect(std::string location) {
+bool SwigDirector_M1Connection::Connect(std::string location, int port) {
   bool c_result = SwigValueInit< bool >() ;
   unsigned int jresult = 0 ;
   char * jlocation  ;
+  int jport  ;
   
   if (!swig_callbackConnect) {
     throw Swig::DirectorPureVirtualException("Elk::M1Connection::Connect");
   } else {
     jlocation = SWIG_csharp_string_callback((&location)->c_str()); 
-    jresult = (unsigned int) swig_callbackConnect(jlocation);
+    jport = port;
+    jresult = (unsigned int) swig_callbackConnect(jlocation, jport);
     c_result = jresult ? true : false; 
   }
   return c_result;
@@ -1420,6 +1423,79 @@ void SwigDirector_M1Connection::swig_connect_director(SWIG_Callback0_t callbackC
 }
 
 void SwigDirector_M1Connection::swig_init_callbacks() {
+  swig_callbackConnect = 0;
+  swig_callbackDisconnect = 0;
+  swig_callbackSend = 0;
+  swig_callbackRecieve = 0;
+}
+
+SwigDirector_C1M1Tunnel::SwigDirector_C1M1Tunnel(Elk::M1Connection *underlying) : Elk::C1M1Tunnel(underlying), Swig::Director() {
+  swig_init_callbacks();
+}
+
+bool SwigDirector_C1M1Tunnel::Connect(std::string location, int port) {
+  bool c_result = SwigValueInit< bool >() ;
+  unsigned int jresult = 0 ;
+  char * jlocation  ;
+  int jport  ;
+  
+  if (!swig_callbackConnect) {
+    return Elk::C1M1Tunnel::Connect(location,port);
+  } else {
+    jlocation = SWIG_csharp_string_callback((&location)->c_str()); 
+    jport = port;
+    jresult = (unsigned int) swig_callbackConnect(jlocation, jport);
+    c_result = jresult ? true : false; 
+  }
+  return c_result;
+}
+
+void SwigDirector_C1M1Tunnel::Disconnect() {
+  if (!swig_callbackDisconnect) {
+    Elk::C1M1Tunnel::Disconnect();
+    return;
+  } else {
+    swig_callbackDisconnect();
+  }
+}
+
+void SwigDirector_C1M1Tunnel::Send(std::vector< char > data) {
+  void * jdata  ;
+  
+  if (!swig_callbackSend) {
+    Elk::C1M1Tunnel::Send(data);
+    return;
+  } else {
+    jdata = (void *)&data; 
+    swig_callbackSend(jdata);
+  }
+}
+
+std::vector< char > SwigDirector_C1M1Tunnel::Recieve() {
+  std::vector< char > c_result ;
+  void * jresult = 0 ;
+  
+  if (!swig_callbackRecieve) {
+    return Elk::C1M1Tunnel::Recieve();
+  } else {
+    jresult = (void *) swig_callbackRecieve();
+    if (!jresult) {
+      SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Unexpected null return for type std::vector< char >", 0);
+      return c_result;
+    }
+    c_result = *(std::vector< char > *)jresult; 
+  }
+  return c_result;
+}
+
+void SwigDirector_C1M1Tunnel::swig_connect_director(SWIG_Callback0_t callbackConnect, SWIG_Callback1_t callbackDisconnect, SWIG_Callback2_t callbackSend, SWIG_Callback3_t callbackRecieve) {
+  swig_callbackConnect = callbackConnect;
+  swig_callbackDisconnect = callbackDisconnect;
+  swig_callbackSend = callbackSend;
+  swig_callbackRecieve = callbackRecieve;
+}
+
+void SwigDirector_C1M1Tunnel::swig_init_callbacks() {
   swig_callbackConnect = 0;
   swig_callbackDisconnect = 0;
   swig_callbackSend = 0;
@@ -7867,10 +7943,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1AsciiAPI(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1Connection_Connect(void * jarg1, char * jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1Connection_Connect(void * jarg1, char * jarg2, int jarg3) {
   unsigned int jresult ;
   Elk::M1Connection *arg1 = (Elk::M1Connection *) 0 ;
   std::string arg2 ;
+  int arg3 ;
   std::shared_ptr< Elk::M1Connection > *smartarg1 = 0 ;
   bool result;
   
@@ -7882,7 +7959,8 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1Connection_Connect(void * jarg1, ch
     return 0;
   }
   (&arg2)->assign(jarg2); 
-  result = (bool)(arg1)->Connect(arg2);
+  arg3 = (int)jarg3; 
+  result = (bool)(arg1)->Connect(arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -7967,38 +8045,59 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1Connection_director_connect(void *objarg, S
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ElkTCP_Connect__SWIG_0(void * jarg1, char * jarg2) {
-  unsigned int jresult ;
-  Elk::ElkTCP *arg1 = (Elk::ElkTCP *) 0 ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_C1M1Tunnel(void * jarg1) {
+  void * jresult ;
+  Elk::M1Connection *arg1 = (Elk::M1Connection *) 0 ;
+  std::shared_ptr< Elk::M1Connection > *smartarg1 = 0 ;
+  Elk::C1M1Tunnel *result = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  Elk::M1Connection > *)jarg1;
+  arg1 = (Elk::M1Connection *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (Elk::C1M1Tunnel *)new SwigDirector_C1M1Tunnel(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_C1M1Tunnel_Authenticate(void * jarg1, char * jarg2, char * jarg3, char * jarg4) {
+  int jresult ;
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
   std::string arg2 ;
-  std::shared_ptr< Elk::ElkTCP > *smartarg1 = 0 ;
-  bool result;
+  std::string arg3 ;
+  std::string arg4 ;
+  Elk::NetworkType result;
   
-  
-  smartarg1 = (std::shared_ptr<  Elk::ElkTCP > *)jarg1;
-  arg1 = (Elk::ElkTCP *)(smartarg1 ? smartarg1->get() : 0); 
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
   if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
     return 0;
   }
   (&arg2)->assign(jarg2); 
-  result = (bool)(arg1)->Connect(arg2);
-  jresult = result; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg3)->assign(jarg3); 
+  if (!jarg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg4)->assign(jarg4); 
+  result = (Elk::NetworkType)(arg1)->Authenticate(arg2,arg3,arg4);
+  jresult = (int)result; 
   return jresult;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ElkTCP_Connect__SWIG_1(void * jarg1, char * jarg2, int jarg3) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_C1M1Tunnel_Connect(void * jarg1, char * jarg2, int jarg3) {
   unsigned int jresult ;
-  Elk::ElkTCP *arg1 = (Elk::ElkTCP *) 0 ;
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
   std::string arg2 ;
   int arg3 ;
-  std::shared_ptr< Elk::ElkTCP > *smartarg1 = 0 ;
   bool result;
   
-  
-  smartarg1 = (std::shared_ptr<  Elk::ElkTCP > *)jarg1;
-  arg1 = (Elk::ElkTCP *)(smartarg1 ? smartarg1->get() : 0); 
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
   if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
     return 0;
@@ -8011,26 +8110,112 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_ElkTCP_Connect__SWIG_1(void * jarg1, 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_ElkTCP() {
-  void * jresult ;
-  Elk::ElkTCP *result = 0 ;
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_C1M1Tunnel_ConnectSwigExplicitC1M1Tunnel(void * jarg1, char * jarg2, int jarg3) {
+  unsigned int jresult ;
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  std::string arg2 ;
+  int arg3 ;
+  bool result;
   
-  result = (Elk::ElkTCP *)new Elk::ElkTCP();
-  
-  jresult = result ? new std::shared_ptr<  Elk::ElkTCP >(result SWIG_NO_NULL_DELETER_1) : 0;
-  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg2)->assign(jarg2); 
+  arg3 = (int)jarg3; 
+  result = (bool)(arg1)->Elk::C1M1Tunnel::Connect(arg2,arg3);
+  jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_ElkTCP(void * jarg1) {
-  Elk::ElkTCP *arg1 = (Elk::ElkTCP *) 0 ;
-  std::shared_ptr< Elk::ElkTCP > *smartarg1 = 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_C1M1Tunnel_Disconnect(void * jarg1) {
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
   
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  (arg1)->Disconnect();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_C1M1Tunnel_DisconnectSwigExplicitC1M1Tunnel(void * jarg1) {
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
   
-  smartarg1 = (std::shared_ptr<  Elk::ElkTCP > *)jarg1;
-  arg1 = (Elk::ElkTCP *)(smartarg1 ? smartarg1->get() : 0); 
-  (void)arg1; delete smartarg1;
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  (arg1)->Elk::C1M1Tunnel::Disconnect();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_C1M1Tunnel_Send(void * jarg1, void * jarg2) {
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  std::vector< char > arg2 ;
+  std::vector< char > *argp2 ;
+  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  argp2 = (std::vector< char > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< char >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->Send(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_C1M1Tunnel_SendSwigExplicitC1M1Tunnel(void * jarg1, void * jarg2) {
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  std::vector< char > arg2 ;
+  std::vector< char > *argp2 ;
+  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  argp2 = (std::vector< char > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< char >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->Elk::C1M1Tunnel::Send(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_C1M1Tunnel_Recieve(void * jarg1) {
+  void * jresult ;
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  std::vector< char > result;
+  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  result = (arg1)->Recieve();
+  jresult = new std::vector< char >((const std::vector< char > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_C1M1Tunnel_RecieveSwigExplicitC1M1Tunnel(void * jarg1) {
+  void * jresult ;
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  std::vector< char > result;
+  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  result = (arg1)->Elk::C1M1Tunnel::Recieve();
+  jresult = new std::vector< char >((const std::vector< char > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_C1M1Tunnel(void * jarg1) {
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_C1M1Tunnel_director_connect(void *objarg, SwigDirector_C1M1Tunnel::SWIG_Callback0_t callback0, SwigDirector_C1M1Tunnel::SWIG_Callback1_t callback1, SwigDirector_C1M1Tunnel::SWIG_Callback2_t callback2, SwigDirector_C1M1Tunnel::SWIG_Callback3_t callback3) {
+  Elk::C1M1Tunnel *obj = (Elk::C1M1Tunnel *)objarg;
+  SwigDirector_C1M1Tunnel *director = dynamic_cast<SwigDirector_C1M1Tunnel *>(obj);
+  if (director) {
+    director->swig_connect_director(callback0, callback1, callback2, callback3);
+  }
 }
 
 
@@ -8040,10 +8225,6 @@ SWIGEXPORT Elk::M1API * SWIGSTDCALL CSharp_M1Monitor_SWIGUpcast(Elk::M1Monitor *
 
 SWIGEXPORT Elk::M1Monitor * SWIGSTDCALL CSharp_M1AsciiAPI_SWIGUpcast(Elk::M1AsciiAPI *jarg1) {
     return (Elk::M1Monitor *)jarg1;
-}
-
-SWIGEXPORT std::shared_ptr< Elk::M1Connection > * SWIGSTDCALL CSharp_ElkTCP_SWIGSmartPtrUpcast(std::shared_ptr< Elk::ElkTCP > *jarg1) {
-    return jarg1 ? new std::shared_ptr< Elk::M1Connection >(*jarg1) : 0;
 }
 
 #ifdef __cplusplus

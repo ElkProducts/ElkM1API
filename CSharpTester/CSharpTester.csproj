@@ -90,6 +90,9 @@
     <Compile Include="..\ElkM1API\csharp\BoolVector.cs">
       <Link>csharp\BoolVector.cs</Link>
     </Compile>
+    <Compile Include="..\ElkM1API\csharp\C1M1Tunnel.cs">
+      <Link>csharp\C1M1Tunnel.cs</Link>
+    </Compile>
     <Compile Include="..\ElkM1API\csharp\CharVector.cs">
       <Link>csharp\CharVector.cs</Link>
     </Compile>
@@ -107,9 +110,6 @@
     </Compile>
     <Compile Include="..\ElkM1API\csharp\ElkM1APIPINVOKE.cs">
       <Link>csharp\ElkM1APIPINVOKE.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ElkTCP.cs">
-      <Link>csharp\ElkTCP.cs</Link>
     </Compile>
     <Compile Include="..\ElkM1API\csharp\FKEY.cs">
       <Link>csharp\FKEY.cs</Link>
@@ -143,6 +143,9 @@
     </Compile>
     <Compile Include="..\ElkM1API\csharp\M1Monitor.cs">
       <Link>csharp\M1Monitor.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\NetworkType.cs">
+      <Link>csharp\NetworkType.cs</Link>
     </Compile>
     <Compile Include="..\ElkM1API\csharp\PhysicalZoneState.cs">
       <Link>csharp\PhysicalZoneState.cs</Link>

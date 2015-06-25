@@ -11,6 +11,7 @@
 #include "ElkM1AsciiAPI.h"
 #include "ElkM1Connection.h"
 #include "ElkM1SirenWords.h"
+#include "ElkC1M1Tunnel.h"
 %}
 %include "std_string.i"
 %include "std_vector.i"
@@ -30,6 +31,7 @@
 // This allows us to make the M1Connection calls against a derived target-language class, so we can 
 // implement the connection on the target platform (such as SSL encrypted on Android)
 %feature ("director") M1Connection;
+%feature ("director") C1M1Tunnel;
 
 // Set up things passed by vector
 %template(BoolVector) std::vector<bool>;
@@ -52,3 +54,4 @@
 %include "ElkM1AsciiAPI.h"
 %include "ElkM1Connection.h"
 %include "ElkM1SirenWords.h"
+%include "ElkC1M1Tunnel.h"

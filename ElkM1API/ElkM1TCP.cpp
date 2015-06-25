@@ -2,7 +2,7 @@
 	ElkM1TCP.cpp: Provides an implementation of M1 TCP Connection 
 	@author Zach Jaggi
 */
-#include "ElkM1Connection.h"
+#include "ElkM1TCP.h"
 
 namespace Elk
 {
@@ -29,8 +29,6 @@ namespace Elk
 
 		return connect(sock, (SOCKADDR*)&target, sizeof(target)) != SOCKET_ERROR;
 	}
-
-	bool ElkTCP::Connect(std::string location) { return Connect(location, 2101); }
 
 	void ElkTCP::Disconnect() {
 		if (sock) {
