@@ -70,9 +70,9 @@ namespace Elk
 		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
 		std::shared_ptr<BoolCallback> onRPConnection;
 
-		virtual ELKM1API void forEachConfiguredZone(IntCallback* funct) = 0;
-		virtual ELKM1API void forEachConfiguredKeypad(IntCallback* funct) = 0;
-		virtual ELKM1API void forEachConfiguredTempDevice(TempDeviceCallback* funct) = 0;
+		virtual ELKM1API std::vector<int> getConfiguredZones() = 0;
+		virtual ELKM1API std::vector<int> getConfiguredKeypads() = 0;
+		virtual ELKM1API std::vector<std::pair<int, Elk::TemperatureDevice>> getConfiguredTempDevices() = 0;
 
 		// Arm or disarm a partition using the specified user code.
 		virtual ELKM1API void armDisarm(int partition, ArmMode mode, std::string userCode) = 0;

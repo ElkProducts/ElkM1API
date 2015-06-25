@@ -103,9 +103,11 @@ namespace CSharpTester
             M1AsciiAPI m1api = new M1AsciiAPI(conn);
             m1api.run();
 
-            foreach (ushort u in m1api.getCustomValues())
+            foreach (TempDevicePair tdp in m1api.getConfiguredTempDevices())
             {
-                Console.WriteLine(u);
+                Console.Write(tdp.first);
+                Console.Write(' ');
+                Console.WriteLine(tdp.second);
             }
 
             Thread.Sleep(30000);

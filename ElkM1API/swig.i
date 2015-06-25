@@ -13,6 +13,7 @@
 #include "ElkM1SirenWords.h"
 #include "ElkC1M1Tunnel.h"
 %}
+%include "std_pair.i"
 %include "std_string.i"
 %include "std_vector.i"
 %include "std_shared_ptr.i"
@@ -43,6 +44,9 @@
 %template(LogEntryVector) std::vector<Elk::LogEntry>;
 %template(ArmStatusVector) std::vector<Elk::ArmStatus>;
 %template(ZoneStateVector) std::vector<Elk::ZoneState>;
+
+%template(TempDevicePair) std::pair<int, Elk::TemperatureDevice>;
+%template(TempDevicePairVector) std::vector<std::pair<int, Elk::TemperatureDevice>>;
 
 // Vector of enums needs special handling, use a single-element struct instead
 %template(ChimeModeVector) std::vector<Elk::SChimeMode>;

@@ -3,8 +3,6 @@
 	for SWIG supported languages.
 */
 #pragma once
-#include "ElkM1Definition.h"
-#include <iostream>
 
 class BoolCallback {
 public:
@@ -14,9 +12,4 @@ public:
 class IntCallback {
 public:
 	virtual void run(int arg1) = 0;
-};
-
-class TempDeviceCallback {
-public:
-	virtual void run( Elk::TemperatureDevice arg1, int arg2) = 0;
 };

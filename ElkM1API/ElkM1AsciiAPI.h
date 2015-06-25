@@ -78,9 +78,9 @@ namespace Elk {
 		ELKM1API M1AsciiAPI(std::shared_ptr<Elk::M1Connection> conn);
 		ELKM1API std::vector<Elk::LogEntry> getLogs();
 		ELKM1API void collectAllNames();
-		ELKM1API void forEachConfiguredZone(IntCallback* funct);
-		ELKM1API void forEachConfiguredKeypad(IntCallback* funct);
-		ELKM1API void forEachConfiguredTempDevice(TempDeviceCallback* funct);
+		ELKM1API std::vector<int> getConfiguredZones();
+		ELKM1API std::vector<int> getConfiguredKeypads();
+		ELKM1API std::vector<std::pair<int, Elk::TemperatureDevice>> getConfiguredTempDevices();
 		ELKM1API Elk::AudioData getAudioData(int audioZone);
 		ELKM1API bool setAreaBypass(int area, std::string pinCode, bool bypassed);
 		ELKM1API void setLogData(int logType, int eventType, int zoneNumber, int area);

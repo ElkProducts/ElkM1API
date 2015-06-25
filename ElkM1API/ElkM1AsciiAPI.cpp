@@ -472,34 +472,39 @@ namespace Elk {
 		return memcmp(&getM1VersionNumber()[0], &minVersion, 3) >= 0;
 	}
 
-	// TODO: Make forEach implementations for all device types.
-	void M1AsciiAPI::forEachConfiguredZone(IntCallback* funct) {
-		std::vector<SZoneDefinition> zdef = getZoneDefinitions();
+	std::vector<int> M1AsciiAPI::getConfiguredZones() {
+		auto& zdef = getZoneDefinitions();
+		std::vector<int> configured(zdef.size());
 		for (int i = 0; i < zdef.size(); i++) {
 			if (zdef[i].zd != ZONEDEF_DISABLED) {
-				funct->run(i);
+				configured.push_back(i);
 			}
 		}
+		return configured;
 	}
 
-	void M1AsciiAPI::forEachConfiguredKeypad(IntCallback* funct) {
+	std::vector<int> M1AsciiAPI::getConfiguredKeypads() {
 		std::vector<int> kpa = getKeypadAreas();
+		std::vector<int> configured(kpa.size());
 		for (int i = 0; i < kpa.size(); i++) {
 			if (kpa[i] != -1) {
-				funct->run(i);
+				configured.push_back(i);
 			}
 		}
+		return configured;
 	}
 
-	void M1AsciiAPI::forEachConfiguredTempDevice(TempDeviceCallback* function) {
+	std::vector<std::pair<int, TemperatureDevice>> M1AsciiAPI::getConfiguredTempDevices() {
+		std::vector<std::pair<int, TemperatureDevice>> configured;
 		for (int type = Elk::TEMPDEVICE_ZONE; type < Elk::TEMPDEVICE_THERMOSTAT; type++){
 			const auto& temp = getTemperatures(Elk::TemperatureDevice(type));
 			for (int i = 0; i < temp.size(); i++) {
 				if (temp[i] != INT_MIN) {
-					function->run((Elk::TemperatureDevice)type, i);
+					configured.emplace_back(i, (TemperatureDevice)type);
 				}
 			}
 		}
+		return configured;
 	}
 
 	// TODO: Function to intelligently collect names, with 150ms timeout on missed names that skips to next section

@@ -171,8 +171,11 @@
     <Compile Include="..\ElkM1API\csharp\SZoneDefinition.cs">
       <Link>csharp\SZoneDefinition.cs</Link>
     </Compile>
-    <Compile Include="..\ElkM1API\csharp\TempDeviceCallback.cs">
-      <Link>csharp\TempDeviceCallback.cs</Link>
+    <Compile Include="..\ElkM1API\csharp\TempDevicePair.cs">
+      <Link>csharp\TempDevicePair.cs</Link>
+    </Compile>
+    <Compile Include="..\ElkM1API\csharp\TempDevicePairVector.cs">
+      <Link>csharp\TempDevicePairVector.cs</Link>
     </Compile>
     <Compile Include="..\ElkM1API\csharp\TemperatureDevice.cs">
       <Link>csharp\TemperatureDevice.cs</Link>

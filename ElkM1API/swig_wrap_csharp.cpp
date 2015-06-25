@@ -354,18 +354,7 @@ namespace Swig {
 #include "ElkC1M1Tunnel.h"
 
 
-#include <string>
-
-
 #include <stdexcept>
-
-
-#include <vector>
-#include <algorithm>
-#include <stdexcept>
-
-
-#include <stdint.h>		// Use the C99 official header
 
 
 SWIGINTERN void SWIG_CSharpException(int code, const char *msg) {
@@ -405,6 +394,20 @@ SWIGINTERN void SWIG_CSharpException(int code, const char *msg) {
 
 
 #include <stdexcept>
+
+
+#include <utility>
+
+
+#include <string>
+
+
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
+
+
+#include <stdint.h>		// Use the C99 official header
 
 SWIGINTERN std::vector< bool > *new_std_vector_Sl_bool_Sg___SWIG_2(int capacity){
         std::vector< bool >* pv = 0;
@@ -1143,6 +1146,97 @@ SWIGINTERN void std_vector_Sl_Elk_ZoneState_Sg__SetRange(std::vector< Elk::ZoneS
           throw std::out_of_range("index");
         std::copy(values.begin(), values.end(), self->begin()+index);
       }
+SWIGINTERN std::vector< std::pair< int,Elk::TemperatureDevice > > *new_std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg___SWIG_2(int capacity){
+        std::vector< std::pair< int,Elk::TemperatureDevice > >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< std::pair< int,Elk::TemperatureDevice > >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN std::pair< int,Elk::TemperatureDevice > std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__getitemcopy(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN std::pair< int,Elk::TemperatureDevice > const &std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__getitem(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__setitem(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,std::pair< int,Elk::TemperatureDevice > const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__AddRange(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,std::vector< std::pair< int,Elk::TemperatureDevice > > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< std::pair< int,Elk::TemperatureDevice > > *std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__GetRange(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< std::pair< int,Elk::TemperatureDevice > >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Insert(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,std::pair< int,Elk::TemperatureDevice > const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__InsertRange(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,std::vector< std::pair< int,Elk::TemperatureDevice > > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__RemoveAt(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__RemoveRange(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< std::pair< int,Elk::TemperatureDevice > > *std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Repeat(std::pair< int,Elk::TemperatureDevice > const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< std::pair< int,Elk::TemperatureDevice > >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Reverse__SWIG_0(std::vector< std::pair< int,Elk::TemperatureDevice > > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Reverse__SWIG_1(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__SetRange(std::vector< std::pair< int,Elk::TemperatureDevice > > *self,int index,std::vector< std::pair< int,Elk::TemperatureDevice > > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
 SWIGINTERN std::vector< Elk::SChimeMode > *new_std_vector_Sl_Elk_SChimeMode_Sg___SWIG_2(int capacity){
         std::vector< Elk::SChimeMode >* pv = 0;
         if (capacity >= 0) {
@@ -1386,31 +1480,6 @@ void SwigDirector_IntCallback::swig_connect_director(SWIG_Callback0_t callbackru
 }
 
 void SwigDirector_IntCallback::swig_init_callbacks() {
-  swig_callbackrun = 0;
-}
-
-SwigDirector_TempDeviceCallback::SwigDirector_TempDeviceCallback() : TempDeviceCallback(), Swig::Director() {
-  swig_init_callbacks();
-}
-
-void SwigDirector_TempDeviceCallback::run(Elk::TemperatureDevice arg1, int arg2) {
-  int jarg1  ;
-  int jarg2  ;
-  
-  if (!swig_callbackrun) {
-    throw Swig::DirectorPureVirtualException("TempDeviceCallback::run");
-  } else {
-    jarg1 = (int)arg1;
-    jarg2 = arg2;
-    swig_callbackrun(jarg1, jarg2);
-  }
-}
-
-void SwigDirector_TempDeviceCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
-  swig_callbackrun = callbackrun;
-}
-
-void SwigDirector_TempDeviceCallback::swig_init_callbacks() {
   swig_callbackrun = 0;
 }
 
@@ -4503,6 +4572,494 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneStateVector(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDevicePair__SWIG_0() {
+  void * jresult ;
+  std::pair< int,Elk::TemperatureDevice > *result = 0 ;
+  
+  result = (std::pair< int,Elk::TemperatureDevice > *)new std::pair< int,Elk::TemperatureDevice >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDevicePair__SWIG_1(int jarg1, int jarg2) {
+  void * jresult ;
+  int arg1 ;
+  Elk::TemperatureDevice arg2 ;
+  std::pair< int,Elk::TemperatureDevice > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  arg2 = (Elk::TemperatureDevice)jarg2; 
+  result = (std::pair< int,Elk::TemperatureDevice > *)new std::pair< int,Elk::TemperatureDevice >(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDevicePair__SWIG_2(void * jarg1) {
+  void * jresult ;
+  std::pair< int,Elk::TemperatureDevice > *arg1 = 0 ;
+  std::pair< int,Elk::TemperatureDevice > *result = 0 ;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::pair< int,Elk::TemperatureDevice > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::pair< int,Elk::TemperatureDevice > *)new std::pair< int,Elk::TemperatureDevice >((std::pair< int,Elk::TemperatureDevice > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePair_first_set(void * jarg1, int jarg2) {
+  std::pair< int,Elk::TemperatureDevice > *arg1 = (std::pair< int,Elk::TemperatureDevice > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->first = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_TempDevicePair_first_get(void * jarg1) {
+  int jresult ;
+  std::pair< int,Elk::TemperatureDevice > *arg1 = (std::pair< int,Elk::TemperatureDevice > *) 0 ;
+  int result;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1; 
+  result = (int) ((arg1)->first);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePair_second_set(void * jarg1, int jarg2) {
+  std::pair< int,Elk::TemperatureDevice > *arg1 = (std::pair< int,Elk::TemperatureDevice > *) 0 ;
+  Elk::TemperatureDevice arg2 ;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1; 
+  arg2 = (Elk::TemperatureDevice)jarg2; 
+  if (arg1) (arg1)->second = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_TempDevicePair_second_get(void * jarg1) {
+  int jresult ;
+  std::pair< int,Elk::TemperatureDevice > *arg1 = (std::pair< int,Elk::TemperatureDevice > *) 0 ;
+  Elk::TemperatureDevice result;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1; 
+  result = (Elk::TemperatureDevice) ((arg1)->second);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_TempDevicePair(void * jarg1) {
+  std::pair< int,Elk::TemperatureDevice > *arg1 = (std::pair< int,Elk::TemperatureDevice > *) 0 ;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1; 
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_Clear(void * jarg1) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_Add(void * jarg1, void * jarg2) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  std::pair< int,Elk::TemperatureDevice > *arg2 = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (std::pair< int,Elk::TemperatureDevice > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::pair< int,Elk::TemperatureDevice > const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((std::pair< int,Elk::TemperatureDevice > const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_TempDevicePairVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > >::size_type result;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  result = ((std::vector< std::pair< int,Elk::TemperatureDevice > > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_TempDevicePairVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > >::size_type result;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  result = ((std::vector< std::pair< int,Elk::TemperatureDevice > > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > >::size_type arg2 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (std::vector< std::pair< int,Elk::TemperatureDevice > >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDevicePairVector__SWIG_0() {
+  void * jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *result = 0 ;
+  
+  result = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)new std::vector< std::pair< int,Elk::TemperatureDevice > >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDevicePairVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *result = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::pair< int,Elk::TemperatureDevice > > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)new std::vector< std::pair< int,Elk::TemperatureDevice > >((std::vector< std::pair< int,Elk::TemperatureDevice > > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDevicePairVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)new_std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_TempDevicePairVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  std::pair< int,Elk::TemperatureDevice > result;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new std::pair< int,Elk::TemperatureDevice >((const std::pair< int,Elk::TemperatureDevice > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_TempDevicePairVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  std::pair< int,Elk::TemperatureDevice > *result = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::pair< int,Elk::TemperatureDevice > *) &std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  std::pair< int,Elk::TemperatureDevice > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::pair< int,Elk::TemperatureDevice > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::pair< int,Elk::TemperatureDevice > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__setitem(arg1,arg2,(std::pair< int,Elk::TemperatureDevice > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg2 = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::pair< int,Elk::TemperatureDevice > > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__AddRange(arg1,(std::vector< std::pair< int,Elk::TemperatureDevice > > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_TempDevicePairVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *result = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  std::pair< int,Elk::TemperatureDevice > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::pair< int,Elk::TemperatureDevice > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::pair< int,Elk::TemperatureDevice > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Insert(arg1,arg2,(std::pair< int,Elk::TemperatureDevice > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::pair< int,Elk::TemperatureDevice > > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__InsertRange(arg1,arg2,(std::vector< std::pair< int,Elk::TemperatureDevice > > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_TempDevicePairVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::pair< int,Elk::TemperatureDevice > *arg1 = 0 ;
+  int arg2 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *result = 0 ;
+  
+  arg1 = (std::pair< int,Elk::TemperatureDevice > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::pair< int,Elk::TemperatureDevice > const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Repeat((std::pair< int,Elk::TemperatureDevice > const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_TempDevicePairVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  int arg2 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::pair< int,Elk::TemperatureDevice > > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_pair_Sl_int_Sc_Elk_TemperatureDevice_Sg__Sg__SetRange(arg1,arg2,(std::vector< std::pair< int,Elk::TemperatureDevice > > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_TempDevicePairVector(void * jarg1) {
+  std::vector< std::pair< int,Elk::TemperatureDevice > > *arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *) 0 ;
+  
+  arg1 = (std::vector< std::pair< int,Elk::TemperatureDevice > > *)jarg1; 
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_ChimeModeVector_Clear(void * jarg1) {
   std::vector< Elk::SChimeMode > *arg1 = (std::vector< Elk::SChimeMode > *) 0 ;
   
@@ -7225,61 +7782,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_director_connect(void *objarg, Sw
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_TempDeviceCallback_run(void * jarg1, int jarg2, int jarg3) {
-  TempDeviceCallback *arg1 = (TempDeviceCallback *) 0 ;
-  Elk::TemperatureDevice arg2 ;
-  int arg3 ;
-  
-  arg1 = (TempDeviceCallback *)jarg1; 
-  arg2 = (Elk::TemperatureDevice)jarg2; 
-  arg3 = (int)jarg3; 
-  (arg1)->run(arg2,arg3);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_TempDeviceCallback() {
-  void * jresult ;
-  TempDeviceCallback *result = 0 ;
-  
-  {
-    try {
-      result = (TempDeviceCallback *)new SwigDirector_TempDeviceCallback();
-    } catch (const std::exception& e) {
-      {
-        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
-      };
-    }
-  }
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_TempDeviceCallback(void * jarg1) {
-  TempDeviceCallback *arg1 = (TempDeviceCallback *) 0 ;
-  
-  arg1 = (TempDeviceCallback *)jarg1; 
-  {
-    try {
-      delete arg1;
-    } catch (const std::exception& e) {
-      {
-        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
-      };
-    }
-  }
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_TempDeviceCallback_director_connect(void *objarg, SwigDirector_TempDeviceCallback::SWIG_Callback0_t callback0) {
-  TempDeviceCallback *obj = (TempDeviceCallback *)objarg;
-  SwigDirector_TempDeviceCallback *director = dynamic_cast<SwigDirector_TempDeviceCallback *>(obj);
-  if (director) {
-    director->swig_connect_director(callback0);
-  }
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onRPConnection_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::shared_ptr< BoolCallback > *arg2 = 0 ;
@@ -7303,33 +7805,39 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onRPConnection_get(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredZone(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredZones(void * jarg1) {
+  void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  IntCallback *arg2 = (IntCallback *) 0 ;
+  std::vector< int > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (IntCallback *)jarg2; 
-  (arg1)->forEachConfiguredZone(arg2);
+  result = (arg1)->getConfiguredZones();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredKeypad(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredKeypads(void * jarg1) {
+  void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  IntCallback *arg2 = (IntCallback *) 0 ;
+  std::vector< int > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (IntCallback *)jarg2; 
-  (arg1)->forEachConfiguredKeypad(arg2);
+  result = (arg1)->getConfiguredKeypads();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_forEachConfiguredTempDevice(void * jarg1, void * jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredTempDevices(void * jarg1) {
+  void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  TempDeviceCallback *arg2 = (TempDeviceCallback *) 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (TempDeviceCallback *)jarg2; 
-  (arg1)->forEachConfiguredTempDevice(arg2);
+  result = (arg1)->getConfiguredTempDevices();
+  jresult = new std::vector< std::pair< int,Elk::TemperatureDevice > >((const std::vector< std::pair< int,Elk::TemperatureDevice > > &)result); 
+  return jresult;
 }
 
 
