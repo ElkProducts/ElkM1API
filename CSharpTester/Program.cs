@@ -103,11 +103,9 @@ namespace CSharpTester
             M1AsciiAPI m1api = new M1AsciiAPI(conn);
             m1api.run();
 
-            foreach (TempDevicePair tdp in m1api.getConfiguredTempDevices())
+            foreach (int index in m1api.getConfiguredZones())
             {
-                Console.Write(tdp.first);
-                Console.Write(' ');
-                Console.WriteLine(tdp.second);
+                Console.Write(m1api.getTextDescription(TextDescriptionType.TEXT_ZoneName, index));
             }
 
             Thread.Sleep(30000);

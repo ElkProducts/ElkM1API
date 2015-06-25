@@ -46,27 +46,9 @@ namespace Elk
 		M1Monitor implements these functions as calls to its internal cache, which is filled as you request more information.
 		That way, messages incidentally recieved because of other M1API instances or otherwise will still be used.
 	*/
-	// TODO: Replace with compile-time dynamic area size?
 	class M1API
 	{
 	public:
-		// TODO: These functions aren't sent for by us, but we still recieve them.
-		// There needs to be some form of API call which gives us information from them.
-		// AP - ignore?
-		// AR - handle in monitor (ar)
-		// AT - handle in monitor (at)
-		// CC - handle in monitor
-		// (cd - CD) - TODO - Control audio commands between XEP and audio devs. Ignore?
-		// EE - handle in monitor
-		// EM - ignore?
-		// IC - handle in monitor
-		// ir ~ IR - ?
-		// TC - handle in monitor
-		// XK - handle in monitor
-		// ZC - handle in monitor
-		// PC - handle in monitor
-		// (rs) - used by touchscreen
-
 		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
 		std::shared_ptr<BoolCallback> onRPConnection;
 
@@ -89,7 +71,6 @@ namespace Elk
 		// Retrieve the state of all control outputs.
 		virtual ELKM1API std::vector<bool> getControlOutputs() = 0;
 		// TODO: Needs format specifier. 
-		// Note: If using even TWO custom values, it's much faster to use the second command and iterate.
 		// Retrieve/set custom values by index, or retrieve all.
 		virtual ELKM1API uint16_t getCustomValue(int index) = 0;
 		virtual ELKM1API std::vector<uint16_t> getCustomValues() = 0;
@@ -160,6 +141,22 @@ namespace Elk
 		// Get the voltage of defined zones.
 		virtual ELKM1API float getZoneVoltage(int zone) = 0;
 
+		// TODO: These functions aren't sent for by us, but we still recieve them.
+		// There needs to be some form of API call which gives us information from them.
+		// AP - ignore?
+		// AR - handle in monitor (ar)
+		// AT - handle in monitor (at)
+		// CC - handle in monitor
+		// (cd - CD) - TODO - Control audio commands between XEP and audio devs. Ignore?
+		// EE - handle in monitor
+		// EM - ignore?
+		// IC - handle in monitor
+		// ir ~ IR - ?
+		// TC - handle in monitor
+		// XK - handle in monitor
+		// ZC - handle in monitor
+		// PC - handle in monitor
+		// (rs) - used by touchscreen
 	};
 
 

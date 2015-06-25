@@ -59,7 +59,7 @@ namespace Elk {
 		// If not, send our request and await the response.
 		connection->Send(request.getTransmittable());
 
-		return cacheObj.awaitNew(timeoutMillis);
+		return cacheObj.awaitNew(std::chrono::milliseconds(timeoutMillis));
 	}
 	// Used for cache objects which only change once per M1 programming.
 	template <typename T>
@@ -71,7 +71,7 @@ namespace Elk {
 		// If not, send our request and await the response.
 		connection->Send(request.getTransmittable());
 
-		return cacheObj.awaitNew(1500);
+		return cacheObj.awaitNew(std::chrono::milliseconds(1500));
 	}
 #pragma endregion Static Helper Functions
 
@@ -90,6 +90,8 @@ namespace Elk {
 		//   that lets the program do whatever with it.
 		// PC
 
+		// TODO: "KC"
+		
 		// Counter value read
 		handleMessageTable.emplace("CV", [this](std::string message) {
 			// CVNNDDDDD00
@@ -474,7 +476,7 @@ namespace Elk {
 
 	std::vector<int> M1AsciiAPI::getConfiguredZones() {
 		auto& zdef = getZoneDefinitions();
-		std::vector<int> configured(zdef.size());
+		std::vector<int> configured;
 		for (int i = 0; i < zdef.size(); i++) {
 			if (zdef[i].zd != ZONEDEF_DISABLED) {
 				configured.push_back(i);
@@ -485,7 +487,7 @@ namespace Elk {
 
 	std::vector<int> M1AsciiAPI::getConfiguredKeypads() {
 		std::vector<int> kpa = getKeypadAreas();
-		std::vector<int> configured(kpa.size());
+		std::vector<int> configured;
 		for (int i = 0; i < kpa.size(); i++) {
 			if (kpa[i] != -1) {
 				configured.push_back(i);
@@ -933,10 +935,9 @@ namespace Elk {
 		message += toAsciiDec(counter + 1, 2);
 		message += toAsciiDec(value, 5);
 		message += "00";
-		connection->Send(message.getTransmittable());
 
 		// If we have a timeout defined, try to use that, and rethrow exception if we wait too long
-		return m1cache.counterValues[counter].awaitNew(0);
+		return cacheRequest(m1cache.counterValues[counter], message, true, 0);
 	}
 	UserCodeAccess M1AsciiAPI::getUserCodeAccess(std::string userCode) { 
 		if (!versionAtLeast(4, 2, 5)) {

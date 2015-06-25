@@ -43,10 +43,11 @@ namespace Elk {
 				std::unique_lock<std::mutex> lock(mutex);
 				return object; 
 			}
-			T awaitNew(int milliseconds = 0)
+			template <typename _Rep, typename _Period>
+			T awaitNew(std::chrono::duration<_Rep, _Period> timeout= std::chrono::milliseconds::zero)
 			{
 				std::unique_lock<std::mutex> lock(mutex);
-				if (milliseconds <= 0) {
+				if (timeout.count() <= 0) {
 					newData.wait(lock);
 					if (updateTime != 0)
 						return object;
@@ -55,7 +56,7 @@ namespace Elk {
 				}
 				else {
 					if (newData.wait_for(lock,
-						std::chrono::milliseconds(milliseconds)) == std::cv_status::no_timeout)
+						timeout) == std::cv_status::no_timeout)
 					{
 						if (updateTime != 0)
 							return object;
