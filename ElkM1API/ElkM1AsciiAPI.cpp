@@ -525,33 +525,58 @@ namespace Elk {
 
 	// TODO: Function to intelligently collect names
 	void M1AsciiAPI::collectNames(TextDescriptionType type) {
+		std::vector<int> indexes;
+		cacheObject<std::string> *beginItr;
+		cacheObject<std::string> *endItr;
+
 		switch (type) {
 		case TEXT_AreaName:
 			// Request all area names 
-			auto areas = getConfiguredAreas();
-			for (int index : areas) {
-				AsciiMessage message("sd");
-				message += toAsciiDec(type, 2);
-				message += toAsciiDec(index + 1, 3);
-				message += "00";
-				connection->Send(message.getTransmittable());
-			}
-			// Timeout on the entire block
-			try {
-				m1cache.AreaNames[areas.back()].awaitNew(std::chrono::milliseconds(1500));
-			}
-			catch (...)
-			{
-			}
-			// Fill untouched caches with blanks
-			for (auto& block : m1cache.AreaNames){
-				if (!block.isInitialized())
-					block.set("");
-			}
-
+			indexes = getConfiguredAreas();
+			beginItr = std::begin(m1cache.AreaNames);
+			endItr = std::end(m1cache.AreaNames);
+			break;
+		case TEXT_ZoneName:
+			// Request all area names 
+			indexes = getConfiguredZones();
+			beginItr = std::begin(m1cache.ZoneNames);
+			endItr = std::end(m1cache.ZoneNames);
+			break;
+		case TEXT_KeypadName:
+			// Request all area names 
+			indexes = getConfiguredKeypads();
+			beginItr = std::begin(m1cache.KeypadNames);
+			endItr = std::end(m1cache.KeypadNames);
+			break;
+		default:
+			throw std::runtime_error("Not imlemented.");
+		}
+		// If all are initialized, quit early
+		if (std::all_of(beginItr, endItr, [](cacheObject<std::string>& obj) {
+			return obj.isInitialized();
+		})) {
 			return;
 		}
-		throw std::runtime_error("Not imlemented.");
+		
+		for (int index : indexes) {
+			AsciiMessage message("sd");
+			message += toAsciiDec(type, 2);
+			message += toAsciiDec(index + 1, 3);
+			message += "00";
+			connection->Send(message.getTransmittable());
+		}
+		// Timeout on the entire block
+		try {
+			beginItr[indexes.back()].awaitNew(std::chrono::milliseconds(1500));
+		}
+		catch (...)
+		{
+		}
+		// Fill untouched caches with blanks
+		for (auto& block = beginItr; block != endItr; std::advance(block, 1)){
+			if (!block->isInitialized())
+				block->set("");
+		}
 	}
 	
 	AudioData M1AsciiAPI::getAudioData(int audioZone) { 

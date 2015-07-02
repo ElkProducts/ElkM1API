@@ -24,6 +24,8 @@ namespace ElkM1DesktopApp
             cs = new CSharpConnection();
             m1 = new M1AsciiAPI(cs);
             AreasList.LargeImageList = new ImageList();
+            AreasList.LargeImageList.ImageSize = new Size(48,48);
+            AreasList.LargeImageList.ColorDepth = ColorDepth.Depth32Bit;
             AreasList.LargeImageList.Images.Add("armaway", Properties.Resources.armaway_image_c);
             AreasList.LargeImageList.Images.Add("armstay", Properties.Resources.armstay_image_c);
             AreasList.LargeImageList.Images.Add("disarm", Properties.Resources.disarm_image_c);
@@ -36,7 +38,7 @@ namespace ElkM1DesktopApp
             if (!connected)
             {
                 AreasList.Items.Clear();
-                cs.Connect("192.168.101.151", 2101);
+                cs.Connect("192.168.101.104", 2101);
                 m1.run();
 
                 ArmStatusVector v = m1.getArmStatus();

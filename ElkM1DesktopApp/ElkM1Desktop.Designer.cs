@@ -30,13 +30,13 @@
         {
             this.tabControls = new System.Windows.Forms.TabControl();
             this.Security = new System.Windows.Forms.TabPage();
-            this.Connect = new System.Windows.Forms.Button();
+            this.AreasList = new System.Windows.Forms.ListView();
             this.Temperature = new System.Windows.Forms.TabPage();
             this.Lighting = new System.Windows.Forms.TabPage();
             this.Outputs = new System.Windows.Forms.TabPage();
             this.Tasks = new System.Windows.Forms.TabPage();
             this.Custom_Settings = new System.Windows.Forms.TabPage();
-            this.AreasList = new System.Windows.Forms.ListView();
+            this.Connect = new System.Windows.Forms.Button();
             this.tabControls.SuspendLayout();
             this.Security.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +65,59 @@
             this.Security.Text = "Security";
             this.Security.UseVisualStyleBackColor = true;
             // 
+            // AreasList
+            // 
+            this.AreasList.Location = new System.Drawing.Point(3, 3);
+            this.AreasList.Name = "AreasList";
+            this.AreasList.Size = new System.Drawing.Size(586, 357);
+            this.AreasList.TabIndex = 0;
+            this.AreasList.UseCompatibleStateImageBehavior = false;
+            // 
+            // Temperature
+            // 
+            this.Temperature.Location = new System.Drawing.Point(4, 22);
+            this.Temperature.Name = "Temperature";
+            this.Temperature.Size = new System.Drawing.Size(592, 363);
+            this.Temperature.TabIndex = 1;
+            this.Temperature.Text = "Temperature";
+            this.Temperature.UseVisualStyleBackColor = true;
+            // 
+            // Lighting
+            // 
+            this.Lighting.Location = new System.Drawing.Point(4, 22);
+            this.Lighting.Name = "Lighting";
+            this.Lighting.Size = new System.Drawing.Size(592, 363);
+            this.Lighting.TabIndex = 2;
+            this.Lighting.Text = "Lighting";
+            this.Lighting.UseVisualStyleBackColor = true;
+            // 
+            // Outputs
+            // 
+            this.Outputs.Location = new System.Drawing.Point(4, 22);
+            this.Outputs.Name = "Outputs";
+            this.Outputs.Size = new System.Drawing.Size(592, 363);
+            this.Outputs.TabIndex = 3;
+            this.Outputs.Text = "Outputs";
+            this.Outputs.UseVisualStyleBackColor = true;
+            // 
+            // Tasks
+            // 
+            this.Tasks.Location = new System.Drawing.Point(4, 22);
+            this.Tasks.Name = "Tasks";
+            this.Tasks.Size = new System.Drawing.Size(592, 363);
+            this.Tasks.TabIndex = 4;
+            this.Tasks.Text = "Tasks";
+            this.Tasks.UseVisualStyleBackColor = true;
+            // 
+            // Custom_Settings
+            // 
+            this.Custom_Settings.Location = new System.Drawing.Point(4, 22);
+            this.Custom_Settings.Name = "Custom_Settings";
+            this.Custom_Settings.Size = new System.Drawing.Size(592, 363);
+            this.Custom_Settings.TabIndex = 5;
+            this.Custom_Settings.Text = "Custom Settings";
+            this.Custom_Settings.UseVisualStyleBackColor = true;
+            // 
             // Connect
             // 
             this.Connect.Location = new System.Drawing.Point(537, 407);
@@ -74,59 +127,6 @@
             this.Connect.Text = "Connect";
             this.Connect.UseVisualStyleBackColor = true;
             this.Connect.Click += new System.EventHandler(this.Connect_Click);
-            // 
-            // Temperature
-            // 
-            this.Temperature.Location = new System.Drawing.Point(4, 22);
-            this.Temperature.Name = "Temperature";
-            this.Temperature.Size = new System.Drawing.Size(592, 392);
-            this.Temperature.TabIndex = 1;
-            this.Temperature.Text = "Temperature";
-            this.Temperature.UseVisualStyleBackColor = true;
-            // 
-            // Lighting
-            // 
-            this.Lighting.Location = new System.Drawing.Point(4, 22);
-            this.Lighting.Name = "Lighting";
-            this.Lighting.Size = new System.Drawing.Size(592, 392);
-            this.Lighting.TabIndex = 2;
-            this.Lighting.Text = "Lighting";
-            this.Lighting.UseVisualStyleBackColor = true;
-            // 
-            // Outputs
-            // 
-            this.Outputs.Location = new System.Drawing.Point(4, 22);
-            this.Outputs.Name = "Outputs";
-            this.Outputs.Size = new System.Drawing.Size(592, 392);
-            this.Outputs.TabIndex = 3;
-            this.Outputs.Text = "Outputs";
-            this.Outputs.UseVisualStyleBackColor = true;
-            // 
-            // Tasks
-            // 
-            this.Tasks.Location = new System.Drawing.Point(4, 22);
-            this.Tasks.Name = "Tasks";
-            this.Tasks.Size = new System.Drawing.Size(592, 392);
-            this.Tasks.TabIndex = 4;
-            this.Tasks.Text = "Tasks";
-            this.Tasks.UseVisualStyleBackColor = true;
-            // 
-            // Custom_Settings
-            // 
-            this.Custom_Settings.Location = new System.Drawing.Point(4, 22);
-            this.Custom_Settings.Name = "Custom_Settings";
-            this.Custom_Settings.Size = new System.Drawing.Size(592, 392);
-            this.Custom_Settings.TabIndex = 5;
-            this.Custom_Settings.Text = "Custom Settings";
-            this.Custom_Settings.UseVisualStyleBackColor = true;
-            // 
-            // AreasList
-            // 
-            this.AreasList.Location = new System.Drawing.Point(3, 3);
-            this.AreasList.Name = "AreasList";
-            this.AreasList.Size = new System.Drawing.Size(586, 357);
-            this.AreasList.TabIndex = 0;
-            this.AreasList.UseCompatibleStateImageBehavior = false;
             // 
             // ElkM1App
             // 
