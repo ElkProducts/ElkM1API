@@ -1452,6 +1452,11 @@ void SwigDirector_BoolCallback::run(bool arg1) {
   }
 }
 
+SwigDirector_BoolCallback::~SwigDirector_BoolCallback() {
+  
+}
+
+
 void SwigDirector_BoolCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
   swig_callbackrun = callbackrun;
 }
@@ -1475,6 +1480,11 @@ void SwigDirector_IntCallback::run(int arg1) {
   }
 }
 
+SwigDirector_IntCallback::~SwigDirector_IntCallback() {
+  
+}
+
+
 void SwigDirector_IntCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
   swig_callbackrun = callbackrun;
 }
@@ -1486,6 +1496,11 @@ void SwigDirector_IntCallback::swig_init_callbacks() {
 SwigDirector_M1Connection::SwigDirector_M1Connection() : Elk::M1Connection(), Swig::Director() {
   swig_init_callbacks();
 }
+
+SwigDirector_M1Connection::~SwigDirector_M1Connection() {
+  
+}
+
 
 bool SwigDirector_M1Connection::Connect(std::string location, int port) {
   bool c_result = SwigValueInit< bool >() ;
@@ -1557,6 +1572,11 @@ void SwigDirector_M1Connection::swig_init_callbacks() {
 SwigDirector_C1M1Tunnel::SwigDirector_C1M1Tunnel(Elk::M1Connection *underlying) : Elk::C1M1Tunnel(underlying), Swig::Director() {
   swig_init_callbacks();
 }
+
+SwigDirector_C1M1Tunnel::~SwigDirector_C1M1Tunnel() {
+  
+}
+
 
 bool SwigDirector_C1M1Tunnel::Connect(std::string location, int port) {
   bool c_result = SwigValueInit< bool >() ;
@@ -7679,6 +7699,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_BoolCallback_run(void * jarg1, unsigned int j
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolCallback(void * jarg1) {
+  BoolCallback *arg1 = (BoolCallback *) 0 ;
+  std::shared_ptr< BoolCallback > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  BoolCallback > *)jarg1;
+  arg1 = (BoolCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolCallback() {
   void * jresult ;
   BoolCallback *result = 0 ;
@@ -7696,25 +7727,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolCallback() {
   jresult = result ? new std::shared_ptr<  BoolCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
   
   return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolCallback(void * jarg1) {
-  BoolCallback *arg1 = (BoolCallback *) 0 ;
-  std::shared_ptr< BoolCallback > *smartarg1 = 0 ;
-  
-  
-  smartarg1 = (std::shared_ptr<  BoolCallback > *)jarg1;
-  arg1 = (BoolCallback *)(smartarg1 ? smartarg1->get() : 0); 
-  {
-    try {
-      (void)arg1; delete smartarg1;
-    } catch (const std::exception& e) {
-      {
-        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
-      };
-    }
-  }
 }
 
 
@@ -7739,6 +7751,14 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_run(void * jarg1, int jarg2) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntCallback(void * jarg1) {
+  IntCallback *arg1 = (IntCallback *) 0 ;
+  
+  arg1 = (IntCallback *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntCallback() {
   void * jresult ;
   IntCallback *result = 0 ;
@@ -7754,22 +7774,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntCallback() {
   }
   jresult = (void *)result; 
   return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntCallback(void * jarg1) {
-  IntCallback *arg1 = (IntCallback *) 0 ;
-  
-  arg1 = (IntCallback *)jarg1; 
-  {
-    try {
-      delete arg1;
-    } catch (const std::exception& e) {
-      {
-        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
-      };
-    }
-  }
 }
 
 
@@ -8597,11 +8601,25 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1AsciiAPI(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_collectAllNames(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_collectNames(void * jarg1, int jarg2) {
   Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
+  Elk::TextDescriptionType arg2 ;
   
   arg1 = (Elk::M1AsciiAPI *)jarg1; 
-  (arg1)->collectAllNames();
+  arg2 = (Elk::TextDescriptionType)jarg2; 
+  (arg1)->collectNames(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1AsciiAPI_getConfiguredAreas(void * jarg1) {
+  void * jresult ;
+  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
+  std::vector< int > result;
+  
+  arg1 = (Elk::M1AsciiAPI *)jarg1; 
+  result = (arg1)->getConfiguredAreas();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
 }
 
 
@@ -8827,6 +8845,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1AsciiAPI(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Connection(void * jarg1) {
+  Elk::M1Connection *arg1 = (Elk::M1Connection *) 0 ;
+  std::shared_ptr< Elk::M1Connection > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  Elk::M1Connection > *)jarg1;
+  arg1 = (Elk::M1Connection *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1Connection_Connect(void * jarg1, char * jarg2, int jarg3) {
   unsigned int jresult ;
   Elk::M1Connection *arg1 = (Elk::M1Connection *) 0 ;
@@ -8915,25 +8944,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_M1Connection() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Connection(void * jarg1) {
-  Elk::M1Connection *arg1 = (Elk::M1Connection *) 0 ;
-  std::shared_ptr< Elk::M1Connection > *smartarg1 = 0 ;
-  
-  
-  smartarg1 = (std::shared_ptr<  Elk::M1Connection > *)jarg1;
-  arg1 = (Elk::M1Connection *)(smartarg1 ? smartarg1->get() : 0); 
-  {
-    try {
-      (void)arg1; delete smartarg1;
-    } catch (const std::exception& e) {
-      {
-        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
-      };
-    }
-  }
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_M1Connection_director_connect(void *objarg, SwigDirector_M1Connection::SWIG_Callback0_t callback0, SwigDirector_M1Connection::SWIG_Callback1_t callback1, SwigDirector_M1Connection::SWIG_Callback2_t callback2, SwigDirector_M1Connection::SWIG_Callback3_t callback3) {
   std::shared_ptr< Elk::M1Connection > *obj = (std::shared_ptr< Elk::M1Connection > *)objarg;
   // Keep a local instance of the smart pointer around while we are using the raw pointer
@@ -8957,6 +8967,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_C1M1Tunnel(void * jarg1) {
   result = (Elk::C1M1Tunnel *)new SwigDirector_C1M1Tunnel(arg1);
   jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_C1M1Tunnel(void * jarg1) {
+  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
+  
+  arg1 = (Elk::C1M1Tunnel *)jarg1; 
+  delete arg1;
 }
 
 
@@ -9099,22 +9117,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_C1M1Tunnel_RecieveSwigExplicitC1M1Tunnel(vo
   result = (arg1)->Elk::C1M1Tunnel::Recieve();
   jresult = new std::vector< char >((const std::vector< char > &)result); 
   return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_C1M1Tunnel(void * jarg1) {
-  Elk::C1M1Tunnel *arg1 = (Elk::C1M1Tunnel *) 0 ;
-  
-  arg1 = (Elk::C1M1Tunnel *)jarg1; 
-  {
-    try {
-      delete arg1;
-    } catch (const std::exception& e) {
-      {
-        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
-      };
-    }
-  }
 }
 
 

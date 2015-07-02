@@ -12,7 +12,7 @@
 
 bool sigExit = false;
 std::shared_ptr<Elk::M1Connection> connection;
-std::unique_ptr<Elk::M1AsciiAPI> m1api;
+std::shared_ptr<Elk::M1AsciiAPI> m1api;
 // Map of command names to functions.
 // Key can be changed to be more 'cli' like, this is just what my regex spat out.
 std::map<std::string, std::function<void()>> commands = {
@@ -215,203 +215,203 @@ std::map<std::string, std::function<void()>> commands = {
 	//{ "getSystemTroubleStatus", [] {m1api->getSystemTroubleStatus(); } },
 	//{ "getTemperature", [] {m1api->getTemperature(TemperatureDevice type, int device); } },
 	{ "getTemperatures", [] {
-		m1api->forEachConfiguredTempDevice([](Elk::TemperatureDevice dev, int index) {
-			switch (dev) {
-			case Elk::TEMPDEVICE_THERMOSTAT:
-				try {
-					std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ThermostatName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
-				}
-				catch (...) {
-					std::cout << "Thermostat " << index << ": " << m1api->getTemperature(dev, index) << "\n";
-				}
-				break;
-			case Elk::TEMPDEVICE_KEYPAD:
-				try {
-					std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_KeypadName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
-				}
-				catch (...) {
-					std::cout << "Keypad " << index << ": " << m1api->getTemperature(dev, index) << "\n";
-				}
-				break;
-			case Elk::TEMPDEVICE_ZONE:
-				std::cout << "Temp Zone " << index << ": " << m1api->getTemperature(dev, index) << "\n";
-				break;
-			}
-		});
+		//m1api->forEachConfiguredTempDevice([](Elk::TemperatureDevice dev, int index) {
+		//	switch (dev) {
+		//	case Elk::TEMPDEVICE_THERMOSTAT:
+		//		try {
+		//			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ThermostatName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
+		//		}
+		//		catch (...) {
+		//			std::cout << "Thermostat " << index << ": " << m1api->getTemperature(dev, index) << "\n";
+		//		}
+		//		break;
+		//	case Elk::TEMPDEVICE_KEYPAD:
+		//		try {
+		//			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_KeypadName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
+		//		}
+		//		catch (...) {
+		//			std::cout << "Keypad " << index << ": " << m1api->getTemperature(dev, index) << "\n";
+		//		}
+		//		break;
+		//	case Elk::TEMPDEVICE_ZONE:
+		//		std::cout << "Temp Zone " << index << ": " << m1api->getTemperature(dev, index) << "\n";
+		//		break;
+		//	}
+		//});
 	} },
 	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
 	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
 	{ "getZoneAlarms", [] {
 		auto& zdfs = m1api->getZoneAlarms();
-		m1api->forEachConfiguredZone([&zdfs](int index) {
-			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
-			switch (zdfs[index].zd) {
-			case Elk::ZONEDEF_DISABLED:
-				std::cout << "Disabled"; break;
-			case Elk::ZONEDEF_BURGLAR_ENTRY_1:
-				std::cout << "Burglar entry 1"; break;
-			case Elk::ZONEDEF_BURGLAR_ENTRY_2:
-				std::cout << "Burglar entry 2"; break;
-			case Elk::ZONEDEF_BURGLAR_PERIMETER_INSTANT:
-				std::cout << "Burglar perimeter instant"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR:
-				std::cout << "Burglar interior"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR_FOLLOWER:
-				std::cout << "Burglar follower"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT:
-				std::cout << "Burglar interior night"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT_DELAY:
-				std::cout << "Burglar interior night delay"; break;
-			case Elk::ZONEDEF_BURGLAR_24_HOUR:
-				std::cout << "Burglar 24 hour"; break;
-			case Elk::ZONEDEF_BURGLAR_BOX_TAMPER:
-				std::cout << "Burglar box tamper"; break;
-			case Elk::ZONEDEF_FIRE_ALARM:
-				std::cout << "Fire alarm"; break;
-			case Elk::ZONEDEF_FIRE_VERIFIED:
-				std::cout << "Fire verified"; break;
-			case Elk::ZONEDEF_FIRE_SUPERVISORY:
-				std::cout << "Fire supervisory"; break;
-			case Elk::ZONEDEF_AUX_ALARM_1:
-				std::cout << "Aux alarm 1"; break;
-			case Elk::ZONEDEF_AUX_ALARM_2:
-				std::cout << "Aux alarm 2"; break;
-			case Elk::ZONEDEF_KEY_FOB:
-				std::cout << "Keyfob"; break;
-			case Elk::ZONEDEF_NON_ALARM:
-				std::cout << "Non alarm"; break;
-			case Elk::ZONEDEF_CARBON_MONOXIDE:
-				std::cout << "Carbon monoxide"; break;
-			case Elk::ZONEDEF_EMERGENCY_ALARM:
-				std::cout << "Emergency alarm"; break;
-			case Elk::ZONEDEF_FREEZE_ALARM:
-				std::cout << "Freeze alarm"; break;
-			case Elk::ZONEDEF_GAS_ALARM:
-				std::cout << "Gas alarm"; break;
-			case Elk::ZONEDEF_HEAT_ALARM:
-				std::cout << "Heat alarm"; break;
-			case Elk::ZONEDEF_MEDICAL_ALARM:
-				std::cout << "Medical alarm"; break;
-			case Elk::ZONEDEF_POLICE_ALARM:
-				std::cout << "Police alarm"; break;
-			case Elk::ZONEDEF_POLICE_NO_INDICATION:
-				std::cout << "Police no indication alarm"; break;
-			case Elk::ZONEDEF_WATER_ALARM:
-				std::cout << "Water alarm"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_ARMDISARM:
-				std::cout << "Momentary arm/disarm"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_ARM_AWAY:
-				std::cout << "Momentary arm away"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_ARM_STAY:
-				std::cout << "Momentary arm stay"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_DISARM:
-				std::cout << "Momentary disarm"; break;
-			case Elk::ZONEDEF_KEY_TOGGLE:
-				std::cout << "Key toggle"; break;
-			case Elk::ZONEDEF_MUTE_AUDIBLES:
-				std::cout << "Mute audibles"; break;
-			case Elk::ZONEDEF_POWER_SUPERVISORY:
-				std::cout << "Power supervisory"; break;
-			case Elk::ZONEDEF_TEMPERATURE:
-				std::cout << "Temperature"; break;
-			case Elk::ZONEDEF_ANALOG_ZONE:
-				std::cout << "Analog zone"; break;
-			case Elk::ZONEDEF_PHONE_KEY:
-				std::cout << "Phone key"; break;
-			case Elk::ZONEDEF_INTERCOM_KEY:
-				std::cout << "Intercom key"; break;
-			}
-			std::cout << "\n";
-		});
+		//m1api->forEachConfiguredZone([&zdfs](int index) {
+		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
+		//	switch (zdfs[index].zd) {
+		//	case Elk::ZONEDEF_DISABLED:
+		//		std::cout << "Disabled"; break;
+		//	case Elk::ZONEDEF_BURGLAR_ENTRY_1:
+		//		std::cout << "Burglar entry 1"; break;
+		//	case Elk::ZONEDEF_BURGLAR_ENTRY_2:
+		//		std::cout << "Burglar entry 2"; break;
+		//	case Elk::ZONEDEF_BURGLAR_PERIMETER_INSTANT:
+		//		std::cout << "Burglar perimeter instant"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR:
+		//		std::cout << "Burglar interior"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR_FOLLOWER:
+		//		std::cout << "Burglar follower"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT:
+		//		std::cout << "Burglar interior night"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT_DELAY:
+		//		std::cout << "Burglar interior night delay"; break;
+		//	case Elk::ZONEDEF_BURGLAR_24_HOUR:
+		//		std::cout << "Burglar 24 hour"; break;
+		//	case Elk::ZONEDEF_BURGLAR_BOX_TAMPER:
+		//		std::cout << "Burglar box tamper"; break;
+		//	case Elk::ZONEDEF_FIRE_ALARM:
+		//		std::cout << "Fire alarm"; break;
+		//	case Elk::ZONEDEF_FIRE_VERIFIED:
+		//		std::cout << "Fire verified"; break;
+		//	case Elk::ZONEDEF_FIRE_SUPERVISORY:
+		//		std::cout << "Fire supervisory"; break;
+		//	case Elk::ZONEDEF_AUX_ALARM_1:
+		//		std::cout << "Aux alarm 1"; break;
+		//	case Elk::ZONEDEF_AUX_ALARM_2:
+		//		std::cout << "Aux alarm 2"; break;
+		//	case Elk::ZONEDEF_KEY_FOB:
+		//		std::cout << "Keyfob"; break;
+		//	case Elk::ZONEDEF_NON_ALARM:
+		//		std::cout << "Non alarm"; break;
+		//	case Elk::ZONEDEF_CARBON_MONOXIDE:
+		//		std::cout << "Carbon monoxide"; break;
+		//	case Elk::ZONEDEF_EMERGENCY_ALARM:
+		//		std::cout << "Emergency alarm"; break;
+		//	case Elk::ZONEDEF_FREEZE_ALARM:
+		//		std::cout << "Freeze alarm"; break;
+		//	case Elk::ZONEDEF_GAS_ALARM:
+		//		std::cout << "Gas alarm"; break;
+		//	case Elk::ZONEDEF_HEAT_ALARM:
+		//		std::cout << "Heat alarm"; break;
+		//	case Elk::ZONEDEF_MEDICAL_ALARM:
+		//		std::cout << "Medical alarm"; break;
+		//	case Elk::ZONEDEF_POLICE_ALARM:
+		//		std::cout << "Police alarm"; break;
+		//	case Elk::ZONEDEF_POLICE_NO_INDICATION:
+		//		std::cout << "Police no indication alarm"; break;
+		//	case Elk::ZONEDEF_WATER_ALARM:
+		//		std::cout << "Water alarm"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_ARMDISARM:
+		//		std::cout << "Momentary arm/disarm"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_ARM_AWAY:
+		//		std::cout << "Momentary arm away"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_ARM_STAY:
+		//		std::cout << "Momentary arm stay"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_DISARM:
+		//		std::cout << "Momentary disarm"; break;
+		//	case Elk::ZONEDEF_KEY_TOGGLE:
+		//		std::cout << "Key toggle"; break;
+		//	case Elk::ZONEDEF_MUTE_AUDIBLES:
+		//		std::cout << "Mute audibles"; break;
+		//	case Elk::ZONEDEF_POWER_SUPERVISORY:
+		//		std::cout << "Power supervisory"; break;
+		//	case Elk::ZONEDEF_TEMPERATURE:
+		//		std::cout << "Temperature"; break;
+		//	case Elk::ZONEDEF_ANALOG_ZONE:
+		//		std::cout << "Analog zone"; break;
+		//	case Elk::ZONEDEF_PHONE_KEY:
+		//		std::cout << "Phone key"; break;
+		//	case Elk::ZONEDEF_INTERCOM_KEY:
+		//		std::cout << "Intercom key"; break;
+		//	}
+		//	std::cout << "\n";
+		//});
 	} },
 	{ "getZoneDefinitions", [] {
 		auto& zdfs = m1api->getZoneDefinitions(); 
-		m1api->forEachConfiguredZone([&zdfs](int index) {
-			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
-			switch (zdfs[index].zd) {
-			case Elk::ZONEDEF_DISABLED:
-				std::cout << "Disabled"; break;
-			case Elk::ZONEDEF_BURGLAR_ENTRY_1:
-				std::cout << "Burglar entry 1"; break;
-			case Elk::ZONEDEF_BURGLAR_ENTRY_2:
-				std::cout << "Burglar entry 2"; break;
-			case Elk::ZONEDEF_BURGLAR_PERIMETER_INSTANT:
-				std::cout << "Burglar perimeter instant"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR:
-				std::cout << "Burglar interior"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR_FOLLOWER:
-				std::cout << "Burglar follower"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT:
-				std::cout << "Burglar interior night"; break;
-			case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT_DELAY:
-				std::cout << "Burglar interior night delay"; break;
-			case Elk::ZONEDEF_BURGLAR_24_HOUR:
-				std::cout << "Burglar 24 hour"; break;
-			case Elk::ZONEDEF_BURGLAR_BOX_TAMPER:
-				std::cout << "Burglar box tamper"; break;
-			case Elk::ZONEDEF_FIRE_ALARM:
-				std::cout << "Fire alarm"; break;
-			case Elk::ZONEDEF_FIRE_VERIFIED:
-				std::cout << "Fire verified"; break;
-			case Elk::ZONEDEF_FIRE_SUPERVISORY:
-				std::cout << "Fire supervisory"; break;
-			case Elk::ZONEDEF_AUX_ALARM_1:
-				std::cout << "Aux alarm 1"; break;
-			case Elk::ZONEDEF_AUX_ALARM_2:
-				std::cout << "Aux alarm 2"; break;
-			case Elk::ZONEDEF_KEY_FOB:
-				std::cout << "Keyfob"; break;
-			case Elk::ZONEDEF_NON_ALARM:
-				std::cout << "Non alarm"; break;
-			case Elk::ZONEDEF_CARBON_MONOXIDE:
-				std::cout << "Carbon monoxide"; break;
-			case Elk::ZONEDEF_EMERGENCY_ALARM:
-				std::cout << "Emergency alarm"; break;
-			case Elk::ZONEDEF_FREEZE_ALARM:
-				std::cout << "Freeze alarm"; break;
-			case Elk::ZONEDEF_GAS_ALARM:
-				std::cout << "Gas alarm"; break;
-			case Elk::ZONEDEF_HEAT_ALARM:
-				std::cout << "Heat alarm"; break;
-			case Elk::ZONEDEF_MEDICAL_ALARM:
-				std::cout << "Medical alarm"; break;
-			case Elk::ZONEDEF_POLICE_ALARM:
-				std::cout << "Police alarm"; break;
-			case Elk::ZONEDEF_POLICE_NO_INDICATION:
-				std::cout << "Police no indication alarm"; break;
-			case Elk::ZONEDEF_WATER_ALARM:
-				std::cout << "Water alarm"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_ARMDISARM:
-				std::cout << "Momentary arm/disarm"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_ARM_AWAY:
-				std::cout << "Momentary arm away"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_ARM_STAY:
-				std::cout << "Momentary arm stay"; break;
-			case Elk::ZONEDEF_KEY_MOMENTARY_DISARM:
-				std::cout << "Momentary disarm"; break;
-			case Elk::ZONEDEF_KEY_TOGGLE:
-				std::cout << "Key toggle"; break;
-			case Elk::ZONEDEF_MUTE_AUDIBLES:
-				std::cout << "Mute audibles"; break;
-			case Elk::ZONEDEF_POWER_SUPERVISORY:
-				std::cout << "Power supervisory"; break;
-			case Elk::ZONEDEF_TEMPERATURE:
-				std::cout << "Temperature"; break;
-			case Elk::ZONEDEF_ANALOG_ZONE:
-				std::cout << "Analog zone"; break;
-			case Elk::ZONEDEF_PHONE_KEY:
-				std::cout << "Phone key"; break;
-			case Elk::ZONEDEF_INTERCOM_KEY:
-				std::cout << "Intercom key"; break;
-			}
-			std::cout << "\n";
-		});
+		//m1api->forEachConfiguredZone([&zdfs](int index) {
+		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
+		//	switch (zdfs[index].zd) {
+		//	case Elk::ZONEDEF_DISABLED:
+		//		std::cout << "Disabled"; break;
+		//	case Elk::ZONEDEF_BURGLAR_ENTRY_1:
+		//		std::cout << "Burglar entry 1"; break;
+		//	case Elk::ZONEDEF_BURGLAR_ENTRY_2:
+		//		std::cout << "Burglar entry 2"; break;
+		//	case Elk::ZONEDEF_BURGLAR_PERIMETER_INSTANT:
+		//		std::cout << "Burglar perimeter instant"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR:
+		//		std::cout << "Burglar interior"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR_FOLLOWER:
+		//		std::cout << "Burglar follower"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT:
+		//		std::cout << "Burglar interior night"; break;
+		//	case Elk::ZONEDEF_BURGLAR_INTERIOR_NIGHT_DELAY:
+		//		std::cout << "Burglar interior night delay"; break;
+		//	case Elk::ZONEDEF_BURGLAR_24_HOUR:
+		//		std::cout << "Burglar 24 hour"; break;
+		//	case Elk::ZONEDEF_BURGLAR_BOX_TAMPER:
+		//		std::cout << "Burglar box tamper"; break;
+		//	case Elk::ZONEDEF_FIRE_ALARM:
+		//		std::cout << "Fire alarm"; break;
+		//	case Elk::ZONEDEF_FIRE_VERIFIED:
+		//		std::cout << "Fire verified"; break;
+		//	case Elk::ZONEDEF_FIRE_SUPERVISORY:
+		//		std::cout << "Fire supervisory"; break;
+		//	case Elk::ZONEDEF_AUX_ALARM_1:
+		//		std::cout << "Aux alarm 1"; break;
+		//	case Elk::ZONEDEF_AUX_ALARM_2:
+		//		std::cout << "Aux alarm 2"; break;
+		//	case Elk::ZONEDEF_KEY_FOB:
+		//		std::cout << "Keyfob"; break;
+		//	case Elk::ZONEDEF_NON_ALARM:
+		//		std::cout << "Non alarm"; break;
+		//	case Elk::ZONEDEF_CARBON_MONOXIDE:
+		//		std::cout << "Carbon monoxide"; break;
+		//	case Elk::ZONEDEF_EMERGENCY_ALARM:
+		//		std::cout << "Emergency alarm"; break;
+		//	case Elk::ZONEDEF_FREEZE_ALARM:
+		//		std::cout << "Freeze alarm"; break;
+		//	case Elk::ZONEDEF_GAS_ALARM:
+		//		std::cout << "Gas alarm"; break;
+		//	case Elk::ZONEDEF_HEAT_ALARM:
+		//		std::cout << "Heat alarm"; break;
+		//	case Elk::ZONEDEF_MEDICAL_ALARM:
+		//		std::cout << "Medical alarm"; break;
+		//	case Elk::ZONEDEF_POLICE_ALARM:
+		//		std::cout << "Police alarm"; break;
+		//	case Elk::ZONEDEF_POLICE_NO_INDICATION:
+		//		std::cout << "Police no indication alarm"; break;
+		//	case Elk::ZONEDEF_WATER_ALARM:
+		//		std::cout << "Water alarm"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_ARMDISARM:
+		//		std::cout << "Momentary arm/disarm"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_ARM_AWAY:
+		//		std::cout << "Momentary arm away"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_ARM_STAY:
+		//		std::cout << "Momentary arm stay"; break;
+		//	case Elk::ZONEDEF_KEY_MOMENTARY_DISARM:
+		//		std::cout << "Momentary disarm"; break;
+		//	case Elk::ZONEDEF_KEY_TOGGLE:
+		//		std::cout << "Key toggle"; break;
+		//	case Elk::ZONEDEF_MUTE_AUDIBLES:
+		//		std::cout << "Mute audibles"; break;
+		//	case Elk::ZONEDEF_POWER_SUPERVISORY:
+		//		std::cout << "Power supervisory"; break;
+		//	case Elk::ZONEDEF_TEMPERATURE:
+		//		std::cout << "Temperature"; break;
+		//	case Elk::ZONEDEF_ANALOG_ZONE:
+		//		std::cout << "Analog zone"; break;
+		//	case Elk::ZONEDEF_PHONE_KEY:
+		//		std::cout << "Phone key"; break;
+		//	case Elk::ZONEDEF_INTERCOM_KEY:
+		//		std::cout << "Intercom key"; break;
+		//	}
+		//	std::cout << "\n";
+		//});
 	} },
 	{ "getZonePartitions", [] {
 		auto& parts = m1api->getZonePartitions();
-		m1api->forEachConfiguredZone([parts](int index) {
-			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
-		});
+		//m1api->forEachConfiguredZone([parts](int index) {
+		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
+		//});
 	} },
 	{ "getZoneStatuses", [] {
 		int i = 0;
@@ -448,9 +448,9 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "getZoneVoltages", [] {
-		m1api->forEachConfiguredZone([](int index) {
-			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" voltage: " << m1api->getZoneVoltage(index) << "\n";
-		});
+		//m1api->forEachConfiguredZone([](int index) {
+		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" voltage: " << m1api->getZoneVoltage(index) << "\n";
+		//});
 	} },
 	//{ "pressFunctionKey", [] {m1api->pressFunctionKey(int keypad, FKEY key); } },
 	//{ "requestChangeUserCode", [] {m1api->requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask); } },
@@ -490,7 +490,7 @@ int main(int argc, char* argv[])
 	std::cout << "Connecting...\n";
 	if (connection->Connect(address, 2101)) {
 		std::cout << "Connected!\n";
-		m1api = (std::unique_ptr<Elk::M1AsciiAPI>) new Elk::M1AsciiAPI(connection);
+		m1api = (std::shared_ptr<Elk::M1AsciiAPI>) new Elk::M1AsciiAPI(connection);
 
 		// Give it callbacks
 		//m1api->onRPConnection = [] (bool connected){
@@ -504,10 +504,17 @@ int main(int argc, char* argv[])
 			for (auto i : m1api->getM1VersionNumber())
 				std::cout << i << ".";
 		}
-		catch (...) {
-			std::cout << "Error retrieving version number.";
+		catch (std::exception ex) {
+			std::cout << "Error retrieving version number.\n";
+			std::cout << ex.what();
 		}
 		std::cout << "\n";
+		std::cout << "Areas: ";
+		for (auto i : m1api->getConfiguredAreas()) {
+			std::cout << i << " ";
+		}
+		std::cout << "\n";
+		m1api->collectNames(Elk::TEXT_AreaName);
 		while (!sigExit) {
 			std::string commandIndex;
 			std::cout << "------------------------------------------\n";

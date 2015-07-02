@@ -69,6 +69,8 @@ namespace Elk {
 	C1M1Tunnel::C1M1Tunnel(M1Connection* underlying) : tunnel(underlying) {
 	}
 
+	C1M1Tunnel::~C1M1Tunnel() {}
+
 	bool C1M1Tunnel::Connect(std::string location, int port) {
 		return tunnel->Connect(location, port);
 	}

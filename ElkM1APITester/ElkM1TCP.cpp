@@ -6,6 +6,8 @@
 
 namespace Elk
 {
+	ElkTCP::~ElkTCP() {}
+
 	bool ElkTCP::Connect(std::string address, int port) {
 		WSADATA wsadata;
 		int error = WSAStartup(0x0202, &wsadata);

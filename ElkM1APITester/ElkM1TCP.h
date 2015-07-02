@@ -4,6 +4,8 @@
 */
 #pragma once
 #include "ElkM1Connection.h"
+#include <WinSock2.h>
+#pragma comment(lib, "wsock32.lib")
 
 namespace Elk{
 
@@ -11,9 +13,10 @@ namespace Elk{
 	private:
 		SOCKET sock;
 	public:
-		ELKM1API bool Connect(std::string address, int port);
-		ELKM1API void Disconnect();
-		ELKM1API void Send(std::vector<char> data);
-		ELKM1API std::vector<char> Recieve();
+		~ElkTCP();
+		bool Connect(std::string address, int port);
+		void Disconnect();
+		void Send(std::vector<char> data);
+		std::vector<char> Recieve();
 	};
 }

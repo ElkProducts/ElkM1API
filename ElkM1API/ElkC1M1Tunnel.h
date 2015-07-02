@@ -14,7 +14,7 @@ namespace Elk {
 		NETWORKTYPE_CELLULAR = 2
 	};
 
-	class C1M1Tunnel : M1Connection
+	class C1M1Tunnel : private M1Connection
 	{
 	private:
 		// Method for authenticating an existing connection using a C1M1 authentication packet.
@@ -27,6 +27,7 @@ namespace Elk {
 		M1Connection* tunnel;
 	public:
 		ELKM1API C1M1Tunnel(M1Connection* underlying);
+		virtual ELKM1API ~C1M1Tunnel();
 		ELKM1API NetworkType Authenticate(std::string username, std::string password, std::string sernum);
 		ELKM1API bool Connect(std::string location, int port);
 		ELKM1API void Disconnect();

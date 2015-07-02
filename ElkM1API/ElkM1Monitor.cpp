@@ -7,6 +7,10 @@
 
 namespace Elk
 {
+	M1Monitor::~M1Monitor() {
+		stop();
+	}
+
 	M1Monitor::M1Monitor(std::shared_ptr<M1Connection> conn) {
 		if (conn == nullptr)
 		{
@@ -22,18 +26,20 @@ namespace Elk
 
 	void M1Monitor::stop() {
 		sigStop = true;
-		try{
+		try {
 			connection->Disconnect();
 		}
 		catch (...) {
-			// Must be already closed
+			// TODO: Cleanup
 		}
 		// Tell the execution thread to rejoin, if we aren't it
 		if (std::this_thread::get_id() != executionThread.get_id())
 			executionThread.join();
+		m1cache.invalidate();
 	}
 
 	void M1Monitor::_start() {
+		sigStop = false;
 		while (!sigStop) {
 			// Block on ElkConnection::Recieve, Add new message to message buffer
 			std::vector<char> newData;

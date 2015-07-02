@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
+#include <unordered_set>
 #include <numeric>
 
 #ifdef __CYGWIN__
@@ -318,6 +319,7 @@ namespace Elk {
 			int index = stoi(message.substr(4, 3)) - 1;
 			std::string desc = message.substr(7, 16);
 			// Normally std::isspace would be good practice, but we're using ASCII so there's only the one.
+			// TODO: Error setting blank spaces?
 			desc.erase(std::find_if(desc.rbegin(), desc.rend(), [](char c) { return c != ' '; }).base(), desc.end());
 			switch (tdt) {
 			case TEXT_ZoneName:
@@ -485,6 +487,18 @@ namespace Elk {
 		return configured;
 	}
 
+	std::vector<int> M1AsciiAPI::getConfiguredAreas() {
+		std::unordered_set<int> areas;
+		std::vector<int> zoneAreas = getZonePartitions();
+		std::vector<int> keypadAreas = getKeypadAreas();
+		areas.insert(zoneAreas.begin(), zoneAreas.end());
+		areas.insert(keypadAreas.begin(), keypadAreas.end());
+		areas.erase(-1);
+		std::vector<int> ret(areas.begin(), areas.end());
+		std::sort(ret.begin(), ret.end());
+		return ret;
+	}
+
 	std::vector<int> M1AsciiAPI::getConfiguredKeypads() {
 		std::vector<int> kpa = getKeypadAreas();
 		std::vector<int> configured;
@@ -509,11 +523,36 @@ namespace Elk {
 		return configured;
 	}
 
-	// TODO: Function to intelligently collect names, with 150ms timeout on missed names that skips to next section
-	void M1AsciiAPI::collectAllNames() {
+	// TODO: Function to intelligently collect names
+	void M1AsciiAPI::collectNames(TextDescriptionType type) {
+		switch (type) {
+		case TEXT_AreaName:
+			// Request all area names 
+			auto areas = getConfiguredAreas();
+			for (int index : areas) {
+				AsciiMessage message("sd");
+				message += toAsciiDec(type, 2);
+				message += toAsciiDec(index + 1, 3);
+				message += "00";
+				connection->Send(message.getTransmittable());
+			}
+			// Timeout on the entire block
+			try {
+				m1cache.AreaNames[areas.back()].awaitNew(std::chrono::milliseconds(1500));
+			}
+			catch (...)
+			{
+			}
+			// Fill untouched caches with blanks
+			for (auto& block : m1cache.AreaNames){
+				if (!block.isInitialized())
+					block.set("");
+			}
+
+			return;
+		}
 		throw std::runtime_error("Not imlemented.");
 	}
-	// TODO: Replace magic numbers in timeout definitions with defines
 	
 	AudioData M1AsciiAPI::getAudioData(int audioZone) { 
 		// TODO: Can't test without something to test against.
@@ -625,7 +664,7 @@ namespace Elk {
 			}
 			return reply;
 		}
-
+		return std::vector<int>();
 	}
 	KeypadFkeyStatus M1AsciiAPI::getKeypadFkeyStatus(int keypad) {
 		if ((keypad < 0) || (keypad >= 16))

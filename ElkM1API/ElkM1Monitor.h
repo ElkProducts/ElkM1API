@@ -28,28 +28,28 @@ namespace Elk {
 		// Allows threads to block until data has been updated, with timeout.
 		template <class T> class cacheObject {
 			T object;
-			std::time_t updateTime;
+			std::chrono::steady_clock::time_point updateTime;
 			std::mutex mutex;
 			std::condition_variable newData;
 		public:
 			cacheObject(T object) {
 				this->object = object;
-				this->updateTime = std::time(nullptr);
+				this->updateTime = std::chrono::steady_clock::now();
 			}
 			cacheObject() {
-				this->updateTime = time_t(0);
+				this->updateTime = std::chrono::steady_clock::time_point();
 			}
 			T get() { 
 				std::unique_lock<std::mutex> lock(mutex);
 				return object; 
 			}
 			template <typename _Rep, typename _Period>
-			T awaitNew(std::chrono::duration<_Rep, _Period> timeout= std::chrono::milliseconds::zero)
+			T awaitNew(std::chrono::duration<_Rep, _Period> timeout = std::chrono::milliseconds::zero)
 			{
 				std::unique_lock<std::mutex> lock(mutex);
 				if (timeout.count() <= 0) {
 					newData.wait(lock);
-					if (updateTime != 0)
+					if (updateTime != std::chrono::steady_clock::time_point())
 						return object;
 					else
 						throw std::runtime_error("Cache was invalidated while waiting for call.");
@@ -58,7 +58,7 @@ namespace Elk {
 					if (newData.wait_for(lock,
 						timeout) == std::cv_status::no_timeout)
 					{
-						if (updateTime != 0)
+						if (updateTime != std::chrono::steady_clock::time_point())
 							return object;
 						else
 							throw std::runtime_error("Cache was invalidated while waiting for call.");
@@ -71,24 +71,24 @@ namespace Elk {
 			// Age, in seconds
 			int age() {
 				std::unique_lock<std::mutex> lock(mutex);
-				return std::time(nullptr) - updateTime;
+				return std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - updateTime).count();
 			}
 			void invalidate() {
 				{
 					std::unique_lock<std::mutex> lock(mutex);
-					updateTime = std::time(0);
+					updateTime = std::chrono::steady_clock::time_point();
 				}
 				newData.notify_all();
 			}
 			bool isInitialized() {
 				std::unique_lock<std::mutex> lock(mutex);
-				return updateTime != 0;
+				return updateTime != std::chrono::steady_clock::time_point();
 			}
 			void set(T object) {
 				{
 					std::unique_lock<std::mutex> lock(mutex);
 					this->object = object;
-					this->updateTime = std::time(nullptr);
+					this->updateTime = std::chrono::steady_clock::now();
 				}
 				newData.notify_all();
 			}
@@ -215,6 +215,7 @@ namespace Elk {
 	public:
 		// Construct a new Monitor instance. To be viable, the ElkM1Connection must be established before beginning with run().
 		ELKM1API M1Monitor(std::shared_ptr<Elk::M1Connection> conn);
+		virtual ELKM1API M1Monitor::~M1Monitor();
 		// Spawn a thread and begin monitoring.
 		ELKM1API void run();
 		// Instruct the monitoring thread to clean up and exit

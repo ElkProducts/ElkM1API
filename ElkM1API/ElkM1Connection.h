@@ -11,9 +11,6 @@
 #else
 #define ELKM1API __declspec(dllimport)
 #endif
-
-#include <WinSock2.h>
-
 #elif defined(__linux__) || defined(__CYGWIN__)
 #define ELKM1API  
 #endif
@@ -24,10 +21,12 @@
 
 
 namespace Elk {
-	// Used internally by the ElkM1Monitor class. TODO: If in RP mode, throw exceptions for send/rcv calls
+	// Used internally by the ElkM1Monitor class.
+	// Deriving classes must block on the Recieve() call, and also block Send from occuring twice without us recieving anything, with an appropriate timeout.
 	class M1Connection
 	{
 	public:
+		virtual ELKM1API ~M1Connection();
 		virtual ELKM1API bool Connect(std::string location, int port) = 0;
 		virtual ELKM1API void Disconnect() = 0;
 		virtual ELKM1API void Send(std::vector<char> data) = 0;

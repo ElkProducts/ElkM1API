@@ -16,6 +16,7 @@ class SwigDirector_BoolCallback : public BoolCallback, public Swig::Director {
 public:
     SwigDirector_BoolCallback();
     virtual void run(bool arg1);
+    virtual ~SwigDirector_BoolCallback();
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(unsigned int);
     void swig_connect_director(SWIG_Callback0_t callbackrun);
@@ -30,6 +31,7 @@ class SwigDirector_IntCallback : public IntCallback, public Swig::Director {
 public:
     SwigDirector_IntCallback();
     virtual void run(int arg1);
+    virtual ~SwigDirector_IntCallback();
 
     typedef void (SWIGSTDCALL* SWIG_Callback0_t)(int);
     void swig_connect_director(SWIG_Callback0_t callbackrun);
@@ -43,6 +45,7 @@ class SwigDirector_M1Connection : public Elk::M1Connection, public Swig::Directo
 
 public:
     SwigDirector_M1Connection();
+    virtual ~SwigDirector_M1Connection();
     virtual bool Connect(std::string location, int port);
     virtual void Disconnect();
     virtual void Send(std::vector< char > data);
@@ -66,6 +69,7 @@ class SwigDirector_C1M1Tunnel : public Elk::C1M1Tunnel, public Swig::Director {
 
 public:
     SwigDirector_C1M1Tunnel(Elk::M1Connection *underlying);
+    virtual ~SwigDirector_C1M1Tunnel();
     virtual bool Connect(std::string location, int port);
     virtual void Disconnect();
     virtual void Send(std::vector< char > data);

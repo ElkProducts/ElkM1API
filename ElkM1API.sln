@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTester", "CSharpTeste
 		{7EC94494-C89E-4B9F-A21F-9FF2025A2AF5} = {7EC94494-C89E-4B9F-A21F-9FF2025A2AF5}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElkM1DesktopApp", "ElkM1DesktopApp\ElkM1DesktopApp.csproj", "{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,16 @@ Global
 		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3B252088-DD8C-4FE1-8645-6A4DE0179BF3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3F8166B7-1CF5-4C38-B7AC-45749FA2BA13}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
