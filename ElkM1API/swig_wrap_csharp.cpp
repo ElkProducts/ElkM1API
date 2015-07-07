@@ -1493,6 +1493,34 @@ void SwigDirector_IntCallback::swig_init_callbacks() {
   swig_callbackrun = 0;
 }
 
+SwigDirector_ArmStatusVectorCallback::SwigDirector_ArmStatusVectorCallback() : ArmStatusVectorCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_ArmStatusVectorCallback::run(std::vector< Elk::ArmStatus > status) {
+  void * jstatus  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("ArmStatusVectorCallback::run");
+  } else {
+    jstatus = (void *)&status; 
+    swig_callbackrun(jstatus);
+  }
+}
+
+SwigDirector_ArmStatusVectorCallback::~SwigDirector_ArmStatusVectorCallback() {
+  
+}
+
+
+void SwigDirector_ArmStatusVectorCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_ArmStatusVectorCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
 SwigDirector_M1Connection::SwigDirector_M1Connection() : Elk::M1Connection(), Swig::Director() {
   swig_init_callbacks();
 }
@@ -7786,6 +7814,67 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_director_connect(void *objarg, Sw
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVectorCallback_run(void * jarg1, void * jarg2) {
+  ArmStatusVectorCallback *arg1 = (ArmStatusVectorCallback *) 0 ;
+  std::vector< Elk::ArmStatus > arg2 ;
+  std::shared_ptr< ArmStatusVectorCallback > *smartarg1 = 0 ;
+  std::vector< Elk::ArmStatus > *argp2 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  ArmStatusVectorCallback > *)jarg1;
+  arg1 = (ArmStatusVectorCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  argp2 = (std::vector< Elk::ArmStatus > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< Elk::ArmStatus >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ArmStatusVectorCallback(void * jarg1) {
+  ArmStatusVectorCallback *arg1 = (ArmStatusVectorCallback *) 0 ;
+  std::shared_ptr< ArmStatusVectorCallback > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  ArmStatusVectorCallback > *)jarg1;
+  arg1 = (ArmStatusVectorCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ArmStatusVectorCallback() {
+  void * jresult ;
+  ArmStatusVectorCallback *result = 0 ;
+  
+  {
+    try {
+      result = (ArmStatusVectorCallback *)new SwigDirector_ArmStatusVectorCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  ArmStatusVectorCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVectorCallback_director_connect(void *objarg, SwigDirector_ArmStatusVectorCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< ArmStatusVectorCallback > *obj = (std::shared_ptr< ArmStatusVectorCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_ArmStatusVectorCallback *director = dynamic_cast<SwigDirector_ArmStatusVectorCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onRPConnection_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::shared_ptr< BoolCallback > *arg2 = 0 ;
@@ -7805,6 +7894,29 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onRPConnection_get(void * jarg1) {
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< BoolCallback > *) & ((arg1)->onRPConnection);
   jresult = *result ? new std::shared_ptr< BoolCallback >(*result) : 0; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onArmStatusChange_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ArmStatusVectorCallback > *arg2 = 0 ;
+  std::shared_ptr< ArmStatusVectorCallback > tempnull2 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = jarg2 ? (std::shared_ptr< ArmStatusVectorCallback > *)jarg2 : &tempnull2; 
+  if (arg1) (arg1)->onArmStatusChange = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onArmStatusChange_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ArmStatusVectorCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< ArmStatusVectorCallback > *) & ((arg1)->onArmStatusChange);
+  jresult = *result ? new std::shared_ptr< ArmStatusVectorCallback >(*result) : 0; 
   return jresult;
 }
 

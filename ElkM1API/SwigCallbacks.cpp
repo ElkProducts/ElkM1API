@@ -2,3 +2,4 @@
 
 IntCallback::~IntCallback() {}
 BoolCallback::~BoolCallback() {}
+ArmStatusVectorCallback::~ArmStatusVectorCallback() {}

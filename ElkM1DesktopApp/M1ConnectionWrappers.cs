@@ -22,6 +22,7 @@ namespace ElkM1DesktopApp
 
         public override void Disconnect()
         {
+            evt.Set();
             try {
               tcp.Close();
             } catch {
@@ -54,8 +55,9 @@ namespace ElkM1DesktopApp
             byte[] send = new byte[data.Count];
             for (int i = 0; i < data.Count; i++)
                 send[i] = (byte)data[i];
-            evt.WaitOne(1500);
+            evt.WaitOne(300);
             tcp.GetStream().Write(send, 0, data.Count);
+            Console.WriteLine(Encoding.ASCII.GetString(send, 0, data.Count));
         }
     }
 

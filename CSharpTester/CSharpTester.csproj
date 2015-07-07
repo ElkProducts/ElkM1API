@@ -78,6 +78,9 @@
     <Compile Include="..\ElkM1API\csharp\ArmStatusVector.cs">
       <Link>csharp\ArmStatusVector.cs</Link>
     </Compile>
+    <Compile Include="..\ElkM1API\csharp\ArmStatusVectorCallback.cs">
+      <Link>csharp\ArmStatusVectorCallback.cs</Link>
+    </Compile>
     <Compile Include="..\ElkM1API\csharp\ArmUpMode.cs">
       <Link>csharp\ArmUpMode.cs</Link>
     </Compile>

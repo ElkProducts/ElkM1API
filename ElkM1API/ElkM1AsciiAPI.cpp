@@ -119,13 +119,15 @@ namespace Elk {
 		});
 		// Arming Status Request
 		handleMessageTable.emplace("AS", [this](std::string message) {
-			std::vector<ArmStatus> newStatus(8);
+			std::shared_ptr<std::vector<ArmStatus>> newStatus(new std::vector<ArmStatus>(8));
 			for (int i = 0; i < 8; i++) {
-				newStatus[i].mode = (ArmMode)(message.at(2 + i) - '0');
-				newStatus[i].isReady = (ArmUpMode)(message.at(10 + i) - '0');
-				newStatus[i].alarm = (AlarmState)(message.at(18 + i) - '0');
+				newStatus->at(i).mode = (ArmMode)(message.at(2 + i) - '0');
+				newStatus->at(i).isReady = (ArmUpMode)(message.at(10 + i) - '0');
+				newStatus->at(i).alarm = (AlarmState)(message.at(18 + i) - '0');
 			}
-			m1cache.armStatus.set(newStatus);
+			m1cache.armStatus.set(*newStatus);
+
+			new std::thread(&ArmStatusVectorCallback::run, onArmStatusChange, *newStatus);
 		});
 		// Zone Voltage
 		handleMessageTable.emplace("ZV", [this](std::string message) {
@@ -567,7 +569,8 @@ namespace Elk {
 		}
 		// Timeout on the entire block
 		try {
-			beginItr[indexes.back()].awaitNew(std::chrono::milliseconds(1500));
+			if (!beginItr[indexes.back()].isInitialized())
+				beginItr[indexes.back()].awaitNew(std::chrono::milliseconds(1500));
 		}
 		catch (...)
 		{

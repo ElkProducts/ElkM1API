@@ -5,23 +5,6 @@
 */
 
 #pragma once
-#ifdef _WIN32
-
-#ifndef ELKM1API
-#if defined(ELKM1API_EXPORTS)
-#define ELKM1API __declspec(dllexport)
-#else
-#define ELKM1API __declspec(dllimport)
-#endif
-#endif
-
-#include <WinSock2.h>
-#elif defined(__linux__) || defined(__CYGWIN__)
-#define ELKM1API  
-#include <sys/socket.h>
-#define SOCKET int
-#endif
-
 #include "ElkM1Definition.h"
 #include "ElkM1Connection.h"
 #include "ElkM1SirenWords.h"
@@ -51,6 +34,7 @@ namespace Elk
 	public:
 		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
 		std::shared_ptr<BoolCallback> onRPConnection;
+		std::shared_ptr<ArmStatusVectorCallback> onArmStatusChange;
 
 		virtual ELKM1API std::vector<int> getConfiguredZones() = 0;
 		virtual ELKM1API std::vector<int> getConfiguredKeypads() = 0;

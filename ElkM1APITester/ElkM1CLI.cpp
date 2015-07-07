@@ -475,6 +475,12 @@ std::map<std::string, std::function<void()>> commands = {
 	} }
 };
 
+class CallbackCheck : public ArmStatusVectorCallback {
+public:
+	void run(std::vector<Elk::ArmStatus> v) {
+		std::cout << "Meow!\n";
+	}
+};
 
 int main(int argc, char* argv[])
 {
@@ -496,6 +502,10 @@ int main(int argc, char* argv[])
 		//m1api->onRPConnection = [] (bool connected){
 		//	std::cout << "-- Warning, RP " << (connected ? "connected" : "disconnected") << ". --\n";
 		//};
+
+		m1api->onArmStatusChange = std::shared_ptr<ArmStatusVectorCallback>(new CallbackCheck());
+
+
 
 		// Execute
 		m1api->run();

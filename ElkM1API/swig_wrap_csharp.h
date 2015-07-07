@@ -41,6 +41,21 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_ArmStatusVectorCallback : public ArmStatusVectorCallback, public Swig::Director {
+
+public:
+    SwigDirector_ArmStatusVectorCallback();
+    virtual void run(std::vector< Elk::ArmStatus > status);
+    virtual ~SwigDirector_ArmStatusVectorCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
 class SwigDirector_M1Connection : public Elk::M1Connection, public Swig::Director {
 
 public:

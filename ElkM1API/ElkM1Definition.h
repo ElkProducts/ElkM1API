@@ -2,6 +2,22 @@
 	ElkM1Definition.h: Independent file which describes data structures used in the API.
 */
 #pragma once
+#ifdef _WIN32
+
+#ifndef ELKM1API
+#if defined(ELKM1API_EXPORTS)
+#define ELKM1API __declspec(dllexport)
+#else
+#define ELKM1API __declspec(dllimport)
+#endif
+#endif
+
+#include <WinSock2.h>
+#elif defined(__linux__) || defined(__CYGWIN__)
+#define ELKM1API  
+#include <sys/socket.h>
+#define SOCKET int
+#endif
 
 #include <stdint.h>
 

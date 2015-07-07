@@ -24,11 +24,12 @@
 %shared_ptr(Elk::ElkTCP)
 %shared_ptr(Elk::M1Connection)
 %shared_ptr(BoolCallback)
+%shared_ptr(ArmStatusVectorCallback)
 
 // This allows the C++ code to run calls that wind all the way up into the target platform code.
 %feature ("director") BoolCallback;
 %feature ("director") IntCallback;
-%feature ("director") TempDeviceCallback;
+%feature ("director") ArmStatusVectorCallback;
 
 // This allows us to make the M1Connection calls against a derived target-language class, so we can 
 // implement the connection on the target platform (such as SSL encrypted on Android)

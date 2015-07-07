@@ -72,6 +72,7 @@
             this.AreasList.Size = new System.Drawing.Size(586, 357);
             this.AreasList.TabIndex = 0;
             this.AreasList.UseCompatibleStateImageBehavior = false;
+            this.AreasList.DoubleClick += new System.EventHandler(this.AreasList_DoubleClick);
             // 
             // Temperature
             // 
