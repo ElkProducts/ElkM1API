@@ -127,7 +127,9 @@ namespace Elk {
 			}
 			m1cache.armStatus.set(*newStatus);
 
-			new std::thread(&ArmStatusVectorCallback::run, onArmStatusChange, *newStatus);
+			// Create and detach the callback thread, self-cleans on exit
+			if (onArmStatusChange)
+				std::thread(&ArmStatusVectorCallback::run, onArmStatusChange, *newStatus).detach();
 		});
 		// Zone Voltage
 		handleMessageTable.emplace("ZV", [this](std::string message) {
@@ -276,14 +278,15 @@ namespace Elk {
 		handleMessageTable.emplace("RP", [this](std::string message) {
 			// Invalidate the cache, causing currently blocked calls to throw exceptions
 			m1cache.invalidate();
-			// If the onRPConnection callback exists, execute it
+			// Create and detach the callback thread, self-cleans on exit
 			if (onRPConnection)
-				onRPConnection->run(true);
+				std::thread(&BoolCallback::run, onRPConnection, true).detach();
 		});
 		// RP disconnected
 		handleMessageTable.emplace("IE", [this](std::string message) {
+			// Create and detach the callback thread, self-cleans on exit
 			if (onRPConnection)
-				onRPConnection->run(false);
+				std::thread(&BoolCallback::run, onRPConnection, false).detach();
 		});
 		// Thermostat data // TODO: Test this!
 		handleMessageTable.emplace("TR", [this](std::string message) {

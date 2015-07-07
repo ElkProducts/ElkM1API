@@ -66,7 +66,15 @@ namespace ElkM1DesktopApp
                 if (String.IsNullOrEmpty(areaname))
                     areaname = "Area " + (i + 1);
 
-                var Item = AreasList.Items.Find(i.ToString(), false)[0];
+                ListViewItem Item;
+                if (AreasList.Items.ContainsKey(i.ToString()))
+                    Item = AreasList.Items.Find(i.ToString(), false)[0];
+                else
+                    Item = AreasList.Items.Add(new ListViewItem
+                    {
+                        Name = i.ToString()
+                    });
+
                 switch (v[i].mode)
                 {
                     case ArmMode.ARM_AWAY:
@@ -94,30 +102,44 @@ namespace ElkM1DesktopApp
 
         private void Connect_Click(object sender, EventArgs e)
         {
-
-            if (!connected)
-            {
-                AreasList.Items.Clear();
-                cs.Connect("192.168.101.104", 2101);
-                m1.run();
-                
-                foreach(int i in m1.getConfiguredAreas()) {
-                    AreasList.Items.Add(new ListViewItem
+            ThreadPool.QueueUserWorkItem(o => {
+                if (!connected)
+                {
+                    cs.Connect("192.168.101.104", 2101);
+                    m1.run();
+                    if (InvokeRequired)
                     {
-                        Name = i.ToString(),
-                        Text = i.ToString()
-                    });   
+                        Invoke((MethodInvoker)delegate
+                        {
+                            Connect.Text = "Disconnect";
+                        });
+                    }
+                    else
+                    {
+                        Connect.Text = "Disconnect";
+                    }
+
+                    HandleArmStatusChange(m1.getArmStatus()); // Callback handles the result.
                 }
-                m1.getArmStatus();
-                Connect.Text = "Disconnect";
-            }
-            else
-            {
-                m1.stop();
-                AreasList.Items.Clear();
-                Connect.Text = "Connect";
-            }
-            connected = !connected;
+                else
+                {
+                    if (InvokeRequired)
+                    {
+                        Invoke((MethodInvoker)delegate
+                        {
+                            AreasList.Items.Clear();
+                            Connect.Text = "Connect";
+                        });
+                    }
+                    else
+                    {
+                        AreasList.Items.Clear();
+                        Connect.Text = "Connect";
+                    }
+                    m1.stop();
+                }
+                connected = !connected;
+            });
         }
 
         private void AreasList_DoubleClick(object sender, EventArgs e)
