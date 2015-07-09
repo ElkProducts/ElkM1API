@@ -30,6 +30,7 @@
         {
             this.tabControls = new System.Windows.Forms.TabControl();
             this.Security = new System.Windows.Forms.TabPage();
+            this.ZonesList = new System.Windows.Forms.ListView();
             this.AreasList = new System.Windows.Forms.ListView();
             this.Temperature = new System.Windows.Forms.TabPage();
             this.Lighting = new System.Windows.Forms.TabPage();
@@ -37,8 +38,10 @@
             this.Tasks = new System.Windows.Forms.TabPage();
             this.Custom_Settings = new System.Windows.Forms.TabPage();
             this.Connect = new System.Windows.Forms.Button();
+            this.OutputsList = new System.Windows.Forms.ListView();
             this.tabControls.SuspendLayout();
             this.Security.SuspendLayout();
+            this.Outputs.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControls
@@ -54,9 +57,12 @@
             this.tabControls.SelectedIndex = 0;
             this.tabControls.Size = new System.Drawing.Size(600, 389);
             this.tabControls.TabIndex = 0;
+            this.tabControls.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControls_TabIndexChanged);
+            this.tabControls.TabIndexChanged += new System.EventHandler(this.tabControls_TabIndexChanged);
             // 
             // Security
             // 
+            this.Security.Controls.Add(this.ZonesList);
             this.Security.Controls.Add(this.AreasList);
             this.Security.Location = new System.Drawing.Point(4, 22);
             this.Security.Name = "Security";
@@ -65,13 +71,22 @@
             this.Security.Text = "Security";
             this.Security.UseVisualStyleBackColor = true;
             // 
+            // ZonesList
+            // 
+            this.ZonesList.Location = new System.Drawing.Point(3, 189);
+            this.ZonesList.Name = "ZonesList";
+            this.ZonesList.Size = new System.Drawing.Size(586, 171);
+            this.ZonesList.TabIndex = 1;
+            this.ZonesList.UseCompatibleStateImageBehavior = false;
+            // 
             // AreasList
             // 
             this.AreasList.Location = new System.Drawing.Point(3, 3);
             this.AreasList.Name = "AreasList";
-            this.AreasList.Size = new System.Drawing.Size(586, 357);
+            this.AreasList.Size = new System.Drawing.Size(586, 180);
             this.AreasList.TabIndex = 0;
             this.AreasList.UseCompatibleStateImageBehavior = false;
+            this.AreasList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.AreasList_ItemSelectionChanged);
             this.AreasList.DoubleClick += new System.EventHandler(this.AreasList_DoubleClick);
             // 
             // Temperature
@@ -94,6 +109,7 @@
             // 
             // Outputs
             // 
+            this.Outputs.Controls.Add(this.OutputsList);
             this.Outputs.Location = new System.Drawing.Point(4, 22);
             this.Outputs.Name = "Outputs";
             this.Outputs.Size = new System.Drawing.Size(592, 363);
@@ -129,6 +145,14 @@
             this.Connect.UseVisualStyleBackColor = true;
             this.Connect.Click += new System.EventHandler(this.Connect_Click);
             // 
+            // OutputsList
+            // 
+            this.OutputsList.Location = new System.Drawing.Point(3, 3);
+            this.OutputsList.Name = "OutputsList";
+            this.OutputsList.Size = new System.Drawing.Size(586, 357);
+            this.OutputsList.TabIndex = 0;
+            this.OutputsList.UseCompatibleStateImageBehavior = false;
+            // 
             // ElkM1App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +164,7 @@
             this.Text = "Elk M1 Desktop";
             this.tabControls.ResumeLayout(false);
             this.Security.ResumeLayout(false);
+            this.Outputs.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -155,6 +180,8 @@
         private System.Windows.Forms.TabPage Custom_Settings;
         private System.Windows.Forms.Button Connect;
         private System.Windows.Forms.ListView AreasList;
+        private System.Windows.Forms.ListView ZonesList;
+        private System.Windows.Forms.ListView OutputsList;
     }
 }
 

@@ -251,7 +251,7 @@ namespace Elk {
 
 		});
 		// System Trouble Status TODO: Trouble status is more detailed than this
-		handleMessageTable.emplace("SS", [this](std::string message) {
+		handleMessageTable.emplace("SS", [this](std::string message) {  
 			SystemTroubleStatus sts;
 			sts.ACFail = message.at(2) == '1';
 			sts.boxTamper = message.at(3) == '1';

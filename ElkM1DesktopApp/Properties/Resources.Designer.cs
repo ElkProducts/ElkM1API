@@ -73,6 +73,16 @@ namespace ElkM1DesktopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap armnight_image_c {
+            get {
+                object obj = ResourceManager.GetObject("armnight_image_c", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap armstay_image_c {
             get {
                 object obj = ResourceManager.GetObject("armstay_image_c", resourceCulture);
@@ -86,6 +96,46 @@ namespace ElkM1DesktopApp.Properties {
         internal static System.Drawing.Bitmap disarm_image_c {
             get {
                 object obj = ResourceManager.GetObject("disarm_image_c", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zone_bypassed {
+            get {
+                object obj = ResourceManager.GetObject("zone_bypassed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zone_normal {
+            get {
+                object obj = ResourceManager.GetObject("zone_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zone_trouble {
+            get {
+                object obj = ResourceManager.GetObject("zone_trouble", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zone_violated {
+            get {
+                object obj = ResourceManager.GetObject("zone_violated", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
