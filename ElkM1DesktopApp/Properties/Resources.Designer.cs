@@ -103,6 +103,26 @@ namespace ElkM1DesktopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap off_symbol {
+            get {
+                object obj = ResourceManager.GetObject("off_symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap on_symbol {
+            get {
+                object obj = ResourceManager.GetObject("on_symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap zone_bypassed {
             get {
                 object obj = ResourceManager.GetObject("zone_bypassed", resourceCulture);

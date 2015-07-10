@@ -35,10 +35,14 @@
             this.Temperature = new System.Windows.Forms.TabPage();
             this.Lighting = new System.Windows.Forms.TabPage();
             this.Outputs = new System.Windows.Forms.TabPage();
+            this.OutputsList = new System.Windows.Forms.ListView();
             this.Tasks = new System.Windows.Forms.TabPage();
             this.Custom_Settings = new System.Windows.Forms.TabPage();
             this.Connect = new System.Windows.Forms.Button();
-            this.OutputsList = new System.Windows.Forms.ListView();
+            this.ShowAllOutputsCheckbox = new System.Windows.Forms.CheckBox();
+            this.columnZoneName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnLogicalZoneState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnPhysicalZoneState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControls.SuspendLayout();
             this.Security.SuspendLayout();
             this.Outputs.SuspendLayout();
@@ -73,11 +77,16 @@
             // 
             // ZonesList
             // 
+            this.ZonesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnZoneName,
+            this.columnLogicalZoneState,
+            this.columnPhysicalZoneState});
             this.ZonesList.Location = new System.Drawing.Point(3, 189);
             this.ZonesList.Name = "ZonesList";
             this.ZonesList.Size = new System.Drawing.Size(586, 171);
             this.ZonesList.TabIndex = 1;
             this.ZonesList.UseCompatibleStateImageBehavior = false;
+            this.ZonesList.View = System.Windows.Forms.View.Details;
             // 
             // AreasList
             // 
@@ -109,6 +118,7 @@
             // 
             // Outputs
             // 
+            this.Outputs.Controls.Add(this.ShowAllOutputsCheckbox);
             this.Outputs.Controls.Add(this.OutputsList);
             this.Outputs.Location = new System.Drawing.Point(4, 22);
             this.Outputs.Name = "Outputs";
@@ -116,6 +126,15 @@
             this.Outputs.TabIndex = 3;
             this.Outputs.Text = "Outputs";
             this.Outputs.UseVisualStyleBackColor = true;
+            // 
+            // OutputsList
+            // 
+            this.OutputsList.Location = new System.Drawing.Point(3, 3);
+            this.OutputsList.Name = "OutputsList";
+            this.OutputsList.Size = new System.Drawing.Size(586, 334);
+            this.OutputsList.TabIndex = 0;
+            this.OutputsList.UseCompatibleStateImageBehavior = false;
+            this.OutputsList.View = System.Windows.Forms.View.List;
             // 
             // Tasks
             // 
@@ -145,13 +164,31 @@
             this.Connect.UseVisualStyleBackColor = true;
             this.Connect.Click += new System.EventHandler(this.Connect_Click);
             // 
-            // OutputsList
+            // ShowAllOutputsCheckbox
             // 
-            this.OutputsList.Location = new System.Drawing.Point(3, 3);
-            this.OutputsList.Name = "OutputsList";
-            this.OutputsList.Size = new System.Drawing.Size(586, 357);
-            this.OutputsList.TabIndex = 0;
-            this.OutputsList.UseCompatibleStateImageBehavior = false;
+            this.ShowAllOutputsCheckbox.AutoSize = true;
+            this.ShowAllOutputsCheckbox.Location = new System.Drawing.Point(482, 343);
+            this.ShowAllOutputsCheckbox.Name = "ShowAllOutputsCheckbox";
+            this.ShowAllOutputsCheckbox.Size = new System.Drawing.Size(107, 17);
+            this.ShowAllOutputsCheckbox.TabIndex = 1;
+            this.ShowAllOutputsCheckbox.Text = "Show All Outputs";
+            this.ShowAllOutputsCheckbox.UseVisualStyleBackColor = true;
+            this.ShowAllOutputsCheckbox.CheckedChanged += new System.EventHandler(this.ShowAllOutputsCheckbox_CheckedChanged);
+            // 
+            // columnZoneName
+            // 
+            this.columnZoneName.Text = "Zone Name";
+            this.columnZoneName.Width = 68;
+            // 
+            // columnLogicalZoneState
+            // 
+            this.columnLogicalZoneState.Text = "Logical State";
+            this.columnLogicalZoneState.Width = 74;
+            // 
+            // columnPhysicalZoneState
+            // 
+            this.columnPhysicalZoneState.Text = "Physical State";
+            this.columnPhysicalZoneState.Width = 440;
             // 
             // ElkM1App
             // 
@@ -165,6 +202,7 @@
             this.tabControls.ResumeLayout(false);
             this.Security.ResumeLayout(false);
             this.Outputs.ResumeLayout(false);
+            this.Outputs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -182,6 +220,10 @@
         private System.Windows.Forms.ListView AreasList;
         private System.Windows.Forms.ListView ZonesList;
         private System.Windows.Forms.ListView OutputsList;
+        private System.Windows.Forms.CheckBox ShowAllOutputsCheckbox;
+        private System.Windows.Forms.ColumnHeader columnZoneName;
+        private System.Windows.Forms.ColumnHeader columnLogicalZoneState;
+        private System.Windows.Forms.ColumnHeader columnPhysicalZoneState;
     }
 }
 

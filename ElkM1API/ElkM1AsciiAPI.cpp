@@ -553,6 +553,13 @@ namespace Elk {
 			beginItr = std::begin(m1cache.KeypadNames);
 			endItr = std::end(m1cache.KeypadNames);
 			break;
+		case TEXT_OutputName:
+			indexes = std::vector<int>(64);
+			for (int i = 0; i < indexes.size(); i++)
+				indexes[i] = i;
+			beginItr = std::begin(m1cache.OutputNames);
+			endItr = std::end(m1cache.OutputNames);
+			break;
 		default:
 			throw std::runtime_error("Not imlemented.");
 		}
@@ -861,8 +868,10 @@ namespace Elk {
 				throw std::invalid_argument("Argument out of allowed range.");
 			return cacheExistsRequest(m1cache.KeypadNames[index], message);
 		case TEXT_OutputName:
-			if ((index < 0) || (index >= 64))
+			if ((index < 0) || (index >= 208))
 				throw std::invalid_argument("Argument out of allowed range.");
+			if (index >= 64)
+				return "";
 			return cacheExistsRequest(m1cache.OutputNames[index], message);
 		case TEXT_TaskName:
 			if ((index < 0) || (index >= 32))

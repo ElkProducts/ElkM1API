@@ -30,6 +30,21 @@ namespace ElkM1DesktopApp
             }
         }
 
+        public class BoolUpdateHandler : BoolCallback
+        {
+            Action<Boolean> lamb;
+
+            public BoolUpdateHandler(Action<Boolean> lambda)
+            {
+                lamb = lambda;
+            }
+
+            public override void run(Boolean status)
+            {
+                lamb(status);
+            }
+        }
+
         CSharpConnection cs;
         M1AsciiAPI m1;
         bool connected = false;
@@ -49,66 +64,140 @@ namespace ElkM1DesktopApp
 
 
             ZonesList.LargeImageList = new ImageList();
-            AreasList.LargeImageList.ColorDepth = ColorDepth.Depth32Bit;
+            ZonesList.LargeImageList.ColorDepth = ColorDepth.Depth32Bit;
             ZonesList.LargeImageList.Images.Add("zone_bypassed", Properties.Resources.zone_bypassed);
             ZonesList.LargeImageList.Images.Add("zone_trouble", Properties.Resources.zone_trouble);
             ZonesList.LargeImageList.Images.Add("zone_normal", Properties.Resources.zone_normal);
             ZonesList.LargeImageList.Images.Add("zone_violated", Properties.Resources.zone_violated);
+            ZonesList.SmallImageList = ZonesList.LargeImageList;
+
+            OutputsList.LargeImageList = new ImageList();
+            OutputsList.LargeImageList.Images.Add("on_symbol", Properties.Resources.on_symbol);
+            OutputsList.LargeImageList.Images.Add("off_symbol", Properties.Resources.off_symbol);
+            OutputsList.SmallImageList = OutputsList.LargeImageList;
+
+
 
             m1.onArmStatusChange = new ArmStatusUpdateHandler(HandleArmStatusChange);
+            m1.onRPConnection = new BoolUpdateHandler(HandleRPConnection);
+        }
+
+        public void ClearViews()
+        {
+            AreasList.Items.Clear();
+            ZonesList.Items.Clear();
+            OutputsList.Items.Clear();
         }
 
         public void HandleArmStatusChange(ArmStatusVector v)
         {
-            if (InvokeRequired)
-            {
-                Invoke((MethodInvoker)delegate { HandleArmStatusChange(v); });
-                return;
-            }
-
             m1.collectNames(TextDescriptionType.TEXT_AreaName);
 
-            foreach (int i in m1.getConfiguredAreas())
+            RunOnGUIThread(this, () =>
             {
-                String areaname = m1.getTextDescription(TextDescriptionType.TEXT_AreaName, i);
-                if (String.IsNullOrEmpty(areaname))
-                    areaname = "Area " + (i + 1);
-
-                ListViewItem Item;
-                if (AreasList.Items.ContainsKey(i.ToString()))
-                    Item = AreasList.Items.Find(i.ToString(), false)[0];
-                else
-                    Item = AreasList.Items.Add(new ListViewItem
-                    {
-                        Name = i.ToString()
-                    });
-
-                switch (v[i].mode)
+                foreach (int i in m1.getConfiguredAreas())
                 {
-                    case ArmMode.ARM_AWAY:
-                    case ArmMode.ARM_AWAYNEXT:
-                    case ArmMode.ARM_VACATION:
-                        Item.Text = areaname;
-                        Item.ImageKey = "armaway";
-                        break;
-                    case ArmMode.ARM_DISARMED:
-                        Item.Text = areaname;
-                        Item.ImageKey = "disarm";
-                        break;
-                    case ArmMode.ARM_NIGHT:
-                    case ArmMode.ARM_NIGHTINSTANT:
-                        Item.Text = areaname;
-                        Item.ImageKey = "armnight";
-                        break;
-                    case ArmMode.ARM_STAY:
-                    case ArmMode.ARM_STAYINSTANT:
-                    case ArmMode.ARM_STAYNEXT:
-                        Item.Text = areaname;
-                        Item.ImageKey = "armstay";
-                        break;
+                    String areaname = m1.getTextDescription(TextDescriptionType.TEXT_AreaName, i);
+                    if (String.IsNullOrEmpty(areaname))
+                        areaname = "Area " + (i + 1);
+
+                    ListViewItem Item = (AreasList.Items.ContainsKey(i.ToString())) ?
+                        AreasList.Items.Find(i.ToString(), false)[0] :
+                        AreasList.Items.Add(new ListViewItem
+                        {
+                            Name = i.ToString()
+                        });
+
+                    switch (v[i].mode)
+                    {
+                        case ArmMode.ARM_AWAY:
+                        case ArmMode.ARM_AWAYNEXT:
+                        case ArmMode.ARM_VACATION:
+                            Item.Text = areaname;
+                            Item.ImageKey = "armaway";
+                            break;
+                        case ArmMode.ARM_DISARMED:
+                            Item.Text = areaname;
+                            Item.ImageKey = "disarm";
+                            break;
+                        case ArmMode.ARM_NIGHT:
+                        case ArmMode.ARM_NIGHTINSTANT:
+                            Item.Text = areaname;
+                            Item.ImageKey = "armnight";
+                            break;
+                        case ArmMode.ARM_STAY:
+                        case ArmMode.ARM_STAYINSTANT:
+                        case ArmMode.ARM_STAYNEXT:
+                            Item.Text = areaname;
+                            Item.ImageKey = "armstay";
+                            break;
+                    }
                 }
+            });
+        }
+
+        public void HandleRPConnection(Boolean rpconnected)
+        {
+            if (rpconnected)
+            {
+                // TODO: Grey out all controls, display "Installer Connected"
             }
-            return;
+            else
+            {
+                // TODO: Reenable all controls
+                RunOnGUIThread(this, ClearViews);
+            }
+        }
+
+        public void HandleControlOutputChange(BoolVector v)
+        {
+            ThreadPool.QueueUserWorkItem(o =>
+            {
+                m1.collectNames(TextDescriptionType.TEXT_OutputName);
+
+                RunOnGUIThread(this, () =>
+                {
+                    for (int i = 0; i < v.Count; i++)
+                    {
+                        if (ShowAllOutputsCheckbox.Checked || (m1.getTextDescription(TextDescriptionType.TEXT_OutputName, i) != ""))
+                        {
+                            ListViewItem Item = (OutputsList.Items.ContainsKey(i.ToString())) ?
+                                OutputsList.Items.Find(i.ToString(), false)[0] :
+                                OutputsList.Items.Add(new ListViewItem
+                                {
+                                    Name = i.ToString()
+                                });
+
+                            Item.Text = m1.getTextDescription(TextDescriptionType.TEXT_OutputName, i);
+                            if (Item.Text == "")
+                                Item.Text = "Output " + (i + 1).ToString();
+                            if (v[i])
+                            {
+                                Item.ImageKey = "on_symbol";
+                            }
+                            else
+                            {
+                                Item.ImageKey = "off_symbol";
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        private void RunOnGUIThread(Control c, Action fun)
+        {
+            if (c.InvokeRequired)
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    fun();
+                });
+            }
+            else
+            {
+                fun();
+            }
         }
 
         private void Connect_Click(object sender, EventArgs e)
@@ -117,49 +206,32 @@ namespace ElkM1DesktopApp
             {
                 if (!connected)
                 {
-                    cs.Connect("192.168.101.104", 2101);
+                    cs.Connect("192.168.101.93", 2101);
+                    connected = !connected;
                     m1.run();
-                    if (InvokeRequired)
-                    {
-                        Invoke((MethodInvoker)delegate
-                        {
-                            Connect.Text = "Disconnect";
-                            UpdateTab(tabControls.SelectedTab);
-                        });
-                    }
-                    else
+                    RunOnGUIThread(this, () =>
                     {
                         Connect.Text = "Disconnect";
                         UpdateTab(tabControls.SelectedTab);
-                    }
+                    });
                 }
                 else
                 {
-                    if (InvokeRequired)
+                    RunOnGUIThread(this, () =>
                     {
-                        Invoke((MethodInvoker)delegate
-                        {
-                            AreasList.Items.Clear();
-                            ZonesList.Items.Clear();
-                            Connect.Text = "Connect";
-                        });
-                    }
-                    else
-                    {
-                        AreasList.Items.Clear();
-                        ZonesList.Items.Clear();
+                        ClearViews();
                         Connect.Text = "Connect";
-                    }
+                    });
                     try
                     {
                         m1.stop();
+                        connected = !connected;
                     }
                     catch
                     {
                         //
                     }
                 }
-                connected = !connected;
             });
         }
 
@@ -170,10 +242,10 @@ namespace ElkM1DesktopApp
 
         private void AreasList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
+            ZonesList.Items.Clear();
             if (AreasList.SelectedItems.Count > 0)
             {
                 int area = Int32.Parse(AreasList.SelectedItems[0].Name);
-                ZonesList.Items.Clear();
 
                 m1.collectNames(TextDescriptionType.TEXT_ZoneName);
                 // For each zone defined which uses this area...
@@ -192,28 +264,47 @@ namespace ElkM1DesktopApp
                         Name = index.ToString(),
                         Text = m1.getTextDescription(TextDescriptionType.TEXT_ZoneName, index),
                     });
+                    ZonesList.Columns[0].Width = -1;
                     switch (states[index].logicalState)
                     {
                         case LogicalZoneState.LZS_BYPASSED:
                             ZonesList.Items[index.ToString()].ImageKey = "zone_bypassed";
+                            ZonesList.Items[index.ToString()].SubItems.Add("Bypassed");
                             break;
                         case LogicalZoneState.LZS_NORMAL:
                             ZonesList.Items[index.ToString()].ImageKey = "zone_normal";
+                            ZonesList.Items[index.ToString()].SubItems.Add("Normal");
                             break;
                         case LogicalZoneState.LZS_TROUBLE:
                             ZonesList.Items[index.ToString()].ImageKey = "zone_trouble";
+                            ZonesList.Items[index.ToString()].SubItems.Add("Troubled");
                             break;
                         case LogicalZoneState.LZS_VIOLATED:
                             ZonesList.Items[index.ToString()].ImageKey = "zone_violated";
+                            ZonesList.Items[index.ToString()].SubItems.Add("Violated");
+                            break;
+                    }
+                    switch (states[index].physicalState)
+                    {
+                        case PhysicalZoneState.PZS_EOL:
+                            ZonesList.Items[index.ToString()].SubItems.Add("EOL");
+                            break;
+                        case PhysicalZoneState.PZS_OPEN:
+                            ZonesList.Items[index.ToString()].SubItems.Add("Open");
+                            break;
+                        case PhysicalZoneState.PZS_SHORT:
+                            ZonesList.Items[index.ToString()].SubItems.Add("Short");
                             break;
                     }
                 }
-
+                ZonesList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
         private void UpdateTab(TabPage tab)
         {
+            if (!connected)
+                return;
             switch (tab.Name)
             {
                 case "Security":
@@ -224,6 +315,9 @@ namespace ElkM1DesktopApp
                     break;
                 case "Lighting":
 
+                    break;
+                case "Outputs":
+                    HandleControlOutputChange(m1.getControlOutputs());
                     break;
 
             }
@@ -237,6 +331,14 @@ namespace ElkM1DesktopApp
         private void tabControls_TabIndexChanged(object sender, TabControlCancelEventArgs e)
         {
             UpdateTab(tabControls.SelectedTab);
+        }
+
+        private void ShowAllOutputsCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!connected)
+                return;
+            OutputsList.Items.Clear();
+            HandleControlOutputChange(m1.getControlOutputs());
         }
     }
 }
