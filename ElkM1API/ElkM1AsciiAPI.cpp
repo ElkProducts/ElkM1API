@@ -197,7 +197,10 @@ namespace Elk {
 		handleMessageTable.emplace("ZS", [this](std::string message) {
 			std::vector<ZoneState> zones(208);
 			for (int i = 0; i < 208; i++) {
-				int bitfield = message.at(2 + i) - '0';
+				// Ascii to Int
+				int bitfield = message.at(2 + i) - ((message.at(2 + i) >= 'A') ?
+					('A' - 10):
+					'0');
 				zones[i] = { (PhysicalZoneState)(bitfield & 0x3),
 					(LogicalZoneState)(bitfield >> 2) };
 			}

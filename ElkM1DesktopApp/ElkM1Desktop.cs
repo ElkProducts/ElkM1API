@@ -340,5 +340,19 @@ namespace ElkM1DesktopApp
             OutputsList.Items.Clear();
             HandleControlOutputChange(m1.getControlOutputs());
         }
+
+        private void ZonesList_DoubleClick(object sender, EventArgs e)
+        {
+            if (ZonesList.SelectedItems.Count > 0)
+                m1.zoneBypass(Int32.Parse(ZonesList.SelectedItems[0].Name), "1111");
+            AreasList_ItemSelectionChanged(null, null);
+        }
+
+        private void OutputsList_DoubleClick(object sender, EventArgs e)
+        {
+            if (OutputsList.SelectedItems.Count > 0)
+                m1.toggleControlOutput(Int32.Parse(OutputsList.SelectedItems[0].Name));
+            HandleControlOutputChange(m1.getControlOutputs());
+        }
     }
 }

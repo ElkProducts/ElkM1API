@@ -87,6 +87,7 @@
             this.ZonesList.TabIndex = 1;
             this.ZonesList.UseCompatibleStateImageBehavior = false;
             this.ZonesList.View = System.Windows.Forms.View.Details;
+            this.ZonesList.DoubleClick += new System.EventHandler(this.ZonesList_DoubleClick);
             // 
             // columnZoneName
             // 
@@ -161,6 +162,7 @@
             this.OutputsList.TabIndex = 0;
             this.OutputsList.UseCompatibleStateImageBehavior = false;
             this.OutputsList.View = System.Windows.Forms.View.List;
+            this.OutputsList.DoubleClick += new System.EventHandler(this.OutputsList_DoubleClick);
             // 
             // Tasks
             // 
