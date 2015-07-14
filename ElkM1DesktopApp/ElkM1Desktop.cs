@@ -206,7 +206,7 @@ namespace ElkM1DesktopApp
             {
                 if (!connected)
                 {
-                    cs.Connect("192.168.101.93", 2101);
+                    cs.Connect("192.168.101.104", 2101);
                     connected = !connected;
                     m1.run();
                     RunOnGUIThread(this, () =>
@@ -214,6 +214,8 @@ namespace ElkM1DesktopApp
                         Connect.Text = "Disconnect";
                         UpdateTab(tabControls.SelectedTab);
                     });
+                    // Takes the longest, might as well 'sync'
+                    HandleControlOutputChange(m1.getControlOutputs());
                 }
                 else
                 {

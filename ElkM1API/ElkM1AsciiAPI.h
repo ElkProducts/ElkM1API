@@ -87,9 +87,7 @@ namespace Elk {
 		ELKM1API void setLogData(int logType, int eventType, int zoneNumber, int area);
 		ELKM1API bool zoneBypass(int zone, std::string pinCode);
 		ELKM1API float getZoneVoltage(int zone);
-		ELKM1API float getZoneVoltage(int zone, bool ignoreCache, int timeoutMillis);
 		ELKM1API int getLightingStatus(int device);
-		ELKM1API int getLightingStatus(int device, bool ignoreCache, int timeoutMillis);
 		ELKM1API int getTemperature(Elk::TemperatureDevice type, int device);
 		ELKM1API std::vector<int> getTemperatures(Elk::TemperatureDevice type);
 		ELKM1API Elk::KeypadFkeyStatus getKeypadFkeyStatus(int keypad);
@@ -98,7 +96,6 @@ namespace Elk {
 		ELKM1API Elk::RTCData getRTCData();
 		ELKM1API Elk::RTCData setRTCData(Elk::RTCData newData);
 		ELKM1API std::vector<Elk::ArmStatus> getArmStatus();
-		ELKM1API std::vector<Elk::ArmStatus> getArmStatus(bool ignoreCache, int timeoutMillis);
 		ELKM1API std::vector<bool> getControlOutputs();
 		ELKM1API std::vector<Elk::SChimeMode> pressFunctionKey(int keypad, Elk::FKEY key);
 		ELKM1API std::vector<int> getKeypadAreas();
@@ -114,9 +111,7 @@ namespace Elk {
 		ELKM1API Elk::ThermostatData getThermostatData(int index);
 		ELKM1API Elk::ThermostatData setThermostatData(int index, int value, int element);
 		ELKM1API uint16_t getCounterValue(int counter);
-		ELKM1API uint16_t getCounterValue(int counter, bool ignoreCache, int timeoutMillis);
 		ELKM1API uint16_t getCustomValue(int index);
-		ELKM1API uint16_t getCustomValue(int index, bool ignoreCache, int timeoutMillis);
 		ELKM1API uint16_t setCounterValue(int counter, uint16_t value);
 		ELKM1API Elk::UserCodeAccess getUserCodeAccess(std::string userCode);
 		ELKM1API Elk::UserCodeSuccess requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask);

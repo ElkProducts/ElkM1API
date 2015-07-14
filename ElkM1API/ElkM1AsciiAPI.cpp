@@ -305,7 +305,7 @@ namespace Elk {
 			m1cache.thermostatData[index].set(td);
 			m1cache.thermostatTemperatures[index].set(td.temperature);
 		});
-		// Log data
+		// Log dataUu
 		handleMessageTable.emplace("LD", [this](std::string message) {
 			LogEntry le;
 			int index = std::stoi(message.substr(18, 3)) - 1;
@@ -633,12 +633,6 @@ namespace Elk {
 		return cacheRequest(m1cache.zonesBypassed[zone], message, true, 0);
 	}
 	float M1AsciiAPI::getZoneVoltage(int zone) {
-		if ((zone < 0) || (zone >= 208)) {
-			throw std::invalid_argument("Argument out of allowed range.");
-		}
-		return getZoneVoltage(zone, false, 0);
-	}
-	float M1AsciiAPI::getZoneVoltage(int zone, bool ignoreCache, int timeoutMillis) {
 		if (!versionAtLeast(4, 2, 8)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -648,12 +642,9 @@ namespace Elk {
 		AsciiMessage message("zv");
 		message += toAsciiDec(zone + 1, 3);
 		message += "00";
-		return cacheRequest<float>(m1cache.zoneVoltage[zone], message, ignoreCache, timeoutMillis);
+		return cacheRequest<float>(m1cache.zoneVoltage[zone], message, true, 0);
 	}
 	int M1AsciiAPI::getLightingStatus(int device) {
-		return getLightingStatus(device, false, 0);
-	}
-	int M1AsciiAPI::getLightingStatus(int device, bool ignoreCache = false, int timeoutMillis = 0) {
 		if (!versionAtLeast(4, 3, 9)) 
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		if ((device < 0) || (device >= 256))
@@ -661,7 +652,7 @@ namespace Elk {
 		AsciiMessage message("ds");
 		message += toAsciiDec(device + 1, 3);
 		message += "00";
-		return cacheRequest<int>(m1cache.lightingStatus[device], message, ignoreCache, timeoutMillis);
+		return cacheRequest<int>(m1cache.lightingStatus[device], message, true, 0);
 	}
 	int M1AsciiAPI::getTemperature(TemperatureDevice type, int device) {
 		if ((device < 0) || (device >= 16))
@@ -772,11 +763,8 @@ namespace Elk {
 		message += "00";
 		return cacheRequest(m1cache.rtcData, message, true, 0);
 	}
-	std::vector<ArmStatus> M1AsciiAPI::getArmStatus() {
-		return getArmStatus(false, 0);
-	}
-	std::vector<ArmStatus> M1AsciiAPI::getArmStatus(bool ignoreCache =  false, int timeoutMillis = 0) { 
-		return cacheRequest(m1cache.armStatus, (AsciiMessage)"as00", ignoreCache, timeoutMillis);
+	std::vector<ArmStatus> M1AsciiAPI::getArmStatus() { 
+		return cacheRequest(m1cache.armStatus, (AsciiMessage)"as00", true, 0);
 	}
 	std::vector<bool> M1AsciiAPI::getControlOutputs() { 
 		return cacheRequest(m1cache.controlOutputs, (AsciiMessage)"cs00", true, 0);
@@ -978,14 +966,7 @@ namespace Elk {
 		request += "00";
 		return cacheRequest(m1cache.thermostatData[index], request, true, 0);
 	}
-	uint16_t M1AsciiAPI::getCounterValue(int counter) { 
-		if (!versionAtLeast(4,1,11)) {
-			throw std::runtime_error("Call unsupported by M1 Firmware version.");
-		}
-
-		return getCounterValue(counter, false, 0); 
-	}
-	uint16_t M1AsciiAPI::getCounterValue(int counter, bool ignoreCache = false, int timeoutMillis = 0) {
+	uint16_t M1AsciiAPI::getCounterValue(int counter) {
 		if (!versionAtLeast(4, 1, 11)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
@@ -994,18 +975,15 @@ namespace Elk {
 		AsciiMessage message("cv");
 		message += toAsciiDec(counter + 1, 2);
 		message += "00";
-		return cacheRequest(m1cache.counterValues[counter], message, ignoreCache, timeoutMillis);
+		return cacheRequest(m1cache.counterValues[counter], message, true, 0);
 	}
 	uint16_t M1AsciiAPI::getCustomValue(int index) {
-		return getCustomValue(index, false, 0);
-	}
-	uint16_t M1AsciiAPI::getCustomValue(int index, bool ignoreCache = false, int timeoutMillis = 0) {
 		if ((index < 0) || (index >= 20))
 			throw std::invalid_argument("Argument out of allowed range.");
 		AsciiMessage message("cr");
 		message += toAsciiDec(index + 1, 2);
 		message += "00";
-		return cacheRequest(m1cache.customValues[index], message, ignoreCache, timeoutMillis);
+		return cacheRequest(m1cache.customValues[index], message, true, 0);
 	}
 	uint16_t M1AsciiAPI::setCounterValue(int counter, uint16_t value) { 
 		if (!versionAtLeast(4, 1, 11)) {
