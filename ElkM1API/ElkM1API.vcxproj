@@ -79,8 +79,8 @@
       </Inputs>
     </CustomBuildStep>
     <PreBuildEvent>
-      <Command>$(CYGWIN_PATH)/bin/rm -rf ./csharp
-$(CYGWIN_PATH)/bin/mkdir -p ./csharp
+      <Command>rd /s /q csharp
+mkdir csharp
 C:/Data/swigwin/swig -O -Wall -DELKM1API -Fmicrosoft -c++ -csharp -o swig_wrap_csharp.cpp -outdir ./csharp swig.i </Command>
     </PreBuildEvent>
     <PreBuildEvent>
