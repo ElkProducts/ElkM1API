@@ -9,14 +9,17 @@ namespace Elk {
 	std::map<std::string, std::string> C1M1Tunnel::jsonUglyParse(std::vector<char> json) {
 		// Do ugly parsing
 		std::map<std::string, std::string> uglyparse;
-		auto startindex = json.begin(), endindex = json.begin();
+		auto startindex = json.begin() + 1, endindex = json.begin();
+
 		while (endindex != json.end()) {
 			if (*endindex == '}' || *endindex == ','){
 				std::string key, value, property;
 				property = std::string(startindex, endindex);
 				auto& keyEnd = std::find(property.begin(), property.end(), ':');
-				key = std::string(property.begin() + 1, keyEnd);
-				value = ((std::find(property.begin(), property.end(), '\"')) != property.end()) ?
+				key = ((std::find(property.begin(), keyEnd, '\"')) != keyEnd) ?
+					std::string(property.begin() + 1, keyEnd - 1) :
+					std::string(property.begin(), keyEnd);
+				value = ((std::find(keyEnd, property.end(), '\"')) != property.end()) ?
 					std::string(keyEnd + 2, property.end() - 1) :
 					std::string(keyEnd + 1, property.end());
 
@@ -41,10 +44,20 @@ namespace Elk {
 		tunnel->Send(std::vector<char>(authPacket.begin(), authPacket.end()));
 	}
 
+	std::vector<char> C1M1Tunnel::RecieveCompleteJSON() {
+		std::vector<char> recv;
+		do {
+			auto& app = tunnel->Recieve();
+			recv.insert(recv.end(), app.begin(), app.end());
+		} while (*recv.rbegin() != '}');
+		return recv;
+	}
+
 	NetworkType C1M1Tunnel::Authenticate(std::string username, std::string password, std::string sernum) {
 		// Authenticate with manager
 		C1M1Authenticate(username, password, sernum);
-		auto& authPacket = jsonUglyParse(tunnel->Recieve());
+		// Loop till we have a full JSON Packet
+		auto& authPacket = jsonUglyParse(RecieveCompleteJSON());
 		if ((authPacket.find("AuthConnMask") != authPacket.end()) && (authPacket["AuthConnMask"] != "0")) {
 			// We're authorized, continue connecting
 			tunnel->Disconnect();
@@ -54,10 +67,10 @@ namespace Elk {
 			tunnel->Connect(url, port);
 			C1M1Authenticate(username, password, sernum);
 			// Get isValid
-			authPacket = jsonUglyParse(tunnel->Recieve());
+			authPacket = jsonUglyParse(RecieveCompleteJSON());
 			if ((authPacket.find("IsValid") != authPacket.end()) && (authPacket["IsValid"] != "0")) {
 				// Get ActualConnMask
-				authPacket = jsonUglyParse(tunnel->Recieve());
+				authPacket = jsonUglyParse(RecieveCompleteJSON());
 				if (authPacket.find("ActualConnMask") != authPacket.end()) {
 					return((NetworkType)(std::stoi(authPacket["ActualConnMask"])));
 				}

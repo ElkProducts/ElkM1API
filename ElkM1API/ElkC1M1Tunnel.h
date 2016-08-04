@@ -22,6 +22,7 @@ namespace Elk {
 		// Example first response: "{ProxyUrl:"www.elklink.com:8892", AuthConnMask:"3", OverDataBudget:True}"
 		// Example second response: "{ActualConnMask:1}"
 		// C1M1Dispatch contacts the proxy server and gets information
+		std::vector<char> RecieveCompleteJSON();
 		std::map<std::string, std::string> jsonUglyParse(std::vector<char> input);
 		void C1M1Authenticate(std::string username, std::string password, std::string sernum);
 		M1Connection* tunnel;

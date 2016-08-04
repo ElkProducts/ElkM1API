@@ -45,14 +45,14 @@ namespace ElkM1DesktopApp
             }
         }
 
-        CSharpConnection cs;
+        SecureConnection cs;
         M1AsciiAPI m1;
         bool connected = false;
 
         public ElkM1App()
         {
             InitializeComponent();
-            cs = new CSharpConnection();
+            cs = new SecureConnection();
             m1 = new M1AsciiAPI(cs);
             AreasList.LargeImageList = new ImageList();
             AreasList.LargeImageList.ImageSize = new Size(48, 48);
@@ -206,16 +206,29 @@ namespace ElkM1DesktopApp
             {
                 if (!connected)
                 {
-                    cs.Connect("192.168.101.104", 2101);
-                    connected = !connected;
-                    m1.run();
-                    RunOnGUIThread(this, () =>
+                    if(cs.Connect("dev.elklink.com", 8891)) {
+
+                        C1M1Tunnel tunn = new C1M1Tunnel(cs);
+                        if (tunn.Authenticate("xiong", "Elk12345", "0050C2688038") != NetworkType.NETWORKTYPE_NONE)
+                        {
+
+                            connected = !connected;
+                            m1.run();
+                            RunOnGUIThread(this, () =>
+                            {
+                                Connect.Text = "Disconnect";
+                                UpdateTab(tabControls.SelectedTab);
+                            });
+                            // Takes the longest, might as well 'sync'
+                            HandleControlOutputChange(m1.getControlOutputs());
+                        } else
+                        {
+                            Console.WriteLine("Failed to auth!");
+                        }
+                    } else
                     {
-                        Connect.Text = "Disconnect";
-                        UpdateTab(tabControls.SelectedTab);
-                    });
-                    // Takes the longest, might as well 'sync'
-                    HandleControlOutputChange(m1.getControlOutputs());
+                        Console.WriteLine("Failed to connect!");
+                    }
                 }
                 else
                 {
