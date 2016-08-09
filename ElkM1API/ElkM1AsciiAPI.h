@@ -49,7 +49,7 @@ namespace Elk {
 				message.push_back('\0');
 				return AsciiMessage(message);
 			}
-			std::vector<char> getTransmittable() {
+			std::vector<char> getTransmittable() const {
 				std::vector<char> nMessage(toAsciiHex(message.size() + 2, 2));
 				for (auto & c : message)
 					nMessage.push_back(c);
@@ -71,9 +71,9 @@ namespace Elk {
 		static std::vector<char> toAsciiDec(int value, int length);
 		void fillFunctionTable();
 		template <typename T>
-		T cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request, bool ignoreCache, int timeoutMillis);
+		T cacheRequest(M1Monitor::cacheObject<T>& cacheObj, const AsciiMessage& request, bool ignoreCache, int timeoutMillis);
 		template <typename T>
-		T cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request);
+		T cacheExistsRequest(M1Monitor::cacheObject<T>& cacheObj, const AsciiMessage& request);
 	public:
 		ELKM1API M1AsciiAPI(std::shared_ptr<Elk::M1Connection> conn);
 		ELKM1API std::vector<Elk::LogEntry> getLogs();

@@ -8703,6 +8703,14 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1API(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_M1Monitor(void * jarg1) {
+  Elk::M1Monitor *arg1 = (Elk::M1Monitor *) 0 ;
+  
+  arg1 = (Elk::M1Monitor *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_M1Monitor_run(void * jarg1) {
   Elk::M1Monitor *arg1 = (Elk::M1Monitor *) 0 ;
   
