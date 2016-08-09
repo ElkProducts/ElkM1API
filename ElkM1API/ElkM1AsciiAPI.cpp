@@ -52,7 +52,7 @@ namespace Elk {
 	}
 	// Used for cache objects which are volatile.
 	template <typename T>
-	T M1AsciiAPI::cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request, bool ignoreCache = true, int timeoutMillis = 0) {
+	T M1AsciiAPI::cacheRequest(M1Monitor::cacheObject<T>& cacheObj, AsciiMessage& request, bool ignoreCache, int timeoutMillis) {
 		// Check if the cache is new enough and return that if it is
 		if (!ignoreCache && (cacheObj.age() <= 3))
 			return cacheObj.get();
@@ -485,7 +485,7 @@ namespace Elk {
 	}
 
 	std::vector<int> M1AsciiAPI::getConfiguredZones() {
-		auto& zdef = getZoneDefinitions();
+		const auto& zdef = getZoneDefinitions();
 		std::vector<int> configured;
 		for (int i = 0; i < zdef.size(); i++) {
 			if (zdef[i].zd != ZONEDEF_DISABLED) {
@@ -682,12 +682,12 @@ namespace Elk {
 		{
 		case TEMPDEVICE_KEYPAD:
 			for (int i = 0; i < 16; i++) {
-				reply[i] = cacheRequest(m1cache.keypadTemperatures[i], (AsciiMessage)"lw00", false, 0);
+				reply[i] = cacheRequest(m1cache.keypadTemperatures[i], (AsciiMessage&)"lw00", false, 0);
 			}
 			return reply;
 		case TEMPDEVICE_ZONE:
 			for (int i = 0; i < 16; i++) {
-				reply[i] = cacheRequest(m1cache.zoneTemperatures[i], (AsciiMessage)"lw00", false, 0);
+				reply[i] = cacheRequest(m1cache.zoneTemperatures[i], (AsciiMessage&)"lw00", false, 0);
 			}
 			return reply;
 		case TEMPDEVICE_THERMOSTAT:
@@ -747,7 +747,7 @@ namespace Elk {
 		if (!versionAtLeast(4, 3, 2)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
-		return cacheRequest(m1cache.rtcData, (AsciiMessage)"rr00", true, 0);
+		return cacheRequest(m1cache.rtcData, (AsciiMessage&)"rr00", true, 0);
 	}
 	RTCData M1AsciiAPI::setRTCData(RTCData newData) { 
 		if (!versionAtLeast(4, 3, 2)) {
@@ -764,10 +764,10 @@ namespace Elk {
 		return cacheRequest(m1cache.rtcData, message, true, 0);
 	}
 	std::vector<ArmStatus> M1AsciiAPI::getArmStatus() { 
-		return cacheRequest(m1cache.armStatus, (AsciiMessage)"as00", true, 0);
+		return cacheRequest(m1cache.armStatus, (AsciiMessage&)"as00", true, 0);
 	}
 	std::vector<bool> M1AsciiAPI::getControlOutputs() { 
-		return cacheRequest(m1cache.controlOutputs, (AsciiMessage)"cs00", true, 0);
+		return cacheRequest(m1cache.controlOutputs, (AsciiMessage&)"cs00", true, 0);
 	}
 	std::vector<SChimeMode> M1AsciiAPI::pressFunctionKey(int keypad, FKEY key) { 
 		if (!versionAtLeast(4, 2, 5)) {
@@ -801,22 +801,22 @@ namespace Elk {
 		if (!versionAtLeast(4, 2, 5)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
-		return cacheExistsRequest(m1cache.keypadAreas, (AsciiMessage)"ka00");
+		return cacheExistsRequest(m1cache.keypadAreas, (AsciiMessage&)"ka00");
 	}
 	std::vector<int> M1AsciiAPI::getZonePartitions() {
-		return cacheExistsRequest(m1cache.zonePartitions, (AsciiMessage)"zp00");
+		return cacheExistsRequest(m1cache.zonePartitions, (AsciiMessage&)"zp00");
 	}
 	std::vector<int> M1AsciiAPI::getM1VersionNumber() { 
 		//if (!versionAtLeast(4, 1, 12)) {
 		//	throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		//}
 		// Obviously we can't check the version number lower than this.
-		return cacheExistsRequest(m1cache.M1VersionNumber, (AsciiMessage)"vn00");
+		return cacheExistsRequest(m1cache.M1VersionNumber, (AsciiMessage&)"vn00");
 	}
 	std::vector<uint16_t> M1AsciiAPI::getCustomValues() { 
 		std::vector<uint16_t> reply(20);
 		for (int i = 0; i < 20; i++) {
-			reply[i] = cacheRequest(m1cache.customValues[i], (AsciiMessage)"cp00", false, 0);
+			reply[i] = cacheRequest(m1cache.customValues[i], (AsciiMessage&)"cp00", false, 0);
 		}
 		return reply;
 	}
@@ -824,16 +824,16 @@ namespace Elk {
 		if (!versionAtLeast(4, 3, 9)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
-		return cacheRequest(m1cache.zoneAlarms, (AsciiMessage)"az00", true, 0);
+		return cacheRequest(m1cache.zoneAlarms, (AsciiMessage&)"az00", true, 0);
 	}
 	std::vector<SZoneDefinition> M1AsciiAPI::getZoneDefinitions() { 
 		if (!versionAtLeast(4, 2, 6)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
-		return cacheExistsRequest(m1cache.zoneDefinitions, (AsciiMessage)"zd00");
+		return cacheExistsRequest(m1cache.zoneDefinitions, (AsciiMessage&)"zd00");
 	}
 	std::vector<ZoneState> M1AsciiAPI::getZoneStatuses() { 
-		return cacheRequest(m1cache.zoneStatus, (AsciiMessage)"zs00", true, 0);
+		return cacheRequest(m1cache.zoneStatus, (AsciiMessage&)"zs00", true, 0);
 	}
 	std::string M1AsciiAPI::getTextDescription(TextDescriptionType type, int index) { 
 		AsciiMessage message("sd");
@@ -942,7 +942,7 @@ namespace Elk {
 		if (!versionAtLeast(4, 5, 4)) {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
-		return cacheRequest(m1cache.systemTroubleStatus, (AsciiMessage)"ss00", true, 0);
+		return cacheRequest(m1cache.systemTroubleStatus, (AsciiMessage&)"ss00", true, 0);
 	}
 	ThermostatData M1AsciiAPI::getThermostatData(int index) { 
 		if (!versionAtLeast(4, 2, 6)) {

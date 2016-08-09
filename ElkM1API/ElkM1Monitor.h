@@ -215,7 +215,7 @@ namespace Elk {
 	public:
 		// Construct a new Monitor instance. To be viable, the ElkM1Connection must be established before beginning with run().
 		ELKM1API M1Monitor(std::shared_ptr<Elk::M1Connection> conn);
-		virtual ELKM1API M1Monitor::~M1Monitor();
+		virtual ELKM1API ~M1Monitor();
 		// Spawn a thread and begin monitoring.
 		ELKM1API void run();
 		// Instruct the monitoring thread to clean up and exit

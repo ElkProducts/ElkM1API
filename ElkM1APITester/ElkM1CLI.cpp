@@ -175,7 +175,7 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << val << "\n";
 	} },
 	{ "getKeypadAreas", [] {
-		auto& kpa = m1api->getKeypadAreas();
+		const auto& kpa = m1api->getKeypadAreas();
 		for (int i = 0; i < 16; i++)
 			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_KeypadName, i) << "\": " << kpa[i] << "\n";
 	} },
@@ -242,7 +242,7 @@ std::map<std::string, std::function<void()>> commands = {
 	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
 	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
 	{ "getZoneAlarms", [] {
-		auto& zdfs = m1api->getZoneAlarms();
+		const auto& zdfs = m1api->getZoneAlarms();
 		//m1api->forEachConfiguredZone([&zdfs](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
 		//	switch (zdfs[index].zd) {
@@ -325,7 +325,7 @@ std::map<std::string, std::function<void()>> commands = {
 		//});
 	} },
 	{ "getZoneDefinitions", [] {
-		auto& zdfs = m1api->getZoneDefinitions(); 
+		const auto& zdfs = m1api->getZoneDefinitions(); 
 		//m1api->forEachConfiguredZone([&zdfs](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
 		//	switch (zdfs[index].zd) {
@@ -408,7 +408,7 @@ std::map<std::string, std::function<void()>> commands = {
 		//});
 	} },
 	{ "getZonePartitions", [] {
-		auto& parts = m1api->getZonePartitions();
+		const auto& parts = m1api->getZonePartitions();
 		//m1api->forEachConfiguredZone([parts](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
 		//});

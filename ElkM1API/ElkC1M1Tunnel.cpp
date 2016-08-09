@@ -15,7 +15,7 @@ namespace Elk {
 			if (*endindex == '}' || *endindex == ','){
 				std::string key, value, property;
 				property = std::string(startindex, endindex);
-				auto& keyEnd = std::find(property.begin(), property.end(), ':');
+				const auto& keyEnd = std::find(property.begin(), property.end(), ':');
 				key = ((std::find(property.begin(), keyEnd, '\"')) != keyEnd) ?
 					std::string(property.begin() + 1, keyEnd - 1) :
 					std::string(property.begin(), keyEnd);
@@ -47,7 +47,7 @@ namespace Elk {
 	std::vector<char> C1M1Tunnel::RecieveCompleteJSON() {
 		std::vector<char> recv;
 		do {
-			auto& app = tunnel->Recieve();
+			const auto& app = tunnel->Recieve();
 			recv.insert(recv.end(), app.begin(), app.end());
 		} while (*recv.rbegin() != '}');
 		return recv;
@@ -57,7 +57,7 @@ namespace Elk {
 		// Authenticate with manager
 		C1M1Authenticate(username, password, sernum);
 		// Loop till we have a full JSON Packet
-		auto& authPacket = jsonUglyParse(RecieveCompleteJSON());
+		auto authPacket = jsonUglyParse(RecieveCompleteJSON());
 		if ((authPacket.find("AuthConnMask") != authPacket.end()) && (authPacket["AuthConnMask"] != "0")) {
 			// We're authorized, continue connecting
 			tunnel->Disconnect();

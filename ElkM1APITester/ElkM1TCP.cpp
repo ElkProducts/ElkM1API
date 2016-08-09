@@ -9,6 +9,8 @@ namespace Elk
 	ElkTCP::~ElkTCP() {}
 
 	bool ElkTCP::Connect(std::string address, int port) {
+
+#ifdef _WIN32
 		WSADATA wsadata;
 		int error = WSAStartup(0x0202, &wsadata);
 
@@ -19,7 +21,7 @@ namespace Elk
 			WSACleanup();
 			return false;
 		}
-
+#endif
 		SOCKADDR_IN target;
 		target.sin_family = AF_INET;
 		target.sin_port = htons(port);
@@ -34,18 +36,32 @@ namespace Elk
 
 	void ElkTCP::Disconnect() {
 		if (sock) {
+#ifdef _WIN32
 			int error = closesocket(sock);
-			if (error) {
+#elif __linux__
+            int error = close(sock);
+#endif
+            if (error) {
+#ifdef _WIN32
 				throw WSAGetLastError();
+#elif __linux__
+                throw errno;
+#endif
 			}
 		}
+#ifdef _WIN32
 		WSACleanup();
+#endif
 	}
 
 	void ElkTCP::Send(std::vector<char> data) {
 		int bytes_recieved_or_error = send(sock, &data[0], data.size(), 0);
 		if (bytes_recieved_or_error == SOCKET_ERROR) {
+#ifdef _WIN32
 			throw WSAGetLastError();
+#elif __linux__
+            throw errno;
+#endif
 		}
 	}
 
@@ -57,7 +73,11 @@ namespace Elk
 			return data;
 		}
 		else {
+#ifdef _WIN32
 			throw WSAGetLastError();
+#elif __linux__
+            throw errno;
+#endif
 		}
 	}
 }
