@@ -1,0 +1,5 @@
+*.suo
+Debug
+ElkM1DesktopApp/obj
+ElkM1APITester/Debug
+ElkM1API/Debug
