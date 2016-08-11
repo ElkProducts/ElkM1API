@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "elkm1androidexample.elk.org.elkm1androidexample"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            moduleName "elkm1api"
+            stl "c++_shared"
+            cFlags "-std=c++11 -fexceptions -frtti -I" + file("src/../../../ElkM1API").absolutePath
+            ldLibs = ['log']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                debuggable = true
+            }
+        }
+        debug {
+            debuggable = true
+            jniDebuggable = true
+        }
+    }
+    sourceSets.main {
+        jni.srcDirs = ['src/main/jni', 'src/../../../ElkM1API']
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+}

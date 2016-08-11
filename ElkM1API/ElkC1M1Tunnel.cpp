@@ -9,7 +9,10 @@ namespace Elk {
 	std::map<std::string, std::string> C1M1Tunnel::jsonUglyParse(std::vector<char> json) {
 		// Do ugly parsing
 		std::map<std::string, std::string> uglyparse;
-		auto startindex = json.begin() + 1, endindex = json.begin();
+		auto startindex = std::find(json.begin(), json.end(), '{') != json.end() ?
+						  std::find(json.begin(), json.end(), '{') + 1:
+						  json.begin();
+		auto endindex = json.begin();
 
 		while (endindex != json.end()) {
 			if (*endindex == '}' || *endindex == ','){
@@ -19,7 +22,7 @@ namespace Elk {
 				key = std::string(property.begin(), keyEnd);
 				value = std::string(keyEnd + 1, property.end());
 
-				static auto& trimquotes = [] (std::string& s) {
+				static const auto& trimquotes = [] (std::string& s) {
 					if (s.front() == '"') {
 						s.erase(0, 1);
 						s.erase(s.end() - 1);
