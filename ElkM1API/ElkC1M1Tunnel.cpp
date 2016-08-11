@@ -16,12 +16,18 @@ namespace Elk {
 				std::string key, value, property;
 				property = std::string(startindex, endindex);
 				const auto& keyEnd = std::find(property.begin(), property.end(), ':');
-				key = ((std::find(property.begin(), keyEnd, '\"')) != keyEnd) ?
-					std::string(property.begin() + 1, keyEnd - 1) :
-					std::string(property.begin(), keyEnd);
-				value = ((std::find(keyEnd, property.end(), '\"')) != property.end()) ?
-					std::string(keyEnd + 2, property.end() - 1) :
-					std::string(keyEnd + 1, property.end());
+				key = std::string(property.begin(), keyEnd);
+				value = std::string(keyEnd + 1, property.end());
+
+				static auto& trimquotes = [] (std::string& s) {
+					if (s.front() == '"') {
+						s.erase(0, 1);
+						s.erase(s.end() - 1);
+					}
+				};
+
+				trimquotes(key);
+				trimquotes(value);
 
 				uglyparse.emplace(key, value);
 				if (endindex != json.end())

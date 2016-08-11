@@ -64,8 +64,10 @@ namespace ElkM1DesktopApp
     class SecureConnection : CSharpConnection
     {
         SslStream innerStream;
+        private Object writelock;
         public override bool Connect(string location, int port)
         {
+            writelock = new object();
             base.Connect(location, port);
             innerStream = new SslStream(
                 tcp.GetStream(),
@@ -89,7 +91,10 @@ namespace ElkM1DesktopApp
             byte[] send = new byte[data.Count];
             for (int i = 0; i < data.Count; i++)
                 send[i] = (byte)data[i];
-            innerStream.Write(send, 0, data.Count);
+            lock(writelock)
+            {
+                innerStream.Write(send, 0, data.Count);
+            }
         }
 
         public override CharVector Recieve()
@@ -101,6 +106,7 @@ namespace ElkM1DesktopApp
             {
                 cv.Add((char)recv[i]);
             }
+            Console.Write(Encoding.ASCII.GetString(recv, 0, cv.Count));
             return cv;
         }
     }

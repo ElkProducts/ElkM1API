@@ -72,7 +72,7 @@ namespace Elk {
 		// If not, send our request and await the response.
 		connection->Send(request.getTransmittable());
 
-		return cacheObj.awaitNew(std::chrono::milliseconds(1500));
+		return cacheObj.awaitNew(std::chrono::milliseconds(3000));
 	}
 #pragma endregion Static Helper Functions
 
@@ -531,7 +531,8 @@ namespace Elk {
 		return configured;
 	}
 
-	// TODO: Function to intelligently collect names
+	// TODO: Function to intelligently collect names: BUGGY! Doesn't work well over the Proxy.
+	// Should be somehow prioritized below regular send/rcv requests.
 	void M1AsciiAPI::collectNames(TextDescriptionType type) {
 		std::vector<int> indexes;
 		cacheObject<std::string> *beginItr;

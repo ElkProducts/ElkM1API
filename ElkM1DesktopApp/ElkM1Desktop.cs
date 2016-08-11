@@ -91,13 +91,18 @@ namespace ElkM1DesktopApp
 
         public void HandleArmStatusChange(ArmStatusVector v)
         {
-            m1.collectNames(TextDescriptionType.TEXT_AreaName);
+            //m1.collectNames(TextDescriptionType.TEXT_AreaName);
 
             RunOnGUIThread(this, () =>
             {
                 foreach (int i in m1.getConfiguredAreas())
                 {
-                    String areaname = m1.getTextDescription(TextDescriptionType.TEXT_AreaName, i);
+                    String areaname = ""; 
+                    try {
+                        areaname = m1.getTextDescription(TextDescriptionType.TEXT_AreaName, i);
+                    } catch {
+                        // ...
+                    }
                     if (String.IsNullOrEmpty(areaname))
                         areaname = "Area " + (i + 1);
 
@@ -153,13 +158,13 @@ namespace ElkM1DesktopApp
         {
             ThreadPool.QueueUserWorkItem(o =>
             {
-                m1.collectNames(TextDescriptionType.TEXT_OutputName);
+                //m1.collectNames(TextDescriptionType.TEXT_OutputName);
 
                 RunOnGUIThread(this, () =>
                 {
                     for (int i = 0; i < v.Count; i++)
                     {
-                        if (ShowAllOutputsCheckbox.Checked || (m1.getTextDescription(TextDescriptionType.TEXT_OutputName, i) != ""))
+                        if (ShowAllOutputsCheckbox.Checked) // || (m1.getTextDescription(TextDescriptionType.TEXT_OutputName, i) != ""))
                         {
                             ListViewItem Item = (OutputsList.Items.ContainsKey(i.ToString())) ?
                                 OutputsList.Items.Find(i.ToString(), false)[0] :
@@ -262,7 +267,7 @@ namespace ElkM1DesktopApp
             {
                 int area = Int32.Parse(AreasList.SelectedItems[0].Name);
 
-                m1.collectNames(TextDescriptionType.TEXT_ZoneName);
+                //m1.collectNames(TextDescriptionType.TEXT_ZoneName);
                 // For each zone defined which uses this area...
                 var states = m1.getZoneStatuses();
                 foreach (int index in m1.getZonePartitions().Select((zArea, index) =>
