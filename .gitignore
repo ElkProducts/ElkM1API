@@ -3,3 +3,7 @@ Debug
 ElkM1DesktopApp/obj
 ElkM1APITester/Debug
 ElkM1API/Debug
+ElkM1API/build
+ElkM1API/ElkM1API.py
+ElkM1API/swig_wrap.cpp
+ElkM1API/swig_wrap.h
