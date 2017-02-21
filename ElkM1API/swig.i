@@ -24,10 +24,12 @@
 %shared_ptr(Elk::ElkTCP)
 %shared_ptr(Elk::M1Connection)
 %shared_ptr(BoolCallback)
+%shared_ptr(StringCallback)
 %shared_ptr(ArmStatusVectorCallback)
 
 // This allows the C++ code to run calls that wind all the way up into the target platform code.
 %feature ("director") BoolCallback;
+%feature ("director") StringCallback;
 %feature ("director") IntCallback;
 %feature ("director") ArmStatusVectorCallback;
 

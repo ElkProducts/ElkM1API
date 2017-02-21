@@ -45,6 +45,21 @@ namespace ElkM1DesktopApp
             }
         }
 
+        public class DebugOutputHandler : StringCallback
+        {
+            Action<String> lamb;
+
+            public DebugOutputHandler(Action<String> lambda)
+            {
+                lamb = lambda;
+            }
+
+            public override void run(String status)
+            {
+                lamb(status);
+            }
+        }
+
         SecureConnection cs;
         M1AsciiAPI m1;
         bool connected = false;
@@ -80,6 +95,7 @@ namespace ElkM1DesktopApp
 
             m1.onArmStatusChange = new ArmStatusUpdateHandler(HandleArmStatusChange);
             m1.onRPConnection = new BoolUpdateHandler(HandleRPConnection);
+            m1.onDebugOutput = new DebugOutputHandler(HandleDebugOutput);
         }
 
         public void ClearViews()
@@ -145,6 +161,7 @@ namespace ElkM1DesktopApp
         {
             if (rpconnected)
             {
+                Console.WriteLine("RP Connected");
                 // TODO: Grey out all controls, display "Installer Connected"
             }
             else
@@ -152,6 +169,11 @@ namespace ElkM1DesktopApp
                 // TODO: Reenable all controls
                 RunOnGUIThread(this, ClearViews);
             }
+        }
+
+        public void HandleDebugOutput(String debugMessage)
+        {
+            Console.Write(debugMessage);
         }
 
         public void HandleControlOutputChange(BoolVector v)
@@ -211,10 +233,17 @@ namespace ElkM1DesktopApp
             {
                 if (!connected)
                 {
+                    RunOnGUIThread(this, () =>
+                    {
+                        Connect.Text = "...";
+                    });
                     if(cs.Connect("dev.elklink.com", 8891)) {
 
                         C1M1Tunnel tunn = new C1M1Tunnel(cs);
-                        if (tunn.Authenticate("xiong", "Elk12345", "0050C2688038") != NetworkType.NETWORKTYPE_NONE)
+                        string username = tbUsername.Text;
+                        string password = tbPassword.Text;
+                        string serialNumber = tbSerialNumber.Text;
+                        if (tunn.Authenticate(username, password, serialNumber) != NetworkType.NETWORKTYPE_NONE)
                         {
 
                             connected = !connected;

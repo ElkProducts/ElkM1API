@@ -56,6 +56,21 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_StringCallback : public StringCallback, public Swig::Director {
+
+public:
+    SwigDirector_StringCallback();
+    virtual void run(std::string arg1);
+    virtual ~SwigDirector_StringCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(char *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
 class SwigDirector_M1Connection : public Elk::M1Connection, public Swig::Director {
 
 public:

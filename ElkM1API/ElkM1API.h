@@ -35,6 +35,7 @@ namespace Elk
 		// Developer using this API implements this as a callback for when the M1 goes into programming mode. 
 		std::shared_ptr<BoolCallback> onRPConnection;
 		std::shared_ptr<ArmStatusVectorCallback> onArmStatusChange;
+		std::shared_ptr<StringCallback> onDebugOutput;
 
 		virtual ELKM1API std::vector<int> getConfiguredZones() = 0;
 		virtual ELKM1API std::vector<int> getConfiguredKeypads() = 0;

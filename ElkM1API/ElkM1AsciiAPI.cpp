@@ -78,8 +78,6 @@ namespace Elk {
 
 #pragma region Protocol implementations
 
-	// TODO: Split all std::cout calls into a debug message callback.
-
 	// All incoming message handlers defined here. This uses an O(1) function table to handle new data, that is to say
 	//   no matter how many commands are added, it will always take the same amount of time to find a command and handle
 	//   the data. Message does not include length/checksum/crlf.
@@ -371,7 +369,11 @@ namespace Elk {
 			case TEXT_AudioSourceName:
 				return m1cache.AudioSourceNames[index].set(desc);
 			}
-			std::cout << "Error parsing message: " << message << "\n";
+			if (onDebugOutput)
+			{
+				std::string output = "Error parsing message: " + message + "\n";
+				std::thread(&StringCallback::run, onDebugOutput, output).detach();
+			}
 		});
 		// Keypad function press TODO: Test
 		handleMessageTable.emplace("KF", [this](std::string message) {
@@ -452,7 +454,11 @@ namespace Elk {
 	void M1AsciiAPI::handleMessage(std::vector<char> message) {
 		if (message.size() < 4) {
 			message.push_back('\0');
-			std::cout << "Caught malformed message: " << std::string(&message[0]) << "\n";
+			if (onDebugOutput)
+			{
+				std::string output = "Caught malformed message: \"" + std::string(&message[0]) + "\"\n";
+				std::thread(&StringCallback::run, onDebugOutput, output).detach();
+			}
 			return;
 		}
 
@@ -472,7 +478,11 @@ namespace Elk {
 		}
 		else {
 			message.push_back('\0');
-			std::cout << "No handler for message: " << std::string(&message[0]) << "\n";
+			if (onDebugOutput)
+			{
+				std::string output = "No handler for message: \"" + std::string(&message[0]) + "\"\n";
+				std::thread(&StringCallback::run, onDebugOutput, output).detach();
+			}
 		}
 	}
 

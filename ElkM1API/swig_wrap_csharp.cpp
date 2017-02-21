@@ -1555,6 +1555,34 @@ void SwigDirector_ArmStatusVectorCallback::swig_init_callbacks() {
   swig_callbackrun = 0;
 }
 
+SwigDirector_StringCallback::SwigDirector_StringCallback() : StringCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_StringCallback::run(std::string arg1) {
+  char * jarg1  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("StringCallback::run");
+  } else {
+    jarg1 = SWIG_csharp_string_callback((&arg1)->c_str()); 
+    swig_callbackrun(jarg1);
+  }
+}
+
+SwigDirector_StringCallback::~SwigDirector_StringCallback() {
+  
+}
+
+
+void SwigDirector_StringCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_StringCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
 SwigDirector_M1Connection::SwigDirector_M1Connection() : Elk::M1Connection(), Swig::Director() {
   swig_init_callbacks();
 }
@@ -7909,6 +7937,65 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVectorCallback_director_connect(void
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_run(void * jarg1, char * jarg2) {
+  StringCallback *arg1 = (StringCallback *) 0 ;
+  std::string arg2 ;
+  std::shared_ptr< StringCallback > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  StringCallback > *)jarg1;
+  arg1 = (StringCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  (&arg2)->assign(jarg2); 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_StringCallback(void * jarg1) {
+  StringCallback *arg1 = (StringCallback *) 0 ;
+  std::shared_ptr< StringCallback > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  StringCallback > *)jarg1;
+  arg1 = (StringCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_StringCallback() {
+  void * jresult ;
+  StringCallback *result = 0 ;
+  
+  {
+    try {
+      result = (StringCallback *)new SwigDirector_StringCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  StringCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_director_connect(void *objarg, SwigDirector_StringCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< StringCallback > *obj = (std::shared_ptr< StringCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_StringCallback *director = dynamic_cast<SwigDirector_StringCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onRPConnection_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::shared_ptr< BoolCallback > *arg2 = 0 ;
@@ -7951,6 +8038,29 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onArmStatusChange_get(void * jarg1) {
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< ArmStatusVectorCallback > *) & ((arg1)->onArmStatusChange);
   jresult = *result ? new std::shared_ptr< ArmStatusVectorCallback >(*result) : 0; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onDebugOutput_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< StringCallback > *arg2 = 0 ;
+  std::shared_ptr< StringCallback > tempnull2 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = jarg2 ? (std::shared_ptr< StringCallback > *)jarg2 : &tempnull2; 
+  if (arg1) (arg1)->onDebugOutput = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onDebugOutput_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< StringCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< StringCallback > *) & ((arg1)->onDebugOutput);
+  jresult = *result ? new std::shared_ptr< StringCallback >(*result) : 0; 
   return jresult;
 }
 

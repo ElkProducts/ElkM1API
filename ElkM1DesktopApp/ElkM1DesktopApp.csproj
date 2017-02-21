@@ -143,6 +143,9 @@
     <Compile Include="..\ElkM1API\csharp\SirenWord.cs">
       <Link>csharp\SirenWord.cs</Link>
     </Compile>
+    <Compile Include="..\ElkM1API\csharp\StringCallback.cs">
+      <Link>csharp\StringCallback.cs</Link>
+    </Compile>
     <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_Elk__KeypadFkeyStatus__FkeyIllumination.cs">
       <Link>csharp\SWIGTYPE_p_Elk__KeypadFkeyStatus__FkeyIllumination.cs</Link>
     </Compile>
