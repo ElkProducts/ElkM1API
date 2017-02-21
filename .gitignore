@@ -7,3 +7,6 @@ ElkM1API/build
 ElkM1API/ElkM1API.py
 ElkM1API/swig_wrap.cpp
 ElkM1API/swig_wrap.h
+ElkM1API/csharp
+ElkM1API.VC.opendb
+ElkM1API.sdf

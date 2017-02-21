@@ -91,13 +91,46 @@ namespace Elk {
 
 		// TODO: "KC"
 		
-		// Counter value read
-		handleMessageTable.emplace("CV", [this](std::string message) {
-			// CVNNDDDDD00
-			int counter = std::stoi(message.substr(2, 2)) - 1;
-			int value = std::stoi(message.substr(4, 5));
-			m1cache.counterValues[counter].set((uint16_t)value);
+		// Arming Status Request
+		handleMessageTable.emplace("AS", [this](std::string message) {
+			std::shared_ptr<std::vector<ArmStatus>> newStatus(new std::vector<ArmStatus>(8));
+			for (int i = 0; i < 8; i++) {
+				newStatus->at(i).mode = (ArmMode)(message.at(2 + i) - '0');
+				newStatus->at(i).isReady = (ArmUpMode)(message.at(10 + i) - '0');
+				newStatus->at(i).alarm = (AlarmState)(message.at(18 + i) - '0');
+			}
+			m1cache.armStatus.set(*newStatus);
+
+			// Create and detach the callback thread, self-cleans on exit
+			if (onArmStatusChange)
+				std::thread(&ArmStatusVectorCallback::run, onArmStatusChange, *newStatus).detach();
 		});
+
+		// Alarms by zone
+		handleMessageTable.emplace("AZ", [this](std::string message) {
+			std::vector<SZoneDefinition> zones(208);
+			for (int i = 0; i < 208; i++) {
+				zones[i].zd = (ZoneDefinition)(message.at(2 + i) - '0');
+			}
+			m1cache.zoneAlarms.set(zones);
+		});
+
+		// AudioZone audio data
+		handleMessageTable.emplace("CA", [this](std::string message) {
+			AudioData data;
+			int index = stoi(message.substr(2, 2)) - 1;
+			data.zoneIsOn = message.at(4) == '1';
+			data.source = stoi(message.substr(5, 2)) - 1;
+			data.volume = stoi(message.substr(7, 3));
+			data.bass = stoi(message.substr(10, 3));
+			data.treble = stoi(message.substr(13, 3));
+			data.loudness = message.at(16) == '1';
+			data.balance = stoi(message.substr(17, 3));
+			data.partyMode = (AudioData::PartyMode)(message.at(20) - '0');
+			data.doNotDisturb = message.at(21) == '1';
+			m1cache.audioData[index].set(data);
+		});
+
 		// Custom value read
 		handleMessageTable.emplace("CR", [this](std::string message) {
 			// CRNNDDDDD00
@@ -115,44 +148,7 @@ namespace Elk {
 				m1cache.customValues[index].set((uint16_t)value);
 			}
 		});
-		// Arming Status Request
-		handleMessageTable.emplace("AS", [this](std::string message) {
-			std::shared_ptr<std::vector<ArmStatus>> newStatus(new std::vector<ArmStatus>(8));
-			for (int i = 0; i < 8; i++) {
-				newStatus->at(i).mode = (ArmMode)(message.at(2 + i) - '0');
-				newStatus->at(i).isReady = (ArmUpMode)(message.at(10 + i) - '0');
-				newStatus->at(i).alarm = (AlarmState)(message.at(18 + i) - '0');
-			}
-			m1cache.armStatus.set(*newStatus);
 
-			// Create and detach the callback thread, self-cleans on exit
-			if (onArmStatusChange)
-				std::thread(&ArmStatusVectorCallback::run, onArmStatusChange, *newStatus).detach();
-		});
-		// Zone Voltage
-		handleMessageTable.emplace("ZV", [this](std::string message) {
-			int index = std::stoi(message.substr(2, 3)) - 1;
-			int value = std::stoi(message.substr(5, 3));
-			m1cache.zoneVoltage[index].set(
-				((float)value) / 10
-				);
-		});
-		// Keypad Areas
-		handleMessageTable.emplace("KA", [this](std::string message) {
-			std::vector<int> areas(16);
-			for (int i = 0; i < 16; i++) {
-				areas[i] = message.at(2 + i) - '0' - 1;
-			}
-			m1cache.keypadAreas.set(areas);
-		});
-		// Zone Partitions
-		handleMessageTable.emplace("ZP", [this](std::string message) {
-			std::vector<int> zones(208);
-			for (int i = 0; i < 208; i++) {
-				zones[i] = message.at(2 + i) - '0' - 1;
-			}
-			m1cache.zonePartitions.set(zones);
-		});
 		// Control Output Status
 		handleMessageTable.emplace("CS", [this](std::string message) {
 			std::vector<bool> zones(208);
@@ -161,62 +157,48 @@ namespace Elk {
 			}
 			m1cache.controlOutputs.set(zones);
 		});
-		// Version number, TODO: Scrape XEP number too
-		handleMessageTable.emplace("VN", [this](std::string message) {
-			std::vector<int> vn(3);
-			for (int i = 0; i < 3; i++) {
-				vn[i] = stoi(message.substr(2 + (2 * i), 2), 0, 16);
-			}
-			m1cache.M1VersionNumber.set(vn);
+
+		// Counter value read
+		handleMessageTable.emplace("CV", [this](std::string message) {
+			// CVNNDDDDD00
+			int counter = std::stoi(message.substr(2, 2)) - 1;
+			int value = std::stoi(message.substr(4, 5));
+			m1cache.counterValues[counter].set((uint16_t)value);
 		});
+
+
 		// Lighting status
 		handleMessageTable.emplace("DS", [this](std::string message) {
 			int index = stoi(message.substr(2, 3)) - 1;
 			int value = stoi(message.substr(5, 2));
 			m1cache.lightingStatus[index].set(value);
 		});
-		// Alarms by zone
-		handleMessageTable.emplace("AZ", [this](std::string message) {
-			std::vector<SZoneDefinition> zones(208);
-			for (int i = 0; i < 208; i++) {
-				zones[i].zd = (ZoneDefinition)(message.at(2 + i) - '0');
-			}
-			m1cache.zoneAlarms.set(zones);
+
+		// RP disconnected
+		handleMessageTable.emplace("IE", [this](std::string message) {
+			// Create and detach the callback thread, self-cleans on exit
+			if (onRPConnection)
+				std::thread(&BoolCallback::run, onRPConnection, false).detach();
 		});
-		// Definitions by zone
-		handleMessageTable.emplace("ZD", [this](std::string message) {
-			std::vector<SZoneDefinition> zones(208);
-			for (int i = 0; i < 208; i++) {
-				zones[i].zd = (ZoneDefinition)(message.at(2 + i) - '0');
+
+		// Keypad Areas
+		handleMessageTable.emplace("KA", [this](std::string message) {
+			std::vector<int> areas(16);
+			for (int i = 0; i < 16; i++) {
+				areas[i] = message.at(2 + i) - '0' - 1;
 			}
-			m1cache.zoneDefinitions.set(zones);
+			m1cache.keypadAreas.set(areas);
 		});
-		// Zone Statuses
-		handleMessageTable.emplace("ZS", [this](std::string message) {
-			std::vector<ZoneState> zones(208);
-			for (int i = 0; i < 208; i++) {
-				// Ascii to Int
-				int bitfield = message.at(2 + i) - ((message.at(2 + i) >= 'A') ?
-					('A' - 10):
-					'0');
-				zones[i] = { (PhysicalZoneState)(bitfield & 0x3),
-					(LogicalZoneState)(bitfield >> 2) };
+
+		// Keypad function press TODO: Test
+		handleMessageTable.emplace("KF", [this](std::string message) {
+			std::vector<SChimeMode> chimeModes(8);
+			for (int i = 0; i < 8; i++) {
+				chimeModes[i].cm = (ChimeMode)(message.at(5 + i) - '0');
 			}
-			m1cache.zoneStatus.set(zones);
+			m1cache.chimeModes.set(chimeModes);
 		});
-		// Zones Bypassed
-		handleMessageTable.emplace("ZB", [this](std::string message) {
-			int index = std::stoi(message.substr(2, 3)) - 1;
-			bool bypassed = message.at(5) == '1';
-			if (index == 998 || index == -1)
-			{
-				// Area bypass
-				m1cache.areaBypassed.set(bypassed);
-			}
-			else {
-				m1cache.zonesBypassed[index].set(bypassed);
-			}
-		});
+
 		// Temperature data block
 		handleMessageTable.emplace("LW", [this](std::string message) {
 			// Keypad temps
@@ -230,51 +212,17 @@ namespace Elk {
 				m1cache.zoneTemperatures[i].set((temp != -60) ? temp : INT_MIN);
 			}
 		});
-		// Individual temperature data
-		handleMessageTable.emplace("ST", [this](std::string message) {
-			TemperatureDevice type = (TemperatureDevice)(message.at(2) - '0');
-			int index = std::stoi(message.substr(3, 2)) - 1;
-			int value = std::stoi(message.substr(5, 3));
-			bool defined = (value != 0);
-			switch (type) {
-			case TEMPDEVICE_ZONE:
-				value -= 60;
-				m1cache.zoneTemperatures[index].set(defined ? value : INT_MIN);
-				break;
-			case TEMPDEVICE_KEYPAD:
-				value -= 40;
-				m1cache.keypadTemperatures[index].set(defined ? value : INT_MIN);
-				break;
-			case TEMPDEVICE_THERMOSTAT:
-				m1cache.thermostatTemperatures[index].set(defined ? value : INT_MIN);
-				break;
-			}
 
+		// Returned PLC status
+		handleMessageTable.emplace("PS", [this](std::string message) {
+			std::vector<int> lightingLevels(64);
+			int bank = message.at(2) - '0';
+			for (int i = 0; i < 64; i++) {
+				lightingLevels[i] = message.at(3 + i) - '0';
+			}
+			m1cache.plcStatus[bank].set(lightingLevels);
 		});
-		// System Trouble Status TODO: Trouble status is more detailed than this
-		handleMessageTable.emplace("SS", [this](std::string message) {  
-			SystemTroubleStatus sts;
-			sts.ACFail = message.at(2) == '1';
-			sts.boxTamper = message.at(3) == '1';
-			sts.communicationError = message.at(4) == '1';
-			sts.EEPROMError = message.at(5) == '1';
-			sts.lowBattery = message.at(6) == '1';
-			sts.overCurrent = message.at(7) == '1';
-			sts.telephoneFault = message.at(8) == '1';
-			sts.output2 = message.at(9) == '1';
-			sts.missingKeypad = message.at(10) == '1';
-			sts.zoneExpander = message.at(11) == '1';
-			sts.outputExpander = message.at(12) == '1';
-			sts.RPRemoteAccess = message.at(13) == '1';
-			sts.commonAreaNotArmed = message.at(14) == '1';
-			sts.flashMemoryError = message.at(15) == '1';
-			sts.securityAlert = message.at(16) == '1';
-			sts.serialPortExpander = message.at(17) == '1';
-			sts.lostTransmitter = message.at(18) == '1';
-			sts.GESmokeCleanMe = message.at(19) == '1';
-			sts.ethernet = message.at(20) == '1';
-			m1cache.systemTroubleStatus.set(sts);
-		});
+
 		// RP connected
 		handleMessageTable.emplace("RP", [this](std::string message) {
 			// Invalidate the cache, causing currently blocked calls to throw exceptions
@@ -283,42 +231,22 @@ namespace Elk {
 			if (onRPConnection)
 				std::thread(&BoolCallback::run, onRPConnection, true).detach();
 		});
-		// RP disconnected
-		handleMessageTable.emplace("IE", [this](std::string message) {
-			// Create and detach the callback thread, self-cleans on exit
-			if (onRPConnection)
-				std::thread(&BoolCallback::run, onRPConnection, false).detach();
+
+		// RTC Data
+		handleMessageTable.emplace("RR", [this](std::string message) {
+			RTCData rtc;
+			rtc.seconds = stoi(message.substr(2, 2));
+			rtc.minutes = stoi(message.substr(4, 2));
+			rtc.hours = stoi(message.substr(6, 2));
+			rtc.weekday = (Weekday)(message.at(8) - '0');
+			rtc.day = stoi(message.substr(9, 2));
+			rtc.month = stoi(message.substr(11, 2));
+			rtc.year = stoi(message.substr(13, 2)) + 2000;
+			rtc.twelveHourClock = message.at(16) == '1';
+			rtc.dayBeforeMonth = message.at(17) == '1';
+			m1cache.rtcData.set(rtc);
 		});
-		// Thermostat data // TODO: Test this!
-		handleMessageTable.emplace("TR", [this](std::string message) {
-			ThermostatData td;
-			int index = std::stoi(message.substr(2, 2)) - 1;
-			td.mode = (ThermostatData::ThermostatMode)(message.at(4) - '0');
-			td.holdCurrentTemperature = message.at(5) == '1';
-			td.fanOn = message.at(6) == '1';
-			td.temperature = std::stoi(message.substr(7, 2));
-			td.heatSetPoint = std::stoi(message.substr(9, 2));
-			td.coolSetPoint = std::stoi(message.substr(11, 2));
-			td.humidity = std::stoi(message.substr(13, 2));
-			m1cache.thermostatData[index].set(td);
-			m1cache.thermostatTemperatures[index].set(td.temperature);
-		});
-		// Log dataUu
-		handleMessageTable.emplace("LD", [this](std::string message) {
-			LogEntry le;
-			int index = std::stoi(message.substr(18, 3)) - 1;
-			if (index == -1) return; // TODO: New log entry callback?
-			le.event = std::stoi(message.substr(2, 4));
-			le.eventSubjectNumber = std::stoi(message.substr(6, 3));
-			le.area = message.at(9) - '1';
-			le.hour = std::stoi(message.substr(10, 2));
-			le.minute = std::stoi(message.substr(12, 2));
-			le.month = std::stoi(message.substr(14, 2));
-			le.day = std::stoi(message.substr(16, 2));
-			le.dayOfWeek = (Weekday)(message.at(21) - '0');
-			le.year = std::stoi(message.substr(22, 2));
-			m1cache.logData[index].set(le);
-		});
+
 		// Strings
 		handleMessageTable.emplace("SD", [this](std::string message) {
 			TextDescriptionType tdt = TextDescriptionType(stoi(message.substr(2, 2)));
@@ -375,38 +303,53 @@ namespace Elk {
 				std::thread(&StringCallback::run, onDebugOutput, output).detach();
 			}
 		});
-		// Keypad function press TODO: Test
-		handleMessageTable.emplace("KF", [this](std::string message) {
-			std::vector<SChimeMode> chimeModes(8);
-			for (int i = 0; i < 8; i++) {
-				chimeModes[i].cm = (ChimeMode)(message.at(5 + i) - '0');
+
+		// System Trouble Status TODO: Trouble status is more detailed than this
+		handleMessageTable.emplace("SS", [this](std::string message) {  
+			SystemTroubleStatus sts;
+			sts.ACFail = message.at(2) == '1';
+			sts.boxTamper = message.at(3) == '1';
+			sts.communicationError = message.at(4) == '1';
+			sts.EEPROMError = message.at(5) == '1';
+			sts.lowBattery = message.at(6) == '1';
+			sts.overCurrent = message.at(7) == '1';
+			sts.telephoneFault = message.at(8) == '1';
+			sts.output2 = message.at(9) == '1';
+			sts.missingKeypad = message.at(10) == '1';
+			sts.zoneExpander = message.at(11) == '1';
+			sts.outputExpander = message.at(12) == '1';
+			sts.RPRemoteAccess = message.at(13) == '1';
+			sts.commonAreaNotArmed = message.at(14) == '1';
+			sts.flashMemoryError = message.at(15) == '1';
+			sts.securityAlert = message.at(16) == '1';
+			sts.serialPortExpander = message.at(17) == '1';
+			sts.lostTransmitter = message.at(18) == '1';
+			sts.GESmokeCleanMe = message.at(19) == '1';
+			sts.ethernet = message.at(20) == '1';
+			m1cache.systemTroubleStatus.set(sts);
+		});
+
+		// Individual temperature data
+		handleMessageTable.emplace("ST", [this](std::string message) {
+			TemperatureDevice type = (TemperatureDevice)(message.at(2) - '0');
+			int index = std::stoi(message.substr(3, 2)) - 1;
+			int value = std::stoi(message.substr(5, 3));
+			bool defined = (value != 0);
+			switch (type) {
+			case TEMPDEVICE_ZONE:
+				value -= 60;
+				m1cache.zoneTemperatures[index].set(defined ? value : INT_MIN);
+				break;
+			case TEMPDEVICE_KEYPAD:
+				value -= 40;
+				m1cache.keypadTemperatures[index].set(defined ? value : INT_MIN);
+				break;
+			case TEMPDEVICE_THERMOSTAT:
+				m1cache.thermostatTemperatures[index].set(defined ? value : INT_MIN);
+				break;
 			}
-			m1cache.chimeModes.set(chimeModes);
 		});
-		// Returned PLC status
-		handleMessageTable.emplace("PS", [this](std::string message) {
-			std::vector<int> lightingLevels(64);
-			int bank = message.at(2) - '0';
-			for (int i = 0; i < 64; i++) {
-				lightingLevels[i] = message.at(3 + i) - '0';
-			}
-			m1cache.plcStatus[bank].set(lightingLevels);
-		});
-		// AudioZone audio data
-		handleMessageTable.emplace("CA", [this](std::string message) {
-			AudioData data;
-			int index = stoi(message.substr(2, 2)) - 1;
-			data.zoneIsOn = message.at(4) == '1';
-			data.source = stoi(message.substr(5, 2)) - 1;
-			data.volume = stoi(message.substr(7, 3));
-			data.bass = stoi(message.substr(10, 3));
-			data.treble = stoi(message.substr(13, 3));
-			data.loudness = message.at(16) == '1';
-			data.balance = stoi(message.substr(17, 3));
-			data.partyMode = (AudioData::PartyMode)(message.at(20) - '0');
-			data.doNotDisturb = message.at(21) == '1';
-			m1cache.audioData[index].set(data);
-		});
+
 		// Omnistat 2 reply
 		handleMessageTable.emplace("T2", [this](std::string message) {
 			std::vector<char> reply;
@@ -414,6 +357,22 @@ namespace Elk {
 				reply.push_back(stoi(message.substr(2 + (i * 2)), 0, 16));
 			m1cache.omniStat2Reply.set(reply);
 		});
+
+		// Thermostat data // TODO: Test this!
+		handleMessageTable.emplace("TR", [this](std::string message) {
+			ThermostatData td;
+			int index = std::stoi(message.substr(2, 2)) - 1;
+			td.mode = (ThermostatData::ThermostatMode)(message.at(4) - '0');
+			td.holdCurrentTemperature = message.at(5) == '1';
+			td.fanOn = message.at(6) == '1';
+			td.temperature = std::stoi(message.substr(7, 2));
+			td.heatSetPoint = std::stoi(message.substr(9, 2));
+			td.coolSetPoint = std::stoi(message.substr(11, 2));
+			td.humidity = std::stoi(message.substr(13, 2));
+			m1cache.thermostatData[index].set(td);
+			m1cache.thermostatTemperatures[index].set(td.temperature);
+		});
+
 		// User code areas
 		handleMessageTable.emplace("UA", [this](std::string message) {
 			UserCodeAccess uca;
@@ -422,19 +381,69 @@ namespace Elk {
 			uca.usesCelcius = message.at(20) == 'C';
 			m1cache.userCodeAccess.set(uca);
 		});
-		// RTC Data
-		handleMessageTable.emplace("RR", [this](std::string message) {
-			RTCData rtc;
-			rtc.seconds = stoi(message.substr(2, 2));
-			rtc.minutes = stoi(message.substr(4, 2));
-			rtc.hours = stoi(message.substr(6, 2));
-			rtc.weekday = (Weekday)(message.at(8) - '0');
-			rtc.day = stoi(message.substr(9, 2));
-			rtc.month = stoi(message.substr(11, 2));
-			rtc.year = stoi(message.substr(13, 2)) + 2000;
-			rtc.twelveHourClock = message.at(16) == '1';
-			rtc.dayBeforeMonth = message.at(17) == '1';
-			m1cache.rtcData.set(rtc);
+
+		// Version number, TODO: Scrape XEP number too
+		handleMessageTable.emplace("VN", [this](std::string message) {
+			std::vector<int> vn(3);
+			for (int i = 0; i < 3; i++) {
+				vn[i] = stoi(message.substr(2 + (2 * i), 2), 0, 16);
+			}
+			m1cache.M1VersionNumber.set(vn);
+		});
+
+		// Zones Bypassed
+		handleMessageTable.emplace("ZB", [this](std::string message) {
+			int index = std::stoi(message.substr(2, 3)) - 1;
+			bool bypassed = message.at(5) == '1';
+			if (index == 998 || index == -1)
+			{
+				// Area bypass
+				m1cache.areaBypassed.set(bypassed);
+			}
+			else {
+				m1cache.zonesBypassed[index].set(bypassed);
+			}
+		});
+
+		// Definitions by zone
+		handleMessageTable.emplace("ZD", [this](std::string message) {
+			std::vector<SZoneDefinition> zones(208);
+			for (int i = 0; i < 208; i++) {
+				zones[i].zd = (ZoneDefinition)(message.at(2 + i) - '0');
+			}
+			m1cache.zoneDefinitions.set(zones);
+		});
+
+		// Zone Partitions
+		handleMessageTable.emplace("ZP", [this](std::string message) {
+			std::vector<int> zones(208);
+			for (int i = 0; i < 208; i++) {
+				zones[i] = message.at(2 + i) - '0' - 1;
+			}
+			m1cache.zonePartitions.set(zones);
+		});
+
+		// Zone Statuses
+		handleMessageTable.emplace("ZS", [this](std::string message) {
+			std::vector<ZoneState> zones(208);
+			for (int i = 0; i < 208; i++) {
+				// Ascii to Int
+				int bitfield = message.at(2 + i) - ((message.at(2 + i) >= 'A') ?
+					('A' - 10):
+					'0');
+				zones[i] = { (PhysicalZoneState)(bitfield & 0x3),
+					(LogicalZoneState)(bitfield >> 2) };
+			}
+			m1cache.zoneStatus.set(zones);
+		});
+
+		// Zone Voltage
+		handleMessageTable.emplace("ZV", [this](std::string message) {
+			int index = std::stoi(message.substr(2, 3)) - 1;
+			int value = std::stoi(message.substr(5, 3));
+			m1cache.zoneVoltage[index].set(
+				((float)value) / 10
+				);
 		});
 	}
 
