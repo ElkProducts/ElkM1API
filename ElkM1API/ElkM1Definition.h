@@ -305,7 +305,7 @@ namespace Elk {
 
 	struct KeypadFkeyStatus {
 		enum FkeyIllumination{
-			FKEY_OFF,
+			FKEY_OFF = 0,
 			FKEY_ON,
 			FKEY_BLINKING
 		} illumination[6];

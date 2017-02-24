@@ -125,24 +125,22 @@ namespace Elk
 		virtual ELKM1API std::vector<ZoneState> getZoneStatuses() = 0;
 		// Get the voltage of defined zones.
 		virtual ELKM1API float getZoneVoltage(int zone) = 0;
+		// CC - TODO
+		// CU - TODO
+		// EE - TODO
+		// IC - TODO
+		// KC - TODO
+		// LD - TODO
+		// TC - TODO
+		// ZB - TODO
+		// ZC - TODO
+		// cw - TODO
+		// rr - TODO
 
-		// TODO: These functions aren't sent for by us, but we still recieve them.
-		// There needs to be some form of API call which gives us information from them.
-		// AP - ignore?
-		// AR - handle in monitor (ar)
-		// AT - handle in monitor (at)
-		// CC - handle in monitor
-		// (cd - CD) - TODO - Control audio commands between XEP and audio devs. Ignore?
-		// EE - handle in monitor
-		// EM - ignore?
-		// IC - handle in monitor
-		// ir ~ IR - ?
-		// TC - handle in monitor
-		// XK - handle in monitor
-		// ZC - handle in monitor
-		// PC - handle in monitor
-		// (rs) - used by touchscreen
+		// There are no plans to implement support for the following commands:
+		// AP, AR, CD, EM, IP, IR, PC, RE, XB, XK, ar, cd, ip, ir, xk, zt 
+
+		// These commands are deprecated and will not be supported by the API:
+		// AT, DK, NS, NZ, at
 	};
-
-
 }
