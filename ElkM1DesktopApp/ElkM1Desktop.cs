@@ -173,7 +173,10 @@ namespace ElkM1DesktopApp
 
         public void HandleDebugOutput(String debugMessage)
         {
-            Console.Write(debugMessage);
+            RunOnGUIThread(this, () =>
+            {
+                tbTestOut.AppendText(debugMessage + "\n");
+            });
         }
 
         public void HandleControlOutputChange(BoolVector v)

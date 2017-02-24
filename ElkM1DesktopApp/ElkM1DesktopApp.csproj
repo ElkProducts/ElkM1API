@@ -242,16 +242,7 @@
     <None Include="Resources\armnight_image_c.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\zone_bypassed.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\zone_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zone_trouble.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zone_violated.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\off_symbol.png" />
@@ -260,6 +251,9 @@
     <None Include="Resources\on_symbol.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\zone_bypassed.png" />
+    <None Include="Resources\zone_trouble.png" />
+    <None Include="Resources\zone_violated.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

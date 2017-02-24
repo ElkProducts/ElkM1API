@@ -42,6 +42,8 @@
             this.OutputsList = new System.Windows.Forms.ListView();
             this.Tasks = new System.Windows.Forms.TabPage();
             this.Custom_Settings = new System.Windows.Forms.TabPage();
+            this.Debug = new System.Windows.Forms.TabPage();
+            this.tbTestOut = new System.Windows.Forms.TextBox();
             this.Connect = new System.Windows.Forms.Button();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
@@ -52,6 +54,7 @@
             this.tabControls.SuspendLayout();
             this.Security.SuspendLayout();
             this.Outputs.SuspendLayout();
+            this.Debug.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControls
@@ -62,6 +65,7 @@
             this.tabControls.Controls.Add(this.Outputs);
             this.tabControls.Controls.Add(this.Tasks);
             this.tabControls.Controls.Add(this.Custom_Settings);
+            this.tabControls.Controls.Add(this.Debug);
             this.tabControls.Location = new System.Drawing.Point(12, 12);
             this.tabControls.Name = "tabControls";
             this.tabControls.SelectedIndex = 0;
@@ -188,6 +192,25 @@
             this.Custom_Settings.Text = "Custom Settings";
             this.Custom_Settings.UseVisualStyleBackColor = true;
             // 
+            // Debug
+            // 
+            this.Debug.Controls.Add(this.tbTestOut);
+            this.Debug.Location = new System.Drawing.Point(4, 22);
+            this.Debug.Name = "Debug";
+            this.Debug.Padding = new System.Windows.Forms.Padding(3);
+            this.Debug.Size = new System.Drawing.Size(592, 363);
+            this.Debug.TabIndex = 6;
+            this.Debug.Text = "Debug";
+            this.Debug.UseVisualStyleBackColor = true;
+            // 
+            // tbTestOut
+            // 
+            this.tbTestOut.Location = new System.Drawing.Point(6, 6);
+            this.tbTestOut.Multiline = true;
+            this.tbTestOut.Name = "tbTestOut";
+            this.tbTestOut.Size = new System.Drawing.Size(580, 351);
+            this.tbTestOut.TabIndex = 0;
+            // 
             // Connect
             // 
             this.Connect.Location = new System.Drawing.Point(537, 407);
@@ -266,6 +289,8 @@
             this.Security.ResumeLayout(false);
             this.Outputs.ResumeLayout(false);
             this.Outputs.PerformLayout();
+            this.Debug.ResumeLayout(false);
+            this.Debug.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,6 +319,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage Debug;
+        private System.Windows.Forms.TextBox tbTestOut;
     }
 }
 
