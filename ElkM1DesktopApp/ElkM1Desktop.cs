@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,11 +92,13 @@ namespace ElkM1DesktopApp
             OutputsList.LargeImageList.Images.Add("off_symbol", Properties.Resources.off_symbol);
             OutputsList.SmallImageList = OutputsList.LargeImageList;
 
-
-
             m1.onArmStatusChange = new ArmStatusUpdateHandler(HandleArmStatusChange);
             m1.onRPConnection = new BoolUpdateHandler(HandleRPConnection);
             m1.onDebugOutput = new DebugOutputHandler(HandleDebugOutput);
+
+            tbUsername.Text = ConfigurationManager.AppSettings["Username"];
+            tbPassword.Text = ConfigurationManager.AppSettings["Password"];
+            tbSerialNumber.Text = ConfigurationManager.AppSettings["SerialNumber"];
         }
 
         public void ClearViews()
@@ -244,8 +247,14 @@ namespace ElkM1DesktopApp
 
                         C1M1Tunnel tunn = new C1M1Tunnel(cs);
                         string username = tbUsername.Text;
+                        if (!ConfigurationManager.AppSettings["Username"].Equals(username))
+                            ConfigurationManager.AppSettings.Set("Username", username);
                         string password = tbPassword.Text;
+                        if (!ConfigurationManager.AppSettings["Password"].Equals(password))
+                            ConfigurationManager.AppSettings.Set("Password", password);
                         string serialNumber = tbSerialNumber.Text;
+                        if (!ConfigurationManager.AppSettings["SerialNumber"].Equals(serialNumber))
+                            ConfigurationManager.AppSettings.Set("SerialNumber", serialNumber);
                         if (tunn.Authenticate(username, password, serialNumber) != NetworkType.NETWORKTYPE_NONE)
                         {
 
@@ -289,7 +298,14 @@ namespace ElkM1DesktopApp
 
         private void AreasList_DoubleClick(object sender, EventArgs e)
         {
-            m1.armDisarm(Int32.Parse(AreasList.SelectedItems[0].Name), ArmMode.ARM_AWAY, "1111");
+            string userCode = ConfigurationManager.AppSettings["UserCode"];
+            if (!userCode.Equals(""))
+            {
+                m1.armDisarm(Int32.Parse(AreasList.SelectedItems[0].Name), ArmMode.ARM_AWAY, userCode);
+            } else
+            {
+                Console.WriteLine("UserCode Not set in App.config");
+            }
         }
 
         private void AreasList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
