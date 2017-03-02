@@ -24,6 +24,12 @@ public:
 	virtual ELKM1API ~ArmStatusVectorCallback() = 0;
 };
 
+class KeypadFkeyStatusCallback {
+public:
+	virtual ELKM1API void run(Elk::KeypadFkeyStatus status) = 0;
+	virtual ELKM1API ~KeypadFkeyStatusCallback() = 0;
+};
+
 class StringCallback {
 public:
 	virtual ELKM1API void run(std::string arg1) = 0;

@@ -184,22 +184,22 @@ namespace Elk {
 
 		// Keypad KeyChange Update
 		handleMessageTable.emplace("KC", [this](std::string message) {
-			KeypadFkeyStatus keypadFkeyStatus;
-			keypadFkeyStatus.keypadNumber = stoi(message.substr(2, 2)) - 1;
-			keypadFkeyStatus.KeyPressed = (KeypadFkeyStatus::KeyID) stoi(message.substr(4, 2));
+			std::shared_ptr<KeypadFkeyStatus> newStatus(new KeypadFkeyStatus);
+			newStatus->keypadNumber = stoi(message.substr(2, 2)) - 1;
+			newStatus->KeyPressed = (KeypadFkeyStatus::KeyID) stoi(message.substr(4, 2));
 			for (int i = 0; i < 6; i++) {
-				keypadFkeyStatus.illumination[i] = 
+				newStatus->illumination[i] = 
 					(KeypadFkeyStatus::FkeyIllumination)(message.at(6 + i) - '0');
 			}
-			keypadFkeyStatus.codeRequiredForBypass = message.at(10) == '1';
+			newStatus->codeRequiredForBypass = message.at(10) == '1';
 			for (int i = 0; i < 8; i++)
 			{
-				keypadFkeyStatus.beepChimeMode[i] = message.at(11) - '0';
+				newStatus->beepChimeMode[i] = message.at(11) - '0';
 			}
-			m1cache.keypadStatuses[keypadFkeyStatus.keypadNumber].set(keypadFkeyStatus);
-			// TODO add a user defined callback to handle cases when the keypressed is not "0"
-			// If the kepressed was not "0" then the KC command response was not requested by us,
-			// but the user may still want to handle it.
+			m1cache.keypadStatuses[newStatus->keypadNumber].set(*newStatus);
+
+			if (onKeypadFkeyStatusChange)
+				std::thread(&KeypadFkeyStatusCallback::run, onKeypadFkeyStatusChange, *newStatus).detach();
 		});
 
 		// Keypad function press TODO: Test

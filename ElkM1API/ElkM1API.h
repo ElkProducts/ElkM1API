@@ -36,6 +36,7 @@ namespace Elk
 		std::shared_ptr<BoolCallback> onRPConnection;
 		std::shared_ptr<ArmStatusVectorCallback> onArmStatusChange;
 		std::shared_ptr<StringCallback> onDebugOutput;
+		std::shared_ptr<KeypadFkeyStatusCallback> onKeypadFkeyStatusChange;
 
 		virtual ELKM1API std::vector<int> getConfiguredZones() = 0;
 		virtual ELKM1API std::vector<int> getConfiguredKeypads() = 0;
@@ -126,7 +127,7 @@ namespace Elk
 		// Get the voltage of defined zones.
 		virtual ELKM1API float getZoneVoltage(int zone) = 0;
 		// TODO: add support for these ASCII commands:
-		// CC, CU, EE, IC, KC, LD, PC, TC, ZB, ZC, cw, rr
+		// CC, CU, EE, IC, LD, PC, TC, ZB, ZC, cw, rr
 
 		// There are no plans to implement support for the following commands:
 		// AP, AR, CD, EM, IP, IR, RE, XB, XK, ar, cd, ip, ir, xk, zt 

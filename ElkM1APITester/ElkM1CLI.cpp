@@ -522,10 +522,17 @@ std::map<std::string, std::function<void()>> commands = {
 	} }
 };
 
-class CallbackCheck : public ArmStatusVectorCallback {
+class CustomArmStatusVectorCallback : public ArmStatusVectorCallback {
 public:
 	void run(std::vector<Elk::ArmStatus> v) {
-		std::cout << "Meow!\n";
+		std::cout << "Custom Arm Status Vector Callback\n";
+	}
+};
+
+class CustomKeypadFkeyStatusCallback : public KeypadFkeyStatusCallback {
+public:
+	void run(Elk::KeypadFkeyStatus kfks) {
+		std::cout << "Custom Keypad Fkey Status Callback\n";
 	}
 };
 
@@ -550,9 +557,8 @@ int main(int argc, char* argv[])
 		//	std::cout << "-- Warning, RP " << (connected ? "connected" : "disconnected") << ". --\n";
 		//};
 
-		m1api->onArmStatusChange = std::shared_ptr<ArmStatusVectorCallback>(new CallbackCheck());
-
-
+		m1api->onArmStatusChange = std::shared_ptr<ArmStatusVectorCallback>(new CustomArmStatusVectorCallback());
+		m1api->onKeypadFkeyStatusChange = std::shared_ptr<KeypadFkeyStatusCallback>(new CustomKeypadFkeyStatusCallback());
 
 		// Execute
 		m1api->run();

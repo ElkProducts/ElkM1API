@@ -8007,6 +8007,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVectorCallback_director_connect(void
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatusCallback_run(void * jarg1, void * jarg2) {
+  KeypadFkeyStatusCallback *arg1 = (KeypadFkeyStatusCallback *) 0 ;
+  Elk::KeypadFkeyStatus arg2 ;
+  Elk::KeypadFkeyStatus *argp2 ;
+  
+  arg1 = (KeypadFkeyStatusCallback *)jarg1; 
+  argp2 = (Elk::KeypadFkeyStatus *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::KeypadFkeyStatus", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_KeypadFkeyStatusCallback(void * jarg1) {
+  KeypadFkeyStatusCallback *arg1 = (KeypadFkeyStatusCallback *) 0 ;
+  
+  arg1 = (KeypadFkeyStatusCallback *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_run(void * jarg1, char * jarg2) {
   StringCallback *arg1 = (StringCallback *) 0 ;
   std::string arg2 ;
@@ -8131,6 +8155,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onDebugOutput_get(void * jarg1) {
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< StringCallback > *) & ((arg1)->onDebugOutput);
   jresult = *result ? new std::shared_ptr< StringCallback >(*result) : 0; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *)jarg2; 
+  if (arg1) (arg1)->onKeypadFkeyStatusChange = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< KeypadFkeyStatusCallback > *)& ((arg1)->onKeypadFkeyStatusChange);
+  jresult = (void *)result; 
   return jresult;
 }
 
