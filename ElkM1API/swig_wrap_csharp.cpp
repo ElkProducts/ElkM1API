@@ -7594,6 +7594,50 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_SystemTroubleStatus(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatus_keypadNumber_set(void * jarg1, int jarg2) {
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->keypadNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_KeypadFkeyStatus_keypadNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  int result;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  result = (int) ((arg1)->keypadNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatus_KeyPressed_set(void * jarg1, int jarg2) {
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  enum Elk::KeypadFkeyStatus::KeyID arg2 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  arg2 = (enum Elk::KeypadFkeyStatus::KeyID)jarg2; 
+  if (arg1) (arg1)->KeyPressed = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_KeypadFkeyStatus_KeyPressed_get(void * jarg1) {
+  int jresult ;
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  enum Elk::KeypadFkeyStatus::KeyID result;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  result = (enum Elk::KeypadFkeyStatus::KeyID) ((arg1)->KeyPressed);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatus_illumination_set(void * jarg1, void * jarg2) {
   Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
   enum Elk::KeypadFkeyStatus::FkeyIllumination *arg2 ;
@@ -7637,6 +7681,32 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_KeypadFkeyStatus_codeRequiredForBypas
   
   arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
   result = (bool) ((arg1)->codeRequiredForBypass);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatus_beepChimeMode_set(void * jarg1, void * jarg2) {
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  unsigned char *arg2 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  arg2 = (unsigned char *)jarg2; 
+  {
+    size_t ii;
+    unsigned char *b = (unsigned char *) arg1->beepChimeMode;
+    for (ii = 0; ii < (size_t)8; ii++) b[ii] = *((unsigned char *) arg2 + ii);
+  }
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_KeypadFkeyStatus_beepChimeMode_get(void * jarg1) {
+  void * jresult ;
+  Elk::KeypadFkeyStatus *arg1 = (Elk::KeypadFkeyStatus *) 0 ;
+  unsigned char *result = 0 ;
+  
+  arg1 = (Elk::KeypadFkeyStatus *)jarg1; 
+  result = (unsigned char *)(unsigned char *) ((arg1)->beepChimeMode);
   jresult = result; 
   return jresult;
 }

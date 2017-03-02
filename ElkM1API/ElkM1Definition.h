@@ -304,12 +304,41 @@ namespace Elk {
 	};
 
 	struct KeypadFkeyStatus {
+		int keypadNumber;
+		enum KeyID {
+			KEYID_NONE = 0,
+			KEYID_STAR = 11,
+			KEYID_POUND,
+			KEYID_F1,
+			KEYID_F2,
+			KEYID_F3,
+			KEYID_F4,
+			KEYID_STAY,
+			KEYID_EXIT,
+			KEYID_CHIME,
+			KEYID_BYPASS,
+			KEYID_ELK,
+			KEYID_DOWN,
+			KEYID_UP,
+			KEYID_RIGHT,
+			KEYID_LEFT,
+			KEYID_F6,
+			KEYID_F5,
+			KEYID_DATA,
+		} KeyPressed;
 		enum FkeyIllumination{
 			FKEY_OFF = 0,
 			FKEY_ON,
 			FKEY_BLINKING
 		} illumination[6];
 		bool codeRequiredForBypass;
+		enum BeepChimeFlags {
+			BCMODE_OFF = 0,
+			BCMODE_SINGLE = 1,
+			BCMODE_CONSTANT = 2,
+			BCMODE_CHIME = 4
+		};
+		unsigned char beepChimeMode[8];
 	};
 
 	struct UserCodeAccess {

@@ -82,14 +82,6 @@ namespace Elk {
 	//   no matter how many commands are added, it will always take the same amount of time to find a command and handle
 	//   the data. Message does not include length/checksum/crlf.
 	M1AsciiAPI::M1AsciiAPI(std::shared_ptr<Elk::M1Connection> conn) : M1Monitor(conn) {
-		// Ignored:
-		// XK
-
-		// TODO: Any command which has optional, unrequested reporting, we can leave a callback in the main API
-		//   that lets the program do whatever with it.
-		// PC
-
-		// TODO: "KC"
 		
 		// Arming Status Request
 		handleMessageTable.emplace("AS", [this](std::string message) {
@@ -188,6 +180,26 @@ namespace Elk {
 				areas[i] = message.at(2 + i) - '0' - 1;
 			}
 			m1cache.keypadAreas.set(areas);
+		});
+
+		// Keypad KeyChange Update
+		handleMessageTable.emplace("KC", [this](std::string message) {
+			KeypadFkeyStatus keypadFkeyStatus;
+			keypadFkeyStatus.keypadNumber = stoi(message.substr(2, 2)) - 1;
+			keypadFkeyStatus.KeyPressed = (KeypadFkeyStatus::KeyID) stoi(message.substr(4, 2));
+			for (int i = 0; i < 6; i++) {
+				keypadFkeyStatus.illumination[i] = 
+					(KeypadFkeyStatus::FkeyIllumination)(message.at(6 + i) - '0');
+			}
+			keypadFkeyStatus.codeRequiredForBypass = message.at(10) == '1';
+			for (int i = 0; i < 8; i++)
+			{
+				keypadFkeyStatus.beepChimeMode[i] = message.at(11) - '0';
+			}
+			m1cache.keypadStatuses[keypadFkeyStatus.keypadNumber].set(keypadFkeyStatus);
+			// TODO add a user defined callback to handle cases when the keypressed is not "0"
+			// If the kepressed was not "0" then the KC command response was not requested by us,
+			// but the user may still want to handle it.
 		});
 
 		// Keypad function press TODO: Test

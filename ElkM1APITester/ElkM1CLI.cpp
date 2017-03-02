@@ -179,7 +179,54 @@ std::map<std::string, std::function<void()>> commands = {
 		for (int i = 0; i < 16; i++)
 			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_KeypadName, i) << "\": " << kpa[i] << "\n";
 	} },
-	//{ "getKeypadFkeyStatus", [] {m1api->getKeypadFkeyStatus(int keypad); } },
+	{ "getKeypadFkeyStatus", [] {
+		int keypad;
+		std::cout << "Select keypad: ";
+		std::cin >> keypad;
+		const auto& kfks = m1api->getKeypadFkeyStatus(keypad); 
+		for (int i = 0; i < 6; i++)
+		{
+			std::cout << "F" << i + 1 << "Illumination : ";
+			switch (kfks.illumination[i])
+			{
+			case Elk::KeypadFkeyStatus::FkeyIllumination::FKEY_OFF:
+				std::cout << "OFF";
+				break;
+			case Elk::KeypadFkeyStatus::FkeyIllumination::FKEY_ON:
+				std::cout << "ON";
+				break;
+			case Elk::KeypadFkeyStatus::FkeyIllumination::FKEY_BLINKING:
+				std::cout << "BLINKING";
+				break;
+			default:
+				break;
+			}
+			std::cout << "\n";
+		}
+		std::cout << "Code Requred For Bypass: " << (kfks.codeRequiredForBypass ? "Yes" : "No") << "\n";
+		for (int i = 0; i < 6; i++) {
+			std::cout << "Area " << i + 1 << " Beep Chime Mode: ";
+			if (kfks.beepChimeMode[i] == 0)
+			{
+				std::cout << "OFF";
+			}
+			else {
+				bool comma = false;
+				if (kfks.beepChimeMode[i] & Elk::KeypadFkeyStatus::BeepChimeFlags::BCMODE_SINGLE) {
+					std::cout << "SINGLE";
+					comma = true;
+				}
+				if (kfks.beepChimeMode[i] & Elk::KeypadFkeyStatus::BeepChimeFlags::BCMODE_CONSTANT) {
+					std::cout << (comma ? ", " : "") << "CONSTANT";
+					comma = true;
+				}
+				if (kfks.beepChimeMode[i] & Elk::KeypadFkeyStatus::BeepChimeFlags::BCMODE_SINGLE) {
+					std::cout << (comma ? ", " : "") << "CHIME";
+				}
+			}
+			std::cout << "\n";
+		}
+	} },
 	//{ "getLightingStatus", [] {m1api->getLightingStatus(int device); } },
 	//{ "getLogData", [] {m1api->getLogData(int index); } },
 	//{ "getLogs", [] {m1api->getLogs(); } },
