@@ -110,8 +110,6 @@ namespace ElkM1DesktopApp
 
         public void HandleArmStatusChange(ArmStatusVector v)
         {
-            //m1.collectNames(TextDescriptionType.TEXT_AreaName);
-
             RunOnGUIThread(this, () =>
             {
                 foreach (int i in m1.getConfiguredAreas())
@@ -247,17 +245,10 @@ namespace ElkM1DesktopApp
 
                         C1M1Tunnel tunn = new C1M1Tunnel(cs);
                         string username = tbUsername.Text;
-                        if (!ConfigurationManager.AppSettings["Username"].Equals(username))
-                            ConfigurationManager.AppSettings.Set("Username", username);
                         string password = tbPassword.Text;
-                        if (!ConfigurationManager.AppSettings["Password"].Equals(password))
-                            ConfigurationManager.AppSettings.Set("Password", password);
                         string serialNumber = tbSerialNumber.Text;
-                        if (!ConfigurationManager.AppSettings["SerialNumber"].Equals(serialNumber))
-                            ConfigurationManager.AppSettings.Set("SerialNumber", serialNumber);
                         if (tunn.Authenticate(username, password, serialNumber) != NetworkType.NETWORKTYPE_NONE)
                         {
-
                             connected = !connected;
                             m1.run();
                             RunOnGUIThread(this, () =>
