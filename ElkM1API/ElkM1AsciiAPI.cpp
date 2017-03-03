@@ -123,6 +123,17 @@ namespace Elk {
 			m1cache.audioData[index].set(data);
 		});
 
+		// Output Change Update
+		// TODO: Test
+		handleMessageTable.emplace("CC", [this](std::string message) {
+			std::shared_ptr<std::vector<bool>> newStatus(new std::vector<bool>(m1cache.controlOutputs.get()));
+			int zoneNumber = stoi(message.substr(2, 3)) - 1;
+			newStatus->at(zoneNumber) = message.at(5) == '1';
+			m1cache.controlOutputs.set(*newStatus);
+			if (onOutputStatusChange)
+				std::thread(&BoolVectorCallback::run, onOutputStatusChange, *newStatus).detach();
+		});
+
 		// Custom value read
 		handleMessageTable.emplace("CR", [this](std::string message) {
 			// CRNNDDDDD00

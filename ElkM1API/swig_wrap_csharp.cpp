@@ -8007,6 +8007,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVectorCallback_director_connect(void
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVectorCallback_run(void * jarg1, void * jarg2) {
+  BoolVectorCallback *arg1 = (BoolVectorCallback *) 0 ;
+  std::vector< bool > arg2 ;
+  std::vector< bool > *argp2 ;
+  
+  arg1 = (BoolVectorCallback *)jarg1; 
+  argp2 = (std::vector< bool > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< bool >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolVectorCallback(void * jarg1) {
+  BoolVectorCallback *arg1 = (BoolVectorCallback *) 0 ;
+  
+  arg1 = (BoolVectorCallback *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatusCallback_run(void * jarg1, void * jarg2) {
   KeypadFkeyStatusCallback *arg1 = (KeypadFkeyStatusCallback *) 0 ;
   Elk::KeypadFkeyStatus arg2 ;
@@ -8176,6 +8200,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_get(void * j
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< KeypadFkeyStatusCallback > *)& ((arg1)->onKeypadFkeyStatusChange);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onOutputStatusChange_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< BoolVectorCallback > *arg2 = (std::shared_ptr< BoolVectorCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< BoolVectorCallback > *)jarg2; 
+  if (arg1) (arg1)->onOutputStatusChange = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onOutputStatusChange_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< BoolVectorCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< BoolVectorCallback > *)& ((arg1)->onOutputStatusChange);
   jresult = (void *)result; 
   return jresult;
 }
