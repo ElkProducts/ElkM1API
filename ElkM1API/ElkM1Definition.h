@@ -351,4 +351,14 @@ namespace Elk {
 		bool usesCelcius;
 		uint8_t validAreas;
 	};
+
+	struct EntryExitTimeData {
+		int area;
+		enum TimeDataType {
+			TIMEDATA_EXIT = 0,
+			TIMEDATA_ENTRANCE
+		} timeDataType;
+		int timer1, timer2;
+		Elk::ArmMode armState;
+	};
 }

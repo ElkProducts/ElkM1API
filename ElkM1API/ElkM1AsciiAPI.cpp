@@ -161,6 +161,19 @@ namespace Elk {
 			m1cache.controlOutputs.set(zones);
 		});
 
+		// User Code Changed
+		handleMessageTable.emplace("CU", [this](std::string message) {
+			int usercode = std::stoi(message.substr(2, 3));
+			UserCodeSuccess userCodeSuccess = Elk::UserCodeSuccess::USERCODE_CHANGE_SUCCESSFUL;
+			if (usercode == 0) { 
+				userCodeSuccess = Elk::UserCodeSuccess::USERCODE_UNAUTHORIZED;
+			}
+			else if (usercode == 255) {
+				userCodeSuccess = Elk::UserCodeSuccess::USERCODE_USER_DUPLICATE;
+			}
+			m1cache.userCodeChanged.set(userCodeSuccess);
+		});
+
 		// Counter value read
 		handleMessageTable.emplace("CV", [this](std::string message) {
 			// CVNNDDDDD00
@@ -175,6 +188,18 @@ namespace Elk {
 			int index = stoi(message.substr(2, 3)) - 1;
 			int value = stoi(message.substr(5, 2));
 			m1cache.lightingStatus[index].set(value);
+		});
+
+		// Entry/Exit Time Data
+		handleMessageTable.emplace("EE", [this](std::string message) {
+			std::shared_ptr<EntryExitTimeData> newStatus(new EntryExitTimeData());
+			newStatus->area = message.at(2) - '0' - 1;
+			newStatus->timeDataType = (Elk::EntryExitTimeData::TimeDataType)(message.at(3) - '0');
+			newStatus->timer1 = stoi(message.substr(4, 3));
+			newStatus->timer2 = stoi(message.substr(7, 3));
+			newStatus->armState = (Elk::ArmMode)(message.at(10) - '0');
+			if (onEntryExitTimerChange)
+				std::thread(&EntryExitTimeDataCallback::run, onEntryExitTimerChange, *newStatus).detach();
 		});
 
 		// RP disconnected

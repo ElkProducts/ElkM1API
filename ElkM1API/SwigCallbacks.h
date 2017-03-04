@@ -36,6 +36,12 @@ public:
 	virtual ELKM1API ~KeypadFkeyStatusCallback() = 0;
 };
 
+class EntryExitTimeDataCallback {
+public:
+	virtual ELKM1API void run(Elk::EntryExitTimeData data) = 0;
+	virtual ELKM1API ~EntryExitTimeDataCallback() = 0;
+};
+
 class StringCallback {
 public:
 	virtual ELKM1API void run(std::string arg1) = 0;

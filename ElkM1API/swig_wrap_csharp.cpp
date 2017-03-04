@@ -7846,6 +7846,150 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_UserCodeAccess(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeData_area_set(void * jarg1, int jarg2) {
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->area = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_EntryExitTimeData_area_get(void * jarg1) {
+  int jresult ;
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  result = (int) ((arg1)->area);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeData_timeDataType_set(void * jarg1, int jarg2) {
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  enum Elk::EntryExitTimeData::TimeDataType arg2 ;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  arg2 = (enum Elk::EntryExitTimeData::TimeDataType)jarg2; 
+  if (arg1) (arg1)->timeDataType = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_EntryExitTimeData_timeDataType_get(void * jarg1) {
+  int jresult ;
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  enum Elk::EntryExitTimeData::TimeDataType result;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  result = (enum Elk::EntryExitTimeData::TimeDataType) ((arg1)->timeDataType);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeData_timer1_set(void * jarg1, int jarg2) {
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->timer1 = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_EntryExitTimeData_timer1_get(void * jarg1) {
+  int jresult ;
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  result = (int) ((arg1)->timer1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeData_timer2_set(void * jarg1, int jarg2) {
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->timer2 = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_EntryExitTimeData_timer2_get(void * jarg1) {
+  int jresult ;
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  result = (int) ((arg1)->timer2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeData_armState_set(void * jarg1, int jarg2) {
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  Elk::ArmMode arg2 ;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  arg2 = (Elk::ArmMode)jarg2; 
+  if (arg1) (arg1)->armState = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_EntryExitTimeData_armState_get(void * jarg1) {
+  int jresult ;
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  Elk::ArmMode result;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  result = (Elk::ArmMode) ((arg1)->armState);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_EntryExitTimeData() {
+  void * jresult ;
+  Elk::EntryExitTimeData *result = 0 ;
+  
+  {
+    try {
+      result = (Elk::EntryExitTimeData *)new Elk::EntryExitTimeData();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_EntryExitTimeData(void * jarg1) {
+  Elk::EntryExitTimeData *arg1 = (Elk::EntryExitTimeData *) 0 ;
+  
+  arg1 = (Elk::EntryExitTimeData *)jarg1; 
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_BoolCallback_run(void * jarg1, unsigned int jarg2) {
   BoolCallback *arg1 = (BoolCallback *) 0 ;
   bool arg2 ;
@@ -8055,6 +8199,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_KeypadFkeyStatusCallback(void * jarg1)
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeDataCallback_run(void * jarg1, void * jarg2) {
+  EntryExitTimeDataCallback *arg1 = (EntryExitTimeDataCallback *) 0 ;
+  Elk::EntryExitTimeData arg2 ;
+  Elk::EntryExitTimeData *argp2 ;
+  
+  arg1 = (EntryExitTimeDataCallback *)jarg1; 
+  argp2 = (Elk::EntryExitTimeData *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::EntryExitTimeData", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_EntryExitTimeDataCallback(void * jarg1) {
+  EntryExitTimeDataCallback *arg1 = (EntryExitTimeDataCallback *) 0 ;
+  
+  arg1 = (EntryExitTimeDataCallback *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_run(void * jarg1, char * jarg2) {
   StringCallback *arg1 = (StringCallback *) 0 ;
   std::string arg2 ;
@@ -8222,6 +8390,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onOutputStatusChange_get(void * jarg1
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< BoolVectorCallback > *)& ((arg1)->onOutputStatusChange);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< EntryExitTimeDataCallback > *arg2 = (std::shared_ptr< EntryExitTimeDataCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< EntryExitTimeDataCallback > *)jarg2; 
+  if (arg1) (arg1)->onEntryExitTimerChange = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< EntryExitTimeDataCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< EntryExitTimeDataCallback > *)& ((arg1)->onEntryExitTimerChange);
   jresult = (void *)result; 
   return jresult;
 }
