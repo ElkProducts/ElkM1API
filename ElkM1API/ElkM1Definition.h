@@ -368,4 +368,19 @@ namespace Elk {
 		int userNumber; // when non-zero, the user number belonging to the valid user code.
 		int keypadNumber; // the keypad number where the code originated from.
 	};
+
+	struct LightingData {
+		char houseCode;
+		int unitCode;
+		double lightLevel;
+	};
+
+	struct X10Data {
+		char houseCode;
+		enum X10 {
+			X10_ALL_UNITS_OFF = 1,
+			X10_ALL_LIGHTS_ON = 2,
+			X10_ALL_LIGHTS_OFF = 7,
+		} x10;
+	};
 }

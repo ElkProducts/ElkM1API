@@ -8,4 +8,6 @@ BoolVectorCallback::~BoolVectorCallback() {}
 EntryExitTimeDataCallback::~EntryExitTimeDataCallback() {}
 UserCodeValidationCallback::~UserCodeValidationCallback() {}
 LogDataUpdateCallback::~LogDataUpdateCallback() {}
+LightingDataCallback::~LightingDataCallback() {}
+X10DataCallback::~X10DataCallback() {}
 StringCallback::~StringCallback() {}
