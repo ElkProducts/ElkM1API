@@ -48,6 +48,12 @@ public:
 	virtual ELKM1API ~UserCodeValidationCallback() = 0;
 };
 
+class LogDataUpdateCallback {
+public:
+	virtual ELKM1API void run(Elk::LogEntry) = 0;
+	virtual ELKM1API ~LogDataUpdateCallback() = 0;
+};
+
 class StringCallback {
 public:
 	virtual ELKM1API void run(std::string arg1) = 0;

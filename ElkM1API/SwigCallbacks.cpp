@@ -7,4 +7,5 @@ KeypadFkeyStatusCallback::~KeypadFkeyStatusCallback() {}
 BoolVectorCallback::~BoolVectorCallback() {}
 EntryExitTimeDataCallback::~EntryExitTimeDataCallback() {}
 UserCodeValidationCallback::~UserCodeValidationCallback() {}
+LogDataUpdateCallback::~LogDataUpdateCallback() {}
 StringCallback::~StringCallback() {}

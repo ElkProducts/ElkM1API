@@ -40,6 +40,7 @@ namespace Elk
 		std::shared_ptr<BoolVectorCallback> onOutputStatusChange;
 		std::shared_ptr<EntryExitTimeDataCallback> onEntryExitTimerChange;
 		std::shared_ptr<UserCodeValidationCallback> onUserCodeValidation;
+		std::shared_ptr<LogDataUpdateCallback> onLogDataUpdate;
 
 		virtual ELKM1API std::vector<int> getConfiguredZones() = 0;
 		virtual ELKM1API std::vector<int> getConfiguredKeypads() = 0;

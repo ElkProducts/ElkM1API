@@ -272,6 +272,25 @@ namespace Elk {
 			m1cache.chimeModes.set(chimeModes);
 		});
 
+		// Systems log data update
+		handleMessageTable.emplace("LD", [this](std::string message) {
+			std::shared_ptr<Elk::LogEntry> newEntry(new Elk::LogEntry());
+			newEntry->event = stoi(message.substr(2, 4));
+			newEntry->area = message.at(9) - '0' - 1;
+			newEntry->eventSubjectNumber = stoi(message.substr(6, 3));
+			newEntry->hour = stoi(message.substr(10, 2));
+			newEntry->minute = stoi(message.substr(12, 2));
+			newEntry->day = stoi(message.substr(14, 2));
+			newEntry->index = stoi(message.substr(16, 3));
+			newEntry->dayOfWeek = (Elk::Weekday)(message.at(20) - '0');
+			newEntry->year = stoi(message.substr(21, 2));
+
+			m1cache.logData[newEntry->index].set(*newEntry);
+
+			if (onLogDataUpdate)
+				std::thread(&LogDataUpdateCallback::run, onLogDataUpdate, *newEntry).detach();
+		});
+
 		// Temperature data block
 		handleMessageTable.emplace("LW", [this](std::string message) {
 			// Keypad temps

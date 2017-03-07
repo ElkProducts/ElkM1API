@@ -8347,6 +8347,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_UserCodeValidationCallback(void * jarg
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_LogDataUpdateCallback_run(void * jarg1, void * jarg2) {
+  LogDataUpdateCallback *arg1 = (LogDataUpdateCallback *) 0 ;
+  Elk::LogEntry arg2 ;
+  Elk::LogEntry *argp2 ;
+  
+  arg1 = (LogDataUpdateCallback *)jarg1; 
+  argp2 = (Elk::LogEntry *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::LogEntry", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogDataUpdateCallback(void * jarg1) {
+  LogDataUpdateCallback *arg1 = (LogDataUpdateCallback *) 0 ;
+  
+  arg1 = (LogDataUpdateCallback *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_run(void * jarg1, char * jarg2) {
   StringCallback *arg1 = (StringCallback *) 0 ;
   std::string arg2 ;
@@ -8558,6 +8582,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onUserCodeValidation_get(void * jarg1
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< UserCodeValidationCallback > *)& ((arg1)->onUserCodeValidation);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onLogDataUpdate_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< LogDataUpdateCallback > *arg2 = (std::shared_ptr< LogDataUpdateCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< LogDataUpdateCallback > *)jarg2; 
+  if (arg1) (arg1)->onLogDataUpdate = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onLogDataUpdate_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< LogDataUpdateCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< LogDataUpdateCallback > *)& ((arg1)->onLogDataUpdate);
   jresult = (void *)result; 
   return jresult;
 }
