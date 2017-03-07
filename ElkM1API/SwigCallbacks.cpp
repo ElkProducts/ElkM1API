@@ -6,4 +6,5 @@ ArmStatusVectorCallback::~ArmStatusVectorCallback() {}
 KeypadFkeyStatusCallback::~KeypadFkeyStatusCallback() {}
 BoolVectorCallback::~BoolVectorCallback() {}
 EntryExitTimeDataCallback::~EntryExitTimeDataCallback() {}
+UserCodeValidationCallback::~UserCodeValidationCallback() {}
 StringCallback::~StringCallback() {}

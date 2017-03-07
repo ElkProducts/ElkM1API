@@ -42,6 +42,12 @@ public:
 	virtual ELKM1API ~EntryExitTimeDataCallback() = 0;
 };
 
+class UserCodeValidationCallback {
+public:
+	virtual ELKM1API void run(Elk::UserCodeValidation data) = 0;
+	virtual ELKM1API ~UserCodeValidationCallback() = 0;
+};
+
 class StringCallback {
 public:
 	virtual ELKM1API void run(std::string arg1) = 0;

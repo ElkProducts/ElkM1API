@@ -36,6 +36,21 @@ namespace Elk {
 			buff.erase(buff.begin(), buff.begin() + (buff.size() - length));
 		return buff;
 	}
+
+	unsigned int M1AsciiAPI::AsciiHexToInt(std::string asciiHex) {
+		unsigned int ret = 0;
+		for (char c : asciiHex) {
+			ret = (ret << 4);
+			if (c >= '0' && c <= '9')
+				ret += c - '0';
+			else if (c >= 'a' && c <= 'f')
+				ret += c - 'a';
+			else if (c >= 'A' && c <= 'F')
+				ret += c - 'A';
+		}
+		return ret;
+	}
+
 	std::vector<char> M1AsciiAPI::toAsciiDec(int value, int length) {
 		if ((value < 0) || (length < 0))
 			throw std::invalid_argument("Argument out of allowed range.");
@@ -200,6 +215,16 @@ namespace Elk {
 			newStatus->armState = (Elk::ArmMode)(message.at(10) - '0');
 			if (onEntryExitTimerChange)
 				std::thread(&EntryExitTimeDataCallback::run, onEntryExitTimerChange, *newStatus).detach();
+		});
+
+		// User Code Validation
+		handleMessageTable.emplace("IC", [this](std::string message) {
+			std::shared_ptr<UserCodeValidation> newUserCode(new UserCodeValidation());
+			newUserCode->userCodeData = AsciiHexToInt(message.substr(2, 12));
+			newUserCode->userNumber = stoi(message.substr(14, 3));
+			newUserCode->keypadNumber = stoi(message.substr(17, 2));
+			if (onUserCodeValidation)
+				std::thread(&UserCodeValidationCallback::run, onUserCodeValidation, *newUserCode);
 		});
 
 		// RP disconnected
