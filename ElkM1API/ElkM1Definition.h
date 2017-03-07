@@ -362,11 +362,14 @@ namespace Elk {
 		Elk::ArmMode armState;
 	};
 
-	// See ASCII Protocol & Interface Specification
-	struct UserCodeValidation {
-		int userCodeData;	// when non-zero, the user code was invalid.
-		int userNumber; // when non-zero, the user number belonging to the valid user code.
-		int keypadNumber; // the keypad number where the code originated from.
+	struct InvalidUserCodeData {
+		int keypadNumber;
+		int invalidUserCodeData;
+	};
+
+	struct ValidUserCodeData {
+		int keypadNumber;
+		int userCodeNumber;
 	};
 
 	struct LightingData {

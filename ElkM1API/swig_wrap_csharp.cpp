@@ -7990,79 +7990,57 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_EntryExitTimeData(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeValidation_userCodeData_set(void * jarg1, int jarg2) {
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_InvalidUserCodeData_keypadNumber_set(void * jarg1, int jarg2) {
+  Elk::InvalidUserCodeData *arg1 = (Elk::InvalidUserCodeData *) 0 ;
   int arg2 ;
   
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->userCodeData = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_UserCodeValidation_userCodeData_get(void * jarg1) {
-  int jresult ;
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
-  int result;
-  
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
-  result = (int) ((arg1)->userCodeData);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeValidation_userNumber_set(void * jarg1, int jarg2) {
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->userNumber = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_UserCodeValidation_userNumber_get(void * jarg1) {
-  int jresult ;
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
-  int result;
-  
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
-  result = (int) ((arg1)->userNumber);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeValidation_keypadNumber_set(void * jarg1, int jarg2) {
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
+  arg1 = (Elk::InvalidUserCodeData *)jarg1; 
   arg2 = (int)jarg2; 
   if (arg1) (arg1)->keypadNumber = arg2;
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_UserCodeValidation_keypadNumber_get(void * jarg1) {
+SWIGEXPORT int SWIGSTDCALL CSharp_InvalidUserCodeData_keypadNumber_get(void * jarg1) {
   int jresult ;
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
+  Elk::InvalidUserCodeData *arg1 = (Elk::InvalidUserCodeData *) 0 ;
   int result;
   
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
+  arg1 = (Elk::InvalidUserCodeData *)jarg1; 
   result = (int) ((arg1)->keypadNumber);
   jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_UserCodeValidation() {
+SWIGEXPORT void SWIGSTDCALL CSharp_InvalidUserCodeData_invalidUserCodeData_set(void * jarg1, int jarg2) {
+  Elk::InvalidUserCodeData *arg1 = (Elk::InvalidUserCodeData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::InvalidUserCodeData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->invalidUserCodeData = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_InvalidUserCodeData_invalidUserCodeData_get(void * jarg1) {
+  int jresult ;
+  Elk::InvalidUserCodeData *arg1 = (Elk::InvalidUserCodeData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::InvalidUserCodeData *)jarg1; 
+  result = (int) ((arg1)->invalidUserCodeData);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_InvalidUserCodeData() {
   void * jresult ;
-  Elk::UserCodeValidation *result = 0 ;
+  Elk::InvalidUserCodeData *result = 0 ;
   
   {
     try {
-      result = (Elk::UserCodeValidation *)new Elk::UserCodeValidation();
+      result = (Elk::InvalidUserCodeData *)new Elk::InvalidUserCodeData();
     } catch (const std::exception& e) {
       {
         SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
@@ -8074,10 +8052,88 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_UserCodeValidation() {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_UserCodeValidation(void * jarg1) {
-  Elk::UserCodeValidation *arg1 = (Elk::UserCodeValidation *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_InvalidUserCodeData(void * jarg1) {
+  Elk::InvalidUserCodeData *arg1 = (Elk::InvalidUserCodeData *) 0 ;
   
-  arg1 = (Elk::UserCodeValidation *)jarg1; 
+  arg1 = (Elk::InvalidUserCodeData *)jarg1; 
+  {
+    try {
+      delete arg1;
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return ; 
+      };
+    }
+  }
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ValidUserCodeData_keypadNumber_set(void * jarg1, int jarg2) {
+  Elk::ValidUserCodeData *arg1 = (Elk::ValidUserCodeData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::ValidUserCodeData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->keypadNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ValidUserCodeData_keypadNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::ValidUserCodeData *arg1 = (Elk::ValidUserCodeData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::ValidUserCodeData *)jarg1; 
+  result = (int) ((arg1)->keypadNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ValidUserCodeData_userCodeNumber_set(void * jarg1, int jarg2) {
+  Elk::ValidUserCodeData *arg1 = (Elk::ValidUserCodeData *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::ValidUserCodeData *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->userCodeNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ValidUserCodeData_userCodeNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::ValidUserCodeData *arg1 = (Elk::ValidUserCodeData *) 0 ;
+  int result;
+  
+  arg1 = (Elk::ValidUserCodeData *)jarg1; 
+  result = (int) ((arg1)->userCodeNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ValidUserCodeData() {
+  void * jresult ;
+  Elk::ValidUserCodeData *result = 0 ;
+  
+  {
+    try {
+      result = (Elk::ValidUserCodeData *)new Elk::ValidUserCodeData();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ValidUserCodeData(void * jarg1) {
+  Elk::ValidUserCodeData *arg1 = (Elk::ValidUserCodeData *) 0 ;
+  
+  arg1 = (Elk::ValidUserCodeData *)jarg1; 
   {
     try {
       delete arg1;
@@ -8501,30 +8557,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_EntryExitTimeDataCallback(void * jarg1
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_UserCodeValidationCallback_run(void * jarg1, void * jarg2) {
-  UserCodeValidationCallback *arg1 = (UserCodeValidationCallback *) 0 ;
-  Elk::UserCodeValidation arg2 ;
-  Elk::UserCodeValidation *argp2 ;
-  
-  arg1 = (UserCodeValidationCallback *)jarg1; 
-  argp2 = (Elk::UserCodeValidation *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::UserCodeValidation", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  (arg1)->run(arg2);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_UserCodeValidationCallback(void * jarg1) {
-  UserCodeValidationCallback *arg1 = (UserCodeValidationCallback *) 0 ;
-  
-  arg1 = (UserCodeValidationCallback *)jarg1; 
-  delete arg1;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_LogDataUpdateCallback_run(void * jarg1, void * jarg2) {
   LogDataUpdateCallback *arg1 = (LogDataUpdateCallback *) 0 ;
   Elk::LogEntry arg2 ;
@@ -8545,6 +8577,54 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogDataUpdateCallback(void * jarg1) {
   LogDataUpdateCallback *arg1 = (LogDataUpdateCallback *) 0 ;
   
   arg1 = (LogDataUpdateCallback *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_InvalidUserCodeDataCallback_run(void * jarg1, void * jarg2) {
+  InvalidUserCodeDataCallback *arg1 = (InvalidUserCodeDataCallback *) 0 ;
+  Elk::InvalidUserCodeData arg2 ;
+  Elk::InvalidUserCodeData *argp2 ;
+  
+  arg1 = (InvalidUserCodeDataCallback *)jarg1; 
+  argp2 = (Elk::InvalidUserCodeData *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::InvalidUserCodeData", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_InvalidUserCodeDataCallback(void * jarg1) {
+  InvalidUserCodeDataCallback *arg1 = (InvalidUserCodeDataCallback *) 0 ;
+  
+  arg1 = (InvalidUserCodeDataCallback *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ValidUserCodeDataCallback_run(void * jarg1, void * jarg2) {
+  ValidUserCodeDataCallback *arg1 = (ValidUserCodeDataCallback *) 0 ;
+  Elk::ValidUserCodeData arg2 ;
+  Elk::ValidUserCodeData *argp2 ;
+  
+  arg1 = (ValidUserCodeDataCallback *)jarg1; 
+  argp2 = (Elk::ValidUserCodeData *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::ValidUserCodeData", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ValidUserCodeDataCallback(void * jarg1) {
+  ValidUserCodeDataCallback *arg1 = (ValidUserCodeDataCallback *) 0 ;
+  
+  arg1 = (ValidUserCodeDataCallback *)jarg1; 
   delete arg1;
 }
 
@@ -8791,28 +8871,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_get(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onUserCodeValidation_set(void * jarg1, void * jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< UserCodeValidationCallback > *arg2 = (std::shared_ptr< UserCodeValidationCallback > *) 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< UserCodeValidationCallback > *)jarg2; 
-  if (arg1) (arg1)->onUserCodeValidation = *arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onUserCodeValidation_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< UserCodeValidationCallback > *result = 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< UserCodeValidationCallback > *)& ((arg1)->onUserCodeValidation);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onLogDataUpdate_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::shared_ptr< LogDataUpdateCallback > *arg2 = (std::shared_ptr< LogDataUpdateCallback > *) 0 ;
@@ -8830,6 +8888,50 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onLogDataUpdate_get(void * jarg1) {
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< LogDataUpdateCallback > *)& ((arg1)->onLogDataUpdate);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onInvalidUserCodeEntered_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< InvalidUserCodeDataCallback > *arg2 = (std::shared_ptr< InvalidUserCodeDataCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< InvalidUserCodeDataCallback > *)jarg2; 
+  if (arg1) (arg1)->onInvalidUserCodeEntered = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onInvalidUserCodeEntered_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< InvalidUserCodeDataCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< InvalidUserCodeDataCallback > *)& ((arg1)->onInvalidUserCodeEntered);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *)jarg2; 
+  if (arg1) (arg1)->onValidUserCodeEntered = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< ValidUserCodeDataCallback > *)& ((arg1)->onValidUserCodeEntered);
   jresult = (void *)result; 
   return jresult;
 }

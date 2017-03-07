@@ -6,8 +6,9 @@ ArmStatusVectorCallback::~ArmStatusVectorCallback() {}
 KeypadFkeyStatusCallback::~KeypadFkeyStatusCallback() {}
 BoolVectorCallback::~BoolVectorCallback() {}
 EntryExitTimeDataCallback::~EntryExitTimeDataCallback() {}
-UserCodeValidationCallback::~UserCodeValidationCallback() {}
 LogDataUpdateCallback::~LogDataUpdateCallback() {}
+InvalidUserCodeDataCallback::~InvalidUserCodeDataCallback() {}
+ValidUserCodeDataCallback::~ValidUserCodeDataCallback() {}
 LightingDataCallback::~LightingDataCallback() {}
 X10DataCallback::~X10DataCallback() {}
 StringCallback::~StringCallback() {}

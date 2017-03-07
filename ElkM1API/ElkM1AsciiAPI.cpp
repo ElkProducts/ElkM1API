@@ -219,12 +219,24 @@ namespace Elk {
 
 		// User Code Validation
 		handleMessageTable.emplace("IC", [this](std::string message) {
-			std::shared_ptr<UserCodeValidation> newUserCode(new UserCodeValidation());
-			newUserCode->userCodeData = AsciiHexToInt(message.substr(2, 12));
-			newUserCode->userNumber = stoi(message.substr(14, 3));
-			newUserCode->keypadNumber = stoi(message.substr(17, 2)) - 1;
-			if (onUserCodeValidation)
-				std::thread(&UserCodeValidationCallback::run, onUserCodeValidation, *newUserCode);
+			int userCodeData = AsciiHexToInt(message.substr(2, 12));
+			int userCodeNumber = stoi(message.substr(14, 3));
+			int keypadNumber = stoi(message.substr(17, 2)) - 1;
+			if (userCodeNumber == 0)
+			{
+				std::shared_ptr<InvalidUserCodeData> invalidCode(new InvalidUserCodeData());
+				invalidCode->keypadNumber = keypadNumber;
+				invalidCode->invalidUserCodeData = userCodeData;
+				if (onInvalidUserCodeEntered)
+					std::thread(&InvalidUserCodeDataCallback::run, onInvalidUserCodeEntered, *invalidCode).detach();
+			}
+			else {
+				std::shared_ptr<ValidUserCodeData> validCode(new ValidUserCodeData());
+				validCode->keypadNumber = keypadNumber;
+				validCode->userCodeNumber = userCodeNumber;
+				if (onValidUserCodeEntered)
+					std::thread(&ValidUserCodeDataCallback::run, onValidUserCodeEntered, *validCode).detach();
+			}
 		});
 
 		// RP disconnected
@@ -316,14 +328,14 @@ namespace Elk {
 				lightingData->unitCode = unitCode - 1;
 				lightingData->lightLevel = (lightLevel > 1) ? (lightLevel / 100) : lightLevel;
 				if (onLightingDataUpdate)
-					std::thread(&LightingDataCallback::run, onLightingDataUpdate, *lightingData);
+					std::thread(&LightingDataCallback::run, onLightingDataUpdate, *lightingData).detach();
 			}
 			else {
 				std::shared_ptr<Elk::X10Data> x10Data(new Elk::X10Data());
 				x10Data->houseCode = houseCode;
 				x10Data->x10 = (Elk::X10Data::X10)lightLevel;
 				if (onX10DataUpdate)
-					std::thread(&X10DataCallback::run, onX10DataUpdate, *x10Data);
+					std::thread(&X10DataCallback::run, onX10DataUpdate, *x10Data).detach();
 			}
 		});
 

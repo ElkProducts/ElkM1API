@@ -42,16 +42,22 @@ public:
 	virtual ELKM1API ~EntryExitTimeDataCallback() = 0;
 };
 
-class UserCodeValidationCallback {
-public:
-	virtual ELKM1API void run(Elk::UserCodeValidation data) = 0;
-	virtual ELKM1API ~UserCodeValidationCallback() = 0;
-};
-
 class LogDataUpdateCallback {
 public:
 	virtual ELKM1API void run(Elk::LogEntry) = 0;
 	virtual ELKM1API ~LogDataUpdateCallback() = 0;
+};
+
+class InvalidUserCodeDataCallback {
+public:
+	virtual ELKM1API void run(Elk::InvalidUserCodeData) = 0;
+	virtual ELKM1API ~InvalidUserCodeDataCallback() = 0;
+};
+
+class ValidUserCodeDataCallback {
+public:
+	virtual ELKM1API void run(Elk::ValidUserCodeData) = 0;
+	virtual ELKM1API ~ValidUserCodeDataCallback() = 0;
 };
 
 class LightingDataCallback {
