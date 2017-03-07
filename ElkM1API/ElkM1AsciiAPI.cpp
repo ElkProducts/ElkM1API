@@ -484,6 +484,13 @@ namespace Elk {
 			m1cache.omniStat2Reply.set(reply);
 		});
 
+		// Task Change Update
+		handleMessageTable.emplace("TC", [this](std::string message) {
+			int taskNumber = stoi(message.substr(2, 3)) - 1;
+			if (onTaskChangeUpdate)
+				std::thread(&IntCallback::run, onTaskChangeUpdate, taskNumber).detach();
+		});
+
 		// Thermostat data // TODO: Test this!
 		handleMessageTable.emplace("TR", [this](std::string message) {
 			ThermostatData td;

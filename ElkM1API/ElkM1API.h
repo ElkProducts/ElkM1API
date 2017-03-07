@@ -44,6 +44,7 @@ namespace Elk
 		std::shared_ptr<ValidUserCodeDataCallback> onValidUserCodeEntered;
 		std::shared_ptr<LightingDataCallback> onLightingDataUpdate;
 		std::shared_ptr<X10DataCallback> onX10DataUpdate;
+		std::shared_ptr<IntCallback> onTaskChangeUpdate;
 
 		virtual ELKM1API std::vector<int> getConfiguredZones() = 0;
 		virtual ELKM1API std::vector<int> getConfiguredKeypads() = 0;

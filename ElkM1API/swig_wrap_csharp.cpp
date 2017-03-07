@@ -8981,6 +8981,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onX10DataUpdate_get(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onTaskChangeUpdate_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< IntCallback > *arg2 = (std::shared_ptr< IntCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< IntCallback > *)jarg2; 
+  if (arg1) (arg1)->onTaskChangeUpdate = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onTaskChangeUpdate_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< IntCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< IntCallback > *)& ((arg1)->onTaskChangeUpdate);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredZones(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
