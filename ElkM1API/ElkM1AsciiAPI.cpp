@@ -222,7 +222,7 @@ namespace Elk {
 			std::shared_ptr<UserCodeValidation> newUserCode(new UserCodeValidation());
 			newUserCode->userCodeData = AsciiHexToInt(message.substr(2, 12));
 			newUserCode->userNumber = stoi(message.substr(14, 3));
-			newUserCode->keypadNumber = stoi(message.substr(17, 2));
+			newUserCode->keypadNumber = stoi(message.substr(17, 2)) - 1;
 			if (onUserCodeValidation)
 				std::thread(&UserCodeValidationCallback::run, onUserCodeValidation, *newUserCode);
 		});
