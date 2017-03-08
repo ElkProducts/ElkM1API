@@ -8677,6 +8677,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_X10DataCallback(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateCallback_run(void * jarg1, void * jarg2) {
+  ZoneStateCallback *arg1 = (ZoneStateCallback *) 0 ;
+  Elk::ZoneState arg2 ;
+  Elk::ZoneState *argp2 ;
+  
+  arg1 = (ZoneStateCallback *)jarg1; 
+  argp2 = (Elk::ZoneState *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::ZoneState", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->run(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneStateCallback(void * jarg1) {
+  ZoneStateCallback *arg1 = (ZoneStateCallback *) 0 ;
+  
+  arg1 = (ZoneStateCallback *)jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_run(void * jarg1, char * jarg2) {
   StringCallback *arg1 = (StringCallback *) 0 ;
   std::string arg2 ;
@@ -8998,6 +9022,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onTaskChangeUpdate_get(void * jarg1) 
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< IntCallback > *)& ((arg1)->onTaskChangeUpdate);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onZoneChangeUpdate_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ZoneStateCallback > *arg2 = (std::shared_ptr< ZoneStateCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< ZoneStateCallback > *)jarg2; 
+  if (arg1) (arg1)->onZoneChangeUpdate = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onZoneChangeUpdate_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ZoneStateCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< ZoneStateCallback > *)& ((arg1)->onZoneChangeUpdate);
   jresult = (void *)result; 
   return jresult;
 }

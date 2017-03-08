@@ -538,6 +538,23 @@ namespace Elk {
 			}
 		});
 
+		// Zone Change Update
+		handleMessageTable.emplace("ZC", [this](std::string message) {
+			std::shared_ptr<ZoneState> zoneState(new ZoneState());
+			int bitfield = message.at(5);
+			bitfield -= ((bitfield >= 'A') ? ('A' - 10) : '0');
+			zoneState->physicalState = (PhysicalZoneState)(bitfield & 0x3);
+			zoneState->logicalState = (LogicalZoneState)(bitfield >> 2);
+
+			std::vector<ZoneState> zones = m1cache.zoneStatus.get();
+			int zoneNumber = stoi(message.substr(2, 3)) - 1;
+			zones.at(zoneNumber) = *zoneState;
+			m1cache.zoneStatus.set(zones);
+
+			if (onZoneChangeUpdate)
+				std::thread(&ZoneStateCallback::run, onZoneChangeUpdate, *zoneState).detach();
+		});
+
 		// Definitions by zone
 		handleMessageTable.emplace("ZD", [this](std::string message) {
 			std::vector<SZoneDefinition> zones(208);

@@ -72,6 +72,12 @@ public:
 	virtual ELKM1API ~X10DataCallback() = 0;
 };
 
+class ZoneStateCallback {
+public:
+	virtual ELKM1API void run(Elk::ZoneState) = 0;
+	virtual ELKM1API ~ZoneStateCallback() = 0;
+};
+
 class StringCallback {
 public:
 	virtual ELKM1API void run(std::string arg1) = 0;
