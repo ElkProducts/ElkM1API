@@ -135,7 +135,7 @@ namespace Elk
 		// Get the voltage of defined zones.
 		virtual ELKM1API float getZoneVoltage(int zone) = 0;
 		// TODO: add support for these ASCII commands:
-		// TC, ZB, ZC, cw, rr
+		// ZB, ZC, cw, rr
 
 		// There are no plans to implement support for the following commands:
 		// AP, AR, CD, EM, IP, IR, RE, XB, XK, ar, cd, ip, ir, xk, zt 
