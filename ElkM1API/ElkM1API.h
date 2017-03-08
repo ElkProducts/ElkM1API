@@ -124,6 +124,8 @@ namespace Elk
 		virtual ELKM1API UserCodeAccess getUserCodeAccess(std::string userCode) = 0;
 		// Get the version number of the M1.
 		virtual ELKM1API std::vector<int> getM1VersionNumber() = 0;
+		// returns non zero if connected to XEP
+		virtual ELKM1API std::vector<int> getXEPVersionNumber() = 0;
 		// Bypass a zone, or unbypass all zones in an area.
 		virtual ELKM1API bool zoneBypass(int zone, std::string pinCode) = 0;
 		virtual ELKM1API bool setAreaBypass(int area, std::string pinCode, bool bypassed) = 0;
@@ -136,7 +138,7 @@ namespace Elk
 		// Get the voltage of defined zones.
 		virtual ELKM1API float getZoneVoltage(int zone) = 0;
 		// TODO: add support for these ASCII commands:
-		// cw, rr
+		// rr
 
 		// There are no plans to implement support for the following commands:
 		// AP, AR, CD, EM, IP, IR, RE, XB, XK, ar, cd, ip, ir, xk, zt 

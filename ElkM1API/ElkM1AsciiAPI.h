@@ -102,6 +102,7 @@ namespace Elk {
 		ELKM1API std::vector<int> getKeypadAreas();
 		ELKM1API std::vector<int> getZonePartitions();
 		ELKM1API std::vector<int> getM1VersionNumber();
+		ELKM1API std::vector<int> getXEPVersionNumber();
 		ELKM1API std::vector<uint16_t> getCustomValues();
 		ELKM1API std::vector<Elk::SZoneDefinition> getZoneAlarms();
 		ELKM1API std::vector<Elk::SZoneDefinition> getZoneDefinitions();

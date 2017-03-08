@@ -141,6 +141,7 @@ namespace Elk {
 			cacheObject<int> thermostatTemperatures[16];
 			cacheObject<ThermostatData> thermostatData[16];
 			cacheObject<std::vector<int>> M1VersionNumber;
+			cacheObject<std::vector<int>> XEPVersionNumber;
 			cacheObject<bool> zonesBypassed[208];
 			cacheObject<bool> areaBypassed;
 			cacheObject<std::vector<SZoneDefinition>> zoneDefinitions;

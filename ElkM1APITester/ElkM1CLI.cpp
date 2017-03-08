@@ -288,6 +288,16 @@ std::map<std::string, std::function<void()>> commands = {
 	} },
 	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
 	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
+	{ "getM1VersionNumber", [] {
+		const auto& m1vn = m1api->getM1VersionNumber();
+		std::cout << "M1 Version Number: " << m1vn[0] << "."
+			<< m1vn[1] << "." << m1vn[2] << "\n";
+	} },
+	{ "getXEPVersionNumber", [] {
+		const auto& xvn = m1api->getXEPVersionNumber();
+		std::cout << "XEP Version Number: " << xvn[0] << "."
+			<< xvn[1] << "." << xvn[2] << "\n";
+	} },
 	{ "getZoneAlarms", [] {
 		const auto& zdfs = m1api->getZoneAlarms();
 		//m1api->forEachConfiguredZone([&zdfs](int index) {

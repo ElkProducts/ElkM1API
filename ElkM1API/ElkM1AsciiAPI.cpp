@@ -37,20 +37,6 @@ namespace Elk {
 		return buff;
 	}
 
-	unsigned int M1AsciiAPI::AsciiHexToInt(std::string asciiHex) {
-		unsigned int ret = 0;
-		for (char c : asciiHex) {
-			ret = (ret << 4);
-			if (c >= '0' && c <= '9')
-				ret += c - '0';
-			else if (c >= 'a' && c <= 'f')
-				ret += c - 'a';
-			else if (c >= 'A' && c <= 'F')
-				ret += c - 'A';
-		}
-		return ret;
-	}
-
 	std::vector<char> M1AsciiAPI::toAsciiDec(int value, int length) {
 		if ((value < 0) || (length < 0))
 			throw std::invalid_argument("Argument out of allowed range.");
@@ -219,7 +205,7 @@ namespace Elk {
 
 		// User Code Validation
 		handleMessageTable.emplace("IC", [this](std::string message) {
-			int userCodeData = AsciiHexToInt(message.substr(2, 12));
+			int userCodeData = stoi(message.substr(2, 12), 0, 16);
 			int userCodeNumber = stoi(message.substr(14, 3));
 			int keypadNumber = stoi(message.substr(17, 2)) - 1;
 			if (userCodeNumber == 0)
@@ -515,13 +501,16 @@ namespace Elk {
 			m1cache.userCodeAccess.set(uca);
 		});
 
-		// Version number, TODO: Scrape XEP number too
+		// Version number
 		handleMessageTable.emplace("VN", [this](std::string message) {
 			std::vector<int> vn(3);
+			std::vector<int> xvn(3);
 			for (int i = 0; i < 3; i++) {
 				vn[i] = stoi(message.substr(2 + (2 * i), 2), 0, 16);
+				xvn[i] = stoi(message.substr(8 + (2 * i), 2), 0, 16);
 			}
 			m1cache.M1VersionNumber.set(vn);
+			m1cache.XEPVersionNumber.set(xvn);
 		});
 
 		// Zones Bypassed
@@ -977,11 +966,10 @@ namespace Elk {
 		return cacheExistsRequest(m1cache.zonePartitions, (const AsciiMessage&)"zp00");
 	}
 	std::vector<int> M1AsciiAPI::getM1VersionNumber() { 
-		//if (!versionAtLeast(4, 1, 12)) {
-		//	throw std::runtime_error("Call unsupported by M1 Firmware version.");
-		//}
-		// Obviously we can't check the version number lower than this.
 		return cacheExistsRequest(m1cache.M1VersionNumber, (const AsciiMessage&)"vn00");
+	}
+	std::vector<int> M1AsciiAPI::getXEPVersionNumber() {
+		return cacheExistsRequest(m1cache.XEPVersionNumber, (const AsciiMessage&)"vn00");
 	}
 	std::vector<uint16_t> M1AsciiAPI::getCustomValues() { 
 		std::vector<uint16_t> reply(20);

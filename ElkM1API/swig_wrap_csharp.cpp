@@ -9689,6 +9689,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getM1VersionNumber(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getXEPVersionNumber(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< int > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getXEPVersionNumber();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_zoneBypass(void * jarg1, int jarg2, char * jarg3) {
   unsigned int jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
