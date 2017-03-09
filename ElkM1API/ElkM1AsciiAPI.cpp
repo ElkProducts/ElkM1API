@@ -394,28 +394,32 @@ namespace Elk {
 			}
 		});
 
-		// System Trouble Status TODO: Trouble status is more detailed than this
+		// System Trouble Status
 		handleMessageTable.emplace("SS", [this](std::string message) {  
 			SystemTroubleStatus sts;
 			sts.ACFail = message.at(2) == '1';
-			sts.boxTamper = message.at(3) == '1';
+			sts.boxTamperZoneNumber = message.at(3) - '1';
 			sts.communicationError = message.at(4) == '1';
 			sts.EEPROMError = message.at(5) == '1';
-			sts.lowBattery = message.at(6) == '1';
-			sts.overCurrent = message.at(7) == '1';
-			sts.telephoneFault = message.at(8) == '1';
-			sts.output2 = message.at(9) == '1';
-			sts.missingKeypad = message.at(10) == '1';
-			sts.zoneExpander = message.at(11) == '1';
-			sts.outputExpander = message.at(12) == '1';
-			sts.RPRemoteAccess = message.at(13) == '1';
-			sts.commonAreaNotArmed = message.at(14) == '1';
-			sts.flashMemoryError = message.at(15) == '1';
-			sts.securityAlert = message.at(16) == '1';
-			sts.serialPortExpander = message.at(17) == '1';
-			sts.lostTransmitter = message.at(18) == '1';
-			sts.GESmokeCleanMe = message.at(19) == '1';
-			sts.ethernet = message.at(20) == '1';
+			sts.lowBatteryControl = message.at(6) == '1';
+			sts.transmitterLowBatteryZoneNumber = message.at(7) - '1';
+			sts.overCurrent = message.at(8) == '1';
+			sts.telephoneFault = message.at(9) == '1';
+			sts.output2 = message.at(11) == '1';
+			sts.missingKeypad = message.at(12) == '1';
+			sts.zoneExpander = message.at(13) == '1';
+			sts.outputExpander = message.at(14) == '1';
+			sts.RPRemoteAccess = message.at(16) == '1';
+			sts.commonAreaNotArmed = message.at(18) == '1';
+			sts.flashMemoryError = message.at(19) == '1';
+			sts.securityAlertZoneNumber = message.at(20) - '1';
+			sts.serialPortExpander = message.at(21) == '1';
+			sts.lostTransmitterZoneNumber = message.at(22) - '1';
+			sts.GESmokeCleanMe = message.at(23) == '1';
+			sts.ethernet = message.at(24) == '1';
+			sts.displayMessageKeypadLine1 = message.at(33) == '1';
+			sts.displayMessageKeypadLine2 = message.at(34) == '1';
+			sts.fireTroubleZoneNumber = message.at(35) - '1';
 			m1cache.systemTroubleStatus.set(sts);
 		});
 

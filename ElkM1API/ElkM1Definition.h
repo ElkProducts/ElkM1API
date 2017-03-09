@@ -283,10 +283,9 @@ namespace Elk {
 
 	struct SystemTroubleStatus {
 		bool ACFail;
-		bool boxTamper;
 		bool communicationError;
 		bool EEPROMError;
-		bool lowBattery;
+		bool lowBatteryControl;
 		bool overCurrent;
 		bool telephoneFault;
 		bool output2;
@@ -296,11 +295,18 @@ namespace Elk {
 		bool RPRemoteAccess;
 		bool commonAreaNotArmed;
 		bool flashMemoryError;
-		bool securityAlert;
 		bool serialPortExpander;
-		bool lostTransmitter;
 		bool GESmokeCleanMe;
 		bool ethernet;
+		bool displayMessageKeypadLine1;
+		bool displayMessageKeypadLine2;
+
+		// -1 for no zones in trouble state
+		int boxTamperZoneNumber;
+		int transmitterLowBatteryZoneNumber;
+		int securityAlertZoneNumber;
+		int lostTransmitterZoneNumber;
+		int fireTroubleZoneNumber;
 	};
 
 	struct KeypadFkeyStatus {

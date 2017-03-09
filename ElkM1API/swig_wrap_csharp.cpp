@@ -7164,28 +7164,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_ACFail_get(void *
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_boxTamper_set(void * jarg1, unsigned int jarg2) {
-  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->boxTamper = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_boxTamper_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->boxTamper);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_communicationError_set(void * jarg1, unsigned int jarg2) {
   Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
   bool arg2 ;
@@ -7230,23 +7208,23 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_EEPROMError_get(v
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_lowBattery_set(void * jarg1, unsigned int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_lowBatteryControl_set(void * jarg1, unsigned int jarg2) {
   Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
   bool arg2 ;
   
   arg1 = (Elk::SystemTroubleStatus *)jarg1; 
   arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->lowBattery = arg2;
+  if (arg1) (arg1)->lowBatteryControl = arg2;
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_lowBattery_get(void * jarg1) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_lowBatteryControl_get(void * jarg1) {
   unsigned int jresult ;
   Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
   bool result;
   
   arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->lowBattery);
+  result = (bool) ((arg1)->lowBatteryControl);
   jresult = result; 
   return jresult;
 }
@@ -7450,28 +7428,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_flashMemoryError_
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_securityAlert_set(void * jarg1, unsigned int jarg2) {
-  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->securityAlert = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_securityAlert_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->securityAlert);
-  jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_serialPortExpander_set(void * jarg1, unsigned int jarg2) {
   Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
   bool arg2 ;
@@ -7489,28 +7445,6 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_serialPortExpande
   
   arg1 = (Elk::SystemTroubleStatus *)jarg1; 
   result = (bool) ((arg1)->serialPortExpander);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_lostTransmitter_set(void * jarg1, unsigned int jarg2) {
-  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
-  bool arg2 ;
-  
-  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  arg2 = jarg2 ? true : false; 
-  if (arg1) (arg1)->lostTransmitter = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_lostTransmitter_get(void * jarg1) {
-  unsigned int jresult ;
-  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
-  bool result;
-  
-  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
-  result = (bool) ((arg1)->lostTransmitter);
   jresult = result; 
   return jresult;
 }
@@ -7555,6 +7489,160 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_ethernet_get(void
   
   arg1 = (Elk::SystemTroubleStatus *)jarg1; 
   result = (bool) ((arg1)->ethernet);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_displayMessageKeypadLine1_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->displayMessageKeypadLine1 = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_displayMessageKeypadLine1_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->displayMessageKeypadLine1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_displayMessageKeypadLine2_set(void * jarg1, unsigned int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = jarg2 ? true : false; 
+  if (arg1) (arg1)->displayMessageKeypadLine2 = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SystemTroubleStatus_displayMessageKeypadLine2_get(void * jarg1) {
+  unsigned int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  bool result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (bool) ((arg1)->displayMessageKeypadLine2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_boxTamperZoneNumber_set(void * jarg1, int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->boxTamperZoneNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SystemTroubleStatus_boxTamperZoneNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (int) ((arg1)->boxTamperZoneNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_transmitterLowBatteryZoneNumber_set(void * jarg1, int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->transmitterLowBatteryZoneNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SystemTroubleStatus_transmitterLowBatteryZoneNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (int) ((arg1)->transmitterLowBatteryZoneNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_securityAlertZoneNumber_set(void * jarg1, int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->securityAlertZoneNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SystemTroubleStatus_securityAlertZoneNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (int) ((arg1)->securityAlertZoneNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_lostTransmitterZoneNumber_set(void * jarg1, int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->lostTransmitterZoneNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SystemTroubleStatus_lostTransmitterZoneNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (int) ((arg1)->lostTransmitterZoneNumber);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_SystemTroubleStatus_fireTroubleZoneNumber_set(void * jarg1, int jarg2) {
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->fireTroubleZoneNumber = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_SystemTroubleStatus_fireTroubleZoneNumber_get(void * jarg1) {
+  int jresult ;
+  Elk::SystemTroubleStatus *arg1 = (Elk::SystemTroubleStatus *) 0 ;
+  int result;
+  
+  arg1 = (Elk::SystemTroubleStatus *)jarg1; 
+  result = (int) ((arg1)->fireTroubleZoneNumber);
   jresult = result; 
   return jresult;
 }
