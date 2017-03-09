@@ -9,7 +9,5 @@ EntryExitTimeDataCallback::~EntryExitTimeDataCallback() {}
 LogDataUpdateCallback::~LogDataUpdateCallback() {}
 InvalidUserCodeDataCallback::~InvalidUserCodeDataCallback() {}
 ValidUserCodeDataCallback::~ValidUserCodeDataCallback() {}
-LightingDataCallback::~LightingDataCallback() {}
-X10DataCallback::~X10DataCallback() {}
 ZoneStateCallback::~ZoneStateCallback() {}
 StringCallback::~StringCallback() {}

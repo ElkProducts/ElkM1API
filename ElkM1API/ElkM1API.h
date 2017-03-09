@@ -42,8 +42,6 @@ namespace Elk
 		std::shared_ptr<LogDataUpdateCallback> onLogDataUpdate;
 		std::shared_ptr<InvalidUserCodeDataCallback> onInvalidUserCodeEntered;
 		std::shared_ptr<ValidUserCodeDataCallback> onValidUserCodeEntered;
-		std::shared_ptr<LightingDataCallback> onLightingDataUpdate;
-		std::shared_ptr<X10DataCallback> onX10DataUpdate;
 		std::shared_ptr<IntCallback> onTaskChangeUpdate;
 		std::shared_ptr<ZoneStateCallback> onZoneChangeUpdate;
 

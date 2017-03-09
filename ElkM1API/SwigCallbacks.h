@@ -60,18 +60,6 @@ public:
 	virtual ELKM1API ~ValidUserCodeDataCallback() = 0;
 };
 
-class LightingDataCallback {
-public:
-	virtual ELKM1API void run(Elk::LightingData) = 0;
-	virtual ELKM1API ~LightingDataCallback() = 0;
-};
-
-class X10DataCallback {
-public:
-	virtual ELKM1API void run(Elk::X10Data) = 0;
-	virtual ELKM1API ~X10DataCallback() = 0;
-};
-
 class ZoneStateCallback {
 public:
 	virtual ELKM1API void run(Elk::ZoneState) = 0;
