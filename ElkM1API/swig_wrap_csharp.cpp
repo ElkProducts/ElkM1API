@@ -8622,29 +8622,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_StringCallback_director_connect(void *objarg,
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onRPConnection_set(void * jarg1, void * jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< BoolCallback > *arg2 = 0 ;
-  std::shared_ptr< BoolCallback > tempnull2 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = jarg2 ? (std::shared_ptr< BoolCallback > *)jarg2 : &tempnull2; 
-  if (arg1) (arg1)->onRPConnection = *arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onRPConnection_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< BoolCallback > *result = 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< BoolCallback > *) & ((arg1)->onRPConnection);
-  jresult = *result ? new std::shared_ptr< BoolCallback >(*result) : 0; 
-  return jresult;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onArmStatusChange_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::shared_ptr< ArmStatusVectorCallback > *arg2 = 0 ;
@@ -8691,50 +8668,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onDebugOutput_get(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_set(void * jarg1, void * jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< KeypadFkeyStatusCallback > *arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *) 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *)jarg2; 
-  if (arg1) (arg1)->onKeypadFkeyStatusChange = *arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< KeypadFkeyStatusCallback > *result = 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< KeypadFkeyStatusCallback > *)& ((arg1)->onKeypadFkeyStatusChange);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onOutputStatusChange_set(void * jarg1, void * jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< BoolVectorCallback > *arg2 = (std::shared_ptr< BoolVectorCallback > *) 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< BoolVectorCallback > *)jarg2; 
-  if (arg1) (arg1)->onOutputStatusChange = *arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onOutputStatusChange_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< BoolVectorCallback > *result = 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< BoolVectorCallback > *)& ((arg1)->onOutputStatusChange);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   std::shared_ptr< EntryExitTimeDataCallback > *arg2 = (std::shared_ptr< EntryExitTimeDataCallback > *) 0 ;
@@ -8752,28 +8685,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_get(void * jar
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< EntryExitTimeDataCallback > *)& ((arg1)->onEntryExitTimerChange);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onLogDataUpdate_set(void * jarg1, void * jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< LogDataUpdateCallback > *arg2 = (std::shared_ptr< LogDataUpdateCallback > *) 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< LogDataUpdateCallback > *)jarg2; 
-  if (arg1) (arg1)->onLogDataUpdate = *arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onLogDataUpdate_get(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< LogDataUpdateCallback > *result = 0 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< LogDataUpdateCallback > *)& ((arg1)->onLogDataUpdate);
   jresult = (void *)result; 
   return jresult;
 }
@@ -8801,24 +8712,91 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onInvalidUserCodeEntered_get(void * j
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_set(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< ValidUserCodeDataCallback > *arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *) 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *) 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *)jarg2; 
-  if (arg1) (arg1)->onValidUserCodeEntered = *arg2;
+  arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *)jarg2; 
+  if (arg1) (arg1)->onKeypadFkeyStatusChange = *arg2;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_get(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_get(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< ValidUserCodeDataCallback > *result = 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< ValidUserCodeDataCallback > *)& ((arg1)->onValidUserCodeEntered);
+  result = (std::shared_ptr< KeypadFkeyStatusCallback > *)& ((arg1)->onKeypadFkeyStatusChange);
   jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onLogDataUpdate_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< LogDataUpdateCallback > *arg2 = (std::shared_ptr< LogDataUpdateCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< LogDataUpdateCallback > *)jarg2; 
+  if (arg1) (arg1)->onLogDataUpdate = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onLogDataUpdate_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< LogDataUpdateCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< LogDataUpdateCallback > *)& ((arg1)->onLogDataUpdate);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onOutputStatusChange_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< BoolVectorCallback > *arg2 = (std::shared_ptr< BoolVectorCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< BoolVectorCallback > *)jarg2; 
+  if (arg1) (arg1)->onOutputStatusChange = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onOutputStatusChange_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< BoolVectorCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< BoolVectorCallback > *)& ((arg1)->onOutputStatusChange);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onRPConnection_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< BoolCallback > *arg2 = 0 ;
+  std::shared_ptr< BoolCallback > tempnull2 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = jarg2 ? (std::shared_ptr< BoolCallback > *)jarg2 : &tempnull2; 
+  if (arg1) (arg1)->onRPConnection = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onRPConnection_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< BoolCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< BoolCallback > *) & ((arg1)->onRPConnection);
+  jresult = *result ? new std::shared_ptr< BoolCallback >(*result) : 0; 
   return jresult;
 }
 
@@ -8840,6 +8818,28 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onTaskChangeUpdate_get(void * jarg1) 
   
   arg1 = (Elk::M1API *)jarg1; 
   result = (std::shared_ptr< IntCallback > *)& ((arg1)->onTaskChangeUpdate);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_set(void * jarg1, void * jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *) 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *)jarg2; 
+  if (arg1) (arg1)->onValidUserCodeEntered = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_get(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *result = 0 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (std::shared_ptr< ValidUserCodeDataCallback > *)& ((arg1)->onValidUserCodeEntered);
   jresult = (void *)result; 
   return jresult;
 }
@@ -8867,39 +8867,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onZoneChangeUpdate_get(void * jarg1) 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredZones(void * jarg1) {
-  void * jresult ;
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_activateTask(void * jarg1, int jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< int > result;
+  int arg2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getConfiguredZones();
-  jresult = new std::vector< int >((const std::vector< int > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredKeypads(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< int > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getConfiguredKeypads();
-  jresult = new std::vector< int >((const std::vector< int > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredTempDevices(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< std::pair< int,Elk::TemperatureDevice > > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getConfiguredTempDevices();
-  jresult = new std::vector< std::pair< int,Elk::TemperatureDevice > >((const std::vector< std::pair< int,Elk::TemperatureDevice > > &)result); 
-  return jresult;
+  arg2 = (int)jarg2; 
+  (arg1)->activateTask(arg2);
 }
 
 
@@ -8921,56 +8895,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_armDisarm(void * jarg1, int jarg2, int 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getArmStatus(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::ArmStatus > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getArmStatus();
-  jresult = new std::vector< Elk::ArmStatus >((const std::vector< Elk::ArmStatus > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneAlarms(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< Elk::SZoneDefinition > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getZoneAlarms();
-  jresult = new std::vector< Elk::SZoneDefinition >((const std::vector< Elk::SZoneDefinition > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getAudioData(void * jarg1, int jarg2) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  Elk::AudioData result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (arg1)->getAudioData(arg2);
-  jresult = new Elk::AudioData((const Elk::AudioData &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_enableControlOutput(void * jarg1, int jarg2, unsigned short jarg3) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  uint16_t arg3 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (uint16_t)jarg3; 
-  (arg1)->enableControlOutput(arg2,arg3);
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_disableControlOutput(void * jarg1, int jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
@@ -8978,124 +8902,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_disableControlOutput(void * jarg1, int 
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   (arg1)->disableControlOutput(arg2);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_toggleControlOutput(void * jarg1, int jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  (arg1)->toggleControlOutput(arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getControlOutputs(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< bool > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getControlOutputs();
-  jresult = new std::vector< bool >((const std::vector< bool > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_getCustomValue(void * jarg1, int jarg2) {
-  unsigned short jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  uint16_t result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (uint16_t)(arg1)->getCustomValue(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getCustomValues(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< uint16_t > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getCustomValues();
-  jresult = new std::vector< uint16_t >((const std::vector< uint16_t > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_setCustomValue(void * jarg1, int jarg2, unsigned short jarg3) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  uint16_t arg3 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (uint16_t)jarg3; 
-  (arg1)->setCustomValue(arg2,arg3);
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_requestChangeUserCode(void * jarg1, int jarg2, char * jarg3, char * jarg4, unsigned char jarg5) {
-  int jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  std::string arg3 ;
-  std::string arg4 ;
-  uint8_t arg5 ;
-  Elk::UserCodeSuccess result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (!jarg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  (&arg3)->assign(jarg3); 
-  if (!jarg4) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  (&arg4)->assign(jarg4); 
-  arg5 = (uint8_t)jarg5; 
-  result = (Elk::UserCodeSuccess)(arg1)->requestChangeUserCode(arg2,arg3,arg4,arg5);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_getCounterValue(void * jarg1, int jarg2) {
-  unsigned short jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  uint16_t result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (uint16_t)(arg1)->getCounterValue(arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_setCounterValue(void * jarg1, int jarg2, unsigned short jarg3) {
-  unsigned short jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  uint16_t arg3 ;
-  uint16_t result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (uint16_t)jarg3; 
-  result = (uint16_t)(arg1)->setCounterValue(arg2,arg3);
-  jresult = result; 
-  return jresult;
 }
 
 
@@ -9149,16 +8955,146 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_displayLCDText__SWIG_1(void * jarg1, in
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_M1API_getLightingStatus(void * jarg1, int jarg2) {
-  int jresult ;
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_enableControlOutput(void * jarg1, int jarg2, unsigned short jarg3) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  int result;
+  uint16_t arg3 ;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
-  result = (int)(arg1)->getLightingStatus(arg2);
+  arg3 = (uint16_t)jarg3; 
+  (arg1)->enableControlOutput(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_executePLCCommand(void * jarg1, char jarg2, int jarg3, int jarg4, int jarg5, int jarg6) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  char arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (char)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  (arg1)->executePLCCommand(arg2,arg3,arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getArmStatus(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< Elk::ArmStatus > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getArmStatus();
+  jresult = new std::vector< Elk::ArmStatus >((const std::vector< Elk::ArmStatus > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getAudioData(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  Elk::AudioData result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (arg1)->getAudioData(arg2);
+  jresult = new Elk::AudioData((const Elk::AudioData &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredKeypads(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< int > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getConfiguredKeypads();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredTempDevices(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< std::pair< int,Elk::TemperatureDevice > > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getConfiguredTempDevices();
+  jresult = new std::vector< std::pair< int,Elk::TemperatureDevice > >((const std::vector< std::pair< int,Elk::TemperatureDevice > > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getConfiguredZones(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< int > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getConfiguredZones();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getControlOutputs(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< bool > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getControlOutputs();
+  jresult = new std::vector< bool >((const std::vector< bool > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_getCounterValue(void * jarg1, int jarg2) {
+  unsigned short jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  uint16_t result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (uint16_t)(arg1)->getCounterValue(arg2);
   jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_getCustomValue(void * jarg1, int jarg2) {
+  unsigned short jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  uint16_t result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (uint16_t)(arg1)->getCustomValue(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getCustomValues(void * jarg1) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  std::vector< uint16_t > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  result = (arg1)->getCustomValues();
+  jresult = new std::vector< uint16_t >((const std::vector< uint16_t > &)result); 
   return jresult;
 }
 
@@ -9189,18 +9125,16 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getKeypadFkeyStatus(void * jarg1, int
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_pressFunctionKey(void * jarg1, int jarg2, int jarg3) {
-  void * jresult ;
+SWIGEXPORT int SWIGSTDCALL CSharp_M1API_getLightingStatus(void * jarg1, int jarg2) {
+  int jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
-  Elk::FKEY arg3 ;
-  std::vector< Elk::SChimeMode > result;
+  int result;
   
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (Elk::FKEY)jarg3; 
-  result = (arg1)->pressFunctionKey(arg2,arg3);
-  jresult = new std::vector< Elk::SChimeMode >((const std::vector< Elk::SChimeMode > &)result); 
+  result = (int)(arg1)->getLightingStatus(arg2);
+  jresult = result; 
   return jresult;
 }
 
@@ -9231,63 +9165,35 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getLogs(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_setLogData(void * jarg1, int jarg2, int jarg3, int jarg4, int jarg5) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getM1VersionNumber(void * jarg1) {
+  void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  int arg4 ;
-  int arg5 ;
+  std::vector< int > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (int)jarg3; 
-  arg4 = (int)jarg4; 
-  arg5 = (int)jarg5; 
-  (arg1)->setLogData(arg2,arg3,arg4,arg5);
+  result = (arg1)->getM1VersionNumber();
+  jresult = new std::vector< int >((const std::vector< int > &)result); 
+  return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_executePLCCommand(void * jarg1, char jarg2, int jarg3, int jarg4, int jarg5, int jarg6) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getOmnistat2Data(void * jarg1, void * jarg2) {
+  void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  char arg2 ;
-  int arg3 ;
-  int arg4 ;
-  int arg5 ;
-  int arg6 ;
+  std::vector< char > arg2 ;
+  std::vector< char > *argp2 ;
+  std::vector< char > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (char)jarg2; 
-  arg3 = (int)jarg3; 
-  arg4 = (int)jarg4; 
-  arg5 = (int)jarg5; 
-  arg6 = (int)jarg6; 
-  (arg1)->executePLCCommand(arg2,arg3,arg4,arg5,arg6);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_setPLCState(void * jarg1, char jarg2, int jarg3, unsigned int jarg4) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  char arg2 ;
-  int arg3 ;
-  bool arg4 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (char)jarg2; 
-  arg3 = (int)jarg3; 
-  arg4 = jarg4 ? true : false; 
-  (arg1)->setPLCState(arg2,arg3,arg4);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_togglePLCState(void * jarg1, char jarg2, int jarg3) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  char arg2 ;
-  int arg3 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (char)jarg2; 
-  arg3 = (int)jarg3; 
-  (arg1)->togglePLCState(arg2,arg3);
+  argp2 = (std::vector< char > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< char >", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (arg1)->getOmnistat2Data(arg2);
+  jresult = new std::vector< char >((const std::vector< char > &)result); 
+  return jresult;
 }
 
 
@@ -9317,42 +9223,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getRTCData(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setRTCData(void * jarg1, void * jarg2) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::RTCData arg2 ;
-  Elk::RTCData *argp2 ;
-  Elk::RTCData result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (Elk::RTCData *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::RTCData", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (arg1)->setRTCData(arg2);
-  jresult = new Elk::RTCData((const Elk::RTCData &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT char * SWIGSTDCALL CSharp_M1API_getTextDescription(void * jarg1, int jarg2, int jarg3) {
-  char * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::TextDescriptionType arg2 ;
-  int arg3 ;
-  std::string result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (Elk::TextDescriptionType)jarg2; 
-  arg3 = (int)jarg3; 
-  result = (arg1)->getTextDescription(arg2,arg3);
-  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
-  return jresult;
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getSystemTroubleStatus(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
@@ -9361,6 +9231,20 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getSystemTroubleStatus(void * jarg1) 
   arg1 = (Elk::M1API *)jarg1; 
   result = (arg1)->getSystemTroubleStatus();
   jresult = new Elk::SystemTroubleStatus((const Elk::SystemTroubleStatus &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getThermostatData(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  Elk::ThermostatData result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (arg1)->getThermostatData(arg2);
+  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
   return jresult;
 }
 
@@ -9395,84 +9279,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getTemperatures(void * jarg1, int jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_speakWord(void * jarg1, int jarg2) {
+SWIGEXPORT char * SWIGSTDCALL CSharp_M1API_getTextDescription(void * jarg1, int jarg2, int jarg3) {
+  char * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::SirenWord arg2 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (Elk::SirenWord)jarg2; 
-  (arg1)->speakWord(arg2);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_speakPhrase(void * jarg1, int jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  Elk::SirenPhrase arg2 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (Elk::SirenPhrase)jarg2; 
-  (arg1)->speakPhrase(arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getOmnistat2Data(void * jarg1, void * jarg2) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< char > arg2 ;
-  std::vector< char > *argp2 ;
-  std::vector< char > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  argp2 = (std::vector< char > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< char >", 0);
-    return 0;
-  }
-  arg2 = *argp2; 
-  result = (arg1)->getOmnistat2Data(arg2);
-  jresult = new std::vector< char >((const std::vector< char > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1API_activateTask(void * jarg1, int jarg2) {
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  (arg1)->activateTask(arg2);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getThermostatData(void * jarg1, int jarg2) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  Elk::ThermostatData result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (arg1)->getThermostatData(arg2);
-  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setThermostatData(void * jarg1, int jarg2, int jarg3, int jarg4) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
+  Elk::TextDescriptionType arg2 ;
   int arg3 ;
-  int arg4 ;
-  Elk::ThermostatData result;
+  std::string result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
+  arg2 = (Elk::TextDescriptionType)jarg2; 
   arg3 = (int)jarg3; 
-  arg4 = (int)jarg4; 
-  result = (arg1)->setThermostatData(arg2,arg3,arg4);
-  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
+  result = (arg1)->getTextDescription(arg2,arg3);
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
   return jresult;
 }
 
@@ -9495,18 +9313,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getUserCodeAccess(void * jarg1, char 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getM1VersionNumber(void * jarg1) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::vector< int > result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  result = (arg1)->getM1VersionNumber();
-  jresult = new std::vector< int >((const std::vector< int > &)result); 
-  return jresult;
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getXEPVersionNumber(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
@@ -9519,44 +9325,14 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getXEPVersionNumber(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_zoneBypass(void * jarg1, int jarg2, char * jarg3) {
-  unsigned int jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getZoneAlarms(void * jarg1) {
+  void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  std::string arg3 ;
-  bool result;
+  std::vector< Elk::SZoneDefinition > result;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (!jarg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  (&arg3)->assign(jarg3); 
-  result = (bool)(arg1)->zoneBypass(arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_setAreaBypass(void * jarg1, int jarg2, char * jarg3, unsigned int jarg4) {
-  unsigned int jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  std::string arg3 ;
-  bool arg4 ;
-  bool result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  if (!jarg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  (&arg3)->assign(jarg3); 
-  arg4 = jarg4 ? true : false; 
-  result = (bool)(arg1)->setAreaBypass(arg2,arg3,arg4);
-  jresult = result; 
+  result = (arg1)->getZoneAlarms();
+  jresult = new std::vector< Elk::SZoneDefinition >((const std::vector< Elk::SZoneDefinition > &)result); 
   return jresult;
 }
 
@@ -9606,6 +9382,210 @@ SWIGEXPORT float SWIGSTDCALL CSharp_M1API_getZoneVoltage(void * jarg1, int jarg2
   arg1 = (Elk::M1API *)jarg1; 
   arg2 = (int)jarg2; 
   result = (float)(arg1)->getZoneVoltage(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_pressFunctionKey(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  Elk::FKEY arg3 ;
+  std::vector< Elk::SChimeMode > result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (Elk::FKEY)jarg3; 
+  result = (arg1)->pressFunctionKey(arg2,arg3);
+  jresult = new std::vector< Elk::SChimeMode >((const std::vector< Elk::SChimeMode > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_M1API_requestChangeUserCode(void * jarg1, int jarg2, char * jarg3, char * jarg4, unsigned char jarg5) {
+  int jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  std::string arg3 ;
+  std::string arg4 ;
+  uint8_t arg5 ;
+  Elk::UserCodeSuccess result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg3)->assign(jarg3); 
+  if (!jarg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg4)->assign(jarg4); 
+  arg5 = (uint8_t)jarg5; 
+  result = (Elk::UserCodeSuccess)(arg1)->requestChangeUserCode(arg2,arg3,arg4,arg5);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_setAreaBypass(void * jarg1, int jarg2, char * jarg3, unsigned int jarg4) {
+  unsigned int jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  std::string arg3 ;
+  bool arg4 ;
+  bool result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg3)->assign(jarg3); 
+  arg4 = jarg4 ? true : false; 
+  result = (bool)(arg1)->setAreaBypass(arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned short SWIGSTDCALL CSharp_M1API_setCounterValue(void * jarg1, int jarg2, unsigned short jarg3) {
+  unsigned short jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  uint16_t arg3 ;
+  uint16_t result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (uint16_t)jarg3; 
+  result = (uint16_t)(arg1)->setCounterValue(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_setCustomValue(void * jarg1, int jarg2, unsigned short jarg3) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  uint16_t arg3 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (uint16_t)jarg3; 
+  (arg1)->setCustomValue(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_setLogData(void * jarg1, int jarg2, int jarg3, int jarg4, int jarg5) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
+  (arg1)->setLogData(arg2,arg3,arg4,arg5);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_setPLCState(void * jarg1, char jarg2, int jarg3, unsigned int jarg4) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  char arg2 ;
+  int arg3 ;
+  bool arg4 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (char)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = jarg4 ? true : false; 
+  (arg1)->setPLCState(arg2,arg3,arg4);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setRTCData(void * jarg1, void * jarg2) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  Elk::RTCData arg2 ;
+  Elk::RTCData *argp2 ;
+  Elk::RTCData result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  argp2 = (Elk::RTCData *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::RTCData", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (arg1)->setRTCData(arg2);
+  jresult = new Elk::RTCData((const Elk::RTCData &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setThermostatData(void * jarg1, int jarg2, int jarg3, int jarg4) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  Elk::ThermostatData result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  result = (arg1)->setThermostatData(arg2,arg3,arg4);
+  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_toggleControlOutput(void * jarg1, int jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  (arg1)->toggleControlOutput(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_togglePLCState(void * jarg1, char jarg2, int jarg3) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  char arg2 ;
+  int arg3 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (char)jarg2; 
+  arg3 = (int)jarg3; 
+  (arg1)->togglePLCState(arg2,arg3);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_M1API_zoneBypass(void * jarg1, int jarg2, char * jarg3) {
+  unsigned int jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  std::string arg3 ;
+  bool result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg3)->assign(jarg3); 
+  result = (bool)(arg1)->zoneBypass(arg2,arg3);
   jresult = result; 
   return jresult;
 }
@@ -9732,6 +9712,26 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_displayLCDText__SWIG_1(void * jarg
   }
   (&arg7)->assign(jarg7); 
   (arg1)->displayLCDText(arg2,arg3,arg4,arg5,arg6,arg7);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_speakPhrase(void * jarg1, int jarg2) {
+  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
+  Elk::SirenPhrase arg2 ;
+  
+  arg1 = (Elk::M1AsciiAPI *)jarg1; 
+  arg2 = (Elk::SirenPhrase)jarg2; 
+  (arg1)->speakPhrase(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_speakWord(void * jarg1, int jarg2) {
+  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
+  Elk::SirenWord arg2 ;
+  
+  arg1 = (Elk::M1AsciiAPI *)jarg1; 
+  arg2 = (Elk::SirenWord)jarg2; 
+  (arg1)->speakWord(arg2);
 }
 
 
