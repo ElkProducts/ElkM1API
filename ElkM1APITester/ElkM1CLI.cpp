@@ -199,12 +199,37 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "\n";
 	} },
 	{ "getConfiguredKeypads", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getConfiguredKeypads();
+		std::cout << "Configured Keypdas: ";
+		bool addComma = false;
+		for (int keypad : m1api->getConfiguredKeypads()) {
+			std::cout << (addComma ? ", " : "") << keypad;
+			if (!addComma) addComma = true;
+		}
+		std::cout << "\n";
 	} },
 	{ "getConfiguredTempDevices", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getConfiguredTempDevices();
+		bool addComma = false;
+		std::cout << "Configured Temp Devices:\n";
+		for (std::pair<int, Elk::TemperatureDevice> p : m1api->getConfiguredTempDevices())
+		{
+			std::cout << "Device " << p.first << ": ";
+			switch (p.second)
+			{
+			case Elk::TemperatureDevice::TEMPDEVICE_ZONE:
+				std::cout << "Zone";
+				break;
+			case Elk::TemperatureDevice::TEMPDEVICE_KEYPAD:
+				std::cout << "Keypad";
+				break;
+			case Elk::TemperatureDevice::TEMPDEVICE_THERMOSTAT:
+				std::cout << "Thermostat";
+				break;
+			default:
+				std::cout << "undefined temperature device (" << p.second << ")";
+				break;
+			}
+			std::cout << "\n";
+		}
 	} },
 	{ "getConfiguredZones", [] {
 		std::cout << "TODO: Write test code \n";
