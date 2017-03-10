@@ -377,4 +377,19 @@ namespace Elk {
 		int keypadNumber;
 		int userCodeNumber;
 	};
+
+	struct LightingData {
+		char houseCode;
+		int unitCode;
+		double lightLevel;
+	};
+
+	struct X10Data {
+		char houseCode;
+		enum X10 {
+			X10_ALL_UNITS_OFF = 1,
+			X10_ALL_LIGHTS_ON = 2,
+			X10_ALL_LIGHTS_OFF = 7,
+		} x10;
+	};
 }

@@ -38,11 +38,13 @@ namespace Elk
 		std::shared_ptr<EntryExitTimeDataCallback> onEntryExitTimerChange;
 		std::shared_ptr<InvalidUserCodeDataCallback> onInvalidUserCodeEntered;
 		std::shared_ptr<KeypadFkeyStatusCallback> onKeypadFkeyStatusChange;
+		std::shared_ptr<LightingDataCallback> onLightingDataUpdate;
 		std::shared_ptr<LogEntryCallback> onLogDataUpdate;
 		std::shared_ptr<BoolVectorCallback> onOutputStatusChange;
 		std::shared_ptr<BoolCallback> onRPConnection;
 		std::shared_ptr<IntCallback> onTaskChangeUpdate;
 		std::shared_ptr<ValidUserCodeDataCallback> onValidUserCodeEntered;
+		std::shared_ptr<X10DataCallback> onX10DataUpdate;
 		std::shared_ptr<ZoneStateCallback> onZoneChangeUpdate;
 
 		// Start a task.

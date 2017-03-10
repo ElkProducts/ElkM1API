@@ -303,6 +303,28 @@ namespace Elk {
 			}
 		});
 
+		// Lighting Change Update
+		handleMessageTable.emplace("PC", [this](std::string message) {
+			char houseCode = message.at(2);
+			int unitCode = stoi(message.substr(3, 2));
+			int lightLevel = stoi(message.substr(5, 2));
+			if (unitCode == 0) {
+				std::shared_ptr<Elk::LightingData> lightingData(new Elk::LightingData());
+				lightingData->houseCode = houseCode;
+				lightingData->unitCode = unitCode - 1;
+				lightingData->lightLevel = (lightLevel > 1) ? (lightLevel / 100) : lightLevel;
+				if (onLightingDataUpdate)
+					std::thread(&LightingDataCallback::run, onLightingDataUpdate, *lightingData).detach();
+			}
+			else {
+				std::shared_ptr<Elk::X10Data> x10Data(new Elk::X10Data());
+				x10Data->houseCode = houseCode;
+				x10Data->x10 = (Elk::X10Data::X10)lightLevel;
+				if (onX10DataUpdate)
+					std::thread(&X10DataCallback::run, onX10DataUpdate, *x10Data).detach();
+			}
+		});
+
 		// Returned PLC status
 		handleMessageTable.emplace("PS", [this](std::string message) {
 			std::vector<int> lightingLevels(64);
