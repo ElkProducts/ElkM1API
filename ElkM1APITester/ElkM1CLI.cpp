@@ -169,8 +169,34 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "getAudioData", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getAudioData(int audioZone); 
+		int audioZone;
+		std::cout << "Enter Audio Zone:";
+		std::cin >> audioZone;
+		Elk::AudioData audioData = m1api->getAudioData(audioZone); 
+		std::cout << "Zone " << (audioData.source + 1) << ":\n";
+		std::cout << "Is on: " << audioData.zoneIsOn << "\n";
+		std::cout << "Loudness: " << audioData.loudness << "\n";
+		std::cout << "Do Not Disturb: " << audioData.doNotDisturb << "\n";
+		std::cout << "Volume: " << audioData.volume << "\n";
+		std::cout << "Bass: " << audioData.bass << "\n";
+		std::cout << "Treble: " << audioData.treble << "\n";
+		std::cout << "Balance: " << audioData.balance << "\n";
+		std::cout << "Party Mode: ";
+		switch (audioData.partyMode) {
+		case Elk::AudioData::PartyMode::PARTYMODE_OFF:
+			std::cout << "Off";
+			break;
+		case Elk::AudioData::PartyMode::PARTYMODE_ON:
+			std::cout << "On";
+			break;
+		case Elk::AudioData::PartyMode::PARTYMODE_MASTER:
+			std::cout << "Master";
+			break;
+		default:
+			std::cout << "recieved undefined mode (" << audioData.partyMode << ")";
+			break;
+		}
+		std::cout << "\n";
 	} },
 	{ "getConfiguredKeypads", [] {
 		std::cout << "TODO: Write test code \n";
