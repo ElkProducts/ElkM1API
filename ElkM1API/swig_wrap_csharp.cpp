@@ -1555,6 +1555,202 @@ void SwigDirector_ArmStatusVectorCallback::swig_init_callbacks() {
   swig_callbackrun = 0;
 }
 
+SwigDirector_BoolVectorCallback::SwigDirector_BoolVectorCallback() : BoolVectorCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_BoolVectorCallback::run(std::vector< bool > status) {
+  void * jstatus  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("BoolVectorCallback::run");
+  } else {
+    jstatus = (void *)new std::vector< bool >((const std::vector< bool > &)status); 
+    swig_callbackrun(jstatus);
+  }
+}
+
+SwigDirector_BoolVectorCallback::~SwigDirector_BoolVectorCallback() {
+  
+}
+
+
+void SwigDirector_BoolVectorCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_BoolVectorCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_KeypadFkeyStatusCallback::SwigDirector_KeypadFkeyStatusCallback() : KeypadFkeyStatusCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_KeypadFkeyStatusCallback::run(Elk::KeypadFkeyStatus status) {
+  void * jstatus  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("KeypadFkeyStatusCallback::run");
+  } else {
+    jstatus = (void *)new Elk::KeypadFkeyStatus((const Elk::KeypadFkeyStatus &)status); 
+    swig_callbackrun(jstatus);
+  }
+}
+
+SwigDirector_KeypadFkeyStatusCallback::~SwigDirector_KeypadFkeyStatusCallback() {
+  
+}
+
+
+void SwigDirector_KeypadFkeyStatusCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_KeypadFkeyStatusCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_EntryExitTimeDataCallback::SwigDirector_EntryExitTimeDataCallback() : EntryExitTimeDataCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_EntryExitTimeDataCallback::run(Elk::EntryExitTimeData data) {
+  void * jdata  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("EntryExitTimeDataCallback::run");
+  } else {
+    jdata = (void *)new Elk::EntryExitTimeData((const Elk::EntryExitTimeData &)data); 
+    swig_callbackrun(jdata);
+  }
+}
+
+SwigDirector_EntryExitTimeDataCallback::~SwigDirector_EntryExitTimeDataCallback() {
+  
+}
+
+
+void SwigDirector_EntryExitTimeDataCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_EntryExitTimeDataCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_LogEntryCallback::SwigDirector_LogEntryCallback() : LogEntryCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_LogEntryCallback::run(Elk::LogEntry arg0) {
+  void * jarg0  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("LogEntryCallback::run");
+  } else {
+    jarg0 = (void *)new Elk::LogEntry((const Elk::LogEntry &)arg0); 
+    swig_callbackrun(jarg0);
+  }
+}
+
+SwigDirector_LogEntryCallback::~SwigDirector_LogEntryCallback() {
+  
+}
+
+
+void SwigDirector_LogEntryCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_LogEntryCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_InvalidUserCodeDataCallback::SwigDirector_InvalidUserCodeDataCallback() : InvalidUserCodeDataCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_InvalidUserCodeDataCallback::run(Elk::InvalidUserCodeData arg0) {
+  void * jarg0  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("InvalidUserCodeDataCallback::run");
+  } else {
+    jarg0 = (void *)new Elk::InvalidUserCodeData((const Elk::InvalidUserCodeData &)arg0); 
+    swig_callbackrun(jarg0);
+  }
+}
+
+SwigDirector_InvalidUserCodeDataCallback::~SwigDirector_InvalidUserCodeDataCallback() {
+  
+}
+
+
+void SwigDirector_InvalidUserCodeDataCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_InvalidUserCodeDataCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_ValidUserCodeDataCallback::SwigDirector_ValidUserCodeDataCallback() : ValidUserCodeDataCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_ValidUserCodeDataCallback::run(Elk::ValidUserCodeData arg0) {
+  void * jarg0  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("ValidUserCodeDataCallback::run");
+  } else {
+    jarg0 = (void *)new Elk::ValidUserCodeData((const Elk::ValidUserCodeData &)arg0); 
+    swig_callbackrun(jarg0);
+  }
+}
+
+SwigDirector_ValidUserCodeDataCallback::~SwigDirector_ValidUserCodeDataCallback() {
+  
+}
+
+
+void SwigDirector_ValidUserCodeDataCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_ValidUserCodeDataCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
+SwigDirector_ZoneStateCallback::SwigDirector_ZoneStateCallback() : ZoneStateCallback(), Swig::Director() {
+  swig_init_callbacks();
+}
+
+void SwigDirector_ZoneStateCallback::run(Elk::ZoneState arg0) {
+  void * jarg0  ;
+  
+  if (!swig_callbackrun) {
+    throw Swig::DirectorPureVirtualException("ZoneStateCallback::run");
+  } else {
+    jarg0 = (void *)new Elk::ZoneState((const Elk::ZoneState &)arg0); 
+    swig_callbackrun(jarg0);
+  }
+}
+
+SwigDirector_ZoneStateCallback::~SwigDirector_ZoneStateCallback() {
+  
+}
+
+
+void SwigDirector_ZoneStateCallback::swig_connect_director(SWIG_Callback0_t callbackrun) {
+  swig_callbackrun = callbackrun;
+}
+
+void SwigDirector_ZoneStateCallback::swig_init_callbacks() {
+  swig_callbackrun = 0;
+}
+
 SwigDirector_StringCallback::SwigDirector_StringCallback() : StringCallback(), Swig::Director() {
   swig_init_callbacks();
 }
@@ -8292,8 +8488,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_BoolCallback_director_connect(void *objarg, S
 SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_run(void * jarg1, int jarg2) {
   IntCallback *arg1 = (IntCallback *) 0 ;
   int arg2 ;
+  std::shared_ptr< IntCallback > *smartarg1 = 0 ;
   
-  arg1 = (IntCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  IntCallback > *)jarg1;
+  arg1 = (IntCallback *)(smartarg1 ? smartarg1->get() : 0); 
   arg2 = (int)jarg2; 
   (arg1)->run(arg2);
 }
@@ -8301,9 +8500,12 @@ SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_run(void * jarg1, int jarg2) {
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntCallback(void * jarg1) {
   IntCallback *arg1 = (IntCallback *) 0 ;
+  std::shared_ptr< IntCallback > *smartarg1 = 0 ;
   
-  arg1 = (IntCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  IntCallback > *)jarg1;
+  arg1 = (IntCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
 }
 
 
@@ -8320,14 +8522,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntCallback() {
       };
     }
   }
-  jresult = (void *)result; 
+  
+  jresult = result ? new std::shared_ptr<  IntCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_IntCallback_director_connect(void *objarg, SwigDirector_IntCallback::SWIG_Callback0_t callback0) {
-  IntCallback *obj = (IntCallback *)objarg;
-  SwigDirector_IntCallback *director = dynamic_cast<SwigDirector_IntCallback *>(obj);
+  std::shared_ptr< IntCallback > *obj = (std::shared_ptr< IntCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_IntCallback *director = dynamic_cast<SwigDirector_IntCallback *>(obj->operator->());
   if (director) {
     director->swig_connect_director(callback0);
   }
@@ -8398,9 +8604,12 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ArmStatusVectorCallback_director_connect(void
 SWIGEXPORT void SWIGSTDCALL CSharp_BoolVectorCallback_run(void * jarg1, void * jarg2) {
   BoolVectorCallback *arg1 = (BoolVectorCallback *) 0 ;
   std::vector< bool > arg2 ;
+  std::shared_ptr< BoolVectorCallback > *smartarg1 = 0 ;
   std::vector< bool > *argp2 ;
   
-  arg1 = (BoolVectorCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  BoolVectorCallback > *)jarg1;
+  arg1 = (BoolVectorCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (std::vector< bool > *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::vector< bool >", 0);
@@ -8413,18 +8622,55 @@ SWIGEXPORT void SWIGSTDCALL CSharp_BoolVectorCallback_run(void * jarg1, void * j
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_BoolVectorCallback(void * jarg1) {
   BoolVectorCallback *arg1 = (BoolVectorCallback *) 0 ;
+  std::shared_ptr< BoolVectorCallback > *smartarg1 = 0 ;
   
-  arg1 = (BoolVectorCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  BoolVectorCallback > *)jarg1;
+  arg1 = (BoolVectorCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_BoolVectorCallback() {
+  void * jresult ;
+  BoolVectorCallback *result = 0 ;
+  
+  {
+    try {
+      result = (BoolVectorCallback *)new SwigDirector_BoolVectorCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  BoolVectorCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_BoolVectorCallback_director_connect(void *objarg, SwigDirector_BoolVectorCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< BoolVectorCallback > *obj = (std::shared_ptr< BoolVectorCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_BoolVectorCallback *director = dynamic_cast<SwigDirector_BoolVectorCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatusCallback_run(void * jarg1, void * jarg2) {
   KeypadFkeyStatusCallback *arg1 = (KeypadFkeyStatusCallback *) 0 ;
   Elk::KeypadFkeyStatus arg2 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *smartarg1 = 0 ;
   Elk::KeypadFkeyStatus *argp2 ;
   
-  arg1 = (KeypadFkeyStatusCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  KeypadFkeyStatusCallback > *)jarg1;
+  arg1 = (KeypadFkeyStatusCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (Elk::KeypadFkeyStatus *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::KeypadFkeyStatus", 0);
@@ -8437,18 +8683,55 @@ SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatusCallback_run(void * jarg1, vo
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_KeypadFkeyStatusCallback(void * jarg1) {
   KeypadFkeyStatusCallback *arg1 = (KeypadFkeyStatusCallback *) 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *smartarg1 = 0 ;
   
-  arg1 = (KeypadFkeyStatusCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  KeypadFkeyStatusCallback > *)jarg1;
+  arg1 = (KeypadFkeyStatusCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_KeypadFkeyStatusCallback() {
+  void * jresult ;
+  KeypadFkeyStatusCallback *result = 0 ;
+  
+  {
+    try {
+      result = (KeypadFkeyStatusCallback *)new SwigDirector_KeypadFkeyStatusCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  KeypadFkeyStatusCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_KeypadFkeyStatusCallback_director_connect(void *objarg, SwigDirector_KeypadFkeyStatusCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< KeypadFkeyStatusCallback > *obj = (std::shared_ptr< KeypadFkeyStatusCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_KeypadFkeyStatusCallback *director = dynamic_cast<SwigDirector_KeypadFkeyStatusCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeDataCallback_run(void * jarg1, void * jarg2) {
   EntryExitTimeDataCallback *arg1 = (EntryExitTimeDataCallback *) 0 ;
   Elk::EntryExitTimeData arg2 ;
+  std::shared_ptr< EntryExitTimeDataCallback > *smartarg1 = 0 ;
   Elk::EntryExitTimeData *argp2 ;
   
-  arg1 = (EntryExitTimeDataCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  EntryExitTimeDataCallback > *)jarg1;
+  arg1 = (EntryExitTimeDataCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (Elk::EntryExitTimeData *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::EntryExitTimeData", 0);
@@ -8461,18 +8744,55 @@ SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeDataCallback_run(void * jarg1, v
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_EntryExitTimeDataCallback(void * jarg1) {
   EntryExitTimeDataCallback *arg1 = (EntryExitTimeDataCallback *) 0 ;
+  std::shared_ptr< EntryExitTimeDataCallback > *smartarg1 = 0 ;
   
-  arg1 = (EntryExitTimeDataCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  EntryExitTimeDataCallback > *)jarg1;
+  arg1 = (EntryExitTimeDataCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_LogDataUpdateCallback_run(void * jarg1, void * jarg2) {
-  LogDataUpdateCallback *arg1 = (LogDataUpdateCallback *) 0 ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_EntryExitTimeDataCallback() {
+  void * jresult ;
+  EntryExitTimeDataCallback *result = 0 ;
+  
+  {
+    try {
+      result = (EntryExitTimeDataCallback *)new SwigDirector_EntryExitTimeDataCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  EntryExitTimeDataCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EntryExitTimeDataCallback_director_connect(void *objarg, SwigDirector_EntryExitTimeDataCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< EntryExitTimeDataCallback > *obj = (std::shared_ptr< EntryExitTimeDataCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_EntryExitTimeDataCallback *director = dynamic_cast<SwigDirector_EntryExitTimeDataCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryCallback_run(void * jarg1, void * jarg2) {
+  LogEntryCallback *arg1 = (LogEntryCallback *) 0 ;
   Elk::LogEntry arg2 ;
+  std::shared_ptr< LogEntryCallback > *smartarg1 = 0 ;
   Elk::LogEntry *argp2 ;
   
-  arg1 = (LogDataUpdateCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  LogEntryCallback > *)jarg1;
+  arg1 = (LogEntryCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (Elk::LogEntry *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::LogEntry", 0);
@@ -8483,20 +8803,57 @@ SWIGEXPORT void SWIGSTDCALL CSharp_LogDataUpdateCallback_run(void * jarg1, void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogDataUpdateCallback(void * jarg1) {
-  LogDataUpdateCallback *arg1 = (LogDataUpdateCallback *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_LogEntryCallback(void * jarg1) {
+  LogEntryCallback *arg1 = (LogEntryCallback *) 0 ;
+  std::shared_ptr< LogEntryCallback > *smartarg1 = 0 ;
   
-  arg1 = (LogDataUpdateCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  LogEntryCallback > *)jarg1;
+  arg1 = (LogEntryCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_LogEntryCallback() {
+  void * jresult ;
+  LogEntryCallback *result = 0 ;
+  
+  {
+    try {
+      result = (LogEntryCallback *)new SwigDirector_LogEntryCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  LogEntryCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_LogEntryCallback_director_connect(void *objarg, SwigDirector_LogEntryCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< LogEntryCallback > *obj = (std::shared_ptr< LogEntryCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_LogEntryCallback *director = dynamic_cast<SwigDirector_LogEntryCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_InvalidUserCodeDataCallback_run(void * jarg1, void * jarg2) {
   InvalidUserCodeDataCallback *arg1 = (InvalidUserCodeDataCallback *) 0 ;
   Elk::InvalidUserCodeData arg2 ;
+  std::shared_ptr< InvalidUserCodeDataCallback > *smartarg1 = 0 ;
   Elk::InvalidUserCodeData *argp2 ;
   
-  arg1 = (InvalidUserCodeDataCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  InvalidUserCodeDataCallback > *)jarg1;
+  arg1 = (InvalidUserCodeDataCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (Elk::InvalidUserCodeData *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::InvalidUserCodeData", 0);
@@ -8509,18 +8866,55 @@ SWIGEXPORT void SWIGSTDCALL CSharp_InvalidUserCodeDataCallback_run(void * jarg1,
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_InvalidUserCodeDataCallback(void * jarg1) {
   InvalidUserCodeDataCallback *arg1 = (InvalidUserCodeDataCallback *) 0 ;
+  std::shared_ptr< InvalidUserCodeDataCallback > *smartarg1 = 0 ;
   
-  arg1 = (InvalidUserCodeDataCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  InvalidUserCodeDataCallback > *)jarg1;
+  arg1 = (InvalidUserCodeDataCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_InvalidUserCodeDataCallback() {
+  void * jresult ;
+  InvalidUserCodeDataCallback *result = 0 ;
+  
+  {
+    try {
+      result = (InvalidUserCodeDataCallback *)new SwigDirector_InvalidUserCodeDataCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  InvalidUserCodeDataCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_InvalidUserCodeDataCallback_director_connect(void *objarg, SwigDirector_InvalidUserCodeDataCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< InvalidUserCodeDataCallback > *obj = (std::shared_ptr< InvalidUserCodeDataCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_InvalidUserCodeDataCallback *director = dynamic_cast<SwigDirector_InvalidUserCodeDataCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ValidUserCodeDataCallback_run(void * jarg1, void * jarg2) {
   ValidUserCodeDataCallback *arg1 = (ValidUserCodeDataCallback *) 0 ;
   Elk::ValidUserCodeData arg2 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *smartarg1 = 0 ;
   Elk::ValidUserCodeData *argp2 ;
   
-  arg1 = (ValidUserCodeDataCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  ValidUserCodeDataCallback > *)jarg1;
+  arg1 = (ValidUserCodeDataCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (Elk::ValidUserCodeData *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::ValidUserCodeData", 0);
@@ -8533,18 +8927,55 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ValidUserCodeDataCallback_run(void * jarg1, v
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ValidUserCodeDataCallback(void * jarg1) {
   ValidUserCodeDataCallback *arg1 = (ValidUserCodeDataCallback *) 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *smartarg1 = 0 ;
   
-  arg1 = (ValidUserCodeDataCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  ValidUserCodeDataCallback > *)jarg1;
+  arg1 = (ValidUserCodeDataCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ValidUserCodeDataCallback() {
+  void * jresult ;
+  ValidUserCodeDataCallback *result = 0 ;
+  
+  {
+    try {
+      result = (ValidUserCodeDataCallback *)new SwigDirector_ValidUserCodeDataCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  ValidUserCodeDataCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ValidUserCodeDataCallback_director_connect(void *objarg, SwigDirector_ValidUserCodeDataCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< ValidUserCodeDataCallback > *obj = (std::shared_ptr< ValidUserCodeDataCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_ValidUserCodeDataCallback *director = dynamic_cast<SwigDirector_ValidUserCodeDataCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateCallback_run(void * jarg1, void * jarg2) {
   ZoneStateCallback *arg1 = (ZoneStateCallback *) 0 ;
   Elk::ZoneState arg2 ;
+  std::shared_ptr< ZoneStateCallback > *smartarg1 = 0 ;
   Elk::ZoneState *argp2 ;
   
-  arg1 = (ZoneStateCallback *)jarg1; 
+  
+  smartarg1 = (std::shared_ptr<  ZoneStateCallback > *)jarg1;
+  arg1 = (ZoneStateCallback *)(smartarg1 ? smartarg1->get() : 0); 
   argp2 = (Elk::ZoneState *)jarg2; 
   if (!argp2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null Elk::ZoneState", 0);
@@ -8557,9 +8988,43 @@ SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateCallback_run(void * jarg1, void * ja
 
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_ZoneStateCallback(void * jarg1) {
   ZoneStateCallback *arg1 = (ZoneStateCallback *) 0 ;
+  std::shared_ptr< ZoneStateCallback > *smartarg1 = 0 ;
   
-  arg1 = (ZoneStateCallback *)jarg1; 
-  delete arg1;
+  
+  smartarg1 = (std::shared_ptr<  ZoneStateCallback > *)jarg1;
+  arg1 = (ZoneStateCallback *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ZoneStateCallback() {
+  void * jresult ;
+  ZoneStateCallback *result = 0 ;
+  
+  {
+    try {
+      result = (ZoneStateCallback *)new SwigDirector_ZoneStateCallback();
+    } catch (const std::exception& e) {
+      {
+        SWIG_CSharpException(SWIG_RuntimeError, e.what()); return 0; 
+      };
+    }
+  }
+  
+  jresult = result ? new std::shared_ptr<  ZoneStateCallback >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ZoneStateCallback_director_connect(void *objarg, SwigDirector_ZoneStateCallback::SWIG_Callback0_t callback0) {
+  std::shared_ptr< ZoneStateCallback > *obj = (std::shared_ptr< ZoneStateCallback > *)objarg;
+  // Keep a local instance of the smart pointer around while we are using the raw pointer
+  // Avoids using smart pointer specific API.
+  SwigDirector_ZoneStateCallback *director = dynamic_cast<SwigDirector_ZoneStateCallback *>(obj->operator->());
+  if (director) {
+    director->swig_connect_director(callback0);
+  }
 }
 
 
@@ -8670,10 +9135,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onDebugOutput_get(void * jarg1) {
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< EntryExitTimeDataCallback > *arg2 = (std::shared_ptr< EntryExitTimeDataCallback > *) 0 ;
+  std::shared_ptr< EntryExitTimeDataCallback > *arg2 = 0 ;
+  std::shared_ptr< EntryExitTimeDataCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< EntryExitTimeDataCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< EntryExitTimeDataCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onEntryExitTimerChange = *arg2;
 }
 
@@ -8684,18 +9150,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onEntryExitTimerChange_get(void * jar
   std::shared_ptr< EntryExitTimeDataCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< EntryExitTimeDataCallback > *)& ((arg1)->onEntryExitTimerChange);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< EntryExitTimeDataCallback > *) & ((arg1)->onEntryExitTimerChange);
+  jresult = *result ? new std::shared_ptr< EntryExitTimeDataCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onInvalidUserCodeEntered_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< InvalidUserCodeDataCallback > *arg2 = (std::shared_ptr< InvalidUserCodeDataCallback > *) 0 ;
+  std::shared_ptr< InvalidUserCodeDataCallback > *arg2 = 0 ;
+  std::shared_ptr< InvalidUserCodeDataCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< InvalidUserCodeDataCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< InvalidUserCodeDataCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onInvalidUserCodeEntered = *arg2;
 }
 
@@ -8706,18 +9173,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onInvalidUserCodeEntered_get(void * j
   std::shared_ptr< InvalidUserCodeDataCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< InvalidUserCodeDataCallback > *)& ((arg1)->onInvalidUserCodeEntered);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< InvalidUserCodeDataCallback > *) & ((arg1)->onInvalidUserCodeEntered);
+  jresult = *result ? new std::shared_ptr< InvalidUserCodeDataCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< KeypadFkeyStatusCallback > *arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *) 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > *arg2 = 0 ;
+  std::shared_ptr< KeypadFkeyStatusCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< KeypadFkeyStatusCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< KeypadFkeyStatusCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onKeypadFkeyStatusChange = *arg2;
 }
 
@@ -8728,18 +9196,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onKeypadFkeyStatusChange_get(void * j
   std::shared_ptr< KeypadFkeyStatusCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< KeypadFkeyStatusCallback > *)& ((arg1)->onKeypadFkeyStatusChange);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< KeypadFkeyStatusCallback > *) & ((arg1)->onKeypadFkeyStatusChange);
+  jresult = *result ? new std::shared_ptr< KeypadFkeyStatusCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onLogDataUpdate_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< LogDataUpdateCallback > *arg2 = (std::shared_ptr< LogDataUpdateCallback > *) 0 ;
+  std::shared_ptr< LogEntryCallback > *arg2 = 0 ;
+  std::shared_ptr< LogEntryCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< LogDataUpdateCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< LogEntryCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onLogDataUpdate = *arg2;
 }
 
@@ -8747,21 +9216,22 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onLogDataUpdate_set(void * jarg1, void 
 SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onLogDataUpdate_get(void * jarg1) {
   void * jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< LogDataUpdateCallback > *result = 0 ;
+  std::shared_ptr< LogEntryCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< LogDataUpdateCallback > *)& ((arg1)->onLogDataUpdate);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< LogEntryCallback > *) & ((arg1)->onLogDataUpdate);
+  jresult = *result ? new std::shared_ptr< LogEntryCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onOutputStatusChange_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< BoolVectorCallback > *arg2 = (std::shared_ptr< BoolVectorCallback > *) 0 ;
+  std::shared_ptr< BoolVectorCallback > *arg2 = 0 ;
+  std::shared_ptr< BoolVectorCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< BoolVectorCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< BoolVectorCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onOutputStatusChange = *arg2;
 }
 
@@ -8772,8 +9242,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onOutputStatusChange_get(void * jarg1
   std::shared_ptr< BoolVectorCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< BoolVectorCallback > *)& ((arg1)->onOutputStatusChange);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< BoolVectorCallback > *) & ((arg1)->onOutputStatusChange);
+  jresult = *result ? new std::shared_ptr< BoolVectorCallback >(*result) : 0; 
   return jresult;
 }
 
@@ -8803,10 +9273,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onRPConnection_get(void * jarg1) {
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onTaskChangeUpdate_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< IntCallback > *arg2 = (std::shared_ptr< IntCallback > *) 0 ;
+  std::shared_ptr< IntCallback > *arg2 = 0 ;
+  std::shared_ptr< IntCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< IntCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< IntCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onTaskChangeUpdate = *arg2;
 }
 
@@ -8817,18 +9288,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onTaskChangeUpdate_get(void * jarg1) 
   std::shared_ptr< IntCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< IntCallback > *)& ((arg1)->onTaskChangeUpdate);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< IntCallback > *) & ((arg1)->onTaskChangeUpdate);
+  jresult = *result ? new std::shared_ptr< IntCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< ValidUserCodeDataCallback > *arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *) 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > *arg2 = 0 ;
+  std::shared_ptr< ValidUserCodeDataCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< ValidUserCodeDataCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< ValidUserCodeDataCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onValidUserCodeEntered = *arg2;
 }
 
@@ -8839,18 +9311,19 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onValidUserCodeEntered_get(void * jar
   std::shared_ptr< ValidUserCodeDataCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< ValidUserCodeDataCallback > *)& ((arg1)->onValidUserCodeEntered);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< ValidUserCodeDataCallback > *) & ((arg1)->onValidUserCodeEntered);
+  jresult = *result ? new std::shared_ptr< ValidUserCodeDataCallback >(*result) : 0; 
   return jresult;
 }
 
 
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_onZoneChangeUpdate_set(void * jarg1, void * jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  std::shared_ptr< ZoneStateCallback > *arg2 = (std::shared_ptr< ZoneStateCallback > *) 0 ;
+  std::shared_ptr< ZoneStateCallback > *arg2 = 0 ;
+  std::shared_ptr< ZoneStateCallback > tempnull2 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (std::shared_ptr< ZoneStateCallback > *)jarg2; 
+  arg2 = jarg2 ? (std::shared_ptr< ZoneStateCallback > *)jarg2 : &tempnull2; 
   if (arg1) (arg1)->onZoneChangeUpdate = *arg2;
 }
 
@@ -8861,8 +9334,8 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_onZoneChangeUpdate_get(void * jarg1) 
   std::shared_ptr< ZoneStateCallback > *result = 0 ;
   
   arg1 = (Elk::M1API *)jarg1; 
-  result = (std::shared_ptr< ZoneStateCallback > *)& ((arg1)->onZoneChangeUpdate);
-  jresult = (void *)result; 
+  result = (std::shared_ptr< ZoneStateCallback > *) & ((arg1)->onZoneChangeUpdate);
+  jresult = *result ? new std::shared_ptr< ZoneStateCallback >(*result) : 0; 
   return jresult;
 }
 
@@ -9235,20 +9708,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getSystemTroubleStatus(void * jarg1) 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getThermostatData(void * jarg1, int jarg2) {
-  void * jresult ;
-  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
-  int arg2 ;
-  Elk::ThermostatData result;
-  
-  arg1 = (Elk::M1API *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = (arg1)->getThermostatData(arg2);
-  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
-  return jresult;
-}
-
-
 SWIGEXPORT int SWIGSTDCALL CSharp_M1API_getTemperature(void * jarg1, int jarg2, int jarg3) {
   int jresult ;
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
@@ -9291,6 +9750,20 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_M1API_getTextDescription(void * jarg1, int 
   arg3 = (int)jarg3; 
   result = (arg1)->getTextDescription(arg2,arg3);
   jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_getThermostatData(void * jarg1, int jarg2) {
+  void * jresult ;
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  int arg2 ;
+  Elk::ThermostatData result;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (arg1)->getThermostatData(arg2);
+  jresult = new Elk::ThermostatData((const Elk::ThermostatData &)result); 
   return jresult;
 }
 
@@ -9549,6 +10022,26 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_M1API_setThermostatData(void * jarg1, int j
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_speakPhrase(void * jarg1, int jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  Elk::SirenPhrase arg2 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (Elk::SirenPhrase)jarg2; 
+  (arg1)->speakPhrase(arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_M1API_speakWord(void * jarg1, int jarg2) {
+  Elk::M1API *arg1 = (Elk::M1API *) 0 ;
+  Elk::SirenWord arg2 ;
+  
+  arg1 = (Elk::M1API *)jarg1; 
+  arg2 = (Elk::SirenWord)jarg2; 
+  (arg1)->speakWord(arg2);
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_M1API_toggleControlOutput(void * jarg1, int jarg2) {
   Elk::M1API *arg1 = (Elk::M1API *) 0 ;
   int arg2 ;
@@ -9712,26 +10205,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_displayLCDText__SWIG_1(void * jarg
   }
   (&arg7)->assign(jarg7); 
   (arg1)->displayLCDText(arg2,arg3,arg4,arg5,arg6,arg7);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_speakPhrase(void * jarg1, int jarg2) {
-  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
-  Elk::SirenPhrase arg2 ;
-  
-  arg1 = (Elk::M1AsciiAPI *)jarg1; 
-  arg2 = (Elk::SirenPhrase)jarg2; 
-  (arg1)->speakPhrase(arg2);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_M1AsciiAPI_speakWord(void * jarg1, int jarg2) {
-  Elk::M1AsciiAPI *arg1 = (Elk::M1AsciiAPI *) 0 ;
-  Elk::SirenWord arg2 ;
-  
-  arg1 = (Elk::M1AsciiAPI *)jarg1; 
-  arg2 = (Elk::SirenWord)jarg2; 
-  (arg1)->speakWord(arg2);
 }
 
 

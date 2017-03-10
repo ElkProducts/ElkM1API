@@ -42,10 +42,10 @@ public:
 	virtual ELKM1API ~EntryExitTimeDataCallback() = 0;
 };
 
-class LogDataUpdateCallback {
+class LogEntryCallback {
 public:
 	virtual ELKM1API void run(Elk::LogEntry) = 0;
-	virtual ELKM1API ~LogDataUpdateCallback() = 0;
+	virtual ELKM1API ~LogEntryCallback() = 0;
 };
 
 class InvalidUserCodeDataCallback {

@@ -23,15 +23,30 @@
 // Set up things to have shared pointer passes
 %shared_ptr(Elk::ElkTCP)
 %shared_ptr(Elk::M1Connection)
-%shared_ptr(BoolCallback)
-%shared_ptr(StringCallback)
 %shared_ptr(ArmStatusVectorCallback)
+%shared_ptr(StringCallback)
+%shared_ptr(EntryExitTimeDataCallback)
+%shared_ptr(InvalidUserCodeDataCallback)
+%shared_ptr(KeypadFkeyStatusCallback)
+%shared_ptr(LogEntryCallback)
+%shared_ptr(BoolVectorCallback)
+%shared_ptr(BoolCallback)
+%shared_ptr(IntCallback)
+%shared_ptr(ValidUserCodeDataCallback)
+%shared_ptr(ZoneStateCallback)
 
 // This allows the C++ code to run calls that wind all the way up into the target platform code.
-%feature ("director") BoolCallback;
-%feature ("director") StringCallback;
-%feature ("director") IntCallback;
 %feature ("director") ArmStatusVectorCallback;
+%feature ("director") StringCallback;
+%feature ("director") EntryExitTimeDataCallback;
+%feature ("director") InvalidUserCodeDataCallback;
+%feature ("director") KeypadFkeyStatusCallback;
+%feature ("director") LogEntryCallback;
+%feature ("director") BoolVectorCallback;
+%feature ("director") BoolCallback;
+%feature ("director") IntCallback;
+%feature ("director") ValidUserCodeDataCallback;
+%feature ("director") ZoneStateCallback;
 
 // This allows us to make the M1Connection calls against a derived target-language class, so we can 
 // implement the connection on the target platform (such as SSL encrypted on Android)

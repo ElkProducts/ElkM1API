@@ -286,7 +286,7 @@ namespace Elk {
 			m1cache.logData[newEntry->index].set(*newEntry);
 
 			if (onLogDataUpdate)
-				std::thread(&LogDataUpdateCallback::run, onLogDataUpdate, *newEntry).detach();
+				std::thread(&LogEntryCallback::run, onLogDataUpdate, *newEntry).detach();
 		});
 
 		// Temperature data block

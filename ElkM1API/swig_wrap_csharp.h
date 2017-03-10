@@ -56,6 +56,111 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_BoolVectorCallback : public BoolVectorCallback, public Swig::Director {
+
+public:
+    SwigDirector_BoolVectorCallback();
+    virtual void run(std::vector< bool > status);
+    virtual ~SwigDirector_BoolVectorCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_KeypadFkeyStatusCallback : public KeypadFkeyStatusCallback, public Swig::Director {
+
+public:
+    SwigDirector_KeypadFkeyStatusCallback();
+    virtual void run(Elk::KeypadFkeyStatus status);
+    virtual ~SwigDirector_KeypadFkeyStatusCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_EntryExitTimeDataCallback : public EntryExitTimeDataCallback, public Swig::Director {
+
+public:
+    SwigDirector_EntryExitTimeDataCallback();
+    virtual void run(Elk::EntryExitTimeData data);
+    virtual ~SwigDirector_EntryExitTimeDataCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_LogEntryCallback : public LogEntryCallback, public Swig::Director {
+
+public:
+    SwigDirector_LogEntryCallback();
+    virtual void run(Elk::LogEntry arg0);
+    virtual ~SwigDirector_LogEntryCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_InvalidUserCodeDataCallback : public InvalidUserCodeDataCallback, public Swig::Director {
+
+public:
+    SwigDirector_InvalidUserCodeDataCallback();
+    virtual void run(Elk::InvalidUserCodeData arg0);
+    virtual ~SwigDirector_InvalidUserCodeDataCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_ValidUserCodeDataCallback : public ValidUserCodeDataCallback, public Swig::Director {
+
+public:
+    SwigDirector_ValidUserCodeDataCallback();
+    virtual void run(Elk::ValidUserCodeData arg0);
+    virtual ~SwigDirector_ValidUserCodeDataCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_ZoneStateCallback : public ZoneStateCallback, public Swig::Director {
+
+public:
+    SwigDirector_ZoneStateCallback();
+    virtual void run(Elk::ZoneState arg0);
+    virtual ~SwigDirector_ZoneStateCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
 class SwigDirector_StringCallback : public StringCallback, public Swig::Director {
 
 public:

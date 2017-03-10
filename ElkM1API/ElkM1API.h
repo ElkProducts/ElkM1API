@@ -38,7 +38,7 @@ namespace Elk
 		std::shared_ptr<EntryExitTimeDataCallback> onEntryExitTimerChange;
 		std::shared_ptr<InvalidUserCodeDataCallback> onInvalidUserCodeEntered;
 		std::shared_ptr<KeypadFkeyStatusCallback> onKeypadFkeyStatusChange;
-		std::shared_ptr<LogDataUpdateCallback> onLogDataUpdate;
+		std::shared_ptr<LogEntryCallback> onLogDataUpdate;
 		std::shared_ptr<BoolVectorCallback> onOutputStatusChange;
 		std::shared_ptr<BoolCallback> onRPConnection;
 		std::shared_ptr<IntCallback> onTaskChangeUpdate;
@@ -91,13 +91,13 @@ namespace Elk
 		virtual ELKM1API RTCData getRTCData() = 0;
 		// Get the trouble status of the entire system.
 		virtual ELKM1API SystemTroubleStatus getSystemTroubleStatus() = 0;
-		// Get more complex thermostat data.
-		virtual ELKM1API ThermostatData getThermostatData(int index) = 0;
 		// Get varying forms of temperature.
 		virtual ELKM1API int getTemperature(TemperatureDevice type, int device) = 0;
 		virtual ELKM1API std::vector<int> getTemperatures(TemperatureDevice type) = 0;
 		// Retrieve a text description. 
 		virtual ELKM1API std::string getTextDescription(TextDescriptionType type, int index) = 0;
+		// Get more complex thermostat data.
+		virtual ELKM1API ThermostatData getThermostatData(int index) = 0;
 		// Get what areas a certain usercode can access.
 		virtual ELKM1API UserCodeAccess getUserCodeAccess(std::string userCode) = 0;
 		// returns non zero if connected to XEP
@@ -127,6 +127,8 @@ namespace Elk
 		virtual ELKM1API RTCData setRTCData(RTCData newData) = 0;
 		// Set certain characteristics of thermostat data. TODO: enumerate
 		virtual ELKM1API ThermostatData setThermostatData(int index, int value, int element) = 0;
+		virtual ELKM1API void speakPhrase(Elk::SirenPhrase phrase) = 0;
+		virtual ELKM1API void speakWord(Elk::SirenWord word) = 0;
 		virtual ELKM1API void toggleControlOutput(int output) = 0;
 		virtual ELKM1API void togglePLCState(char houseCode, int unitCode) = 0;
 		// Bypass a zone, or unbypass all zones in an area.

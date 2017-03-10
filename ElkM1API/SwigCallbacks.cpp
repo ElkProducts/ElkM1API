@@ -6,7 +6,7 @@ ArmStatusVectorCallback::~ArmStatusVectorCallback() {}
 KeypadFkeyStatusCallback::~KeypadFkeyStatusCallback() {}
 BoolVectorCallback::~BoolVectorCallback() {}
 EntryExitTimeDataCallback::~EntryExitTimeDataCallback() {}
-LogDataUpdateCallback::~LogDataUpdateCallback() {}
+LogEntryCallback::~LogEntryCallback() {}
 InvalidUserCodeDataCallback::~InvalidUserCodeDataCallback() {}
 ValidUserCodeDataCallback::~ValidUserCodeDataCallback() {}
 ZoneStateCallback::~ZoneStateCallback() {}
