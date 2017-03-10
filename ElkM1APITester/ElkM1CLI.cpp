@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include <mutex>
+#include <chrono>
 #include <thread>
 #include <stdio.h>
 #include <memory>
@@ -10,7 +12,9 @@
 #include "ElkM1AsciiAPI.h"
 #include "ElkM1TCP.h"
 
+std::mutex mtx;
 bool sigExit = false;
+bool rpConnection = false;
 std::shared_ptr<Elk::M1Connection> connection;
 std::shared_ptr<Elk::M1AsciiAPI> m1api;
 // Map of command names to functions.
@@ -94,7 +98,10 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cin >> seconds;
 		m1api->enableControlOutput(output, seconds); 
 	} },
-	//{ "executePLCCommand", [] {m1api->executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn); } },
+	{ "executePLCCommand", [] {
+		std::cout << "TODO: Write test code\n";
+		//m1api->executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn); 
+	} },
 	{ "getArmStatus", [] {
 		int i = 0;
 		for (const auto& stat : m1api->getArmStatus()) {
@@ -150,7 +157,22 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << "\n";
 		}
 	} },
-	//{ "getAudioData", [] {m1api->getAudioData(int audioZone); } },
+	{ "getAudioData", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getAudioData(int audioZone); 
+	} },
+	{ "getConfiguredKeypads", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getConfiguredKeypads();
+	} },
+	{ "getConfiguredTempDevices", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getConfiguredTempDevices();
+	} },
+	{ "getConfiguredZones", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getConfiguredZones();
+	} },
 	{ "getControlOutputs", [] {
 		int i = 0, j = 0;
 		for (const auto& out : m1api->getControlOutputs()) {
@@ -227,11 +249,31 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << "\n";
 		}
 	} },
-	//{ "getLightingStatus", [] {m1api->getLightingStatus(int device); } },
-	//{ "getLogData", [] {m1api->getLogData(int index); } },
-	//{ "getLogs", [] {m1api->getLogs(); } },
-	//{ "getOmnistat2Data", [] {m1api->getOmnistat2Data(std::vector<char> request); } },
-	//{ "getPLCStatus", [] {m1api->getPLCStatus(int bank); } },
+	{ "getLightingStatus", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getLightingStatus(int device); 
+	} },
+	{ "getLogData", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getLogData(int index); 
+	} },
+	{ "getLogs", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getLogs(); 
+	} },
+	{ "getM1VersionNumber", [] {
+		const auto& m1vn = m1api->getM1VersionNumber();
+		std::cout << "M1 Version Number: " << m1vn[0] << "."
+			<< m1vn[1] << "." << m1vn[2] << "\n";
+	} },
+	{ "getOmnistat2Data", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getOmnistat2Data(std::vector<char> request); 
+	} },
+	{ "getPLCStatus", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getPLCStatus(int bank); 
+	} },
 	{ "getRTCData", [] {
 		Elk::RTCData rtc = m1api->getRTCData(); 
 		switch (rtc.weekday) {
@@ -259,9 +301,16 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 		std::cout << ", " << rtc.year << "/" << rtc.month << "/" << rtc.day << " " << rtc.hours << ":" << rtc.minutes << ":" << rtc.seconds << "\n";
 	} },
-	//{ "getSystemTroubleStatus", [] {m1api->getSystemTroubleStatus(); } },
-	//{ "getTemperature", [] {m1api->getTemperature(TemperatureDevice type, int device); } },
+	{ "getSystemTroubleStatus", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getSystemTroubleStatus(); 
+	} },
+	{ "getTemperature", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getTemperature(TemperatureDevice type, int device); 
+	} },
 	{ "getTemperatures", [] {
+		std::cout << "TODO: Write test code \n";
 		//m1api->forEachConfiguredTempDevice([](Elk::TemperatureDevice dev, int index) {
 		//	switch (dev) {
 		//	case Elk::TEMPDEVICE_THERMOSTAT:
@@ -286,12 +335,17 @@ std::map<std::string, std::function<void()>> commands = {
 		//	}
 		//});
 	} },
-	//{ "getThermostatData", [] {m1api->getThermostatData(int index); } },
-	//{ "getUserCodeAccess", [] {m1api->getUserCodeAccess(std::string userCode); } },
-	{ "getM1VersionNumber", [] {
-		const auto& m1vn = m1api->getM1VersionNumber();
-		std::cout << "M1 Version Number: " << m1vn[0] << "."
-			<< m1vn[1] << "." << m1vn[2] << "\n";
+	{ "getTextDescription", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getTextDescription(Elk::TextDescriptionType type, int index);
+	} },
+	{ "getThermostatData", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getThermostatData(int index); 
+	} },
+	{ "getUserCodeAccess", [] {
+		std::cout << "TODO: Write test code \n";
+		//m1api->getUserCodeAccess(std::string userCode); 
 	} },
 	{ "getXEPVersionNumber", [] {
 		const auto& xvn = m1api->getXEPVersionNumber();
@@ -299,7 +353,8 @@ std::map<std::string, std::function<void()>> commands = {
 			<< xvn[1] << "." << xvn[2] << "\n";
 	} },
 	{ "getZoneAlarms", [] {
-		const auto& zdfs = m1api->getZoneAlarms();
+		std::cout << "TODO: Write test code \n";
+		//const auto& zdfs = m1api->getZoneAlarms();
 		//m1api->forEachConfiguredZone([&zdfs](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
 		//	switch (zdfs[index].zd) {
@@ -382,7 +437,8 @@ std::map<std::string, std::function<void()>> commands = {
 		//});
 	} },
 	{ "getZoneDefinitions", [] {
-		const auto& zdfs = m1api->getZoneDefinitions(); 
+		std::cout << "TODO: Write test code \n";
+		//const auto& zdfs = m1api->getZoneDefinitions(); 
 		//m1api->forEachConfiguredZone([&zdfs](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\": ";
 		//	switch (zdfs[index].zd) {
@@ -465,7 +521,8 @@ std::map<std::string, std::function<void()>> commands = {
 		//});
 	} },
 	{ "getZonePartitions", [] {
-		const auto& parts = m1api->getZonePartitions();
+		std::cout << "TODO: Write test code \n";
+		//const auto& parts = m1api->getZonePartitions();
 		//m1api->forEachConfiguredZone([parts](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
 		//});
@@ -505,25 +562,70 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "getZoneVoltages", [] {
+		std::cout << "TODO: Write test code \n";
 		//m1api->forEachConfiguredZone([](int index) {
 		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" voltage: " << m1api->getZoneVoltage(index) << "\n";
 		//});
 	} },
-	//{ "pressFunctionKey", [] {m1api->pressFunctionKey(int keypad, FKEY key); } },
-	//{ "requestChangeUserCode", [] {m1api->requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask); } },
-	//{ "setAreaBypass", [] {m1api->setAreaBypass(int area, std::string pinCode, bool bypassed); } },
-	//{ "setCounterValue", [] {m1api->setCounterValue(int counter, uint16_t value); } },
-	//{ "setCustomValue", [] {m1api->setCustomValue(int index, uint16_t value); } },
-	//{ "setLogData", [] {m1api->setLogData(int logType, int eventType, int zoneNumber, int area); } },
-	//{ "setPLCState", [] {m1api->setPLCState(char houseCode, int unitCode, bool state); } },
-	//{ "setRTCData", [] {m1api->setRTCData(RTCData newData); } },
-	//{ "setThermostatData", [] {m1api->setThermostatData(int index, int value, int element); } },
-	//{ "speakPhrase", [] {m1api->speakPhrase(SirenPhrase phrase); } },
-	//{ "speakWord", [] {m1api->speakWord(SirenWord word); } },
-	//{ "toggleControlOutput", [] {m1api->toggleControlOutput(int output); } },
-	//{ "togglePLCState", [] {m1api->togglePLCState(char houseCode, int unitCode); } },
-	//{ "zoneBypass", [] {m1api->zoneBypass(int zone, std::string pinCode); } }
-	{ "quit", [] {sigExit = true; } },
+	{ "pressFunctionKey", [] {
+		std::cout << "TODO: Write test code\n";
+		//m1api->pressFunctionKey(int keypad, FKEY key); 
+	} },
+	{ "requestChangeUserCode", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask); 
+	} },
+	{ "setAreaBypass", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setAreaBypass(int area, std::string pinCode, bool bypassed); 
+	} },
+	{ "setCounterValue", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setCounterValue(int counter, uint16_t value); 
+	} },
+	{ "setCustomValue", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setCustomValue(int index, uint16_t value); 
+	} },
+	{ "setLogData", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setLogData(int logType, int eventType, int zoneNumber, int area); 
+	} },
+	{ "setPLCState", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setPLCState(char houseCode, int unitCode, bool state); 
+	} },
+	{ "setRTCData", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setRTCData(RTCData newData); 
+	} },
+	{ "setThermostatData", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->setThermostatData(int index, int value, int element); 
+	} },
+	{ "speakPhrase", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->speakPhrase(SirenPhrase phrase); 
+	} },
+	{ "speakWord", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->speakWord(SirenWord word); 
+	} },
+	{ "toggleControlOutput", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->toggleControlOutput(int output); 
+	} },
+	{ "togglePLCState", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->togglePLCState(char houseCode, int unitCode); 
+	} },
+	{ "zoneBypass", [] {
+		std::cout << "TODO: Write test code";
+		//m1api->zoneBypass(int zone, std::string pinCode); 
+	} },
+	{ "quit", [] {
+		sigExit = true; 
+	} },
 	{ "help", [] {
 		std::cout << "Available commands: \n";
 		for (const auto& cmd : commands)
@@ -535,14 +637,100 @@ std::map<std::string, std::function<void()>> commands = {
 class CustomArmStatusVectorCallback : public ArmStatusVectorCallback {
 public:
 	void run(std::vector<Elk::ArmStatus> v) {
-		std::cout << "Custom Arm Status Vector Callback\n";
+		mtx.lock();
+		std::cout << "TODO: Custom Arm Status Vector Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomDebugOutput : public StringCallback {
+public:
+	void run(std::string s) {
+		mtx.lock();
+		std::cout << "DEBUG: " << s << "\n";
+		mtx.unlock();
+	}
+};
+
+class CustomEntryExitTimeDataCallback : public EntryExitTimeDataCallback {
+public:
+	void run(Elk::EntryExitTimeData eetd) {
+		mtx.lock();
+		std::cout << "TODO: Custom Entry Exit Time Data Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomInvalidUserCodeDataCallback : public InvalidUserCodeDataCallback {
+public:
+	void run(Elk::InvalidUserCodeData iucd) {
+		mtx.lock();
+		std::cout << "TODO: Custom Invalid User Code Data Callback\n";
+		mtx.unlock();
 	}
 };
 
 class CustomKeypadFkeyStatusCallback : public KeypadFkeyStatusCallback {
 public:
 	void run(Elk::KeypadFkeyStatus kfks) {
-		std::cout << "Custom Keypad Fkey Status Callback\n";
+		mtx.lock();
+		std::cout << "TODO: Custom Keypad Fkey Status Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomLogEntryCallback : public LogEntryCallback {
+public:
+	void run(Elk::LogEntry) {
+		mtx.lock();
+		std::cout << "TODO: Custom Log Data Update Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomOutputStatusChangeCallback : public BoolVectorCallback {
+public:
+	void run(std::vector<bool> vb) {
+		mtx.lock();
+		std::cout << "TODO: Custom Output Status Change Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomRPConnectionCallback : public BoolCallback {
+public:
+	void run(bool b) {
+		rpConnection = b;
+		mtx.lock();
+		std::cout << "RP" << (b ? "Connected" : "Disconnected") << "\n";
+		mtx.unlock();
+	}
+};
+
+class CustomTaskChangeCallback : public IntCallback {
+public:
+	void run(int i) {
+		mtx.lock();
+		std::cout << "TODO: Custom Task Change Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomValidUserCodeDataCallback : public ValidUserCodeDataCallback {
+public:
+	void run(Elk::ValidUserCodeData vucd) {
+		mtx.lock();
+		std::cout << "TODO: Custom Valid User Code Data Callback\n";
+		mtx.unlock();
+	}
+};
+
+class CustomZoneStateCallback : public ZoneStateCallback {
+public:
+	void run(Elk::ZoneState zs) {
+		mtx.lock();
+		std::cout << "TODO: Custom Zone State Callback\n";
+		mtx.unlock();
 	}
 };
 
@@ -562,13 +750,17 @@ int main(int argc, char* argv[])
 		std::cout << "Connected!\n";
 		m1api = (std::shared_ptr<Elk::M1AsciiAPI>) new Elk::M1AsciiAPI(connection);
 
-		// Give it callbacks
-		//m1api->onRPConnection = [] (bool connected){
-		//	std::cout << "-- Warning, RP " << (connected ? "connected" : "disconnected") << ". --\n";
-		//};
-
 		m1api->onArmStatusChange = std::shared_ptr<ArmStatusVectorCallback>(new CustomArmStatusVectorCallback());
+		m1api->onDebugOutput = std::shared_ptr<StringCallback>(new CustomDebugOutput());
+		m1api->onEntryExitTimerChange = std::shared_ptr<EntryExitTimeDataCallback>(new CustomEntryExitTimeDataCallback());
+		m1api->onInvalidUserCodeEntered = std::shared_ptr<InvalidUserCodeDataCallback>(new CustomInvalidUserCodeDataCallback());
 		m1api->onKeypadFkeyStatusChange = std::shared_ptr<KeypadFkeyStatusCallback>(new CustomKeypadFkeyStatusCallback());
+		m1api->onLogDataUpdate = std::shared_ptr<LogEntryCallback>(new CustomLogEntryCallback());
+		m1api->onOutputStatusChange = std::shared_ptr<BoolVectorCallback>(new CustomOutputStatusChangeCallback());
+		m1api->onRPConnection = std::shared_ptr<BoolCallback>(new CustomRPConnectionCallback());
+		m1api->onTaskChangeUpdate = std::shared_ptr<IntCallback>(new CustomTaskChangeCallback());
+		m1api->onValidUserCodeEntered = std::shared_ptr<ValidUserCodeDataCallback>(new CustomValidUserCodeDataCallback());
+		m1api->onZoneChangeUpdate = std::shared_ptr<ZoneStateCallback>(new CustomZoneStateCallback());
 
 		// Execute
 		m1api->run();
@@ -590,15 +782,32 @@ int main(int argc, char* argv[])
 		m1api->collectNames(Elk::TEXT_AreaName);
 		while (!sigExit) {
 			std::string commandIndex;
-			std::cout << "------------------------------------------\n";
-			std::cout << "Enter a command (or 'help' for help): ";
-			std::cin >> commandIndex;
-			try {
-				commands.at(commandIndex)();
+			if (!rpConnection) {
+				mtx.lock();
+				std::cout << "------------------------------------------\n";
+				std::cout << "Enter a command (or 'help' for help): ";
+				std::cin >> commandIndex;
+				mtx.unlock();
+				try {
+					mtx.lock();
+					if (!rpConnection)
+						commands.at(commandIndex)();
+					mtx.unlock();
+				}
+				catch (std::exception ex) {
+					mtx.lock();
+					std::cout << "Command failed with the following error: \n";
+					std::cout << ex.what() << "\n";
+					mtx.unlock();
+				}
 			}
-			catch (std::exception ex) {
-				std::cout << "Command failed with the following error: \n";
-				std::cout << ex.what() << "\n";
+			else {
+				mtx.lock();
+				std::cout << "Waiting for RP disconnect...\n";
+				mtx.unlock();
+				while (rpConnection) {
+					std::this_thread::sleep_for(std::chrono::seconds(5));
+				}
 			}
 		}
 		m1api->stop();
