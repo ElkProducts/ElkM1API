@@ -28,11 +28,13 @@
 %shared_ptr(EntryExitTimeDataCallback)
 %shared_ptr(InvalidUserCodeDataCallback)
 %shared_ptr(KeypadFkeyStatusCallback)
+%shared_ptr(LightingDataCallback)
 %shared_ptr(LogEntryCallback)
 %shared_ptr(BoolVectorCallback)
 %shared_ptr(BoolCallback)
 %shared_ptr(IntCallback)
 %shared_ptr(ValidUserCodeDataCallback)
+%shared_ptr(X10DataCallback)
 %shared_ptr(ZoneStateCallback)
 
 // This allows the C++ code to run calls that wind all the way up into the target platform code.
@@ -41,11 +43,13 @@
 %feature ("director") EntryExitTimeDataCallback;
 %feature ("director") InvalidUserCodeDataCallback;
 %feature ("director") KeypadFkeyStatusCallback;
+%feature ("director") LightingDataCallback;
 %feature ("director") LogEntryCallback;
 %feature ("director") BoolVectorCallback;
 %feature ("director") BoolCallback;
 %feature ("director") IntCallback;
 %feature ("director") ValidUserCodeDataCallback;
+%feature ("director") X10DataCallback;
 %feature ("director") ZoneStateCallback;
 
 // This allows us to make the M1Connection calls against a derived target-language class, so we can 

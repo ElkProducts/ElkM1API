@@ -146,6 +146,36 @@ private:
     void swig_init_callbacks();
 };
 
+class SwigDirector_LightingDataCallback : public LightingDataCallback, public Swig::Director {
+
+public:
+    SwigDirector_LightingDataCallback();
+    virtual void run(Elk::LightingData arg0);
+    virtual ~SwigDirector_LightingDataCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
+class SwigDirector_X10DataCallback : public X10DataCallback, public Swig::Director {
+
+public:
+    SwigDirector_X10DataCallback();
+    virtual void run(Elk::X10Data arg0);
+    virtual ~SwigDirector_X10DataCallback();
+
+    typedef void (SWIGSTDCALL* SWIG_Callback0_t)(void *);
+    void swig_connect_director(SWIG_Callback0_t callbackrun);
+
+private:
+    SWIG_Callback0_t swig_callbackrun;
+    void swig_init_callbacks();
+};
+
 class SwigDirector_ZoneStateCallback : public ZoneStateCallback, public Swig::Director {
 
 public:
