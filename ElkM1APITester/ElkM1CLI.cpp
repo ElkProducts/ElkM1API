@@ -318,8 +318,11 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "getLightingStatus", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getLightingStatus(int device); 
+		int device;
+		std::cout << "Enter lighting device: ";
+		std::cin >> device;
+		int status = m1api->getLightingStatus(device); 
+		std::cout << "Lighing Device " << device << " Status:" << status << "\n";
 	} },
 	{ "getLogData", [] {
 		std::cout << "TODO: Write test code \n";
