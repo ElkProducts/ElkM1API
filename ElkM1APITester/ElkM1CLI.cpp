@@ -232,8 +232,14 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "getConfiguredZones", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getConfiguredZones();
+		bool addComma = false;
+		std::cout << "Configured Zones: ";
+		for (int z : m1api->getConfiguredZones()) {
+			std::cout << (addComma ? ", " : "") << z;
+			if (!addComma)
+				addComma = true;
+		}
+		std::cout << "\n";
 	} },
 	{ "getControlOutputs", [] {
 		int i = 0, j = 0;
