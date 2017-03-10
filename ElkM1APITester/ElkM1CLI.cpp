@@ -99,8 +99,19 @@ std::map<std::string, std::function<void()>> commands = {
 		m1api->enableControlOutput(output, seconds); 
 	} },
 	{ "executePLCCommand", [] {
-		std::cout << "TODO: Write test code\n";
-		//m1api->executePLCCommand(char houseCode, int unitCode, int functionCode, int extendedCode, int timeOn); 
+		char houseCode;
+		int unitCode, functionCode, extendedCode, timeOn;
+		std::cout << "Enter House Code[A-P]: ";
+		std::cin >> houseCode;
+		std::cout << "Enter Unit Code[1-16]: ";
+		std::cin >> unitCode;
+		std::cout << "Enter Function Code[1-16]: ";
+		std::cin >> functionCode;
+		std::cout << "Enter Extended Code[0-99]: ";
+		std::cin >> extendedCode;
+		std::cout << "Enter On Time Seconds[0-9999]: ";
+		std::cin >> timeOn;
+		m1api->executePLCCommand(houseCode, unitCode, functionCode, extendedCode, timeOn); 
 	} },
 	{ "getArmStatus", [] {
 		int i = 0;
@@ -679,6 +690,15 @@ public:
 	}
 };
 
+class CustomLightingDataCallback : public LightingDataCallback {
+public:
+	void run(Elk::LightingData ld) {
+		mtx.lock();
+		std::cout << "TODO: Custom Lighting Data Callback\n";
+		mtx.unlock();
+	}
+};
+
 class CustomLogEntryCallback : public LogEntryCallback {
 public:
 	void run(Elk::LogEntry) {
@@ -725,6 +745,15 @@ public:
 	}
 };
 
+class CustomX10DataCallback : public X10DataCallback {
+public:
+	void run(Elk::X10Data xd) {
+		mtx.lock();
+		std::cout << "TODO: Custom X10DataCallback Callback\n";
+		mtx.unlock();
+	}
+};
+
 class CustomZoneStateCallback : public ZoneStateCallback {
 public:
 	void run(Elk::ZoneState zs) {
@@ -757,11 +786,13 @@ int main(int argc, char* argv[])
 		m1api->onEntryExitTimerChange = std::shared_ptr<EntryExitTimeDataCallback>(new CustomEntryExitTimeDataCallback());
 		m1api->onInvalidUserCodeEntered = std::shared_ptr<InvalidUserCodeDataCallback>(new CustomInvalidUserCodeDataCallback());
 		m1api->onKeypadFkeyStatusChange = std::shared_ptr<KeypadFkeyStatusCallback>(new CustomKeypadFkeyStatusCallback());
+		m1api->onLightingDataUpdate = std::shared_ptr<LightingDataCallback>(new CustomLightingDataCallback());
 		m1api->onLogDataUpdate = std::shared_ptr<LogEntryCallback>(new CustomLogEntryCallback());
 		m1api->onOutputStatusChange = std::shared_ptr<BoolVectorCallback>(new CustomOutputStatusChangeCallback());
 		m1api->onRPConnection = std::shared_ptr<BoolCallback>(new CustomRPConnectionCallback());
 		m1api->onTaskChangeUpdate = std::shared_ptr<IntCallback>(new CustomTaskChangeCallback());
 		m1api->onValidUserCodeEntered = std::shared_ptr<ValidUserCodeDataCallback>(new CustomValidUserCodeDataCallback());
+		m1api->onX10DataUpdate = std::shared_ptr<X10DataCallback>(new CustomX10DataCallback());
 		m1api->onZoneChangeUpdate = std::shared_ptr<ZoneStateCallback>(new CustomZoneStateCallback());
 
 		// Execute
