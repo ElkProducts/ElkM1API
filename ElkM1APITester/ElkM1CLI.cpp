@@ -750,8 +750,10 @@ int main(int argc, char* argv[])
 		std::cout << "Connected!\n";
 		m1api = (std::shared_ptr<Elk::M1AsciiAPI>) new Elk::M1AsciiAPI(connection);
 
+		// uncomment if you want debug output from the API
+		//m1api->onDebugOutput = std::shared_ptr<StringCallback>(new CustomDebugOutput());
+
 		m1api->onArmStatusChange = std::shared_ptr<ArmStatusVectorCallback>(new CustomArmStatusVectorCallback());
-		m1api->onDebugOutput = std::shared_ptr<StringCallback>(new CustomDebugOutput());
 		m1api->onEntryExitTimerChange = std::shared_ptr<EntryExitTimeDataCallback>(new CustomEntryExitTimeDataCallback());
 		m1api->onInvalidUserCodeEntered = std::shared_ptr<InvalidUserCodeDataCallback>(new CustomInvalidUserCodeDataCallback());
 		m1api->onKeypadFkeyStatusChange = std::shared_ptr<KeypadFkeyStatusCallback>(new CustomKeypadFkeyStatusCallback());
