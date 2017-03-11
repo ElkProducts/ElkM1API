@@ -278,10 +278,11 @@ namespace Elk {
 			newEntry->eventSubjectNumber = stoi(message.substr(6, 3));
 			newEntry->hour = stoi(message.substr(10, 2));
 			newEntry->minute = stoi(message.substr(12, 2));
-			newEntry->day = stoi(message.substr(14, 2));
-			newEntry->index = stoi(message.substr(16, 3));
-			newEntry->dayOfWeek = (Elk::Weekday)(message.at(20) - '0');
-			newEntry->year = stoi(message.substr(21, 2));
+			newEntry->month = stoi(message.substr(14, 2));
+			newEntry->day = stoi(message.substr(16, 2));
+			newEntry->index = stoi(message.substr(18, 3)) - 1;
+			newEntry->dayOfWeek = (Elk::Weekday)(message.at(21) - '0');
+			newEntry->year = stoi(message.substr(22, 2));
 
 			m1cache.logData[newEntry->index].set(*newEntry);
 
