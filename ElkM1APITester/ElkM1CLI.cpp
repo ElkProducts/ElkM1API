@@ -325,8 +325,42 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "Lighing Device " << device << " Status:" << status << "\n";
 	} },
 	{ "getLogData", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getLogData(int index); 
+		int index;
+		std::cout << "Enter Log Index[0-510]: ";
+		std::cin >> index;
+		Elk::LogEntry logEntry = m1api->getLogData(index); 
+		std::cout << "Log Entry " << index << ":\n"
+			<< "Event: " << logEntry.event << "\n"
+			<< "Event Subject Number: " << logEntry.eventSubjectNumber << "\n"
+			<< "Area: " << logEntry.area << "\n"
+			<< "Time: ";
+		switch (logEntry.dayOfWeek) {
+		case Elk::Weekday::Sunday:
+			std::cout << "Sunday ";
+			break;
+		case Elk::Weekday::Monday:
+			std::cout << "Monday ";
+			break;
+		case Elk::Weekday::Tuesday:
+			std::cout << "Tuesday ";
+			break;
+		case Elk::Weekday::Wednesday:
+			std::cout << "Wednesday ";
+			break;
+		case Elk::Weekday::Thursday:
+			std::cout << "Thursday ";
+			break;
+		case Elk::Weekday::Friday:
+			std::cout << "Friday ";
+			break;
+		case Elk::Weekday::Saturday:
+			std::cout << "Saturday ";
+			break;
+		default:
+			break;
+		}
+		std::cout<< logEntry.month << "/" << logEntry.day << "/" << logEntry.year
+			<< " " << logEntry.hour << ":" << logEntry.minute << "\n";
 	} },
 	{ "getLogs", [] {
 		std::cout << "TODO: Write test code \n";
