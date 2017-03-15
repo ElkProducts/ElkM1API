@@ -17,6 +17,42 @@ bool sigExit = false;
 bool rpConnection = false;
 std::shared_ptr<Elk::M1Connection> connection;
 std::shared_ptr<Elk::M1AsciiAPI> m1api;
+
+void logDataReturnHandler(Elk::LogEntry logEntry) {
+	std::cout << "Log Entry " << logEntry.index << ":\n"
+		<< "Event: " << logEntry.event << "\n"
+		<< "Event Subject Number: " << logEntry.eventSubjectNumber << "\n"
+		<< "Area: " << logEntry.area << "\n"
+		<< "Time: ";
+	switch (logEntry.dayOfWeek) {
+	case Elk::Weekday::Sunday:
+		std::cout << "Sunday ";
+		break;
+	case Elk::Weekday::Monday:
+		std::cout << "Monday ";
+		break;
+	case Elk::Weekday::Tuesday:
+		std::cout << "Tuesday ";
+		break;
+	case Elk::Weekday::Wednesday:
+		std::cout << "Wednesday ";
+		break;
+	case Elk::Weekday::Thursday:
+		std::cout << "Thursday ";
+		break;
+	case Elk::Weekday::Friday:
+		std::cout << "Friday ";
+		break;
+	case Elk::Weekday::Saturday:
+		std::cout << "Saturday ";
+		break;
+	default:
+		break;
+	}
+	std::cout<< logEntry.month << "/" << logEntry.day << "/" << logEntry.year
+		<< " " << logEntry.hour << ":" << logEntry.minute << "\n";
+}
+
 // Map of command names to functions.
 // Key can be changed to be more 'cli' like, this is just what my regex spat out.
 std::map<std::string, std::function<void()>> commands = {
@@ -328,43 +364,18 @@ std::map<std::string, std::function<void()>> commands = {
 		int index;
 		std::cout << "Enter Log Index[0-510]: ";
 		std::cin >> index;
-		Elk::LogEntry logEntry = m1api->getLogData(index); 
-		std::cout << "Log Entry " << index << ":\n"
-			<< "Event: " << logEntry.event << "\n"
-			<< "Event Subject Number: " << logEntry.eventSubjectNumber << "\n"
-			<< "Area: " << logEntry.area << "\n"
-			<< "Time: ";
-		switch (logEntry.dayOfWeek) {
-		case Elk::Weekday::Sunday:
-			std::cout << "Sunday ";
-			break;
-		case Elk::Weekday::Monday:
-			std::cout << "Monday ";
-			break;
-		case Elk::Weekday::Tuesday:
-			std::cout << "Tuesday ";
-			break;
-		case Elk::Weekday::Wednesday:
-			std::cout << "Wednesday ";
-			break;
-		case Elk::Weekday::Thursday:
-			std::cout << "Thursday ";
-			break;
-		case Elk::Weekday::Friday:
-			std::cout << "Friday ";
-			break;
-		case Elk::Weekday::Saturday:
-			std::cout << "Saturday ";
-			break;
-		default:
-			break;
-		}
-		std::cout<< logEntry.month << "/" << logEntry.day << "/" << logEntry.year
-			<< " " << logEntry.hour << ":" << logEntry.minute << "\n";
+		Elk::LogEntry logEntry = m1api->getLogData(index);
+		logDataReturnHandler(logEntry);
 	} },
 	{ "getLogs", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getLogs(); 
+		std::cout << "getLogs() can take over a minute. Do you wish to continue?[y/n]:";
+		char cont;
+		std::cin >> cont;
+		if (cont == 'y' || cont == 'Y') {
+			for (Elk::LogEntry l : m1api->getLogs()) {
+				logDataReturnHandler(l);
+			}
+		}
 	} },
 	{ "getM1VersionNumber", [] {
 		const auto& m1vn = m1api->getM1VersionNumber();
@@ -376,8 +387,14 @@ std::map<std::string, std::function<void()>> commands = {
 		//m1api->getOmnistat2Data(std::vector<char> request); 
 	} },
 	{ "getPLCStatus", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getPLCStatus(int bank); 
+		std::cout << "Enter bank[0-4]: ";
+		int bank;
+		std::cin >> bank;
+		std::cout << "Lighting Levels for bank " << bank <<" :";
+		int j = 0;
+		for (int i : m1api->getPLCStatus(bank)) {
+			std::cout << j++ << ": " << i << "\n";
+		}
 	} },
 	{ "getRTCData", [] {
 		Elk::RTCData rtc = m1api->getRTCData(); 
@@ -407,38 +424,77 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << ", " << rtc.year << "/" << rtc.month << "/" << rtc.day << " " << rtc.hours << ":" << rtc.minutes << ":" << rtc.seconds << "\n";
 	} },
 	{ "getSystemTroubleStatus", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getSystemTroubleStatus(); 
+		Elk::SystemTroubleStatus sts = m1api->getSystemTroubleStatus(); 
+		std::cout << "System Trouble Status:\n";
+		std::cout << "AC Fail: " << sts.ACFail << "\n";
+		std::cout << "Box Tamper Zone Number: " << sts.boxTamperZoneNumber << "\n";
+		std::cout << "Communication Error: " << sts.communicationError << "\n";
+		std::cout << "EEPROM Error: " << sts.EEPROMError << "\n";
+		std::cout << "Low Battery Control: " << sts.lowBatteryControl << "\n";
+		std::cout << "Transmitter Low Battery Zone Number: " << sts.transmitterLowBatteryZoneNumber << "\n";
+		std::cout << "Over Current: " << sts.overCurrent << "\n";
+		std::cout << "Telephone Fault: " << sts.telephoneFault << "\n";
+		std::cout << "Output 2: " << sts.output2 << "\n";
+		std::cout << "Missing Keypad: " << sts.missingKeypad << "\n";
+		std::cout << "Zone Expander: " << sts.zoneExpander << "\n";
+		std::cout << "Output Expander: " << sts.outputExpander << "\n";
+		std::cout << "RP Remote Access: " << sts.RPRemoteAccess << "\n";
+		std::cout << "Common Area Not Armed: " << sts.commonAreaNotArmed << "\n";
+		std::cout << "Flash Memory Error: " << sts.ACFail << "\n";
+		std::cout << "Security Alert Zone Number: " << sts.securityAlertZoneNumber << "\n";
+		std::cout << "Serial Port Expander: " << sts.serialPortExpander << "\n";
+		std::cout << "Lost Transmitter Zone Number: " << sts.lostTransmitterZoneNumber << "\n";
+		std::cout << "GE Smoke Clean Me: " << sts.GESmokeCleanMe << "\n";
+		std::cout << "Ethernet: " << sts.ethernet << "\n";
+		std::cout << "Display Message Keypad Line 1: " << sts.displayMessageKeypadLine1 << "\n";
+		std::cout << "Display Message Keypad Line 2: " << sts.displayMessageKeypadLine2 << "\n";
+		std::cout << "Fire Trouble Zone Number: " << sts.fireTroubleZoneNumber << "\n";
 	} },
 	{ "getTemperature", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getTemperature(TemperatureDevice type, int device); 
+		Elk::TemperatureDevice tempDevice;
+		while (1) {
+			std::cout << "Enter Device Type (zone, keypad, thermostat): ";
+			std::string deviceType;
+			std::cin >> deviceType;
+			if (deviceType.compare("zone")) {
+				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_ZONE;
+				break;
+			} else if (deviceType.compare("keypad")) {
+				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_KEYPAD;
+				break;
+			}
+			else if (deviceType.compare("thermostat")) {
+				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_THERMOSTAT;
+				break;
+			}
+		}
+		int deviceNumber;
+		std::cout << "Enter Device Number: ";
+		std::cin >> deviceNumber;
+		std::cout << "Device " << deviceNumber << " Temp: " << m1api->getTemperature(tempDevice, deviceNumber) << "\n";
 	} },
 	{ "getTemperatures", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->forEachConfiguredTempDevice([](Elk::TemperatureDevice dev, int index) {
-		//	switch (dev) {
-		//	case Elk::TEMPDEVICE_THERMOSTAT:
-		//		try {
-		//			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ThermostatName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
-		//		}
-		//		catch (...) {
-		//			std::cout << "Thermostat " << index << ": " << m1api->getTemperature(dev, index) << "\n";
-		//		}
-		//		break;
-		//	case Elk::TEMPDEVICE_KEYPAD:
-		//		try {
-		//			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_KeypadName, dev) << "\": " << m1api->getTemperature(dev, index) << "\n";
-		//		}
-		//		catch (...) {
-		//			std::cout << "Keypad " << index << ": " << m1api->getTemperature(dev, index) << "\n";
-		//		}
-		//		break;
-		//	case Elk::TEMPDEVICE_ZONE:
-		//		std::cout << "Temp Zone " << index << ": " << m1api->getTemperature(dev, index) << "\n";
-		//		break;
-		//	}
-		//});
+		Elk::TemperatureDevice tempDevice;
+		while (1) {
+			std::cout << "Enter Device Type (zone, keypad, thermostat): ";
+			std::string deviceType;
+			std::cin >> deviceType;
+			if (deviceType.compare("zone")) {
+				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_ZONE;
+				break;
+			} else if (deviceType.compare("keypad")) {
+				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_KEYPAD;
+				break;
+			}
+			else if (deviceType.compare("thermostat")) {
+				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_THERMOSTAT;
+				break;
+			}
+		}
+		int j = 0;
+		for (int i : m1api->getTemperatures(tempDevice)) {
+			std::cout << "Device " << j++ << " temp: " << i << "\n";
+		}
 	} },
 	{ "getTextDescription", [] {
 		std::cout << "TODO: Write test code \n";
