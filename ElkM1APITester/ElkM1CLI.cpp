@@ -575,8 +575,38 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "Text Description: " << description << "\n";
 	} },
 	{ "getThermostatData", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getThermostatData(int index); 
+		std::cout << "Enter Device Index:";
+		int index;
+		std::cin >> index;
+		Elk::ThermostatData tdata = m1api->getThermostatData(index); 
+		std::cout << "Thermostat Mode: ";
+		switch (tdata.mode) {
+		case Elk::ThermostatData::ThermostatMode::OFF:
+			std::cout << "Off";
+			break;
+		case Elk::ThermostatData::ThermostatMode::HEAT:
+			std::cout << "Heat";
+			break;
+		case Elk::ThermostatData::ThermostatMode::COOL:
+			std::cout << "Cool";
+			break;
+		case Elk::ThermostatData::ThermostatMode::AUTO:
+			std::cout << "Auto";
+			break;
+		case Elk::ThermostatData::ThermostatMode::EMERGENCY_HEAT:
+			std::cout << "Emergency Heat";
+			break;
+		default:
+			std::cout << "Undefiend Mode";
+			break;
+		}
+		std::cout << "\n";
+		std::cout << "Hold Current Temperature: " << tdata.holdCurrentTemperature << "\n";
+		std::cout << "Fan On: " << tdata.fanOn << "\n";
+		std::cout << "Temperature: " << tdata.temperature << "\n";
+		std::cout << "Heat Set Point: " << tdata.heatSetPoint << "\n";
+		std::cout << "Cool Set Point: " << tdata.coolSetPoint << "\n";
+		std::cout << "Humidity: " << tdata.humidity << "\n";
 	} },
 	{ "getUserCodeAccess", [] {
 		std::cout << "TODO: Write test code \n";
