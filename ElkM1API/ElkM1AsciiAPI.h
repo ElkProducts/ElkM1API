@@ -68,7 +68,6 @@ namespace Elk {
 		std::unordered_map < std::string, std::function<void(std::string)>> handleMessageTable;
 		static std::vector<char> genChecksum(const std::vector<char>& message);
 		static std::vector<char> toAsciiHex(int value, int length);
-		unsigned int AsciiHexToInt(std::string asciiHex);
 		static std::vector<char> toAsciiDec(int value, int length);
 		void fillFunctionTable();
 		template <typename T>

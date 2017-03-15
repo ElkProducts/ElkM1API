@@ -456,14 +456,14 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << "Enter Device Type (zone, keypad, thermostat): ";
 			std::string deviceType;
 			std::cin >> deviceType;
-			if (deviceType.compare("zone")) {
+			if (!deviceType.compare("zone")) {
 				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_ZONE;
 				break;
-			} else if (deviceType.compare("keypad")) {
+			} else if (!deviceType.compare("keypad")) {
 				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_KEYPAD;
 				break;
 			}
-			else if (deviceType.compare("thermostat")) {
+			else if (!deviceType.compare("thermostat")) {
 				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_THERMOSTAT;
 				break;
 			}
@@ -479,14 +479,14 @@ std::map<std::string, std::function<void()>> commands = {
 			std::cout << "Enter Device Type (zone, keypad, thermostat): ";
 			std::string deviceType;
 			std::cin >> deviceType;
-			if (deviceType.compare("zone")) {
+			if (!deviceType.compare("zone")) {
 				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_ZONE;
 				break;
-			} else if (deviceType.compare("keypad")) {
+			} else if (!deviceType.compare("keypad")) {
 				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_KEYPAD;
 				break;
 			}
-			else if (deviceType.compare("thermostat")) {
+			else if (!deviceType.compare("thermostat")) {
 				tempDevice = Elk::TemperatureDevice::TEMPDEVICE_THERMOSTAT;
 				break;
 			}
@@ -497,8 +497,82 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "getTextDescription", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getTextDescription(Elk::TextDescriptionType type, int index);
+		Elk::TextDescriptionType tdt;
+		for (;;) {
+			std::cout << "Enter Description Type:";
+			std::string type;
+			std::cin >> type;
+			if (!type.compare("zone")) {
+				tdt = Elk::TextDescriptionType::TEXT_ZoneName;
+				break;
+			} else if (!type.compare("area")) {
+				tdt = Elk::TextDescriptionType::TEXT_AreaName;
+				break;
+			} else if (!type.compare("user")) {
+				tdt = Elk::TextDescriptionType::TEXT_UserName;
+				break;
+			} else if (!type.compare("keypad")) {
+				tdt = Elk::TextDescriptionType::TEXT_KeypadName;
+				break;
+			} else if (!type.compare("output")) {
+				tdt = Elk::TextDescriptionType::TEXT_OutputName;
+				break;
+			} else if (!type.compare("task")) {
+				tdt = Elk::TextDescriptionType::TEXT_TaskName;
+				break;
+			} else if (!type.compare("telephone")) {
+				tdt = Elk::TextDescriptionType::TEXT_TelephoneName;
+				break;
+			} else if (!type.compare("light")) {
+				tdt = Elk::TextDescriptionType::TEXT_LightName;
+				break;
+			} else if (!type.compare("alarm")) {
+				tdt = Elk::TextDescriptionType::TEXT_AlarmDurationName;
+				break;
+			} else if (!type.compare("custom")) {
+				tdt = Elk::TextDescriptionType::TEXT_CustomSettings;
+				break;
+			} else if (!type.compare("counter")) {
+				tdt = Elk::TextDescriptionType::TEXT_CounterName;
+				break;
+			} else if (!type.compare("thermostat")) {
+				tdt = Elk::TextDescriptionType::TEXT_ThermostatName;
+				break;
+			} else if (!type.compare("fkey1")) {
+				tdt = Elk::TextDescriptionType::TEXT_FKEY1;
+				break;
+			} else if (!type.compare("fkey2")) {
+				tdt = Elk::TextDescriptionType::TEXT_FKEY2;
+				break;
+			} else if (!type.compare("fkey3")) {
+				tdt = Elk::TextDescriptionType::TEXT_FKEY3;
+				break;
+			} else if (!type.compare("fkey4")) {
+				tdt = Elk::TextDescriptionType::TEXT_FKEY4;
+				break;
+			} else if (!type.compare("fkey5")) {
+				tdt = Elk::TextDescriptionType::TEXT_FKEY5;
+				break;
+			} else if (!type.compare("fkey6")) {
+				tdt = Elk::TextDescriptionType::TEXT_FKEY6;
+				break;
+			} else if (!type.compare("audiozone")) {
+				tdt = Elk::TextDescriptionType::TEXT_AudioZoneName;
+				break;
+			} else if (!type.compare("audiosource")) {
+				tdt = Elk::TextDescriptionType::TEXT_AudioSourceName;
+				break;
+			} else {
+				std::cout << "valid inputs: zone, area, user, keypad, output, task, telephone, light, "
+					<< "alarm, custom, counter, thermostat, fkey1, fkey2, fkey3, fkey4, fkey5, fkey6, "
+					<< "audiozone, auidosource\n";
+			}
+		}
+		std::cout << "Enter Description Index:";
+		int index;
+		std::cin >> index;
+		std::string description = m1api->getTextDescription(tdt, index);
+		std::cout << "Text Description: " << description << "\n";
 	} },
 	{ "getThermostatData", [] {
 		std::cout << "TODO: Write test code \n";
