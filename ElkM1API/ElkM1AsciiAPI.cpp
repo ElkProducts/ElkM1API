@@ -1167,6 +1167,9 @@ namespace Elk {
 			throw std::runtime_error("Call unsupported by M1 Firmware version.");
 		}
 		AsciiMessage message("ua");
+		if (userCode.length() == 4) {
+			message += "00";
+		}
 		message += userCode;
 		message += "00";
 		return cacheRequest(m1cache.userCodeAccess, message, true, 0);
