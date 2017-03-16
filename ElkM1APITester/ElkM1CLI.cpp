@@ -609,8 +609,22 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "Humidity: " << tdata.humidity << "\n";
 	} },
 	{ "getUserCodeAccess", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->getUserCodeAccess(std::string userCode); 
+		std::cout << "Enter User Code:";
+		std::string usercode;
+		std::cin >> usercode;
+		Elk::UserCodeAccess uca = m1api->getUserCodeAccess(usercode); 
+		std::cout << "Code Type: " << uca.codetype << "\n";
+		std::cout << "Uses Celcius: " << uca.usesCelcius << "\n";
+		std::cout << "Valid Areas: ";
+		int addcomma = false;
+		for (int i = 0; i < 8; i++) {
+			if ((uca.validAreas << i) & 1) {
+				std::cout << (addcomma ? ", " : "") << i;
+				if (!addcomma)
+					addcomma = true;
+			}
+		}
+		std::cout << "\n";
 	} },
 	{ "getXEPVersionNumber", [] {
 		const auto& xvn = m1api->getXEPVersionNumber();
