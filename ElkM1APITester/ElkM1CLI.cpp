@@ -761,11 +761,20 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "\n";
 	} },
 	{ "getZonePartitions", [] {
-		std::cout << "TODO: Write test code \n";
-		//const auto& parts = m1api->getZonePartitions();
-		//m1api->forEachConfiguredZone([parts](int index) {
-		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" partition: " << parts[index] << "\n";
-		//});
+		std::cout << "Zone Partitions: ";
+		std::vector<int> partitions = m1api->getZonePartitions();
+		bool comma = false;
+		for (int i = 0; i < 8; i++) {
+			std::cout << "Area " << i << " Zones: ";
+			for (int j = 0; j < partitions.size(); j++) {
+				if (partitions[j] == i) {
+					std::cout << (comma ? ", " : "") << j;
+					comma = true;
+				}
+			}
+			std::cout << "\n";
+			comma = false;
+		}
 	} },
 	{ "getZoneStatuses", [] {
 		int i = 0;
