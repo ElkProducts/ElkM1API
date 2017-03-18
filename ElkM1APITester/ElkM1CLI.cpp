@@ -152,7 +152,7 @@ std::map<std::string, std::function<void()>> commands = {
 	{ "getArmStatus", [] {
 		int i = 0;
 		for (const auto& stat : m1api->getArmStatus()) {
-			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_AreaName, i) << "\": ";
+			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_AreaName, i++) << "\": ";
 			switch (stat.mode)
 			{
 			case Elk::ARM_DISARMED:
@@ -235,7 +235,7 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "\n";
 	} },
 	{ "getConfiguredKeypads", [] {
-		std::cout << "Configured Keypdas: ";
+		std::cout << "Configured Keypads: ";
 		bool addComma = false;
 		for (int keypad : m1api->getConfiguredKeypads()) {
 			std::cout << (addComma ? ", " : "") << keypad;
@@ -302,7 +302,7 @@ std::map<std::string, std::function<void()>> commands = {
 	} },
 	{ "getKeypadAreas", [] {
 		const auto& kpa = m1api->getKeypadAreas();
-		for (int i = 0; i < 16; i++)
+		for (int i : m1api->getConfiguredKeypads()) 
 			std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_KeypadName, i) << "\": " << kpa[i] << "\n";
 	} },
 	{ "getKeypadFkeyStatus", [] {
@@ -810,19 +810,104 @@ std::map<std::string, std::function<void()>> commands = {
 			}
 		}
 	} },
-	{ "getZoneVoltages", [] {
-		std::cout << "TODO: Write test code \n";
-		//m1api->forEachConfiguredZone([](int index) {
-		//	std::cout << "\"" << m1api->getTextDescription(Elk::TEXT_ZoneName, index) << "\" voltage: " << m1api->getZoneVoltage(index) << "\n";
-		//});
+	{ "getZoneVoltage", [] {
+		std::cout << "Enter Zone: ";
+		int zone;
+		std::cin >> zone;
+		std::cout << "Zone " << zone << " Voltage: " << m1api->getZoneVoltage(zone) << "\n";
 	} },
 	{ "pressFunctionKey", [] {
-		std::cout << "TODO: Write test code\n";
-		//m1api->pressFunctionKey(int keypad, FKEY key); l
+		std::cout << "Enter Keypad: ";
+		int keypad;
+		std::cin >> keypad;
+		Elk::FKEY fkey;
+		std::string key;
+		for (;;) {
+			std::cout << "Enter Key: ";
+			std::cin >> key;
+			if (!key.compare("1")) {
+				fkey = Elk::FKEY::FKEY_1;
+				break;
+			} else if (!key.compare("2")) {
+				fkey = Elk::FKEY::FKEY_2;
+				break;
+			} else if (!key.compare("3")) {
+				fkey = Elk::FKEY::FKEY_3;
+				break;
+			} else if (!key.compare("4")) {
+				fkey = Elk::FKEY::FKEY_4;
+				break;
+			} else if (!key.compare("5")) {
+				fkey = Elk::FKEY::FKEY_5;
+				break;
+			} else if (!key.compare("6")) {
+				fkey = Elk::FKEY::FKEY_6;
+				break;
+			} else if (!key.compare("star")) {
+				fkey = Elk::FKEY::FKEY_STAR;
+				break;
+			} else if (!key.compare("chime")) {
+				fkey = Elk::FKEY::FKEY_CHIME;
+				break;
+			} else if (!key.compare("none")) {
+				fkey = Elk::FKEY::FKEY_NONE;
+				break;
+			}
+			else {
+				std::cout << "Enter a value 1-6, start, chime, or none\n";
+			}
+		}
+		int i = 0;
+		for (const auto& s : m1api->pressFunctionKey(keypad, fkey)) {
+			std::cout << "Area " << i++ << " Chime Mode: ";
+			switch (s.cm) {
+			case Elk::ChimeMode::CHIMEMODE_OFF:
+				std::cout << "Off";
+				break;
+			case Elk::ChimeMode::CHIMEMODE_CHIMEONLY:
+				std::cout << "Chime Only";
+				break;
+			case Elk::ChimeMode::CHIMEMODE_VOICEONLY:
+				std::cout << "Chime Only";
+				break;
+			case Elk::ChimeMode::CHIMEMODE_BOTH:
+				std::cout << "Both";
+				break;
+			default:
+				std::cout << "Undefined Chime Mode";
+			}
+			std::cout << "\n";
+		}
 	} },
 	{ "requestChangeUserCode", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->requestChangeUserCode(int user, std::string authCode, std::string newUserCode, uint8_t areaMask); 
+		std::cout << "Enter User: ";
+		int user;
+		std::cin >> user;
+		std::cout << "Enter Auth Code: ";
+		std::string authcode;
+		std::cin >> authcode;
+		std::cout << "Enter New User Code: ";
+		std::string newUserCode;
+		std::cin >> newUserCode;
+		std::cout << "Enter Area Mask: ";
+		std::string areaMask;
+		std::cin >> areaMask;
+		uint8_t a = stoi(areaMask, 0, 16);
+		Elk::UserCodeSuccess ucs = m1api->requestChangeUserCode(user, authcode, newUserCode, a);
+		switch (ucs) {
+		case Elk::UserCodeSuccess::USERCODE_CHANGE_SUCCESSFUL:
+			std::cout << "Usercode Change Successful\n";
+			break;
+		case Elk::UserCodeSuccess::USERCODE_USER_DUPLICATE:
+			std::cout << "Usercode User Duplicate\n";
+			break;
+		case Elk::UserCodeSuccess::USERCODE_UNAUTHORIZED:
+			std::cout << "Usercode Unauthorized\n";
+			break;
+		default:
+			std::cout << "Undefined User Code Success\n";
+			break;
+		}
 	} },
 	{ "setAreaBypass", [] {
 		std::cout << "TODO: Write test code";
