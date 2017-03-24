@@ -937,8 +937,14 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "Area " << area << ((bypass) ? " bypassed" : " unbypassed") << "\n";
 	} },
 	{ "setCounterValue", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->setCounterValue(int counter, uint16_t value); 
+		int counter;
+		std::cout << "Enter Counter Number: ";
+		std::cin >> counter;
+		uint16_t value;
+		std::cout << "Enter Counter Value: ";
+		std::cin >> value;
+		value = m1api->setCounterValue(counter, value); 
+		std::cout << "Counter " << counter << " = " << value << "\n";
 	} },
 	{ "setCustomValue", [] {
 		std::cout << "TODO: Write test code";
