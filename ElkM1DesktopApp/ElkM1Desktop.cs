@@ -241,7 +241,7 @@ namespace ElkM1DesktopApp
                     {
                         Connect.Text = "...";
                     });
-                    if(cs.Connect("dev.elklink.com", 8891)) {
+                    if(cs.Connect("www.elklink.com", 8891)) {
 
                         C1M1Tunnel tunn = new C1M1Tunnel(cs);
                         string username = tbUsername.Text;

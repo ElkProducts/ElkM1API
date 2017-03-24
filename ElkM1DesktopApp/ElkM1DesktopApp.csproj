@@ -46,156 +46,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ElkM1API\csharp\AlarmState.cs">
-      <Link>csharp\AlarmState.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ArmMode.cs">
-      <Link>csharp\ArmMode.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ArmStatus.cs">
-      <Link>csharp\ArmStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ArmStatusVector.cs">
-      <Link>csharp\ArmStatusVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ArmStatusVectorCallback.cs">
-      <Link>csharp\ArmStatusVectorCallback.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ArmUpMode.cs">
-      <Link>csharp\ArmUpMode.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\AudioData.cs">
-      <Link>csharp\AudioData.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\BoolCallback.cs">
-      <Link>csharp\BoolCallback.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\BoolVector.cs">
-      <Link>csharp\BoolVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\C1M1Tunnel.cs">
-      <Link>csharp\C1M1Tunnel.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\CharVector.cs">
-      <Link>csharp\CharVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ChimeMode.cs">
-      <Link>csharp\ChimeMode.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ChimeModeVector.cs">
-      <Link>csharp\ChimeModeVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\clearMethod.cs">
-      <Link>csharp\clearMethod.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ElkM1API.cs">
-      <Link>csharp\ElkM1API.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ElkM1APIPINVOKE.cs">
-      <Link>csharp\ElkM1APIPINVOKE.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\FKEY.cs">
-      <Link>csharp\FKEY.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\IntCallback.cs">
-      <Link>csharp\IntCallback.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\IntVector.cs">
-      <Link>csharp\IntVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\KeypadFkeyStatus.cs">
-      <Link>csharp\KeypadFkeyStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\LogEntry.cs">
-      <Link>csharp\LogEntry.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\LogEntryVector.cs">
-      <Link>csharp\LogEntryVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\LogicalZoneState.cs">
-      <Link>csharp\LogicalZoneState.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\M1API.cs">
-      <Link>csharp\M1API.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\M1AsciiAPI.cs">
-      <Link>csharp\M1AsciiAPI.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\M1Connection.cs">
-      <Link>csharp\M1Connection.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\M1Monitor.cs">
-      <Link>csharp\M1Monitor.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\NetworkType.cs">
-      <Link>csharp\NetworkType.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\PhysicalZoneState.cs">
-      <Link>csharp\PhysicalZoneState.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\RTCData.cs">
-      <Link>csharp\RTCData.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SChimeMode.cs">
-      <Link>csharp\SChimeMode.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SirenPhrase.cs">
-      <Link>csharp\SirenPhrase.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SirenWord.cs">
-      <Link>csharp\SirenWord.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\StringCallback.cs">
-      <Link>csharp\StringCallback.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SWIGTYPE_p_Elk__KeypadFkeyStatus__FkeyIllumination.cs">
-      <Link>csharp\SWIGTYPE_p_Elk__KeypadFkeyStatus__FkeyIllumination.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SystemTroubleStatus.cs">
-      <Link>csharp\SystemTroubleStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\SZoneDefinition.cs">
-      <Link>csharp\SZoneDefinition.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\TempDevicePair.cs">
-      <Link>csharp\TempDevicePair.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\TempDevicePairVector.cs">
-      <Link>csharp\TempDevicePairVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\TemperatureDevice.cs">
-      <Link>csharp\TemperatureDevice.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\TextDescriptionType.cs">
-      <Link>csharp\TextDescriptionType.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ThermostatData.cs">
-      <Link>csharp\ThermostatData.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\UserCodeAccess.cs">
-      <Link>csharp\UserCodeAccess.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\UserCodeSuccess.cs">
-      <Link>csharp\UserCodeSuccess.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\UShortVector.cs">
-      <Link>csharp\UShortVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\Weekday.cs">
-      <Link>csharp\Weekday.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ZoneDefinition.cs">
-      <Link>csharp\ZoneDefinition.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ZoneDefinitionVector.cs">
-      <Link>csharp\ZoneDefinitionVector.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ZoneState.cs">
-      <Link>csharp\ZoneState.cs</Link>
-    </Compile>
-    <Compile Include="..\ElkM1API\csharp\ZoneStateVector.cs">
-      <Link>csharp\ZoneStateVector.cs</Link>
-    </Compile>
+    <Compile Include="csharp\AlarmState.cs" />
+    <Compile Include="csharp\ArmMode.cs" />
+    <Compile Include="csharp\ArmStatus.cs" />
+    <Compile Include="csharp\ArmStatusVector.cs" />
+    <Compile Include="csharp\ArmStatusVectorCallback.cs" />
+    <Compile Include="csharp\ArmUpMode.cs" />
+    <Compile Include="csharp\AudioData.cs" />
+    <Compile Include="csharp\BoolCallback.cs" />
+    <Compile Include="csharp\BoolVector.cs" />
+    <Compile Include="csharp\BoolVectorCallback.cs" />
+    <Compile Include="csharp\C1M1Tunnel.cs" />
+    <Compile Include="csharp\CharVector.cs" />
+    <Compile Include="csharp\ChimeMode.cs" />
+    <Compile Include="csharp\ChimeModeVector.cs" />
+    <Compile Include="csharp\clearMethod.cs" />
+    <Compile Include="csharp\ElkM1API.cs" />
+    <Compile Include="csharp\ElkM1APIPINVOKE.cs" />
+    <Compile Include="csharp\EntryExitTimeData.cs" />
+    <Compile Include="csharp\EntryExitTimeDataCallback.cs" />
+    <Compile Include="csharp\FKEY.cs" />
+    <Compile Include="csharp\IntCallback.cs" />
+    <Compile Include="csharp\IntVector.cs" />
+    <Compile Include="csharp\InvalidUserCodeData.cs" />
+    <Compile Include="csharp\InvalidUserCodeDataCallback.cs" />
+    <Compile Include="csharp\KeypadFkeyStatus.cs" />
+    <Compile Include="csharp\KeypadFkeyStatusCallback.cs" />
+    <Compile Include="csharp\LightingData.cs" />
+    <Compile Include="csharp\LightingDataCallback.cs" />
+    <Compile Include="csharp\LogEntry.cs" />
+    <Compile Include="csharp\LogEntryCallback.cs" />
+    <Compile Include="csharp\LogEntryVector.cs" />
+    <Compile Include="csharp\LogicalZoneState.cs" />
+    <Compile Include="csharp\M1API.cs" />
+    <Compile Include="csharp\M1AsciiAPI.cs" />
+    <Compile Include="csharp\M1Connection.cs" />
+    <Compile Include="csharp\M1Monitor.cs" />
+    <Compile Include="csharp\NetworkType.cs" />
+    <Compile Include="csharp\PhysicalZoneState.cs" />
+    <Compile Include="csharp\RTCData.cs" />
+    <Compile Include="csharp\SChimeMode.cs" />
+    <Compile Include="csharp\SirenPhrase.cs" />
+    <Compile Include="csharp\SirenWord.cs" />
+    <Compile Include="csharp\StringCallback.cs" />
+    <Compile Include="csharp\SWIGTYPE_p_Elk__KeypadFkeyStatus__FkeyIllumination.cs" />
+    <Compile Include="csharp\SWIGTYPE_p_unsigned_char.cs" />
+    <Compile Include="csharp\SystemTroubleStatus.cs" />
+    <Compile Include="csharp\SZoneDefinition.cs" />
+    <Compile Include="csharp\TempDevicePair.cs" />
+    <Compile Include="csharp\TempDevicePairVector.cs" />
+    <Compile Include="csharp\TemperatureDevice.cs" />
+    <Compile Include="csharp\TextDescriptionType.cs" />
+    <Compile Include="csharp\ThermostatData.cs" />
+    <Compile Include="csharp\UserCodeAccess.cs" />
+    <Compile Include="csharp\UserCodeSuccess.cs" />
+    <Compile Include="csharp\UShortVector.cs" />
+    <Compile Include="csharp\ValidUserCodeData.cs" />
+    <Compile Include="csharp\ValidUserCodeDataCallback.cs" />
+    <Compile Include="csharp\Weekday.cs" />
+    <Compile Include="csharp\X10Data.cs" />
+    <Compile Include="csharp\X10DataCallback.cs" />
+    <Compile Include="csharp\ZoneDefinition.cs" />
+    <Compile Include="csharp\ZoneDefinitionVector.cs" />
+    <Compile Include="csharp\ZoneState.cs" />
+    <Compile Include="csharp\ZoneStateCallback.cs" />
+    <Compile Include="csharp\ZoneStateVector.cs" />
     <Compile Include="ElkM1Desktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +173,7 @@
     <None Include="Resources\zone_violated.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
