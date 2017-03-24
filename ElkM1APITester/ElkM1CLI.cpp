@@ -910,8 +910,31 @@ std::map<std::string, std::function<void()>> commands = {
 		}
 	} },
 	{ "setAreaBypass", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->setAreaBypass(int area, std::string pinCode, bool bypassed); 
+		std::cout << "Enter Area: ";
+		int area;
+		std::cin >> area;
+		std::string pin;
+		std::cout << "Enter Pin Code: ";
+		std::cin >> pin;
+		bool bypass;
+		std::string b;
+		for (;;) {
+			std::cout << "Bypass Area?[y/n]: ";
+			std::cin >> b;
+			if (!b.compare("y")) {
+				bypass = true;
+				break;
+			}
+			else if (!b.compare("n")) {
+				bypass = false;
+				break;
+			}
+			else {
+				std::cout << "Enter either \"y\" or \"n\"\n";
+			}
+		}
+		bypass = m1api->setAreaBypass(area, pin, bypass); 
+		std::cout << "Area " << area << ((bypass) ? " bypassed" : " unbypassed") << "\n";
 	} },
 	{ "setCounterValue", [] {
 		std::cout << "TODO: Write test code";

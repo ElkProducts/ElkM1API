@@ -540,7 +540,7 @@ namespace Elk {
 			zoneState->physicalState = (PhysicalZoneState)(bitfield & 0x3);
 			zoneState->logicalState = (LogicalZoneState)(bitfield >> 2);
 
-			std::vector<ZoneState> zones = m1cache.zoneStatus.get();
+			std::vector<ZoneState> zones = getZoneStatuses();
 			int zoneNumber = stoi(message.substr(2, 3)) - 1;
 			zones.at(zoneNumber) = *zoneState;
 			m1cache.zoneStatus.set(zones);
