@@ -947,12 +947,27 @@ std::map<std::string, std::function<void()>> commands = {
 		std::cout << "Counter " << counter << " = " << value << "\n";
 	} },
 	{ "setCustomValue", [] {
-		std::cout << "TODO: Write test code";
+		int custom;
+		std::cout << "Enter Custom Number: ";
+		std::cin >> custom;
+		uint16_t value;
+		std::cout << "Enter Custom Value: ";
+		std::cin >> value;
+		m1api->setCustomValue(custom, value); 
+		std::cout << "Custom " << custom << " = " << value << "\n";
 		//m1api->setCustomValue(int index, uint16_t value); 
 	} },
 	{ "setLogData", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->setLogData(int logType, int eventType, int zoneNumber, int area); 
+		int logType, eventType, zoneNumber, area;
+		std::cout << "Enter Log Type: ";
+		std::cin >> logType;
+		std::cout << "Enter Event Type: ";
+		std::cin >> eventType;
+		std::cout << "Enter Zone Number: ";
+		std::cin >> zoneNumber;
+		std::cout << "Enter Area: ";
+		std::cin >> area;
+		m1api->setLogData(logType, eventType, zoneNumber, area); 
 	} },
 	{ "setPLCState", [] {
 		std::cout << "TODO: Write test code";
