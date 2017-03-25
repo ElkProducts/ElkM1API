@@ -923,6 +923,7 @@ namespace Elk {
 		message += toAsciiDec(newData.hours, 2);
 		message += toAsciiDec(newData.weekday, 1);
 		message += toAsciiDec(newData.day, 2);
+		message += toAsciiDec(newData.month, 2);
 		message += toAsciiDec(newData.year % 100, 2);
 		message += "00";
 		return cacheRequest(m1cache.rtcData, message, true, 0);
