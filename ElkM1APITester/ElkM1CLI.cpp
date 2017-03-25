@@ -11,6 +11,7 @@
 #include "ElkM1API.h"
 #include "ElkM1AsciiAPI.h"
 #include "ElkM1TCP.h"
+#include <ctime>
 
 std::mutex mtx;
 bool sigExit = false;
@@ -970,12 +971,43 @@ std::map<std::string, std::function<void()>> commands = {
 		m1api->setLogData(logType, eventType, zoneNumber, area); 
 	} },
 	{ "setPLCState", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->setPLCState(char houseCode, int unitCode, bool state); 
+		char houseCode;
+		int unitCode;
+		bool state;
+		std::cout << "Enter House Code: ";
+		std::cin >> houseCode;
+		std::cout << "Enter Unit Code: ";
+		std::cin >> unitCode;
+		std::string s;
+		for (;;) {
+			std::cout << "State [on/off]:";
+			if (!s.compare("on")) {
+				state = true;
+				break;
+			}
+			else if (!s.compare("off")) {
+				state = false;
+				break;
+			}
+			std::cout << "Enter either \"on\" or \"off\"\n";
+		}
+		m1api->setPLCState(houseCode, unitCode, state); 
 	} },
 	{ "setRTCData", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->setRTCData(RTCData newData); 
+		time_t t = time(0);
+		struct tm * now = localtime(&t);
+		Elk::RTCData data;
+		data.day = now->tm_mday;
+		data.dayBeforeMonth = false;
+		data.hours = now->tm_hour;
+		data.minutes = now->tm_min;
+		data.month = now->tm_mon + 1;
+		data.seconds = now->tm_sec;
+		data.twelveHourClock = false;
+		data.weekday = (Elk::Weekday)(now->tm_wday + 1);
+		data.year = now->tm_year;
+		std::cout << "Using current time to set RTC data\n";
+		m1api->setRTCData(data); 
 	} },
 	{ "setThermostatData", [] {
 		std::cout << "TODO: Write test code";
