@@ -1010,28 +1010,79 @@ std::map<std::string, std::function<void()>> commands = {
 		m1api->setRTCData(data); 
 	} },
 	{ "setThermostatData", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->setThermostatData(int index, int value, int element); 
+		int index, value, element;
+		std::cout << "Enter Thermostat Index: ";
+		std::cin >> index;
+		std::cout << "Enter Value: ";
+		std::cin >> value;
+		std::cout << "enter Element: ";
+		std::cin >> element;
+		Elk::ThermostatData data = m1api->setThermostatData(index, value, element); 
+		std::cout << "Temperature: " << data.temperature << "/n";
+		std::cout << "Hold Current Temp: " << data.holdCurrentTemperature << "/n";
+		std::cout << "Cool Set Point: " << data.coolSetPoint << "/n";
+		std::cout << "Heat Set Point: " << data.heatSetPoint << "/n";
+		std::cout << "Fan On: " << data.fanOn << "/n";
+		std::cout << "Humidity: " << data.humidity << "/n";
+		std::cout << "Mode: ";
+		switch (data.mode)
+		{
+		case Elk::ThermostatData::ThermostatMode::OFF:
+			std::cout << "OFF";
+			break;
+		case Elk::ThermostatData::ThermostatMode::HEAT:
+			std::cout << "HEAT";
+			break;
+		case Elk::ThermostatData::ThermostatMode::COOL:
+			std::cout << "COOL";
+			break;
+		case Elk::ThermostatData::ThermostatMode::AUTO:
+			std::cout << "AUTO";
+			break;
+		case Elk::ThermostatData::ThermostatMode::EMERGENCY_HEAT:
+			std::cout << "EMERGENCY HEAT";
+			break;
+		default:
+			std::cout << "Mode Not Defined";
+			break;
+		}
+		std::cout << "/n";
 	} },
 	{ "speakPhrase", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->speakPhrase(SirenPhrase phrase); 
+		int phrase;
+		std::cout << "Enter Phrase Number [0-319]:";
+		std::cin >> phrase;
+		m1api->speakPhrase((Elk::SirenPhrase)phrase); 
 	} },
 	{ "speakWord", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->speakWord(SirenWord word); 
+		int word;
+		std::cout << "Enter Word Number [0-473]:";
+		std::cin >> word;
+		m1api->speakWord((Elk::SirenWord)word); 
 	} },
 	{ "toggleControlOutput", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->toggleControlOutput(int output); 
+		int output;
+		std::cout << "Enter Output: ";
+		std::cin >> output;
+		m1api->toggleControlOutput(output); 
 	} },
 	{ "togglePLCState", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->togglePLCState(char houseCode, int unitCode); 
+		char housecode;
+		int unitcode;
+		std::cout << "Enter House Code: ";
+		std::cin >> housecode;
+		std::cout << "Enter Unit Code: ";
+		std::cin >> unitcode;
+		m1api->togglePLCState(housecode, unitcode); 
 	} },
 	{ "zoneBypass", [] {
-		std::cout << "TODO: Write test code";
-		//m1api->zoneBypass(int zone, std::string pinCode); 
+		int zone;
+		std::string pin;
+		std::cout << "Enter Zone: ";
+		std::cin >> zone;
+		std::cout << "Enter Pin: ";
+		std::cin >> pin;
+		std::cout << "Zone Bypassed: " << m1api->zoneBypass(zone, pin) << "/n";
 	} },
 	{ "quit", [] {
 		sigExit = true; 
